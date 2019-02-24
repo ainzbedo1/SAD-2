@@ -36,7 +36,7 @@ namespace Reservations_Subsystem
         }
         private void DisplayRoom()
         {
-            DataRow dr;
+            
             DataTable dt = new DataTable();
            
             string strSql = "select * from room";
@@ -53,7 +53,7 @@ namespace Reservations_Subsystem
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
-            int id;
+      
             
         }
 
@@ -96,6 +96,11 @@ namespace Reservations_Subsystem
         {
             this.Refresh();
             this.refreshing();
+        }
+
+        private void ViewRoom_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

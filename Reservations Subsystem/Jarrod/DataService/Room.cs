@@ -9,18 +9,11 @@ namespace Reservations_Subsystem
     public class Room
     {
         public MySqlConnection conn = new MySqlConnection("Server=localhost;Database=sad2_db;Uid=root;Pwd=root;");
-        string roomNumber;
-        string roomType;
-        string floorLevel;
-        string desc;
-        float roomRate;
-        DateTime dateCreated;
-        string singleBeds;
-        string doubleBeds;
+
 
         public void AddRoom(string roomNumber, string roomType, string floorLevel, string something)
         {
-            string query = "roomNumber, roomType, floorLevel, description) VALUES(@roomNumber, @roomType, @floorLevel, @description";
+            string query = "INSERT INTO room VALUES(@roomNumber, @roomType, @floorLevel, @description)";
             using (MySqlCommand cmd = new MySqlCommand(query, conn))
             {
 

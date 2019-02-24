@@ -12,12 +12,18 @@ namespace Reservations_Subsystem
 {
     public partial class AddCustomerForm : Form
     {
+        public AddReservationView reference {get; set;}
         public AddCustomerForm()
         {
             InitializeComponent();
         }
 
         private void button1_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void AddCustomerForm_Load(object sender, EventArgs e)
         {
 
         }

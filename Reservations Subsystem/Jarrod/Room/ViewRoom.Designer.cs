@@ -111,6 +111,7 @@
             this.Name = "ViewRoom";
             this.Text = "ViewRoom";
             this.Activated += new System.EventHandler(this.ViewRoom_Activated);
+            this.Load += new System.EventHandler(this.ViewRoom_Load);
             this.Shown += new System.EventHandler(this.ViewRoom_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.datagridViewRoom)).EndInit();
             this.ResumeLayout(false);
