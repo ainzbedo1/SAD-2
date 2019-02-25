@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
+
 namespace Reservations_Subsystem
 {
     public class Room
@@ -35,6 +37,26 @@ namespace Reservations_Subsystem
             }
         }
 
+        public DataTable AllRoomId()
+        {
+            string query = "SELECT id, roomNumber, roomType FROM room";
+            using(MySqlCommand cmd = new MySqlCommand(query, conn))
+            {
+                try
+                {
+                    conn.Open();
+                    DataTable myTable = new DataTable();
+                    myTable 
+                    Console.WriteLine("RowsAffected: {0}", rowsAffected);
+                    
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+
+            }
+        }
         
         public void EditRoom(int id, string roomNumber, string roomType, string floorLevel, string description)
         {

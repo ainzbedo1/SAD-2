@@ -33,14 +33,15 @@ namespace Reservations_Subsystem
                 _form.RoomId = info.RoomId;
   
         }
-        public ReservationDataPresenter(AddReservationView form, ReservationInfo myResInfo, RoomInfo myRoomInfo, CustomerInfo myCustomerInfo)
+        public ReservationDataPresenter(AddReservationView form, ReservationInfo myResInfo, RoomInfo myRoomInfo, CustomerInfo myCustomerInfo, MyButton resButt)
         {
             _form = form;
-           
+          
                 //public void setValuesBasedOnReservationId(string roomType, string roomNumber, DateTime startDate, DateTime endDate, string description, decimal lengthOfStay)
             form.setValuesBasedOnReservationId(myRoomInfo.RoomType, myRoomInfo.RoomNumber, myResInfo.StartDate, myResInfo.EndDate, myResInfo.Desc);
             form.theCustomerInfo = myCustomerInfo;
-
+            form.theReservation = myResInfo;
+            form.referenceButton = resButt;
 
             form.EditForm = true;
         }

@@ -103,6 +103,7 @@ namespace Reservations_Subsystem
 
         private void Form1_Load(object sender, EventArgs e)
         {
+
             int month = Array.IndexOf(monthString, btnMainMonth.Text) + 1, year = Int32.Parse(btnMainYear.Text);
             displayCalendar(month, year);
 
@@ -113,6 +114,7 @@ namespace Reservations_Subsystem
             calendar.Size = new Size(colCount * 40 + 65, 652);
             dateTimePicker1.CustomFormat = "dd-MM-yyyy";
             displayReservationButt(month, year);
+            //DeleteAllButtons();
         }
 
         private void calendar_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -136,11 +138,13 @@ namespace Reservations_Subsystem
                 btnMainMonth.Text = btnPrevMonth.Text;
                 btnPrevMonth.Text = monthString[monthprev - 1];
             }
+            DeleteAllButtons();
             int month = Array.IndexOf(monthString, btnMainMonth.Text) + 1, year = Int32.Parse(btnMainYear.Text);
             displayCalendar(month, year);
             int colCount = this.calendar.ColumnCount;
             this.Size = new Size(colCount * 40 + 80, 652);
             calendar.Size = new Size(colCount * 40 + 65, 652);
+            displayReservationButt(month, year);
         }
 
         private void btnNextMonth_Click(object sender, EventArgs e)
@@ -215,7 +219,7 @@ namespace Reservations_Subsystem
         /*
         string iDate = "05/05/2005";
         DateTime oDate = Convert.ToDateTime(iDate);
-        MessageBox.Show(oDate.Day + " " + oDate.Month + "  " + oDate.Year );
+
         */
         //Formats string 
         private DateTime DateFormat(string Day)
@@ -313,22 +317,29 @@ namespace Reservations_Subsystem
                 frm.EndDate = DateFormat(lastDateReservation);
 
                 int startDay = DateFormat(firstDateReservation).Day;
-                int endDay = DateFormat(firstDateReservation).Day;
+                int endDay = DateFormat(lastDateReservation).Day;
 
                 int month = Array.IndexOf(monthString, btnMainMonth.Text) + 1, year = Int32.Parse(btnMainYear.Text);
-                int reservationIntefere = ReservationCheck(Convert.ToInt32(startDay), Convert.ToInt32(endDay), month, year, Convert.ToInt32(frm.RoomNumber));
-                if(reservationIntefere == 1)
+                RoomDataService roomDateService = new RoomDataService();
+                RoomInfo myRoomInfo = new RoomInfo();
+                myRoomInfo = roomDateService.getRoomInfoByRoomNumber(frm.RoomNumber);
+                int roomId = Convert.ToInt32(myRoomInfo.RoomId);
+
+                int reservationIntefere = ReservationCheck(Convert.ToInt32(startDay), Convert.ToInt32(endDay), month, year, roomId);
+
+                //int resStart = ReservationCheck(Convert.ToInt32(startDay), Convert.ToInt32(endDay), month, year, roomId);
+                if (reservationIntefere >= 1)
                 {
-                    MessageBox.Show("Selection is not allowed here reservation have confliciting dates");
-                    
+                    MessageBox.Show("Selection is not allowed here reservation have confliciting dates"); 
                 }
                 else
                 {
-
-
                     RoomDataService why = new RoomDataService();
                     Boolean edit = false;
                     //editing is false
+
+                    frm.viewMonth = month;
+                    frm.viewYear = year;
                     ReservationDataPresenter data = new ReservationDataPresenter(frm, why);
                     data.Show();
                 }
@@ -456,11 +467,11 @@ namespace Reservations_Subsystem
                 RoomDataService roomDataService = new RoomDataService();
 
                 // initializing search values
-                MessageBox.Show(roomId);
+         
                 roomInfo = roomDataService.getRoomInfoById(Convert.ToInt32(roomId));
                
                 string searchValueRow = roomInfo.RoomNumber;
-                MessageBox.Show("My search value is" + searchValueRow);
+    
                 string searchValueColumn = startDate.Day.ToString();
                 int rowIndex = -1;
                 //int columnIndex = -1;
@@ -496,6 +507,7 @@ namespace Reservations_Subsystem
 
                 // getting timespan of whole date
                 TimeSpan stayInDays = endDate - startDate;
+                //MessageBox.Show(stayInDays.Days +"reserveId is"+ reserveId.ToString());
                 int totalWidth = (stayInDays.Days * 40);
                 string name = Convert.ToString(reserveId);
 
@@ -522,7 +534,7 @@ namespace Reservations_Subsystem
             // initializing search values
             roomInfo = roomDataService.getRoomInfoById(Convert.ToInt32(roomId));
             string searchValueRow = roomInfo.RoomNumber;
-            MessageBox.Show("My search value is" + searchValueRow);
+
             string searchValueColumn = startDate.Day.ToString();
             int rowIndex = -1;
             //int columnIndex = -1;
@@ -558,7 +570,7 @@ namespace Reservations_Subsystem
 
             //check the endDate days
             int daysAtEnd = endDate.Day;
-            int totalWidth = (daysAtEnd * 40);
+            int totalWidth = (daysAtEnd * 40)-20;
             string name = Convert.ToString(reserveId);
 
 
@@ -581,11 +593,9 @@ namespace Reservations_Subsystem
                 RoomDataService roomDataService = new RoomDataService();
 
                 // initializing search values
-                MessageBox.Show(roomId);
                 roomInfo = roomDataService.getRoomInfoById(Convert.ToInt32(roomId));
-
                 string searchValueRow = roomInfo.RoomNumber;
-                MessageBox.Show("My search value is" + searchValueRow);
+
                 string searchValueColumn = startDate.Day.ToString();
                 int rowIndex = -1;
                 //int columnIndex = -1;
@@ -603,8 +613,6 @@ namespace Reservations_Subsystem
                 }
                 // need to find location of startdate in datagridview
                 int columnIndex = startDate.Day;
-                MessageBox.Show(startDate.Day.ToString());
-                MessageBox.Show(rowIndex.ToString() + "my row index " + columnIndex.ToString());
 
                 int y1;
                 y1 = this.calendar.GetCellDisplayRectangle(columnIndex,
@@ -634,7 +642,7 @@ namespace Reservations_Subsystem
             }
         }
 
-        public void FindFirstButtDoubleOverFlow(DateTime startDate, DateTime endDate, long reserveId, string roomId)
+        public void DoubleOverFlow(DateTime startDate, DateTime endDate, long reserveId, string roomId, DateTime LastDayInMonth)
         {
 
             //DataGridView myDgv = new DataGridView();
@@ -648,7 +656,6 @@ namespace Reservations_Subsystem
             // initializing search values
             roomInfo = roomDataService.getRoomInfoById(Convert.ToInt32(roomId));
             string searchValueRow = roomInfo.RoomNumber;
-            MessageBox.Show("My search value is" + searchValueRow);
             string searchValueColumn = startDate.Day.ToString();
             int rowIndex = -1;
             //int columnIndex = -1;
@@ -663,13 +670,17 @@ namespace Reservations_Subsystem
                 }
                 else
                 {
-                    MessageBox.Show("error in button creation");
+                    MessageBox.Show(
+                        "fsdafds");
                 }
 
             }
             // need to find location first datagridview cell that reservation occurs in
+            /*
+            int columnIndex = DateTime.DaysInMonth(LastDayInMonth.Year, LastDayInMonth.Month);
+            MessageBox.Show(columnIndex.ToString());
+            */
             int columnIndex = 1;
-
 
             int y1;
             y1 = this.calendar.GetCellDisplayRectangle(columnIndex,
@@ -683,12 +694,12 @@ namespace Reservations_Subsystem
             firstRightCellX = this.calendar.GetCellDisplayRectangle(columnIndex,
             rowIndex, false).Right + calendar.Left;
 
-            int centerPointFirstCell = firstRightCellX;
+            int centerPointFirstCell = firstLeftCellX;
             //check the endDate days
 
-            // aka if reservation starts on the month now but ends on a later month
-            int overFlow = endDate.Day;
-            int totalWidth = overFlow * 40;
+            
+
+            int totalWidth = 31 * 40;
             string name = Convert.ToString(reserveId);
 
 
@@ -734,8 +745,8 @@ namespace Reservations_Subsystem
 
                     MyButton myButton = new MyButton();
                     myButton = sender as MyButton;
-                    //MessageBox.Show(myButton.Name);
-                    //MessageBox.Show(myButton.roomId.ToString());
+
+     
                     AddReservationView theFrmView = new AddReservationView();
                     ReservationInfo myResInfo = new ReservationInfo();
                     RoomInfo myRoomInfo = new RoomInfo();
@@ -751,27 +762,13 @@ namespace Reservations_Subsystem
                     int myRoomId = Convert.ToInt32(myResInfo.RoomId);
                     myRoomInfo = roomDataService.getRoomInfoById(myRoomId);
                     int myCustomerId = myResInfo.CustomerId;
-                    MessageBox.Show(myCustomerId.ToString() + "what happend");
                     myCustomerInfo = customerDataService.GetCustomerInfoById(myCustomerId);
-                    MessageBox.Show(myCustomerInfo.Name.ToString() + "what happend");
-                    ReservationDataPresenter data = new ReservationDataPresenter(theFrmView, myResInfo, myRoomInfo, myCustomerInfo);
+                    int month = Array.IndexOf(monthString, btnMainMonth.Text) + 1, year = Int32.Parse(btnMainYear.Text);
+                    theFrmView.viewYear = year;
+                    theFrmView.viewMonth = month;
+                    ReservationDataPresenter data = new ReservationDataPresenter(theFrmView, myResInfo, myRoomInfo, myCustomerInfo, myButton);
                     data.Show();
-                    /*
-                    theFrmView.referencefrm1 = this;
-                    theFrmView.Show();
-                    this.Hide();
-                    */
-                    /*
-                     *AddReservationView frm = new AddReservationView();
-                //MessageBox.Show(calendar.Rows.Count.ToString()+"WEFSDASDA");
-                frm.referencefrm1 = this;
-                frm.RoomNumber = calendar.Rows[rowIndexes.Min()].Cells["rooms"].Value.ToString();
-                frm.StartDate = DateFormat(firstDateReservation);
-                frm.EndDate = DateFormat(lastDateReservation);
-                RoomDataService why = new RoomDataService();
-                ReservationDataPresenter data = new ReservationDataPresenter(frm, why);
-                data.Show();
-                     */
+
                 }
                 catch (Exception ex)
                 {
@@ -781,7 +778,29 @@ namespace Reservations_Subsystem
 
             }
         }
+        
+        private void DeleteAllButtons()
+        {
+            List<MyButton> buttonIds = new List<MyButton>();
+            foreach (var button in this.Controls.OfType<MyButton>().ToList())
+            {
+                Controls.Remove(button);
+               button.Dispose();
+            }
+        }
+        public void DeleteButtonById(int Id)
+        {
+            List<MyButton> buttonIds = new List<MyButton>();
+            foreach (var button in this.Controls.OfType<MyButton>())
+            {
+                if(button.Name.Equals(Id.ToString()))
+                {
+                    Controls.Remove(button);
+                    MessageBox.Show("deleted ahppenedf");
+                }
 
+            }
+        }
 
 
 
@@ -855,14 +874,14 @@ namespace Reservations_Subsystem
             RoomDataService roomDataService = new RoomDataService();
             RoomInfo myRoomInfo = new RoomInfo();
             ReservationDataService reservationDataService = new ReservationDataService();
-
+            
             // initalize fields
             int storeEndDate = DateTime.DaysInMonth(year, month);
             DateTime firstSelectedDateOnDgv, lastSelectedDateOnDgv;
             string strStartDate, strEndDate;
 
             //formating string for conversions to DateTime
-            string paddingTime = "12:00:00";
+            string paddingTime = "00:00:00";
 
             // fomatting month now and startday and endDay
             string strStartDay, strEndDay;
@@ -905,10 +924,13 @@ namespace Reservations_Subsystem
             //endDate = DateTime.ParseExact(strEndDate, "yyyy-MM-dd HH:mm:ss,fff", System.Globalization.CultureInfo.InvariantCulture);
             firstSelectedDateOnDgv = DateTime.ParseExact(strStartDate, "yyyy-MM-dd HH:mm:ss", System.Globalization.CultureInfo.InvariantCulture);
             lastSelectedDateOnDgv = DateTime.ParseExact(strEndDate, "yyyy-MM-dd HH:mm:ss", System.Globalization.CultureInfo.InvariantCulture);
+
             myReservationList = reservationDataService.FilterReservationByDgvDate(firstSelectedDateOnDgv, lastSelectedDateOnDgv, roomId);
+            MessageBox.Show(myReservationList.Count.ToString());
             return myReservationList.Count();
 
         }
+
         public void displayReservationButt(int month, int year)
         {
             List<ReservationInfo> myReservationList = new List<ReservationInfo>();
@@ -975,17 +997,20 @@ namespace Reservations_Subsystem
                 else if ((item.StartDate <= endDateOnDGV && item.StartDate >= startDateOnDGV) && item.EndDate >= endDateOnDGV)
                 {
                     FindFirstButtFrontFlow(item.StartDate, item.EndDate, item.ResId, item.RoomId);
-                    MessageBox.Show(item.ResId.ToString()+"i am working with");
                 }
                 
                 // if there is overflow on both ends
                 //
-                /*
+                
                 else if (item.StartDate <= endDateOnDGV && item.EndDate >= endDateOnDGV)
                 {
-                    FindFirstButtBackFlow(item.StartDate, item.EndDate, item.ResId, item.RoomId);
+                    DoubleOverFlow(item.StartDate, item.EndDate, item.ResId, item.RoomId, endDateOnDGV);
                 }
-                */
+                else
+                {
+                    MessageBox.Show("an error has occured");
+                }
+                
                 
             }
         }

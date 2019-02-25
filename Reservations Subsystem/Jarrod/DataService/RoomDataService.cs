@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -69,5 +70,26 @@ namespace Reservations_Subsystem
             MySqlConnection.ClearPool(conn);
             return null;
         }
+        public List<RoomTextBoxItems> AllRoomId()
+        {
+            string query = "SELECT id, roomNumber, roomType FROM room";
+            using (MySqlDataAdapter blah = new MySqlDataAdapter(query, conn))
+            {
+                try
+                { 
+                    RoomTextBoxItems myItems = new RoomTextBoxItems;
+                    DataTable dt = new DataTable();
+                    blah.Fill(dt);
+                    foreach(dt.Row)
+   
+                    
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex);
+                }
+            }
+        }
+
     }
 }

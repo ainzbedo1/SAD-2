@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 namespace Reservations_Subsystem
 {
-    class MyButton : Button   
+    public class MyButton : Button   
     {
         public int roomId { set; get; }
         //public int 
