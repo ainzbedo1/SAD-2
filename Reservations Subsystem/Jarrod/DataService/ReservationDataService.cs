@@ -7,6 +7,28 @@ namespace Reservations_Subsystem
     public class ReservationDataService
     {
         public MySqlConnection conn = new MySqlConnection("Server=localhost;Database=sad2_db;Uid=root;Pwd=root;");
+
+        public void DeleteReservation(int resId)
+        {
+            string query = ("DELETE FROM reservation WHERE id = @id");
+            using (MySqlCommand cmd = new MySqlCommand(query, conn))
+            {
+
+                cmd.Parameters.AddWithValue("@id", resId);
+                //cmd.Parameters.AddWithValue("@description", description);
+                try
+                {
+                    conn.Open();
+                    Int32 rowsAffected = cmd.ExecuteNonQuery();
+                    Console.WriteLine("RowsAffected: {0}", rowsAffected);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+            }
+        }
+        
         public void AddReservation(int roomId, int customerId, string description, DateTime checkInDate, DateTime checkOutDate, Boolean occupied, int price)
         {
             string query = "INSERT INTO room VALUES(@roomId, @customerId, @description, @checkInDate, @checkOUtDate, @occupied, @price)";
@@ -33,6 +55,7 @@ namespace Reservations_Subsystem
                 }
             }
         }
+        
 
         public ReservationInfo GetReservationInfoById(int resId)
         {
@@ -235,11 +258,12 @@ namespace Reservations_Subsystem
         // based on id
         public List<ReservationInfo> FilterReservationByDgvDate(DateTime RangeFrom, DateTime RangeTill, int roomId)
         {
+    
             List<ReservationInfo> listOfReservation = new List<ReservationInfo>();
             //SELECT* FROM Product_salesWHERE NOT(From_date > @RangeTill OR To_date < @RangeFrom)
-            string query = "SELECT id, room_id, customer_id, description, startDate, endDate, occupied, totalPrice, lengthOfStay FROM reservation WHERE NOT (startDate > @RangeTill OR endDate < @RangeFrom) AND room_id=@room_id ";
+            string query = "SELECT id, room_id, customer_id, description, startDate, endDate, occupied, totalPrice, lengthOfStay FROM reservation WHERE NOT (startDate >= @RangeTill OR endDate <= @RangeFrom) AND room_id=@room_id";
             using (MySqlCommand cmd = new MySqlCommand(query, conn))
-            {
+            { 
                 cmd.Parameters.AddWithValue("@RangeTill", RangeTill);
                 cmd.Parameters.AddWithValue("@RangeFrom", RangeFrom);
                 cmd.Parameters.AddWithValue("@room_id", roomId);
@@ -264,7 +288,8 @@ namespace Reservations_Subsystem
                             resInfo.TotalPrice = Convert.ToInt32(myReader[7]);
                             resInfo.LenghtOfStay = Convert.ToInt32(myReader[8]);
                             //Desc = (myReader[2]).ToString()
-                            listOfReservation.Add(resInfo);    
+                            listOfReservation.Add(resInfo);
+                            MessageBox.Show("item added");
                         }
                
                     }
@@ -279,6 +304,7 @@ namespace Reservations_Subsystem
 
 
         }
+
     }
 
 

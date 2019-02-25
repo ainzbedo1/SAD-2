@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.btnChangeCustomer = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.btnEditCustomer = new System.Windows.Forms.Button();
             this.btnAddCustomer = new System.Windows.Forms.Button();
@@ -71,9 +73,9 @@
             this.txtDesc = new System.Windows.Forms.RichTextBox();
             this.txtRoomId = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
-            this.btnChangeCustomer = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.btnDelete = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -81,7 +83,6 @@
             this.groupBox5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lengthOfStay)).BeginInit();
             this.groupBox3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -102,6 +103,23 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Customer Info";
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(12, 75);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(322, 75);
+            this.dataGridView1.TabIndex = 6;
+            // 
+            // btnChangeCustomer
+            // 
+            this.btnChangeCustomer.Location = new System.Drawing.Point(365, 104);
+            this.btnChangeCustomer.Name = "btnChangeCustomer";
+            this.btnChangeCustomer.Size = new System.Drawing.Size(102, 23);
+            this.btnChangeCustomer.TabIndex = 5;
+            this.btnChangeCustomer.Text = "Change Customer";
+            this.btnChangeCustomer.UseVisualStyleBackColor = true;
             // 
             // button1
             // 
@@ -392,7 +410,7 @@
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(697, 628);
+            this.btnSave.Location = new System.Drawing.Point(692, 628);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(93, 32);
             this.btnSave.TabIndex = 3;
@@ -517,22 +535,15 @@
             this.label14.Text = "room ID";
             this.label14.Click += new System.EventHandler(this.label14_Click);
             // 
-            // btnChangeCustomer
+            // btnDelete
             // 
-            this.btnChangeCustomer.Location = new System.Drawing.Point(365, 104);
-            this.btnChangeCustomer.Name = "btnChangeCustomer";
-            this.btnChangeCustomer.Size = new System.Drawing.Size(102, 23);
-            this.btnChangeCustomer.TabIndex = 5;
-            this.btnChangeCustomer.Text = "Change Customer";
-            this.btnChangeCustomer.UseVisualStyleBackColor = true;
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 75);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(322, 75);
-            this.dataGridView1.TabIndex = 6;
+            this.btnDelete.Location = new System.Drawing.Point(346, 628);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(140, 32);
+            this.btnDelete.TabIndex = 3;
+            this.btnDelete.Text = "Delete Reservation";
+            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // AddReservationView
             // 
@@ -544,6 +555,7 @@
             this.Controls.Add(this.txtRoomId);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox5);
+            this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.tabControl1);
@@ -555,6 +567,7 @@
             this.Load += new System.EventHandler(this.AddReservation_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.tabControl1.ResumeLayout(false);
@@ -566,7 +579,6 @@
             this.groupBox5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lengthOfStay)).EndInit();
             this.groupBox3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -619,5 +631,6 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button btnChangeCustomer;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Button btnDelete;
     }
 }
