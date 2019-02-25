@@ -237,7 +237,7 @@ namespace Reservations_Subsystem
         {
             List<ReservationInfo> listOfReservation = new List<ReservationInfo>();
             //SELECT* FROM Product_salesWHERE NOT(From_date > @RangeTill OR To_date < @RangeFrom)
-            string query = "SELECT id, room_id, customer_id, description, startDate, endDate, occupied, totalPrice, lengthOfStay FROM reservation  WHERE NOT (startDate > @RangeTill OR endDate < @RangeFrom) ";
+            string query = "SELECT id, room_id, customer_id, description, startDate, endDate, occupied, totalPrice, lengthOfStay FROM reservation WHERE NOT (startDate > @RangeTill OR endDate < @RangeFrom) AND room_id=@room_id ";
             using (MySqlCommand cmd = new MySqlCommand(query, conn))
             {
                 cmd.Parameters.AddWithValue("@RangeTill", RangeTill);
