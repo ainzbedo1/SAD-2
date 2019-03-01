@@ -5,6 +5,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
+using System.Windows;
+
 namespace Reservations_Subsystem
 {
     public class RoomDataService
@@ -70,25 +72,36 @@ namespace Reservations_Subsystem
             MySqlConnection.ClearPool(conn);
             return null;
         }
-        public List<RoomTextBoxItems> AllRoomId()
+        public List<RoomTextBoxItems> getAllRoomId()
         {
+            var myComboItemsList = new List<RoomTextBoxItems>();
             string query = "SELECT id, roomNumber, roomType FROM room";
             using (MySqlDataAdapter blah = new MySqlDataAdapter(query, conn))
             {
                 try
                 { 
-                    RoomTextBoxItems myItems = new RoomTextBoxItems;
+
                     DataTable dt = new DataTable();
                     blah.Fill(dt);
-                    foreach(dt.Row)
-   
-                    
+                    foreach (DataRow drow in dt.Rows)  
+                    {
+                        RoomTextBoxItems myComboItems = new RoomTextBoxItems();
+                        myComboItems.ID = Convert.ToInt32(drow[0]);
+                        myComboItems.RoomNumber = (drow[1]).ToString();
+                        myComboItems.RoomType = (drow[2]).ToString();
+
+                        myComboItemsList.Add(myComboItems);
+                    }
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine(ex);
+                    MessageBox.Show(ex.ToString());
+                   // Console.WriteLine(ex);
                 }
             }
+            MessageBox.Show(myComboItemsList[0].RoomNumber);
+            MessageBox.Show(myComboItemsList[1].RoomNumber);
+            return myComboItemsList;
         }
 
     }

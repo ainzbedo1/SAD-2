@@ -6,12 +6,16 @@ using System.Threading.Tasks;
 
 namespace Reservations_Subsystem
 {
-    class RoomTextBoxItems
+    public class RoomTextBoxItems
     {
         public int ID { get; set; }
         public string roomNumber { get; set; }
         public string roomType { get; set; }
-
+        // public string Text { get; set; }
+        public override string ToString()
+        {
+            return roomNumber;
+        }
         public string RoomNumber
         {
             get { return roomNumber; }

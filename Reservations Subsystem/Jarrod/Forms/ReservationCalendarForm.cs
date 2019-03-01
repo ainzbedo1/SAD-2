@@ -103,7 +103,8 @@ namespace Reservations_Subsystem
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            RoomDataService roomData = new RoomDataService();
+            //roomData.getAllRoomId();
             int month = Array.IndexOf(monthString, btnMainMonth.Text) + 1, year = Int32.Parse(btnMainYear.Text);
             displayCalendar(month, year);
 
@@ -123,22 +124,41 @@ namespace Reservations_Subsystem
 
         private void btnPrevMonth_Click(object sender, EventArgs e)
         {
+            int decrementYear = 0;
             int monthprev = Array.IndexOf(monthString, btnPrevMonth.Text);
-            if (monthprev == 0)
+            int monthNow = Array.IndexOf(monthString, btnMainYear.Text);
+
+ 
+            if (monthprev == 0) //from feb to janurary
             {
                 btnNextMonth.Text = btnMainMonth.Text;
                 btnMainMonth.Text = btnPrevMonth.Text;
                 btnPrevMonth.Text = monthString[11];
 
+                //btnMainYear.Text = btnMainYear.Text;
 
+            }
+            else if(monthprev == 11)
+            {
+
+                btnNextMonth.Text = btnMainMonth.Text;
+                btnMainMonth.Text = btnPrevMonth.Text;
+                btnPrevMonth.Text = monthString[monthprev - 1];
+
+                //btnMainYear.Text = btnMainYear.Text;
+                btnMainYear.Text = (Int32.Parse(btnMainYear.Text) - 1).ToString();
+                btnNextYear.Text = (Int32.Parse(btnNextYear.Text) - 1).ToString();
+                btnPrevYear.Text = (Int32.Parse(btnPrevYear.Text) - 1).ToString();
             }
             else
             {
                 btnNextMonth.Text = btnMainMonth.Text;
                 btnMainMonth.Text = btnPrevMonth.Text;
                 btnPrevMonth.Text = monthString[monthprev - 1];
+                //decrementYear = 1;
             }
             DeleteAllButtons();
+
             int month = Array.IndexOf(monthString, btnMainMonth.Text) + 1, year = Int32.Parse(btnMainYear.Text);
             displayCalendar(month, year);
             int colCount = this.calendar.ColumnCount;
@@ -149,8 +169,23 @@ namespace Reservations_Subsystem
 
         private void btnNextMonth_Click(object sender, EventArgs e)
         {
+
             int monthnext = Array.IndexOf(monthString, btnNextMonth.Text);
-            if (monthnext == 11)//December
+            if (monthnext == 0)//December
+            {
+                btnPrevMonth.Text = btnMainMonth.Text;
+                btnMainMonth.Text = btnNextMonth.Text;
+                btnNextMonth.Text = monthString[monthnext + 1];
+
+
+                btnMainYear.Text = (Int32.Parse(btnMainYear.Text) + 1).ToString();
+                btnNextYear.Text = (Int32.Parse(btnNextYear.Text) + 1).ToString();
+                btnPrevYear.Text = (Int32.Parse(btnPrevYear.Text) + 1).ToString();
+
+
+
+            }
+            else if (monthnext == 11)//December
             {
                 btnPrevMonth.Text = btnMainMonth.Text;
                 btnMainMonth.Text = btnNextMonth.Text;
@@ -165,11 +200,13 @@ namespace Reservations_Subsystem
                 btnMainMonth.Text = btnNextMonth.Text;
                 btnNextMonth.Text = monthString[monthnext + 1];
             }
+            DeleteAllButtons();
             int month = Array.IndexOf(monthString, btnMainMonth.Text) + 1, year = Int32.Parse(btnMainYear.Text);
             displayCalendar(month, year);
             int colCount = this.calendar.ColumnCount;
             this.Size = new Size(colCount * 40 + 80, 652);
             calendar.Size = new Size(colCount * 40 + 65, 652);
+            displayReservationButt(month, year);
         }
 
         private void mainYearBTN_Click(object sender, EventArgs e)
@@ -448,7 +485,7 @@ namespace Reservations_Subsystem
         private void button2_Click(object sender, EventArgs e)
         {
 
-
+         
 
         }
 
@@ -630,7 +667,9 @@ namespace Reservations_Subsystem
 
                 // getting timespan of whole date
                 int stayInDays = startDate.Day;
-                int totalWidth = 20;
+
+                int me = DateTime.DaysInMonth(startDate.Year, startDate.Month);
+                int totalWidth = ((me-startDate.Day+1)*40)-20 ;
                 string name = Convert.ToString(reserveId);
 
 
@@ -670,8 +709,7 @@ namespace Reservations_Subsystem
                 }
                 else
                 {
-                    MessageBox.Show(
-                        "fsdafds");
+                   
                 }
 
             }
@@ -859,7 +897,6 @@ namespace Reservations_Subsystem
             ReservationCalendarForm resCalendar = new ReservationCalendarForm();
             int month = Array.IndexOf(monthString, btnMainMonth.Text) + 1, year = Int32.Parse(btnMainYear.Text);
             myDgv = resCalendar.displayCalendar(month, year);
-            MessageBox.Show(myDgv.Columns[0].HeaderText.ToString());
 
         }
         
@@ -876,7 +913,6 @@ namespace Reservations_Subsystem
             ReservationDataService reservationDataService = new ReservationDataService();
             
             // initalize fields
-            int storeEndDate = DateTime.DaysInMonth(year, month);
             DateTime firstSelectedDateOnDgv, lastSelectedDateOnDgv;
             string strStartDate, strEndDate;
 
@@ -924,9 +960,80 @@ namespace Reservations_Subsystem
             //endDate = DateTime.ParseExact(strEndDate, "yyyy-MM-dd HH:mm:ss,fff", System.Globalization.CultureInfo.InvariantCulture);
             firstSelectedDateOnDgv = DateTime.ParseExact(strStartDate, "yyyy-MM-dd HH:mm:ss", System.Globalization.CultureInfo.InvariantCulture);
             lastSelectedDateOnDgv = DateTime.ParseExact(strEndDate, "yyyy-MM-dd HH:mm:ss", System.Globalization.CultureInfo.InvariantCulture);
-
             myReservationList = reservationDataService.FilterReservationByDgvDate(firstSelectedDateOnDgv, lastSelectedDateOnDgv, roomId);
-            MessageBox.Show(myReservationList.Count.ToString());
+            return myReservationList.Count();
+        }
+
+        public int ReservationCheckAdvanced(int startDay, int startMonth, int startYear, int endDay, int endMonth, int endYear, int roomId)
+        {
+
+            // classes initialized
+            List<ReservationInfo> myReservationList = new List<ReservationInfo>();
+            List<DateTime> myDates = new List<DateTime>();
+            RoomDataService roomDataService = new RoomDataService();
+            RoomInfo myRoomInfo = new RoomInfo();
+            ReservationDataService reservationDataService = new ReservationDataService();
+
+            // initalize fields
+            //int storeEndDate = DateTime.DaysInMonth(year, month);
+            DateTime firstSelectedDateOnDgv, lastSelectedDateOnDgv;
+            string strStartDate, strEndDate;
+
+            //formating string for conversions to DateTime
+            string paddingTime = "00:00:00";
+
+            // fomatting month now and startday and endDay
+            string strStartDay, strEndDay;
+            if (startDay < 10)
+            {
+                strStartDay = "0" + startDay.ToString();
+            }
+            else
+            {
+                strStartDay = startDay.ToString();
+            }
+
+            if (endDay < 10)
+            {
+                strEndDay = "0" + endDay.ToString();
+            }else{
+                strEndDay = endDay.ToString();
+            }
+           
+            if (startMonth < 10)
+            {
+                strStartDate = startYear + "-0" + startMonth + "-" + strStartDay + " " + paddingTime;
+                //strEndDate = year + "-0" + month + "-" + strEndDay + " " + paddingTime;
+            }else
+            {
+                strStartDate = startYear + "-" + startMonth + "-" + strStartDay + " " + paddingTime;
+                //strEndDate = year + "-" + month + "-" + strEndDay + " " + paddingTime;
+            }
+            if (endMonth < 10)
+            {
+                strEndDate = endYear + "-0" + endMonth + "-" + strEndDay + " " + paddingTime;
+            }
+            else
+            {
+                strEndDate = endYear + "-" + endMonth + "-" + strStartDay + " " + paddingTime;
+                //strEndDate = year + "-" + month + "-" + strEndDay + " " + paddingTime;
+            }
+
+
+
+
+            // string strStartDate = "01/" + month + "/" + year + " ";
+            // string strEndDate = "31/" + month + "/" + year + " ";
+            //int storeEndDate = DateTime.DaysInMonth(year, month);
+            //DateTime datetime = DateTime.ParseExact(nowdate, "d/M/yyyy", CultureInfo.InvariantCulture);
+            //endDate = DateTime.ParseExact(strEndDate, "yyyy-MM-dd HH:mm:ss,fff", System.Globalization.CultureInfo.InvariantCulture);
+            firstSelectedDateOnDgv = DateTime.ParseExact(strStartDate, "yyyy-MM-dd HH:mm:ss", System.Globalization.CultureInfo.InvariantCulture);
+            lastSelectedDateOnDgv = DateTime.ParseExact(strEndDate, "yyyy-MM-dd HH:mm:ss", System.Globalization.CultureInfo.InvariantCulture);
+            
+            myReservationList = reservationDataService.FilterReservationByDgvDate(firstSelectedDateOnDgv, lastSelectedDateOnDgv, roomId);
+            MessageBox.Show(strStartDate.ToString()+"DFSAFSADFSA");
+            MessageBox.Show(strEndDate.ToString()+"FSDAFDSAFASD");
+            //MessageBox.Show(myReservationList.Count.ToString());
             return myReservationList.Count();
 
         }
@@ -1014,7 +1121,16 @@ namespace Reservations_Subsystem
                 
             }
         }
-        
+
+        private void btnCreateReservation_Click(object sender, EventArgs e)
+        {
+
+            AddReservationView frm = new AddReservationView();
+
+            frm.referencefrm1 = this;
+            ReservationDataPresenter data = new ReservationDataPresenter(frm);
+            data.Show();
+        }
     } 
 
 

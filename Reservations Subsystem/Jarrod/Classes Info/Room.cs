@@ -36,7 +36,7 @@ namespace Reservations_Subsystem
                 }
             }
         }
-
+        /*
         public DataTable AllRoomId()
         {
             string query = "SELECT id, roomNumber, roomType FROM room";
@@ -57,6 +57,7 @@ namespace Reservations_Subsystem
 
             }
         }
+        */
         
         public void EditRoom(int id, string roomNumber, string roomType, string floorLevel, string description)
         {

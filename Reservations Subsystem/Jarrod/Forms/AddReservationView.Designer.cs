@@ -74,6 +74,7 @@
             this.txtRoomId = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.btnDelete = new System.Windows.Forms.Button();
+            this.btnUpdate = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -99,7 +100,7 @@
             this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Location = new System.Drawing.Point(12, 276);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(474, 156);
+            this.groupBox1.Size = new System.Drawing.Size(504, 156);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Customer Info";
@@ -193,7 +194,7 @@
             this.groupBox2.Controls.Add(this.cmbRoomType);
             this.groupBox2.Location = new System.Drawing.Point(12, 12);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(470, 165);
+            this.groupBox2.Size = new System.Drawing.Size(504, 165);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Room Data";
@@ -232,6 +233,7 @@
             this.cmbRoomNumber.Name = "cmbRoomNumber";
             this.cmbRoomNumber.Size = new System.Drawing.Size(121, 21);
             this.cmbRoomNumber.TabIndex = 1;
+            this.cmbRoomNumber.SelectedIndexChanged += new System.EventHandler(this.cmbRoomNumber_SelectedIndexChanged);
             // 
             // cmbRoomType
             // 
@@ -248,10 +250,10 @@
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Location = new System.Drawing.Point(488, 12);
+            this.tabControl1.Location = new System.Drawing.Point(522, 12);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(428, 576);
+            this.tabControl1.Size = new System.Drawing.Size(394, 576);
             this.tabControl1.TabIndex = 2;
             // 
             // tabPage1
@@ -263,7 +265,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(420, 550);
+            this.tabPage1.Size = new System.Drawing.Size(386, 550);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Room Information";
             // 
@@ -439,7 +441,7 @@
             this.groupBox5.Controls.Add(this.dtpStartDate);
             this.groupBox5.Location = new System.Drawing.Point(12, 183);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(474, 87);
+            this.groupBox5.Size = new System.Drawing.Size(504, 87);
             this.groupBox5.TabIndex = 4;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Reservation Dates";
@@ -448,7 +450,7 @@
             // 
             this.lengthOfStay.Location = new System.Drawing.Point(439, 43);
             this.lengthOfStay.Name = "lengthOfStay";
-            this.lengthOfStay.Size = new System.Drawing.Size(28, 20);
+            this.lengthOfStay.Size = new System.Drawing.Size(59, 20);
             this.lengthOfStay.TabIndex = 5;
             this.lengthOfStay.ValueChanged += new System.EventHandler(this.numericUpDown1_ValueChanged);
             // 
@@ -504,7 +506,7 @@
             this.groupBox3.Controls.Add(this.txtDesc);
             this.groupBox3.Location = new System.Drawing.Point(12, 438);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(474, 146);
+            this.groupBox3.Size = new System.Drawing.Size(504, 146);
             this.groupBox3.TabIndex = 5;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Comments";
@@ -545,12 +547,23 @@
             this.btnDelete.UseVisualStyleBackColor = true;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
+            // btnUpdate
+            // 
+            this.btnUpdate.Location = new System.Drawing.Point(571, 628);
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Size = new System.Drawing.Size(94, 32);
+            this.btnUpdate.TabIndex = 8;
+            this.btnUpdate.Text = "Update";
+            this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
+            // 
             // AddReservationView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(928, 672);
+            this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.txtRoomId);
             this.Controls.Add(this.groupBox3);
@@ -632,5 +645,6 @@
         private System.Windows.Forms.Button btnChangeCustomer;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button btnDelete;
+        private System.Windows.Forms.Button btnUpdate;
     }
 }

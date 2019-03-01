@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -159,27 +160,33 @@ namespace Reservations_Subsystem
         }
         private void LoadRoomComboBoxes()
         {
-            List<RoomTextBoxItems> room = new List<RoomTextBoxItems>();
-            RoomDataService 
+            List<RoomTextBoxItems> myRooms = new List<RoomTextBoxItems>();
+            RoomDataService myRoomDataService = new RoomDataService();
+            myRooms = myRoomDataService.getAllRoomId();
+            foreach(RoomTextBoxItems item in myRooms)
+            {
+                cmbRoomNumber.Items.Add(item);
+            }
+            //RoomDataService 
 
         }
         private void AddReservation_Load(object sender, EventArgs e)
         {
-            MessageBox.Show(editForm.ToString());
+            
+         
+
             //if the form is in edit mode
             if (editForm)
             {
+                LoadRoomComboBoxes();
                 EditFormEnabled();
                 MessageBox.Show(theCustomerInfo.Name.ToString());
                 MessageBox.Show("The changed detected was" + changeDetected.ToString());
-                cmbRoomType.Text = RoomType;
-                cmbRoomNumber.Text = RoomNumber.ToString();
-                cmbPerNight.SelectedIndex = 0;
 
                 LengthOfStay = (dtpEndDate.Value - dtpStartDate.Value).Days;
                 LblReserveDays = LengthOfStay.ToString();
                 LblPerNight = cmbPerNight.Text;
-                TotalAccomadation = (Convert.ToInt32(LblReserveDays) * Convert.ToInt32(LblPerNight)).ToString();
+               // TotalAccomadation = (Convert.ToInt32(LblReserveDays) * Convert.ToInt32(LblPerNight)).ToString();
                 txtCustomerName.TextChanged += new System.EventHandler(this.txtCustomerName_TextChanged);
 
                 txtCustomerName.Text = theCustomerInfo.Name.ToString();
@@ -190,7 +197,7 @@ namespace Reservations_Subsystem
             else
             {
 
-
+                LoadRoomComboBoxes();
                 cmbRoomType.Text = RoomType;
                 cmbRoomNumber.Text = RoomNumber.ToString();
                 cmbPerNight.SelectedIndex = 0;
@@ -200,6 +207,7 @@ namespace Reservations_Subsystem
                 LblPerNight = cmbPerNight.Text;
                 TotalAccomadation = (Convert.ToInt32(LblReserveDays) * Convert.ToInt32(LblPerNight)).ToString();
             }
+            
 
 
             //lengthOfStay.Value = LengthOfStay; 
@@ -227,7 +235,42 @@ namespace Reservations_Subsystem
 
         private void numericUpDown1_ValueChanged(object sender, EventArgs e)
         {
-            lblPerNight.Text = lengthOfStay.ToString();
+            if (editForm)
+            {
+                int oldValue = theReservation.LenghtOfStay;
+                // int oldValue = Convert.ToInt32(oldValue.Value);
+
+                MessageBox.Show(oldValue.ToString() + "this is my old value");
+
+                //checks if the user increments the numericupdown known as and named as lengthOfStay
+                if (lengthOfStay.Value > oldValue)
+                {
+                    dtpEndDate.Value = EndDate.AddDays(1);
+                }
+                else if (lengthOfStay.Value < oldValue)
+                {
+                    dtpEndDate.Value = EndDate.AddDays(-1);
+                    if (lengthOfStay.Value == 1)
+                    {
+                        dtpEndDate.Value = EndDate.AddDays(-1);
+                        dtpStartDate.Value = StartDate.AddDays(-1);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("you done fucked it up");
+                }
+            }
+            else
+            {
+                MessageBox.Show("neeed to add code here");
+            }
+            //oldValue = numericUpDown.Value;
+            
+
+
+
+
             /*
               if (nudDays.Value < numberOfDays && nudDays.Value == 1)
               {
@@ -268,12 +311,35 @@ namespace Reservations_Subsystem
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            ReservationCalendarForm myResCalFor = new ReservationCalendarForm();
+            int startDay = StartDate.Day;
+            int startMonth = StartDate.Month;
+            int startYear = StartDate.Year;
+
+            int endDay = EndDate.Day;
+            int endMonth = EndDate.Month;
+            int endYear = EndDate.Year;
+            //public int ReservationCheckAdvanced(int startDay, int startMonth, int startYear, int endDay, int endMonth, int endYear, int roomId)
+            MessageBox.Show(StartDate.ToString());
+            int checkingReservation = myResCalFor.ReservationCheckAdvanced(startDay, startMonth, startYear, endDay, endMonth, endYear, Convert.ToInt32(RoomId));
             //if the form is in an edit form state
+            //
+            //dtpStartDate.CustomFormat = "dd MMMM yyyy dddd";
+            //lastSelectedDateOnDgv = DateTime.ParseExact(strEndDate, "yyyy-MM-dd HH:mm:ss", System.Globalization.CultureInfo.InvariantCulture);
+            MessageBox.Show(checkingReservation.ToString());
+            //string myStartDate = DateTime.ParseExact(StartDate.ToString(), "dd MMMM yyyy dddd", CultureInfo.InvariantCulture).ToString("yyyy-MM-dd HH:mm:ss");
+            //DateTime myStartDateFormat = Convert.ToDateTime(myStartDate);
+           // MessageBox.Show(myStartDateFormat.ToString());
+            
+       
             if (EditForm)
             {
                 MessageBox.Show(changeDetected.ToString());
             }
-
+            else if (checkingReservation >= 1)
+            {
+                MessageBox.Show("This is valid dates conflict with existing reservation");
+            }
             else
             {
                 ReservationInfo reserveClass = new ReservationInfo();
@@ -284,10 +350,11 @@ namespace Reservations_Subsystem
                 // check for missing customer in
 
                 //perform a search if duplicate customername is in database
-                if (String.IsNullOrWhiteSpace(txtCustomerName.Text))
+                if (String.IsNullOrWhiteSpace(txtCustomerName.Text) || StartDate == null || EndDate == null)
                 {
                     MessageBox.Show("there are missing fields please fill it in");
                 }
+
                 else // if reservation details are good
                 {
                     ReservationDataService frm = new ReservationDataService();
@@ -301,6 +368,8 @@ namespace Reservations_Subsystem
                     myReservation.EndDate = EndDate;
                     //myReservation.LenghtOfStay = lengthOfStay;
                     myReservation.TotalPrice = Convert.ToInt32(TotalAccomadation);
+                    myReservation.LenghtOfStay = Convert.ToInt32(lengthOfStay.Value);
+             
                     myCustomer.Name = NameAddView;
                     frm.verifyCustomerInfoAndCreateReservation(myCustomer, myReservation, referencefrm1);
                     this.Close();
@@ -363,18 +432,31 @@ namespace Reservations_Subsystem
 
 
         }
-            //reservation
-            /*
-                if (MessageBox.Show("A customer with same name exists already" +
-                "would you like create a new customer with the same name" +
-                "?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                {
-                // if user clicked yes 
+
+        private void cmbRoomNumber_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            RoomDataService myRoomDataService = new RoomDataService();
+            RoomInfo myRoomInfo = new RoomInfo();
+            myRoomInfo = myRoomDataService.getRoomInfoByRoomNumber(cmbRoomNumber.Text);
+            RoomId = myRoomInfo.RoomId;
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+
+        }
+        //reservation
+        /*
+            if (MessageBox.Show("A customer with same name exists already" +
+            "would you like create a new customer with the same name" +
+            "?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+            // if user clicked yes 
 
 
-                }
-                */
+            }
+            */
 
-        
+
     }
 }

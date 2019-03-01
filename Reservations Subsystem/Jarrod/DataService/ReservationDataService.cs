@@ -304,6 +304,42 @@ namespace Reservations_Subsystem
 
 
         }
+        /*
+        public long UpdateReservation(int Resid,int roomId, int customerId, string description, DateTime startDate, DateTime endDate, int occupied, int totalPrice, int lengthOfStay)
+        {
+            string query = "UPDATE reservation SET room_id = @room_id, customer_id = @customer_id Where FirstName = @fn and LastName = @add";
+            using (MySqlCommand cmd = new MySqlCommand(query, conn))
+            {
+
+                cmd.Parameters.AddWithValue("@room_id", roomId);
+                cmd.Parameters.AddWithValue("@customer_id", customerId);
+                cmd.Parameters.AddWithValue("@description", description);
+                cmd.Parameters.AddWithValue("@startDate", startDate);
+                cmd.Parameters.AddWithValue("@endDate", endDate);
+                cmd.Parameters.AddWithValue("@occupied", occupied);
+                cmd.Parameters.AddWithValue("@totalPrice", totalPrice);
+                cmd.Parameters.AddWithValue("@lengthOfStay", lengthOfStay);
+
+                //cmd.Parameters.AddWithValue("@description", description);
+                try
+                {
+                    // conn.Open();
+                    Int32 rowsAffected = cmd.ExecuteNonQuery();
+                    Console.WriteLine("RowsAffected: {0}", rowsAffected);
+                    long idReservation = cmd.LastInsertedId;
+                    return idReservation;
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message + "Reservation Failed");
+
+                    return 0;
+
+                }
+
+            }
+        }
+        */
 
     }
 

@@ -55,7 +55,7 @@
     <Compile Include="Jarrod\Forms\AddCustomerForm.Designer.cs">
       <DependentUpon>AddCustomerForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Jarrod\Classes Info\ReservationDataPresenter.cs" />
+    <Compile Include="Jarrod\DataService\ReservationDataPresenter.cs" />
     <Compile Include="Jarrod\DataService\ReservationDataService.cs" />
     <Compile Include="Jarrod\Forms\AddReservationView.cs">
       <SubType>Form</SubType>
@@ -96,14 +96,14 @@
     <Compile Include="ModuleForm.Designer.cs">
       <DependentUpon>ModuleForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="MyButton.cs">
+    <Compile Include="Jarrod\Custom Objects\MyButton.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Jarrod\Classes Info\RoomInfo.cs" />
     <Compile Include="Jarrod\DataService\RoomDataService.cs" />
-    <Compile Include="RoomTextBoxItems.cs" />
+    <Compile Include="Jarrod\Custom Objects\RoomTextBoxItems.cs" />
     <EmbeddedResource Include="Jarrod\Forms\AddCustomerForm.resx">
       <DependentUpon>AddCustomerForm.cs</DependentUpon>
     </EmbeddedResource>

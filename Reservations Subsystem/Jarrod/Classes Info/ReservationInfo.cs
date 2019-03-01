@@ -79,6 +79,7 @@ namespace Reservations_Subsystem
             set { desc = value; }
             get { return desc; }
         }
+
         /*
         public int NumberOfDays
         {

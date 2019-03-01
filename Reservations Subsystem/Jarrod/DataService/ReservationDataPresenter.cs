@@ -33,6 +33,13 @@ namespace Reservations_Subsystem
                 _form.RoomId = info.RoomId;
   
         }
+        public ReservationDataPresenter(AddReservationView form)
+        {
+            _form = form;
+            //_formtriggrer = form;
+            //_form.OnShowReservationInfo += View_OnShowReservationInfo
+
+        }
         public ReservationDataPresenter(AddReservationView form, ReservationInfo myResInfo, RoomInfo myRoomInfo, CustomerInfo myCustomerInfo, MyButton resButt)
         {
             _form = form;
