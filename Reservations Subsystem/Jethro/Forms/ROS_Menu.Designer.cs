@@ -28,8 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.backButton = new System.Windows.Forms.Button();
-            this.menuGridView = new System.Windows.Forms.DataGridView();
             this.DetailsLabel = new System.Windows.Forms.Label();
             this.MenuTopPanel = new System.Windows.Forms.Panel();
             this.MenuLabel = new System.Windows.Forms.Label();
@@ -43,18 +44,19 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.MenuPanel = new System.Windows.Forms.Panel();
+            this.menuGridView = new System.Windows.Forms.DataGridView();
             this.MainPanel = new System.Windows.Forms.Panel();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.viewDSRButton = new System.Windows.Forms.Button();
+            this.archiveButton = new System.Windows.Forms.Button();
+            this.updateButton = new System.Windows.Forms.Button();
+            this.editButton = new System.Windows.Forms.Button();
             this.clearButton = new System.Windows.Forms.Button();
             this.createButton = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.menuGridView)).BeginInit();
             this.MenuTopPanel.SuspendLayout();
             this.OrderTopPanel.SuspendLayout();
             this.OrderPanel.SuspendLayout();
             this.panel1.SuspendLayout();
             this.MenuPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.menuGridView)).BeginInit();
             this.MainPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -70,18 +72,6 @@
             this.backButton.Text = "Back";
             this.backButton.UseVisualStyleBackColor = false;
             this.backButton.Click += new System.EventHandler(this.backButton_Click);
-            // 
-            // menuGridView
-            // 
-            this.menuGridView.AllowUserToAddRows = false;
-            this.menuGridView.AllowUserToDeleteRows = false;
-            this.menuGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.menuGridView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.menuGridView.Location = new System.Drawing.Point(0, 49);
-            this.menuGridView.Name = "menuGridView";
-            this.menuGridView.ReadOnly = true;
-            this.menuGridView.Size = new System.Drawing.Size(598, 449);
-            this.menuGridView.TabIndex = 3;
             // 
             // DetailsLabel
             // 
@@ -223,13 +213,47 @@
             this.MenuPanel.Size = new System.Drawing.Size(600, 500);
             this.MenuPanel.TabIndex = 1;
             // 
+            // menuGridView
+            // 
+            this.menuGridView.AllowUserToAddRows = false;
+            this.menuGridView.AllowUserToDeleteRows = false;
+            this.menuGridView.AllowUserToResizeColumns = false;
+            this.menuGridView.AllowUserToResizeRows = false;
+            this.menuGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.menuGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.menuGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.menuGridView.DefaultCellStyle = dataGridViewCellStyle2;
+            this.menuGridView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.menuGridView.Location = new System.Drawing.Point(0, 49);
+            this.menuGridView.MultiSelect = false;
+            this.menuGridView.Name = "menuGridView";
+            this.menuGridView.ReadOnly = true;
+            this.menuGridView.RowHeadersVisible = false;
+            this.menuGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.menuGridView.Size = new System.Drawing.Size(598, 449);
+            this.menuGridView.TabIndex = 4;
+            // 
             // MainPanel
             // 
             this.MainPanel.BackColor = System.Drawing.SystemColors.Control;
             this.MainPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.MainPanel.Controls.Add(this.button2);
-            this.MainPanel.Controls.Add(this.button1);
-            this.MainPanel.Controls.Add(this.viewDSRButton);
+            this.MainPanel.Controls.Add(this.archiveButton);
+            this.MainPanel.Controls.Add(this.updateButton);
+            this.MainPanel.Controls.Add(this.editButton);
             this.MainPanel.Controls.Add(this.clearButton);
             this.MainPanel.Controls.Add(this.createButton);
             this.MainPanel.Controls.Add(this.backButton);
@@ -240,41 +264,44 @@
             this.MainPanel.Size = new System.Drawing.Size(1115, 600);
             this.MainPanel.TabIndex = 1;
             // 
-            // button2
+            // archiveButton
             // 
-            this.button2.BackColor = System.Drawing.Color.Yellow;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(638, 524);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(130, 64);
-            this.button2.TabIndex = 14;
-            this.button2.Text = "Archive";
-            this.button2.UseVisualStyleBackColor = false;
+            this.archiveButton.BackColor = System.Drawing.Color.Yellow;
+            this.archiveButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.archiveButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.archiveButton.Location = new System.Drawing.Point(638, 524);
+            this.archiveButton.Name = "archiveButton";
+            this.archiveButton.Size = new System.Drawing.Size(130, 64);
+            this.archiveButton.TabIndex = 14;
+            this.archiveButton.Text = "Archive";
+            this.archiveButton.UseVisualStyleBackColor = false;
+            this.archiveButton.Click += new System.EventHandler(this.archiveButton_Click);
             // 
-            // button1
+            // updateButton
             // 
-            this.button1.BackColor = System.Drawing.Color.Yellow;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(287, 524);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(125, 64);
-            this.button1.TabIndex = 13;
-            this.button1.Text = "Update";
-            this.button1.UseVisualStyleBackColor = false;
+            this.updateButton.BackColor = System.Drawing.Color.Yellow;
+            this.updateButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.updateButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.updateButton.Location = new System.Drawing.Point(287, 524);
+            this.updateButton.Name = "updateButton";
+            this.updateButton.Size = new System.Drawing.Size(125, 64);
+            this.updateButton.TabIndex = 13;
+            this.updateButton.Text = "Update";
+            this.updateButton.UseVisualStyleBackColor = false;
+            this.updateButton.Click += new System.EventHandler(this.updateButton_Click);
             // 
-            // viewDSRButton
+            // editButton
             // 
-            this.viewDSRButton.BackColor = System.Drawing.Color.Yellow;
-            this.viewDSRButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.viewDSRButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.viewDSRButton.Location = new System.Drawing.Point(501, 524);
-            this.viewDSRButton.Name = "viewDSRButton";
-            this.viewDSRButton.Size = new System.Drawing.Size(125, 64);
-            this.viewDSRButton.TabIndex = 12;
-            this.viewDSRButton.Text = "Edit";
-            this.viewDSRButton.UseVisualStyleBackColor = false;
+            this.editButton.BackColor = System.Drawing.Color.Yellow;
+            this.editButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.editButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.editButton.Location = new System.Drawing.Point(501, 524);
+            this.editButton.Name = "editButton";
+            this.editButton.Size = new System.Drawing.Size(125, 64);
+            this.editButton.TabIndex = 12;
+            this.editButton.Text = "Edit";
+            this.editButton.UseVisualStyleBackColor = false;
+            this.editButton.Click += new System.EventHandler(this.editButton_Click);
             // 
             // clearButton
             // 
@@ -287,6 +314,7 @@
             this.clearButton.TabIndex = 11;
             this.clearButton.Text = "Clear";
             this.clearButton.UseVisualStyleBackColor = false;
+            this.clearButton.Click += new System.EventHandler(this.clearButton_Click);
             // 
             // createButton
             // 
@@ -299,6 +327,7 @@
             this.createButton.TabIndex = 10;
             this.createButton.Text = "Create";
             this.createButton.UseVisualStyleBackColor = false;
+            this.createButton.Click += new System.EventHandler(this.createButton_Click);
             // 
             // ROS_Menu
             // 
@@ -314,7 +343,7 @@
             this.Name = "ROS_Menu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ROS_Menu_FormClosing);
-            ((System.ComponentModel.ISupportInitialize)(this.menuGridView)).EndInit();
+            this.Load += new System.EventHandler(this.ROS_Menu_Load);
             this.MenuTopPanel.ResumeLayout(false);
             this.MenuTopPanel.PerformLayout();
             this.OrderTopPanel.ResumeLayout(false);
@@ -323,6 +352,7 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.MenuPanel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.menuGridView)).EndInit();
             this.MainPanel.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -331,7 +361,6 @@
         #endregion
 
         private System.Windows.Forms.Button backButton;
-        private System.Windows.Forms.DataGridView menuGridView;
         private System.Windows.Forms.Label DetailsLabel;
         private System.Windows.Forms.Panel MenuTopPanel;
         private System.Windows.Forms.Label MenuLabel;
@@ -342,14 +371,15 @@
         private System.Windows.Forms.Panel MainPanel;
         private System.Windows.Forms.Button createButton;
         private System.Windows.Forms.Button clearButton;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button viewDSRButton;
+        private System.Windows.Forms.Button archiveButton;
+        private System.Windows.Forms.Button updateButton;
+        private System.Windows.Forms.Button editButton;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox priceTxt;
         private System.Windows.Forms.TextBox itemNameTxt;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.DataGridView menuGridView;
     }
 }

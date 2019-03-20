@@ -48,6 +48,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Jethro\Classes\DBConnect.cs" />
     <Compile Include="Jarrod\DataService\CustomerDataService.cs" />
     <Compile Include="Jarrod\Forms\AddCustomerForm.cs">
       <SubType>Form</SubType>
@@ -128,6 +129,7 @@
     <Compile Include="Jethro\Forms\UMS_Login.Designer.cs">
       <DependentUpon>UMS_Login.cs</DependentUpon>
     </Compile>
+    <Compile Include="Jethro\Classes\ROSQueries.cs" />
     <EmbeddedResource Include="Jarrod\Forms\AddCustomerForm.resx">
       <DependentUpon>AddCustomerForm.cs</DependentUpon>
     </EmbeddedResource>
