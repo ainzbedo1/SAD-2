@@ -57,7 +57,7 @@ namespace Reservations_Subsystem
         {
             DBConnect db = new DBConnect();
             MySqlConnection con = db.connect();
-            String Menu = "SELECT id, reportDate, revenue FROM dailysalesreport";
+            String Menu = "SELECT id, reportDate as Date, revenue as Revenue FROM dailysalesreport ORDER BY reportDate DESC";
             //String Menu = "SELECT * FROM dailysalesreport";
             DataTable dt = new DataTable();
             MySqlDataAdapter da = new MySqlDataAdapter(Menu, con);
@@ -69,8 +69,7 @@ namespace Reservations_Subsystem
         {
             DBConnect db = new DBConnect();
             MySqlConnection con = db.connect();
-            String Menu = "SELECT id, orderTime, totalPrice FROM order_receipt WHERE dailysalesreport_id = " + dsr_id;
-            //String Menu = "SELECT * FROM order_receipt WHERE dailysalesreport_id = 1";
+            String Menu = "SELECT id, orderTime as Time, totalPrice as Payment FROM order_receipt WHERE dailysalesreport_id = " + dsr_id + " ORDER BY id DESC";
             DataTable dt = new DataTable();
             MySqlDataAdapter da = new MySqlDataAdapter(Menu, con);
 
@@ -81,8 +80,7 @@ namespace Reservations_Subsystem
         {
             DBConnect db = new DBConnect();
             MySqlConnection con = db.connect();
-            //String Menu = "SELECT orderTime, totalPrice FROM order_receipt WHERE dailysalesreport_id = 1";
-            String Menu = "SELECT menuitem.name, menuitem.price FROM order_menuitem JOIN menuitem ON order_menuitem.menuitem_id = menuitem.id WHERE order_menuitem.order_id = " + order_id;
+            String Menu = "SELECT menuitem.name, menuitem.price, order_menuitem.quantity FROM order_menuitem JOIN menuitem ON order_menuitem.menuitem_id = menuitem.id WHERE order_menuitem.order_id = " + order_id;
             DataTable dt = new DataTable();
             MySqlDataAdapter da = new MySqlDataAdapter(Menu, con);
 
