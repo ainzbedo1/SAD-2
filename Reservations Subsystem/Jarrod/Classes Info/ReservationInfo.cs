@@ -20,11 +20,17 @@ namespace Reservations_Subsystem
         private int occupied { get; set; }
         private int lengthOfStay { get; set; }
         private int totalPrice { get; set; }
+        private int roomRate { get; set; }
         // private string checkInDate { get; set; }
         // private string checkOutDate { get; set; }
         private int price { get; set; }
         private int resId { get; set; }
 
+        public int RoomRate
+        {
+            set { roomRate = value; }
+            get { return roomRate; }
+        }
         public int Price
         {
             set { price = value; }

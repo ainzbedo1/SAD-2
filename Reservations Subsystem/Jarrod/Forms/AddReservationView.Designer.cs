@@ -29,16 +29,15 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.btnChangeCustomer = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnRemoveCust = new System.Windows.Forms.Button();
             this.btnEditCustomer = new System.Windows.Forms.Button();
             this.btnAddCustomer = new System.Windows.Forms.Button();
             this.txtCompany = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.txtCustomerName = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.grpBoxRoomData = new System.Windows.Forms.GroupBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -46,13 +45,15 @@
             this.cmbRoomType = new System.Windows.Forms.ComboBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.cmbPerNight = new System.Windows.Forms.ComboBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.txtRate = new System.Windows.Forms.TextBox();
+            this.cmbPerNight2 = new System.Windows.Forms.ComboBox();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.label13 = new System.Windows.Forms.Label();
             this.lblsomething = new System.Windows.Forms.Label();
             this.lblTotalAccomadation = new System.Windows.Forms.Label();
             this.lblPerNight = new System.Windows.Forms.Label();
-            this.lblReserveDays = new System.Windows.Forms.Label();
+            this.lblNumOfNights = new System.Windows.Forms.Label();
             this.btnStatementOfAccount = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -74,10 +75,10 @@
             this.txtRoomId = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.btnDelete = new System.Windows.Forms.Button();
-            this.btnUpdate = new System.Windows.Forms.Button();
+            this.label15 = new System.Windows.Forms.Label();
+            this.txtCustomName = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            this.groupBox2.SuspendLayout();
+            this.grpBoxRoomData.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox6.SuspendLayout();
@@ -88,10 +89,9 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.BackColor = System.Drawing.SystemColors.Info;
-            this.groupBox1.Controls.Add(this.dataGridView1);
+            this.groupBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.groupBox1.Controls.Add(this.btnChangeCustomer);
-            this.groupBox1.Controls.Add(this.button1);
+            this.groupBox1.Controls.Add(this.btnRemoveCust);
             this.groupBox1.Controls.Add(this.btnEditCustomer);
             this.groupBox1.Controls.Add(this.btnAddCustomer);
             this.groupBox1.Controls.Add(this.txtCompany);
@@ -105,44 +105,39 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Customer Info";
             // 
-            // dataGridView1
-            // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 75);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(322, 75);
-            this.dataGridView1.TabIndex = 6;
-            // 
             // btnChangeCustomer
             // 
-            this.btnChangeCustomer.Location = new System.Drawing.Point(365, 104);
+            this.btnChangeCustomer.Location = new System.Drawing.Point(365, 107);
             this.btnChangeCustomer.Name = "btnChangeCustomer";
             this.btnChangeCustomer.Size = new System.Drawing.Size(102, 23);
             this.btnChangeCustomer.TabIndex = 5;
             this.btnChangeCustomer.Text = "Change Customer";
             this.btnChangeCustomer.UseVisualStyleBackColor = true;
+            this.btnChangeCustomer.Click += new System.EventHandler(this.btnChangeCustomer_Click);
             // 
-            // button1
+            // btnRemoveCust
             // 
-            this.button1.Location = new System.Drawing.Point(365, 75);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(102, 23);
-            this.button1.TabIndex = 5;
-            this.button1.Text = "Remove Customer";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnRemoveCust.Location = new System.Drawing.Point(365, 78);
+            this.btnRemoveCust.Name = "btnRemoveCust";
+            this.btnRemoveCust.Size = new System.Drawing.Size(102, 23);
+            this.btnRemoveCust.TabIndex = 5;
+            this.btnRemoveCust.Text = "Remove Customer";
+            this.btnRemoveCust.UseVisualStyleBackColor = true;
+            this.btnRemoveCust.Click += new System.EventHandler(this.btnRemoveCust_Click);
             // 
             // btnEditCustomer
             // 
-            this.btnEditCustomer.Location = new System.Drawing.Point(365, 46);
+            this.btnEditCustomer.Location = new System.Drawing.Point(365, 49);
             this.btnEditCustomer.Name = "btnEditCustomer";
             this.btnEditCustomer.Size = new System.Drawing.Size(102, 23);
             this.btnEditCustomer.TabIndex = 5;
             this.btnEditCustomer.Text = "Edit Customer";
             this.btnEditCustomer.UseVisualStyleBackColor = true;
+            this.btnEditCustomer.Click += new System.EventHandler(this.btnEditCustomer_Click);
             // 
             // btnAddCustomer
             // 
-            this.btnAddCustomer.Location = new System.Drawing.Point(365, 15);
+            this.btnAddCustomer.Location = new System.Drawing.Point(365, 20);
             this.btnAddCustomer.Name = "btnAddCustomer";
             this.btnAddCustomer.Size = new System.Drawing.Size(102, 23);
             this.btnAddCustomer.TabIndex = 4;
@@ -156,6 +151,7 @@
             this.txtCompany.Name = "txtCompany";
             this.txtCompany.Size = new System.Drawing.Size(267, 20);
             this.txtCompany.TabIndex = 3;
+            this.txtCompany.Visible = false;
             // 
             // label9
             // 
@@ -165,14 +161,19 @@
             this.label9.Size = new System.Drawing.Size(51, 13);
             this.label9.TabIndex = 2;
             this.label9.Text = "Company";
+            this.label9.Visible = false;
             // 
             // txtCustomerName
             // 
+            this.txtCustomerName.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.txtCustomerName.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.txtCustomerName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.txtCustomerName.Location = new System.Drawing.Point(67, 20);
             this.txtCustomerName.Name = "txtCustomerName";
             this.txtCustomerName.Size = new System.Drawing.Size(267, 20);
             this.txtCustomerName.TabIndex = 1;
             this.txtCustomerName.TextChanged += new System.EventHandler(this.txtCustomerName_TextChanged);
+            this.txtCustomerName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtCustomerName_KeyDown);
             // 
             // label8
             // 
@@ -184,20 +185,20 @@
             this.label8.Text = "Name";
             this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // groupBox2
+            // grpBoxRoomData
             // 
-            this.groupBox2.BackColor = System.Drawing.Color.LightYellow;
-            this.groupBox2.Controls.Add(this.groupBox4);
-            this.groupBox2.Controls.Add(this.label2);
-            this.groupBox2.Controls.Add(this.label1);
-            this.groupBox2.Controls.Add(this.cmbRoomNumber);
-            this.groupBox2.Controls.Add(this.cmbRoomType);
-            this.groupBox2.Location = new System.Drawing.Point(12, 12);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(504, 165);
-            this.groupBox2.TabIndex = 1;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Room Data";
+            this.grpBoxRoomData.BackColor = System.Drawing.Color.LightYellow;
+            this.grpBoxRoomData.Controls.Add(this.groupBox4);
+            this.grpBoxRoomData.Controls.Add(this.label2);
+            this.grpBoxRoomData.Controls.Add(this.label1);
+            this.grpBoxRoomData.Controls.Add(this.cmbRoomNumber);
+            this.grpBoxRoomData.Controls.Add(this.cmbRoomType);
+            this.grpBoxRoomData.Location = new System.Drawing.Point(12, 12);
+            this.grpBoxRoomData.Name = "grpBoxRoomData";
+            this.grpBoxRoomData.Size = new System.Drawing.Size(504, 165);
+            this.grpBoxRoomData.TabIndex = 1;
+            this.grpBoxRoomData.TabStop = false;
+            this.grpBoxRoomData.Text = "Room Data";
             // 
             // groupBox4
             // 
@@ -238,13 +239,11 @@
             // cmbRoomType
             // 
             this.cmbRoomType.FormattingEnabled = true;
-            this.cmbRoomType.Items.AddRange(new object[] {
-            "Single",
-            "Double"});
             this.cmbRoomType.Location = new System.Drawing.Point(15, 40);
             this.cmbRoomType.Name = "cmbRoomType";
             this.cmbRoomType.Size = new System.Drawing.Size(133, 21);
             this.cmbRoomType.TabIndex = 0;
+            this.cmbRoomType.SelectedIndexChanged += new System.EventHandler(this.cmbRoomType_SelectedIndexChanged);
             // 
             // tabControl1
             // 
@@ -259,7 +258,9 @@
             // tabPage1
             // 
             this.tabPage1.BackColor = System.Drawing.Color.AntiqueWhite;
-            this.tabPage1.Controls.Add(this.cmbPerNight);
+            this.tabPage1.Controls.Add(this.label16);
+            this.tabPage1.Controls.Add(this.txtRate);
+            this.tabPage1.Controls.Add(this.cmbPerNight2);
             this.tabPage1.Controls.Add(this.groupBox6);
             this.tabPage1.Controls.Add(this.label3);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
@@ -269,19 +270,37 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Room Information";
             // 
-            // cmbPerNight
+            // label16
             // 
-            this.cmbPerNight.FormattingEnabled = true;
-            this.cmbPerNight.Items.AddRange(new object[] {
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(24, 70);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(78, 13);
+            this.label16.TabIndex = 8;
+            this.label16.Text = "Price Per Night";
+            // 
+            // txtRate
+            // 
+            this.txtRate.Location = new System.Drawing.Point(27, 85);
+            this.txtRate.Name = "txtRate";
+            this.txtRate.Size = new System.Drawing.Size(121, 20);
+            this.txtRate.TabIndex = 7;
+            this.txtRate.TextChanged += new System.EventHandler(this.txtRate_TextChanged);
+            // 
+            // cmbPerNight2
+            // 
+            this.cmbPerNight2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbPerNight2.FormattingEnabled = true;
+            this.cmbPerNight2.Items.AddRange(new object[] {
             "1000",
             "2000",
             "3000",
             "4000 "});
-            this.cmbPerNight.Location = new System.Drawing.Point(27, 40);
-            this.cmbPerNight.Name = "cmbPerNight";
-            this.cmbPerNight.Size = new System.Drawing.Size(121, 21);
-            this.cmbPerNight.TabIndex = 6;
-            this.cmbPerNight.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.cmbPerNight2.Location = new System.Drawing.Point(27, 40);
+            this.cmbPerNight2.Name = "cmbPerNight2";
+            this.cmbPerNight2.Size = new System.Drawing.Size(121, 21);
+            this.cmbPerNight2.TabIndex = 6;
+            this.cmbPerNight2.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // groupBox6
             // 
@@ -289,13 +308,13 @@
             this.groupBox6.Controls.Add(this.lblsomething);
             this.groupBox6.Controls.Add(this.lblTotalAccomadation);
             this.groupBox6.Controls.Add(this.lblPerNight);
-            this.groupBox6.Controls.Add(this.lblReserveDays);
+            this.groupBox6.Controls.Add(this.lblNumOfNights);
             this.groupBox6.Controls.Add(this.btnStatementOfAccount);
             this.groupBox6.Controls.Add(this.label7);
             this.groupBox6.Controls.Add(this.label4);
             this.groupBox6.Controls.Add(this.label6);
             this.groupBox6.Controls.Add(this.label5);
-            this.groupBox6.Location = new System.Drawing.Point(27, 313);
+            this.groupBox6.Location = new System.Drawing.Point(13, 320);
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.Size = new System.Drawing.Size(367, 218);
             this.groupBox6.TabIndex = 5;
@@ -338,23 +357,25 @@
             this.lblPerNight.TabIndex = 7;
             this.lblPerNight.Text = "label13";
             // 
-            // lblReserveDays
+            // lblNumOfNights
             // 
-            this.lblReserveDays.AutoSize = true;
-            this.lblReserveDays.Location = new System.Drawing.Point(286, 29);
-            this.lblReserveDays.Name = "lblReserveDays";
-            this.lblReserveDays.Size = new System.Drawing.Size(41, 13);
-            this.lblReserveDays.TabIndex = 7;
-            this.lblReserveDays.Text = "label13";
+            this.lblNumOfNights.AutoSize = true;
+            this.lblNumOfNights.Location = new System.Drawing.Point(286, 29);
+            this.lblNumOfNights.Name = "lblNumOfNights";
+            this.lblNumOfNights.Size = new System.Drawing.Size(41, 13);
+            this.lblNumOfNights.TabIndex = 7;
+            this.lblNumOfNights.Text = "label13";
+            this.lblNumOfNights.Click += new System.EventHandler(this.lblReserveDays_Click);
             // 
             // btnStatementOfAccount
             // 
-            this.btnStatementOfAccount.Location = new System.Drawing.Point(257, 188);
+            this.btnStatementOfAccount.Location = new System.Drawing.Point(171, 188);
             this.btnStatementOfAccount.Name = "btnStatementOfAccount";
-            this.btnStatementOfAccount.Size = new System.Drawing.Size(104, 24);
+            this.btnStatementOfAccount.Size = new System.Drawing.Size(182, 24);
             this.btnStatementOfAccount.TabIndex = 6;
             this.btnStatementOfAccount.Text = "Create Statement of Account";
             this.btnStatementOfAccount.UseVisualStyleBackColor = true;
+            this.btnStatementOfAccount.Click += new System.EventHandler(this.btnStatementOfAccount_Click);
             // 
             // label7
             // 
@@ -405,14 +426,14 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(420, 550);
+            this.tabPage2.Size = new System.Drawing.Size(386, 550);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(692, 628);
+            this.btnSave.Location = new System.Drawing.Point(678, 628);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(93, 32);
             this.btnSave.TabIndex = 3;
@@ -449,10 +470,15 @@
             // lengthOfStay
             // 
             this.lengthOfStay.Location = new System.Drawing.Point(439, 43);
+            this.lengthOfStay.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
             this.lengthOfStay.Name = "lengthOfStay";
             this.lengthOfStay.Size = new System.Drawing.Size(59, 20);
             this.lengthOfStay.TabIndex = 5;
-            this.lengthOfStay.ValueChanged += new System.EventHandler(this.numericUpDown1_ValueChanged);
+            this.lengthOfStay.ValueChanged += new System.EventHandler(this.lengthOfStay_ValueChanged);
             // 
             // label12
             // 
@@ -522,7 +548,7 @@
             // 
             // txtRoomId
             // 
-            this.txtRoomId.Location = new System.Drawing.Point(193, 617);
+            this.txtRoomId.Location = new System.Drawing.Point(186, 604);
             this.txtRoomId.Name = "txtRoomId";
             this.txtRoomId.Size = new System.Drawing.Size(100, 20);
             this.txtRoomId.TabIndex = 6;
@@ -530,7 +556,7 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(108, 623);
+            this.label14.Location = new System.Drawing.Point(95, 611);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(44, 13);
             this.label14.TabIndex = 7;
@@ -547,15 +573,21 @@
             this.btnDelete.UseVisualStyleBackColor = true;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
-            // btnUpdate
+            // label15
             // 
-            this.btnUpdate.Location = new System.Drawing.Point(571, 628);
-            this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(94, 32);
-            this.btnUpdate.TabIndex = 8;
-            this.btnUpdate.Text = "Update";
-            this.btnUpdate.UseVisualStyleBackColor = true;
-            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(95, 641);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(65, 13);
+            this.label15.TabIndex = 9;
+            this.label15.Text = "Customer ID";
+            // 
+            // txtCustomName
+            // 
+            this.txtCustomName.Location = new System.Drawing.Point(186, 638);
+            this.txtCustomName.Name = "txtCustomName";
+            this.txtCustomName.Size = new System.Drawing.Size(100, 20);
+            this.txtCustomName.TabIndex = 10;
             // 
             // AddReservationView
             // 
@@ -563,7 +595,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(928, 672);
-            this.Controls.Add(this.btnUpdate);
+            this.Controls.Add(this.txtCustomName);
+            this.Controls.Add(this.label15);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.txtRoomId);
             this.Controls.Add(this.groupBox3);
@@ -572,7 +605,7 @@
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.tabControl1);
-            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.grpBoxRoomData);
             this.Controls.Add(this.groupBox1);
             this.Name = "AddReservationView";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
@@ -580,9 +613,8 @@
             this.Load += new System.EventHandler(this.AddReservation_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
+            this.grpBoxRoomData.ResumeLayout(false);
+            this.grpBoxRoomData.PerformLayout();
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
@@ -600,7 +632,7 @@
         #endregion
 
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox grpBoxRoomData;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
@@ -632,19 +664,21 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.DateTimePicker dtpEndDate;
         private System.Windows.Forms.Label lblTotalAccomadation;
         private System.Windows.Forms.Label lblPerNight;
-        private System.Windows.Forms.Label lblReserveDays;
-        private System.Windows.Forms.ComboBox cmbPerNight;
+        private System.Windows.Forms.Label lblNumOfNights;
+        private System.Windows.Forms.ComboBox cmbPerNight2;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label lblsomething;
         private System.Windows.Forms.TextBox txtRoomId;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnRemoveCust;
         private System.Windows.Forms.Button btnChangeCustomer;
-        private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button btnDelete;
-        private System.Windows.Forms.Button btnUpdate;
+        private System.Windows.Forms.TextBox txtRate;
+        private System.Windows.Forms.DateTimePicker dtpEndDate;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.TextBox txtCustomName;
+        private System.Windows.Forms.Label label16;
     }
 }

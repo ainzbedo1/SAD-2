@@ -35,18 +35,19 @@
             this.btnPrevYear = new System.Windows.Forms.Button();
             this.btnMainYear = new System.Windows.Forms.Button();
             this.btnNextYear = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
             this.btnAddRoom = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.btnViewCustomers = new System.Windows.Forms.Button();
             this.txtFirstDate = new System.Windows.Forms.TextBox();
             this.txtLastDate = new System.Windows.Forms.TextBox();
             this.comboBox3 = new System.Windows.Forms.ComboBox();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.dtpTest = new System.Windows.Forms.DateTimePicker();
             this.btnCreateReservation = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.btnViewReservation = new System.Windows.Forms.Button();
+            this.btnOccRep = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.calendar)).BeginInit();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // calendar
@@ -97,7 +98,7 @@
             // 
             // btnPrevYear
             // 
-            this.btnPrevYear.Location = new System.Drawing.Point(509, 12);
+            this.btnPrevYear.Location = new System.Drawing.Point(509, 11);
             this.btnPrevYear.Name = "btnPrevYear";
             this.btnPrevYear.Size = new System.Drawing.Size(132, 36);
             this.btnPrevYear.TabIndex = 4;
@@ -125,29 +126,9 @@
             this.btnNextYear.UseVisualStyleBackColor = true;
             this.btnNextYear.Click += new System.EventHandler(this.btnNextYear_Click);
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(956, 41);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 7;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(956, 76);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 8;
-            this.button2.Text = "Create button";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
             // btnAddRoom
             // 
-            this.btnAddRoom.Location = new System.Drawing.Point(1238, 25);
+            this.btnAddRoom.Location = new System.Drawing.Point(705, 86);
             this.btnAddRoom.Name = "btnAddRoom";
             this.btnAddRoom.Size = new System.Drawing.Size(123, 23);
             this.btnAddRoom.TabIndex = 9;
@@ -157,14 +138,14 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(739, 116);
+            this.textBox1.Location = new System.Drawing.Point(1097, 43);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(100, 20);
             this.textBox1.TabIndex = 10;
             // 
             // btnViewCustomers
             // 
-            this.btnViewCustomers.Location = new System.Drawing.Point(1238, 63);
+            this.btnViewCustomers.Location = new System.Drawing.Point(1028, 97);
             this.btnViewCustomers.Name = "btnViewCustomers";
             this.btnViewCustomers.Size = new System.Drawing.Size(123, 23);
             this.btnViewCustomers.TabIndex = 11;
@@ -174,14 +155,14 @@
             // 
             // txtFirstDate
             // 
-            this.txtFirstDate.Location = new System.Drawing.Point(48, 100);
+            this.txtFirstDate.Location = new System.Drawing.Point(129, 136);
             this.txtFirstDate.Name = "txtFirstDate";
             this.txtFirstDate.Size = new System.Drawing.Size(100, 20);
             this.txtFirstDate.TabIndex = 12;
             // 
             // txtLastDate
             // 
-            this.txtLastDate.Location = new System.Drawing.Point(48, 152);
+            this.txtLastDate.Location = new System.Drawing.Point(129, 162);
             this.txtLastDate.Name = "txtLastDate";
             this.txtLastDate.Size = new System.Drawing.Size(100, 20);
             this.txtLastDate.TabIndex = 13;
@@ -194,17 +175,17 @@
             this.comboBox3.Size = new System.Drawing.Size(121, 21);
             this.comboBox3.TabIndex = 14;
             // 
-            // dateTimePicker1
+            // dtpTest
             // 
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker1.Location = new System.Drawing.Point(59, 27);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePicker1.TabIndex = 15;
+            this.dtpTest.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpTest.Location = new System.Drawing.Point(59, 27);
+            this.dtpTest.Name = "dtpTest";
+            this.dtpTest.Size = new System.Drawing.Size(200, 20);
+            this.dtpTest.TabIndex = 15;
             // 
             // btnCreateReservation
             // 
-            this.btnCreateReservation.Location = new System.Drawing.Point(739, 160);
+            this.btnCreateReservation.Location = new System.Drawing.Point(522, 162);
             this.btnCreateReservation.Name = "btnCreateReservation";
             this.btnCreateReservation.Size = new System.Drawing.Size(119, 23);
             this.btnCreateReservation.TabIndex = 16;
@@ -212,32 +193,51 @@
             this.btnCreateReservation.UseVisualStyleBackColor = true;
             this.btnCreateReservation.Click += new System.EventHandler(this.btnCreateReservation_Click);
             // 
-            // button3
+            // btnViewReservation
             // 
-            this.button3.Location = new System.Drawing.Point(956, 12);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 17;
-            this.button3.Text = "Invi Dgv";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click_1);
+            this.btnViewReservation.Location = new System.Drawing.Point(6, 19);
+            this.btnViewReservation.Name = "btnViewReservation";
+            this.btnViewReservation.Size = new System.Drawing.Size(119, 23);
+            this.btnViewReservation.TabIndex = 18;
+            this.btnViewReservation.Text = "View MSR";
+            this.btnViewReservation.UseVisualStyleBackColor = true;
+            this.btnViewReservation.Click += new System.EventHandler(this.btnViewReservation_Click);
+            // 
+            // btnOccRep
+            // 
+            this.btnOccRep.Location = new System.Drawing.Point(159, 19);
+            this.btnOccRep.Name = "btnOccRep";
+            this.btnOccRep.Size = new System.Drawing.Size(119, 23);
+            this.btnOccRep.TabIndex = 18;
+            this.btnOccRep.Text = "Occupancy Report";
+            this.btnOccRep.UseVisualStyleBackColor = true;
+            this.btnOccRep.Click += new System.EventHandler(this.btnOccRep_Click);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.btnViewReservation);
+            this.groupBox1.Controls.Add(this.btnOccRep);
+            this.groupBox1.Location = new System.Drawing.Point(699, 10);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(284, 53);
+            this.groupBox1.TabIndex = 19;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Reports";
             // 
             // ReservationCalendarForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1924, 866);
-            this.Controls.Add(this.button3);
+            this.ClientSize = new System.Drawing.Size(1257, 866);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnCreateReservation);
-            this.Controls.Add(this.dateTimePicker1);
+            this.Controls.Add(this.dtpTest);
             this.Controls.Add(this.comboBox3);
             this.Controls.Add(this.txtLastDate);
             this.Controls.Add(this.txtFirstDate);
             this.Controls.Add(this.btnViewCustomers);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.btnAddRoom);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.btnNextYear);
             this.Controls.Add(this.btnMainYear);
             this.Controls.Add(this.btnPrevYear);
@@ -251,6 +251,7 @@
             this.Text = "Reservation Form";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.calendar)).EndInit();
+            this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -265,17 +266,17 @@
         private System.Windows.Forms.Button btnPrevYear;
         private System.Windows.Forms.Button btnMainYear;
         private System.Windows.Forms.Button btnNextYear;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button btnAddRoom;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button btnViewCustomers;
         private System.Windows.Forms.TextBox txtFirstDate;
         private System.Windows.Forms.TextBox txtLastDate;
         private System.Windows.Forms.ComboBox comboBox3;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker dtpTest;
         private System.Windows.Forms.Button btnCreateReservation;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btnViewReservation;
+        private System.Windows.Forms.Button btnOccRep;
+        private System.Windows.Forms.GroupBox groupBox1;
     }
 }
 

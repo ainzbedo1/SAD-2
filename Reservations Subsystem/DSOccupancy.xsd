@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DSOccupancy" targetNamespace="http://tempuri.org/DSOccupancy.xsd" xmlns:mstns="http://tempuri.org/DSOccupancy.xsd" xmlns="http://tempuri.org/DSOccupancy.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DSOccupancy" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DSOccupancy" msprop:Generator_UserDSName="DSOccupancy">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="OccReport" msprop:Generator_TableClassName="OccReportDataTable" msprop:Generator_TableVarName="tableOccReport" msprop:Generator_TablePropName="OccReport" msprop:Generator_RowDeletingName="OccReportRowDeleting" msprop:Generator_RowChangingName="OccReportRowChanging" msprop:Generator_RowEvHandlerName="OccReportRowChangeEventHandler" msprop:Generator_RowDeletedName="OccReportRowDeleted" msprop:Generator_UserTableName="OccReport" msprop:Generator_RowChangedName="OccReportRowChanged" msprop:Generator_RowEvArgName="OccReportRowChangeEvent" msprop:Generator_RowClassName="OccReportRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="id" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_UserColumnName="id" type="xs:string" minOccurs="0" />
+              <xs:element name="roomNumber" msprop:Generator_ColumnVarNameInTable="columnroomNumber" msprop:Generator_ColumnPropNameInRow="roomNumber" msprop:Generator_ColumnPropNameInTable="roomNumberColumn" msprop:Generator_UserColumnName="roomNumber" type="xs:string" minOccurs="0" />
+              <xs:element name="TotRoomNights" msprop:Generator_ColumnVarNameInTable="columnTotRoomNights" msprop:Generator_ColumnPropNameInRow="TotRoomNights" msprop:Generator_ColumnPropNameInTable="TotRoomNightsColumn" msprop:Generator_UserColumnName="TotRoomNights" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

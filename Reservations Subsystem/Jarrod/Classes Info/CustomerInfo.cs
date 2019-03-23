@@ -19,6 +19,8 @@ namespace Reservations_Subsystem
         private DateTime birthdate { get; set; }
         private string birthplace { get; set; }
         private string phone { get; set;  }
+        private string comment { get; set; }
+
 
 
         public string Id
@@ -87,6 +89,12 @@ namespace Reservations_Subsystem
             set { birthplace = value; }
             get { return birthplace; }
         }
+        public string Comment
+        {
+            set { comment = value; }
+            get { return comment; }
+        }
+
 
     }
     

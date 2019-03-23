@@ -4,6 +4,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using MySql.Data.MySqlClient;
 
 namespace Reservations_Subsystem
@@ -32,7 +33,7 @@ namespace Reservations_Subsystem
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine(ex.Message);
+                   MessageBox.Show(ex.ToString());
                 }
             }
         }

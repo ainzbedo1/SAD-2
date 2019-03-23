@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
@@ -23,8 +24,22 @@ namespace Reservations_Subsystem
         public int viewMonth { get; set; }
         public int viewYear { get; set; }
         public bool changeDetected = false;
+        decimal myValue = 0;
+        public bool resButtClicked = false;
+        private int dgvMonth { get; set; }
+        private int dgvYear { get; set; }
+        //private bool CustomerInfoExist = false;
 
-
+        public int DgvMonth
+        {
+            set { dgvMonth = value; }
+            get { return dgvMonth; }
+        }
+        public int DgvYear
+        {
+            set { dgvYear = value; }
+            get { return dgvYear; }
+        }
         public string RoomId
         {
             set { txtRoomId.Text = value; }
@@ -37,6 +52,12 @@ namespace Reservations_Subsystem
             get { return customerId; }
         }
         */
+
+        public string RoomRate
+        {
+            get { return txtRate.Text; }
+            set { txtRate.Text = value; }
+        }
 
         public Boolean EditForm
         {
@@ -67,7 +88,7 @@ namespace Reservations_Subsystem
             set { dtpEndDate.Value = value; }
 
         }
-        public string NameAddView
+        public string CustomerName
         {
             get { return txtCustomerName.Text; }
             set { txtCustomerName.Text = value; }
@@ -89,19 +110,26 @@ namespace Reservations_Subsystem
         public string TotalAccomadation
         {
             get { return lblTotalAccomadation.Text; }
-            set { lblTotalAccomadation.Text = (Convert.ToInt32(lengthOfStay.Value) * Convert.ToInt32(cmbPerNight.Text)).ToString(); }
+            set { lblTotalAccomadation.Text = value; }
         }
-        public string LblPerNight
+        public string LblPricePerNight
         {
             get { return lblPerNight.Text; }
             set { lblPerNight.Text = value; }
         }
-        public string LblReserveDays
+        public string LblNumOfNights
         {
-            get { return lblReserveDays.Text; }
-            set { lblReserveDays.Text = value; }
+            get { return lblNumOfNights.Text; }
+            set { lblNumOfNights.Text = value; }
+        }
+        public CustomerInfo TheCustomerInfo
+        {
+            get { return theCustomerInfo; }
+            set { theCustomerInfo = value; }
         }
 
+
+        //public void AutoCompleteCustomer
         public void testwhat(object sender, EventArgs e)
         {
             if (OnShowReservationInfo != null)
@@ -114,14 +142,48 @@ namespace Reservations_Subsystem
             }
 
         }
-        public void setValuesBasedOnReservationId(string roomType, string roomNumber, DateTime startDate, DateTime endDate, string description)
+        //this method only fires on update
+        public void setValuesBasedOnReservationId(RoomInfo customInfo, string roomType, string roomNumber, DateTime startDate, DateTime endDate, string description, int roomRate)
         {
+            lengthOfStay.ValueChanged -= lengthOfStay_ValueChanged;
+            dtpEndDate.ValueChanged -= dtpEndDate_ValueChanged;
+            dtpStartDate.ValueChanged -= dtpStartDate_ValueChanged;
+            txtRate.TextChanged -= txtRate_TextChanged;
+
+            RoomId = customInfo.RoomId;
             RoomType = roomType;
             RoomNumber = roomNumber;
             StartDate = startDate;
             EndDate = endDate;
             Description = description;
+            RoomRate = roomRate.ToString();
+            LengthOfStay = (dtpEndDate.Value - dtpStartDate.Value).Days;
+            LblNumOfNights = LengthOfStay.ToString();
+            LblPricePerNight = RoomRate.ToString();
+            TotalAccomadation = (Convert.ToInt32(LblNumOfNights) * (Convert.ToInt32(LblPricePerNight))).ToString();
+           
 
+            //TotalAccomadation = (Convert.ToInt32(LblReserveDays) * (Convert.ToInt32(LblPerNight))).ToString();
+
+            lengthOfStay.ValueChanged += lengthOfStay_ValueChanged;
+            dtpEndDate.ValueChanged += dtpEndDate_ValueChanged;
+            dtpStartDate.ValueChanged += dtpStartDate_ValueChanged;
+            txtRate.TextChanged += txtRate_TextChanged;
+        }
+        public void SetValuesOnSelection(DateTime startDate, DateTime endDate)
+        {
+            lengthOfStay.ValueChanged -= lengthOfStay_ValueChanged;
+            dtpEndDate.ValueChanged -= dtpEndDate_ValueChanged;
+            dtpStartDate.ValueChanged -= dtpStartDate_ValueChanged;
+            txtRate.TextChanged -= txtRate_TextChanged;
+
+            StartDate = startDate;
+            EndDate = endDate;
+
+            lengthOfStay.ValueChanged += lengthOfStay_ValueChanged;
+            dtpEndDate.ValueChanged += dtpEndDate_ValueChanged;
+            dtpStartDate.ValueChanged += dtpStartDate_ValueChanged;
+            txtRate.TextChanged += txtRate_TextChanged;
         }
         public AddReservationView()
         {
@@ -151,166 +213,271 @@ namespace Reservations_Subsystem
 
         }
 
-        private void EditFormEnabled()
+        public void EditFormIsTrue()
         {
-            btnDelete.Enabled = true;
+            btnRemoveCust.Enabled = true;
             btnSave.Enabled = true;
             btnClose.Enabled = true;
+            btnEditCustomer.Enabled = true;
+            btnAddCustomer.Enabled = false;
+            txtCustomerName.ReadOnly = true;
 
         }
-        private void LoadRoomComboBoxes()
+        public void AddFormIsTrue()
         {
+            btnRemoveCust.Enabled = true;
+            btnSave.Enabled = true;
+            btnClose.Enabled = true;
+            btnEditCustomer.Enabled = true;
+            btnAddCustomer.Enabled = false;
+            txtCustomerName.ReadOnly = true;
+
+        }
+        public void LoadRoomComboBoxes()
+        {
+            //get combo box items
+            // filter by type
+            //wpfUC.UcWpf uc = elementHost1.Child as wpfUC.UcWpf;
+            //ComboBox hello = elementHOs   
             List<RoomTextBoxItems> myRooms = new List<RoomTextBoxItems>();
+
             RoomDataService myRoomDataService = new RoomDataService();
-            myRooms = myRoomDataService.getAllRoomId();
+            myRooms = myRoomDataService.getRoomInfoByType(cmbRoomType.Text);
             foreach(RoomTextBoxItems item in myRooms)
-            {
+            { 
                 cmbRoomNumber.Items.Add(item);
             }
             //RoomDataService 
 
         }
+        private void LoadRoomTypeCombo()
+        {
+            //get combo box items
+            // filter by type
+            //wpfUC.UcWpf uc = elementHost1.Child as wpfUC.UcWpf;
+            //ComboBox hello = elementHOs   
+            List<string> myRooms = new List<string>();
+
+            RoomDataService myRoomDataService = new RoomDataService();
+            myRooms = myRoomDataService.getRoomTypes();
+            foreach (var item in myRooms)
+            {
+                cmbRoomType.Items.Add(item);
+            }
+            //RoomDataService 
+
+        }
+        private void LoadCustomerNames()
+        {
+            CustomerDataService custDataService = new CustomerDataService();
+            StringCollection nameCollection = new StringCollection();
+            //nameCollection = custDataService.AutoCompleteCollection();
+            txtCustomerName.AutoCompleteCustomSource = custDataService.AutoCompleteCollection(); 
+        }
         private void AddReservation_Load(object sender, EventArgs e)
         {
-            
-         
-
+                LoadCustomerNames();
+            //btnAddCustomer.Visible = false;
             //if the form is in edit mode
             if (editForm)
             {
-                LoadRoomComboBoxes();
-                EditFormEnabled();
-                MessageBox.Show(theCustomerInfo.Name.ToString());
-                MessageBox.Show("The changed detected was" + changeDetected.ToString());
 
+                // numeric up down Valuechanged event is removed before setting values
+                lengthOfStay.ValueChanged -= lengthOfStay_ValueChanged;
+                dtpEndDate.ValueChanged -= dtpEndDate_ValueChanged;
+                dtpStartDate.ValueChanged -= dtpStartDate_ValueChanged;
+                txtRate.TextChanged -= txtRate_TextChanged;
+
+                LoadRoomComboBoxes();
+                EditFormIsTrue();
+
+                /*
                 LengthOfStay = (dtpEndDate.Value - dtpStartDate.Value).Days;
                 LblReserveDays = LengthOfStay.ToString();
-                LblPerNight = cmbPerNight.Text;
-               // TotalAccomadation = (Convert.ToInt32(LblReserveDays) * Convert.ToInt32(LblPerNight)).ToString();
+                LblPerNight= RoomRate.ToString();
+                MessageBox.Show(LblPerNight.ToString());
+                MessageBox.Show(LblReserveDays.ToString());
+                */
+                //MessageBox.Show((Convert.ToInt32(LblPerNight) * Convert.ToInt32(LblReserveDays)).ToString());
+
+
+                //TotalAccomadation = (Convert.ToInt32(LblReserveDays) * (Convert.ToInt32(LblPerNight))).ToString();
                 txtCustomerName.TextChanged += new System.EventHandler(this.txtCustomerName_TextChanged);
+                CustomerName = theCustomerInfo.Name;
+                myValue = theReservation.LenghtOfStay;
 
-                txtCustomerName.Text = theCustomerInfo.Name.ToString();
-                txtCustomerName.ReadOnly = true;
-
+                lengthOfStay.ValueChanged += lengthOfStay_ValueChanged;
+                dtpEndDate.ValueChanged += dtpEndDate_ValueChanged;
+                dtpStartDate.ValueChanged += dtpStartDate_ValueChanged;
+                txtRate.TextChanged += txtRate_TextChanged;
+                MessageBox.Show(RoomId.ToString() + "my room id");
 
             }
-            else
+            else if (resButtClicked)
             {
+                MessageBox.Show("resbutt is true");
+                //
+                lengthOfStay.ValueChanged -= lengthOfStay_ValueChanged;
+                dtpEndDate.ValueChanged -= dtpEndDate_ValueChanged;
+                dtpStartDate.ValueChanged -= dtpStartDate_ValueChanged;
 
-                LoadRoomComboBoxes();
+                var dateNow = DateTime.Now;
+                var date = dateNow;
+                StartDate = DateTime.Today;
+                dtpEndDate.Value = DateTime.Today.AddDays(1);
+             
+                //LoadRoomComboBoxes();
+                LoadRoomTypeCombo();
                 cmbRoomType.Text = RoomType;
                 cmbRoomNumber.Text = RoomNumber.ToString();
-                cmbPerNight.SelectedIndex = 0;
+                cmbPerNight2.SelectedIndex = 0;
 
                 LengthOfStay = (dtpEndDate.Value - dtpStartDate.Value).Days;
-                LblReserveDays = LengthOfStay.ToString();
-                LblPerNight = cmbPerNight.Text;
-                TotalAccomadation = (Convert.ToInt32(LblReserveDays) * Convert.ToInt32(LblPerNight)).ToString();
+                LblNumOfNights = LengthOfStay.ToString();
+                LblPricePerNight = cmbPerNight2.Text;
+                TotalAccomadation = (Convert.ToInt32(LblNumOfNights) * Convert.ToInt32(LblPricePerNight)).ToString();
+                RoomRate = txtRate.Text;
+
+
+                lengthOfStay.ValueChanged += lengthOfStay_ValueChanged;
+                dtpEndDate.ValueChanged += dtpEndDate_ValueChanged;
+                dtpStartDate.ValueChanged += dtpStartDate_ValueChanged;
+
+                // button disable
+                btnEditCustomer.Enabled = false;
+                btnDelete.Enabled = false;
+
             }
-            
+            else //if reservation creation is by selection 
+            {
+                MessageBox.Show("Selection ");
+                dtpEndDate.ValueChanged -= dtpEndDate_ValueChanged;
+                dtpStartDate.ValueChanged -= dtpStartDate_ValueChanged;
+                lengthOfStay.ValueChanged -= lengthOfStay_ValueChanged;
+
+                LoadRoomTypeCombo();
+                cmbRoomType.Text = RoomType;
+                cmbRoomNumber.Text = RoomNumber.ToString();
+                cmbPerNight2.SelectedIndex = 0;
+
+                LengthOfStay = (dtpEndDate.Value - dtpStartDate.Value).Days;
+                LblNumOfNights = LengthOfStay.ToString();
+                RoomRate = txtRate.Text;
+                TotalAccomadation = (Convert.ToInt32(LblNumOfNights) * Convert.ToInt32(LblPricePerNight)).ToString();
+
+                LblPricePerNight = cmbPerNight2.Text;
+
+                lengthOfStay.ValueChanged += lengthOfStay_ValueChanged;
+                dtpEndDate.ValueChanged += dtpEndDate_ValueChanged;
+                dtpStartDate.ValueChanged += dtpStartDate_ValueChanged;
 
 
-            //lengthOfStay.Value = LengthOfStay; 
-            // cmbRoomType.Text = RoomType;
-            //OnShowReservationInfo(this, EventArgs.Empty);
+                //button
+                btnEditCustomer.Enabled = false;
+                btnDelete.Enabled = false;
+            }
 
-            /*
-            dtpStartDate.Value = startDate;
-            dtpEndDate.Value = endDate;
-            //MessageBox.Show(NumberOfDays.ToString());
-            NumberOfDays = (endDate - startDate).Days;
-            nudDays.Value = numberOfDays;
-            cmbRoomType.Text = RoomType;
-            cmbRoomNumber.Text = RoomNumber.ToString();
-            cmbPerNight.SelectedIndex = 0;
-            lblReserveDays.Text = nudDays.Value.ToString();
-            */
-            //dtpStartDate.Value = StartDate;
-            /// dtpEndDate.Value = EndDate;
         }
         private void groupBox3_Enter(object sender, EventArgs e)
         {
 
         }
 
-        private void numericUpDown1_ValueChanged(object sender, EventArgs e)
-        {
-            if (editForm)
-            {
-                int oldValue = theReservation.LenghtOfStay;
-                // int oldValue = Convert.ToInt32(oldValue.Value);
 
-                MessageBox.Show(oldValue.ToString() + "this is my old value");
-
-                //checks if the user increments the numericupdown known as and named as lengthOfStay
-                if (lengthOfStay.Value > oldValue)
-                {
-                    dtpEndDate.Value = EndDate.AddDays(1);
-                }
-                else if (lengthOfStay.Value < oldValue)
-                {
-                    dtpEndDate.Value = EndDate.AddDays(-1);
-                    if (lengthOfStay.Value == 1)
-                    {
-                        dtpEndDate.Value = EndDate.AddDays(-1);
-                        dtpStartDate.Value = StartDate.AddDays(-1);
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("you done fucked it up");
-                }
-            }
-            else
-            {
-                MessageBox.Show("neeed to add code here");
-            }
-            //oldValue = numericUpDown.Value;
-            
-
-
-
-
-            /*
-              if (nudDays.Value < numberOfDays && nudDays.Value == 1)
-              {
-                  dtpStartDate.Value = startDate.AddDays(-1);
-                  dtpEndDate.Value = endDate.AddDays(-1);
-              }
-              else if(nudDays.Value > numberOfDays)
-              {
-
-              }
-              else
-              {
-              }
-              oldValue = numericUpDown.Value;
-              //dtpEndDate.Value = endDate.AddDays(Convert.ToDouble(nudDays.Value));
-              */
-        }
 
         private void dtpStartDate_ValueChanged(object sender, EventArgs e)
         {
-            //dtpEndDate.Value = (startDate - endDate).Days;
+            if (dtpStartDate.Value.Date > dtpEndDate.Value.Date)
+            {
+                dtpEndDate.ValueChanged -= dtpEndDate_ValueChanged;
+                lengthOfStay.ValueChanged -= lengthOfStay_ValueChanged;
+
+                EndDate = StartDate.AddDays(1);
+                LengthOfStay = Convert.ToDecimal((dtpEndDate.Value.Date - dtpStartDate.Value.Date).Days);
+                LblNumOfNights = LengthOfStay.ToString();
+                TotalAccomadation = (Convert.ToInt32(LblNumOfNights) * Convert.ToInt32(LblPricePerNight)).ToString();
+
+
+                dtpEndDate.ValueChanged += dtpEndDate_ValueChanged;
+                lengthOfStay.ValueChanged += lengthOfStay_ValueChanged;
+
+            }
+            else
+            {
+
+                lengthOfStay.ValueChanged -= lengthOfStay_ValueChanged;
+
+                LengthOfStay = Convert.ToDecimal((dtpEndDate.Value.Date - dtpStartDate.Value.Date).Days);
+                LblNumOfNights = LengthOfStay.ToString();
+                TotalAccomadation = (Convert.ToInt32(LblNumOfNights) * Convert.ToInt32(LblPricePerNight)).ToString();
+
+
+                lengthOfStay.ValueChanged += lengthOfStay_ValueChanged;
+            }
         }
 
         private void dtpEndDate_ValueChanged(object sender, EventArgs e)
         {
+            
+            if (dtpEndDate.Value.Date < dtpStartDate.Value.Date)
+            {
+                dtpStartDate.ValueChanged -= dtpStartDate_ValueChanged;
+                lengthOfStay.ValueChanged -= lengthOfStay_ValueChanged;
 
+                StartDate = EndDate.AddDays(-1);
+                LengthOfStay = (dtpEndDate.Value - dtpStartDate.Value).Days;
+                LblNumOfNights = LengthOfStay.ToString();
+                TotalAccomadation = (Convert.ToInt32(LblNumOfNights) * Convert.ToInt32(LblPricePerNight)).ToString();
+
+
+                dtpStartDate.ValueChanged += dtpStartDate_ValueChanged;
+                lengthOfStay.ValueChanged += lengthOfStay_ValueChanged;
+
+
+            }
+            else
+            {
+
+                lengthOfStay.ValueChanged -= lengthOfStay_ValueChanged;
+                LengthOfStay = (dtpEndDate.Value - dtpStartDate.Value).Days;
+                LblNumOfNights = LengthOfStay.ToString();
+                TotalAccomadation = (Convert.ToInt32(LblNumOfNights) * Convert.ToInt32(LblPricePerNight)).ToString();
+
+
+                lengthOfStay.ValueChanged += lengthOfStay_ValueChanged;
+            }
+            
 
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            lblPerNight.Text = cmbPerNight.Text;
-            int amtOfNights = Convert.ToInt32(cmbPerNight.Text);
-            // int amtReserveDays = Convert.ToInt32(lengthOfStay.Text);
+            RoomRate = cmbPerNight2.Text;
+
+            /*
+            lblPerNight.Text = cmbPerNight2.Text;
+            int amtOfNights = Convert.ToInt32(cmbPerNight2.Text);
 
             lblTotalAccomadation.Text = TotalAccomadation;
+            */
         }
-
+        public ReservationInfo SettingReservationInfo()
+        {
+            ReservationInfo myReservation = new ReservationInfo();
+            //myReservation.ResId = theReservation.ResId;
+            myReservation.RoomId = RoomId;
+            myReservation.Desc = Description;
+            myReservation.startDate = StartDate;
+            myReservation.EndDate = EndDate;
+            //myReservation.LenghtOfStay = lengthOfStay;
+            myReservation.TotalPrice = Convert.ToInt32(TotalAccomadation);
+            myReservation.LenghtOfStay = Convert.ToInt32(lengthOfStay.Value);
+            myReservation.RoomRate = Convert.ToInt32(RoomRate);
+            return myReservation;
+        }
         private void btnSave_Click(object sender, EventArgs e)
         {
+
             ReservationCalendarForm myResCalFor = new ReservationCalendarForm();
             int startDay = StartDate.Day;
             int startMonth = StartDate.Month;
@@ -319,71 +486,211 @@ namespace Reservations_Subsystem
             int endDay = EndDate.Day;
             int endMonth = EndDate.Month;
             int endYear = EndDate.Year;
-            //public int ReservationCheckAdvanced(int startDay, int startMonth, int startYear, int endDay, int endMonth, int endYear, int roomId)
-            MessageBox.Show(StartDate.ToString());
-            int checkingReservation = myResCalFor.ReservationCheckAdvanced(startDay, startMonth, startYear, endDay, endMonth, endYear, Convert.ToInt32(RoomId));
-            //if the form is in an edit form state
-            //
-            //dtpStartDate.CustomFormat = "dd MMMM yyyy dddd";
-            //lastSelectedDateOnDgv = DateTime.ParseExact(strEndDate, "yyyy-MM-dd HH:mm:ss", System.Globalization.CultureInfo.InvariantCulture);
-            MessageBox.Show(checkingReservation.ToString());
-            //string myStartDate = DateTime.ParseExact(StartDate.ToString(), "dd MMMM yyyy dddd", CultureInfo.InvariantCulture).ToString("yyyy-MM-dd HH:mm:ss");
-            //DateTime myStartDateFormat = Convert.ToDateTime(myStartDate);
-           // MessageBox.Show(myStartDateFormat.ToString());
-            
-       
-            if (EditForm)
+
+
+            bool emptyTextBox = false;
+            foreach (Control child in grpBoxRoomData.Controls)
             {
-                MessageBox.Show(changeDetected.ToString());
+                if (child is ComboBox)
+                {
+                    if (string.IsNullOrWhiteSpace(child.Text))
+                    {
+                        emptyTextBox = true;
+                    }    
+                }
+
+           
             }
-            else if (checkingReservation >= 1)
+
+            if (EditForm) // if the form is in editing state perform an update
+            {
+                MessageBox.Show(RoomId.ToString()+"my room id");
+                if (emptyTextBox)
+                {
+                    MessageBox.Show("room data is empty please fill in room data");
+
+                }
+                else if (myResCalFor.ReservationCheckAdvanced(startDay, startMonth, startYear, endDay, endMonth, endYear, Convert.ToInt32(RoomId)) > 1)
+                {
+                    MessageBox.Show("This is valid dates conflict with existing reservation");
+                }
+                else if( StartDate == null || EndDate == null)
+                {
+                    MessageBox.Show("No Dates have been assigned for this reservation");
+
+                }
+                else if (String.IsNullOrWhiteSpace(txtCustomerName.Text))
+                {
+                    MessageBox.Show("A customer is missing in the reservation");
+                }
+                else
+                {
+                    // if txtCustomer is ReadOnly do not insert into Customer table just UPdate Reservation
+                    if (txtCustomerName.ReadOnly)
+                    {
+                        MessageBox.Show("IM UPDATING BOIS");
+                        ReservationDataService frm = new ReservationDataService();
+                        ReservationInfo myReservation = new ReservationInfo();
+
+
+                        //myCustomer.Name = CustomerName;
+                        MessageBox.Show(myReservation.ResId.ToString()+"My res ID");
+                        frm.UpdateReservation(myReservation.ResId, Convert.ToInt32(myReservation.RoomId), Convert.ToInt32(theCustomerInfo.Id), myReservation.Desc,
+                            myReservation.StartDate, myReservation.EndDate, 0, myReservation.TotalPrice, myReservation.LenghtOfStay,
+                            myReservation.RoomRate);
+                        //frm.verifyCustomerInfoAndCreateReservation(myCustomer, myReservation, referencefrm1);
+
+                        this.Close();
+                        this.Dispose();
+
+
+                        referencefrm1.DeleteAllButtons();
+                        referencefrm1.displayReservationButt(dgvMonth, dgvYear);
+
+                        referencefrm1.Show();
+                    }
+                    //Insert into customer table and update Reservation
+                    else
+                    {
+                        CustomerDataService customDataServ = new CustomerDataService();
+                        DataTable duplicatesTable = customDataServ.CheckDuplicateNames(txtCustomerName.Text);
+                        if (duplicatesTable.Rows.Count == 1)
+                        {
+                            MessageBox.Show("This name conflicts with another person name please try another");
+                        }
+                        else
+                        {
+                            MessageBox.Show("inserting and updating");
+
+                            ReservationDataService frm = new ReservationDataService();
+                            CustomerInfo myCustomer = new CustomerInfo();
+                            ReservationInfo myReservation = new ReservationInfo();
+
+                            /*
+                            myReservation.RoomId = RoomId;
+                            myReservation.Desc = Description;
+                            myReservation.startDate = StartDate;
+                            myReservation.EndDate = EndDate;
+                            //myReservation.LenghtOfStay = lengthOfStay;
+                            myReservation.TotalPrice = Convert.ToInt32(TotalAccomadation);
+                            myReservation.LenghtOfStay = Convert.ToInt32(lengthOfStay.Value);
+                            myReservation.RoomRate = Convert.ToInt32(RoomRate);
+                            */
+                            myReservation = SettingReservationInfo();
+                            myCustomer.Name = CustomerName;
+                            CustomerDataService custDataServ = new CustomerDataService();
+
+                            long lastInsertedCustomer = custDataServ.InsertIntoCustomer(theCustomerInfo.Name, theCustomerInfo.Company, theCustomerInfo.Address,
+                            theCustomerInfo.Phone, theCustomerInfo.Email, theCustomerInfo.Passport, theCustomerInfo.Nationality, theCustomerInfo.Gender,
+                            theCustomerInfo.BirthDate, theCustomerInfo.BirthPlace, theCustomerInfo.Comment);
+
+                            frm.UpdateReservation(myReservation.ResId, Convert.ToInt32(myReservation.RoomId), Convert.ToInt32(lastInsertedCustomer), myReservation.Desc,
+                            myReservation.StartDate, myReservation.EndDate, 0, myReservation.TotalPrice, myReservation.LenghtOfStay,
+                            myReservation.RoomRate);
+
+                            this.Close();
+                            this.Dispose();
+                            referencefrm1.displayReservationButt(dgvMonth, dgvYear);
+
+                            referencefrm1.Show();
+                        }
+                    }
+
+                }
+            }
+            else if(emptyTextBox){
+                MessageBox.Show("room data is empty please fill in room data");
+
+            }
+            else if (myResCalFor.ReservationCheckAdvanced(startDay, startMonth, startYear, endDay, endMonth, endYear, Convert.ToInt32(RoomId))>= 1)
             {
                 MessageBox.Show("This is valid dates conflict with existing reservation");
             }
-            else
+            else // new reservation has been made by reservation button on by selection
             {
                 ReservationInfo reserveClass = new ReservationInfo();
+                CustomerDataService customDataServ = new CustomerDataService();
                 // Boolean occupied = true;
 
                 // if reservation details are bad
                 // check for date range
                 // check for missing customer in
+                DataTable duplicatesTable = customDataServ.CheckDuplicateNames(txtCustomerName.Text);
 
                 //perform a search if duplicate customername is in database
                 if (String.IsNullOrWhiteSpace(txtCustomerName.Text) || StartDate == null || EndDate == null)
                 {
                     MessageBox.Show("there are missing fields please fill it in");
                 }
-
+                else if (duplicatesTable.Rows.Count == 1)
+                {
+                    MessageBox.Show("This name conflicts with another person name please try another");
+                }
                 else // if reservation details are good
                 {
-                    ReservationDataService frm = new ReservationDataService();
-                    CustomerInfo myCustomer = new CustomerInfo();
-                    ReservationInfo myReservation = new ReservationInfo();
 
 
-                    myReservation.RoomId = RoomId;
-                    myReservation.Desc = Description;
-                    myReservation.startDate = StartDate;
-                    myReservation.EndDate = EndDate;
-                    //myReservation.LenghtOfStay = lengthOfStay;
-                    myReservation.TotalPrice = Convert.ToInt32(TotalAccomadation);
-                    myReservation.LenghtOfStay = Convert.ToInt32(lengthOfStay.Value);
-             
-                    myCustomer.Name = NameAddView;
-                    frm.verifyCustomerInfoAndCreateReservation(myCustomer, myReservation, referencefrm1);
-                    this.Close();
-                    this.Dispose();
+                    //if a customer was selected from autocomplete
+                    if (txtCustomerName.ReadOnly)
+                    {
+                        ReservationDataService frm = new ReservationDataService();
+                        CustomerInfo myCustomer = new CustomerInfo();
+                        ReservationInfo myReservation = new ReservationInfo();
 
-                    referencefrm1.Show();
+                        /*
+                        myReservation.RoomId = RoomId;
+                        myReservation.Desc = Description;
+                        myReservation.startDate = StartDate;
+                        myReservation.EndDate = EndDate;
+                        //myReservation.LenghtOfStay = lengthOfStay;
+                        myReservation.TotalPrice = Convert.ToInt32(TotalAccomadation);
+                        myReservation.LenghtOfStay = Convert.ToInt32(lengthOfStay.Value);
+                        myReservation.RoomRate = Convert.ToInt32(RoomRate);
+                        */
+                        myCustomer.Name = CustomerName;
+                        myReservation = SettingReservationInfo();
+
+                        frm.AddReservation(Convert.ToInt32(myReservation.RoomId), Convert.ToInt32(theCustomerInfo.Id), myReservation.Desc,
+                            myReservation.StartDate, myReservation.EndDate, 0, myReservation.TotalPrice, myReservation.LenghtOfStay,
+                            myReservation.RoomRate);
+                        //frm.verifyCustomerInfoAndCreateReservation(myCustomer, myReservation, referencefrm1);
+
+                        this.Close();
+                        this.Dispose();
+                        referencefrm1.displayReservationButt(dgvMonth, dgvYear);
+
+                        referencefrm1.Show();
+                    }
+                    else //if a new customer added
+                    {
+                        ReservationDataService frm = new ReservationDataService();
+                        CustomerInfo myCustomer = new CustomerInfo();
+                        ReservationInfo myReservation = new ReservationInfo();
+                        /*
+                        myReservation.RoomId = RoomId;
+                        myReservation.Desc = Description;
+                        myReservation.startDate = StartDate;
+                        myReservation.EndDate = EndDate;
+                        //myReservation.LenghtOfStay = lengthOfStay;
+                        myReservation.TotalPrice = Convert.ToInt32(TotalAccomadation);
+                        myReservation.LenghtOfStay = Convert.ToInt32(lengthOfStay.Value);
+                        myReservation.RoomRate = Convert.ToInt32(RoomRate);
+                        */
+                        myReservation = SettingReservationInfo();
+                        myCustomer.Name = CustomerName;
+                        frm.verifyCustomerInfoAndCreateReservation(myCustomer, myReservation, referencefrm1);
+
+                        this.Close();
+                        this.Dispose();
+                        referencefrm1.displayReservationButt(dgvMonth, dgvYear);
+
+                        referencefrm1.Show();
+                    }
 
 
                 }
 
             }
-
-
-
         }
 
         private void label14_Click(object sender, EventArgs e)
@@ -393,11 +700,11 @@ namespace Reservations_Subsystem
 
         private void btnAddCustomer_Click(object sender, EventArgs e)
         {
-            /*
             AddCustomerForm frm = new AddCustomerForm();
             frm.reference = this;
+            frm.SurName = CustomerName;
             frm.ShowDialog();
-            */
+            
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -417,11 +724,7 @@ namespace Reservations_Subsystem
             ReservationDataService myDataService = new ReservationDataService();
             int resId = theReservation.ResId;
             myDataService.DeleteReservation(resId);
-            MessageBox.Show("this is my reservation ID" + resId.ToString());
-            //referencefrm1.displayCalendar(StartDate.Month , )
-            MessageBox.Show("my month" + viewMonth.ToString());
-            MessageBox.Show("my year" + viewYear.ToString());
-            //referencefrm1.DeleteButtonById(btn)
+
 
             referencefrm1.displayCalendar(viewMonth, viewYear);
             referencefrm1.DeleteButtonById(resId);
@@ -445,18 +748,182 @@ namespace Reservations_Subsystem
         {
 
         }
-        //reservation
-        /*
-            if (MessageBox.Show("A customer with same name exists already" +
-            "would you like create a new customer with the same name" +
-            "?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+
+        private void cmbRoomType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
+            cmbRoomNumber.Items.Clear();
+            LoadRoomComboBoxes();
+            
+        }
+
+        private void lengthOfStay_ValueChanged(object sender, EventArgs e)
+        {
+            if (editForm)
             {
-            // if user clicked yes 
+                //decimal oldValue = theReservation.LenghtOfStay;
+                if (lengthOfStay.Value > myValue)
+                {
+                    dtpEndDate.Value = EndDate.AddDays(1);
+                }
+                else
+                {
+
+                    dtpEndDate.Value = EndDate.AddDays(-1);
+                    if (lengthOfStay.Value == 0)
+                    {
+
+                        dtpEndDate.Value = EndDate.AddDays(-1);
+                        dtpStartDate.Value = StartDate.AddDays(-1);
+                    }
+                }
+                //theReservation.LenghtOfStay = Convert.ToDecimal(lengthOfStay.Value);
+                myValue = lengthOfStay.Value;
+
+            }
+            else
+            {
+
+                //decimal myValue;
+                if (lengthOfStay.Value > myValue)
+                {
+
+                    //MessageBox.Show(lengthOfStay.Value.ToString() + ">" + myValue.ToString());
+                    dtpEndDate.Value = EndDate.AddDays(1);
+
+                }
+                else
+                {
+                    if (lengthOfStay.Value == 0)
+                    {
+                        EndDate = dtpEndDate.Value.AddDays(-1);
+                        StartDate = dtpStartDate.Value.AddDays(-1);
+                        lengthOfStay.ValueChanged -= lengthOfStay_ValueChanged;
+
+                        lengthOfStay.Value = 1;
+                        LblPricePerNight = lengthOfStay.Value.ToString();
+                        TotalAccomadation = (Convert.ToInt32(LblNumOfNights) * Convert.ToInt32(LblPricePerNight)).ToString();
+
+                        lengthOfStay.ValueChanged += lengthOfStay_ValueChanged;
+
+
+                    }
+                    else
+                    {
+                        LblPricePerNight = lengthOfStay.Value.ToString();
+                        TotalAccomadation = (Convert.ToInt32(LblNumOfNights) * Convert.ToInt32(LblPricePerNight)).ToString();
+                        dtpEndDate.Value = EndDate.AddDays(-1);
+                    }
+                }
+                myValue = lengthOfStay.Value;
+            }
+        }
+
+        private void lblReserveDays_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtRate_TextChanged(object sender, EventArgs e)
+        {
+            RoomRate = txtRate.Text;
+            //MessageBox.Show(RoomId.ToString() + "twittdjfsal;kjas");
+            //MessageBox.Show(RoomRate.ToString()+"nigger djsafl;jsadk");
+            LblPricePerNight = RoomRate;
+            LblNumOfNights = LengthOfStay.ToString();
+            TotalAccomadation = (Convert.ToInt32(LblNumOfNights) * Convert.ToInt32(LblPricePerNight)).ToString();
+
+        }
+
+        private void label15_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnChangeCustomer_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnEditCustomer_Click(object sender, EventArgs e)
+        {
+           // MessageBox.Show(theCustomerInfo.Id.ToString()+"fucker");
+
+            if (txtCustomerName.ReadOnly)
+            {
+
+                AddCustomerForm frm = new AddCustomerForm();
+                CustomerDataService custData = new CustomerDataService();
+                CustomerInfo custInfo = new CustomerInfo();
+
+                int custId = Convert.ToInt32(theCustomerInfo.Id);
+                custInfo = custData.GetCustomerInfoById(custId);
+                //MessageBox.Show(custInfo.Id.ToString());
+                frm.SetCustomerInformation(custInfo);
+                frm.editForm = true;
+                frm.reference = this;
+                //frm.SurName = CustomerName;
+                frm.ShowDialog();
 
 
             }
-            */
+            else
+            {
+                MessageBox.Show("Editng failed");
+            }
+            
+
+        }
+
+        private void btnRemoveCust_Click(object sender, EventArgs e)
+        {
+
+            DialogResult dialogResult = MessageBox.Show("Are you sure want to remove this customer from this reservation ", 
+                "Removing Customer from Reservation", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                MessageBox.Show("customer has been removed from the reservation");
+                //MessageBox.Show(resId.ToString());
+                CustomerName = null;
+                btnAddCustomer.Enabled = true;
+                btnEditCustomer.Enabled = false;
+                btnRemoveCust.Enabled = false;
+                txtCustomerName.ReadOnly = false;
 
 
+            }
+            else if (dialogResult == DialogResult.No)
+            {
+                MessageBox.Show("cancelled");
+
+ 
+            }
+        }
+
+        private void txtCustomerName_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyData == Keys.Enter)
+            {
+                MessageBox.Show(txtCustomerName.Text);
+                CustomerDataService customerDataService = new CustomerDataService();
+                //CustomerInfo myCustomerInfo = new CustomerInfo();
+                txtCustomerName.ReadOnly = true;
+                TheCustomerInfo = customerDataService.GetCustomerInfoByName(txtCustomerName.Text);
+
+                //theCustomerInfo = myCustomerInfo;
+            }
+        }
+            
+        private void btnStatementOfAccount_Click(object sender, EventArgs e)
+        {
+            
+            FrmStateAccount frm = new FrmStateAccount();
+            ReservationDataService resData = new ReservationDataService();
+            MessageBox.Show(theCustomerInfo.Id.ToString());
+            frm.LoadReport(Convert.ToInt32(theCustomerInfo.Id), EndDate);
+            frm.referencefrm1 = this;
+            frm.Show();
+            
+        }
     }
 }

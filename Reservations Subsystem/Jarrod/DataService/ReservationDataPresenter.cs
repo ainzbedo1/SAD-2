@@ -11,8 +11,9 @@ namespace Reservations_Subsystem
     {
         private AddReservationView _form;
         private RoomDataService _service;
-        private ReservationCalendarForm _formtriggrer;
-        // if edit is true then editing then the form is editing
+       // private ReservationCalendarForm _formtriggrer;
+
+
         public ReservationDataPresenter(AddReservationView form, RoomDataService roomService)
         {
                 _form = form;
@@ -36,16 +37,18 @@ namespace Reservations_Subsystem
         public ReservationDataPresenter(AddReservationView form)
         {
             _form = form;
+            form.resButtClicked = true;
             //_formtriggrer = form;
             //_form.OnShowReservationInfo += View_OnShowReservationInfo
 
         }
+        //if a existing reservation is clicked
         public ReservationDataPresenter(AddReservationView form, ReservationInfo myResInfo, RoomInfo myRoomInfo, CustomerInfo myCustomerInfo, MyButton resButt)
         {
             _form = form;
           
                 //public void setValuesBasedOnReservationId(string roomType, string roomNumber, DateTime startDate, DateTime endDate, string description, decimal lengthOfStay)
-            form.setValuesBasedOnReservationId(myRoomInfo.RoomType, myRoomInfo.RoomNumber, myResInfo.StartDate, myResInfo.EndDate, myResInfo.Desc);
+            form.setValuesBasedOnReservationId(myRoomInfo, myRoomInfo.RoomType, myRoomInfo.RoomNumber, myResInfo.StartDate, myResInfo.EndDate, myResInfo.Desc, myResInfo.RoomRate);
             form.theCustomerInfo = myCustomerInfo;
             form.theReservation = myResInfo;
             form.referenceButton = resButt;

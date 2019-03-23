@@ -30,18 +30,18 @@
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.txtComment = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.dtpBirthdate = new System.Windows.Forms.DateTimePicker();
             this.label7 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.txtBirthPlace = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.textBox8 = new System.Windows.Forms.TextBox();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.textBox10 = new System.Windows.Forms.TextBox();
+            this.txtGender = new System.Windows.Forms.TextBox();
+            this.txtPassport = new System.Windows.Forms.TextBox();
+            this.txtNationality = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.textBox9 = new System.Windows.Forms.TextBox();
+            this.txtEmail = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.txtPhone = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
@@ -53,10 +53,15 @@
             this.txtName = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnSave = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
+            this.dgvCustomer = new System.Windows.Forms.DataGridView();
+            this.label1 = new System.Windows.Forms.Label();
+            this.btnClear = new System.Windows.Forms.Button();
+            this.txtCustName = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCustomer)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -71,18 +76,18 @@
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.textBox6);
+            this.tabPage1.Controls.Add(this.txtComment);
             this.tabPage1.Controls.Add(this.label12);
             this.tabPage1.Controls.Add(this.label11);
-            this.tabPage1.Controls.Add(this.dateTimePicker1);
+            this.tabPage1.Controls.Add(this.dtpBirthdate);
             this.tabPage1.Controls.Add(this.label7);
-            this.tabPage1.Controls.Add(this.textBox5);
+            this.tabPage1.Controls.Add(this.txtBirthPlace);
             this.tabPage1.Controls.Add(this.label6);
-            this.tabPage1.Controls.Add(this.textBox8);
-            this.tabPage1.Controls.Add(this.textBox7);
-            this.tabPage1.Controls.Add(this.textBox10);
+            this.tabPage1.Controls.Add(this.txtGender);
+            this.tabPage1.Controls.Add(this.txtPassport);
+            this.tabPage1.Controls.Add(this.txtNationality);
             this.tabPage1.Controls.Add(this.label10);
-            this.tabPage1.Controls.Add(this.textBox9);
+            this.tabPage1.Controls.Add(this.txtEmail);
             this.tabPage1.Controls.Add(this.label9);
             this.tabPage1.Controls.Add(this.txtPhone);
             this.tabPage1.Controls.Add(this.label8);
@@ -101,13 +106,13 @@
             this.tabPage1.Text = "Customer Information";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // textBox6
+            // txtComment
             // 
-            this.textBox6.Location = new System.Drawing.Point(131, 310);
-            this.textBox6.Multiline = true;
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(258, 38);
-            this.textBox6.TabIndex = 7;
+            this.txtComment.Location = new System.Drawing.Point(131, 310);
+            this.txtComment.Multiline = true;
+            this.txtComment.Name = "txtComment";
+            this.txtComment.Size = new System.Drawing.Size(258, 38);
+            this.txtComment.TabIndex = 7;
             // 
             // label12
             // 
@@ -127,12 +132,14 @@
             this.label11.TabIndex = 6;
             this.label11.Text = "Birth place";
             // 
-            // dateTimePicker1
+            // dtpBirthdate
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(301, 216);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(88, 20);
-            this.dateTimePicker1.TabIndex = 5;
+            this.dtpBirthdate.CustomFormat = "dd-MM-yyyy";
+            this.dtpBirthdate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpBirthdate.Location = new System.Drawing.Point(301, 216);
+            this.dtpBirthdate.Name = "dtpBirthdate";
+            this.dtpBirthdate.Size = new System.Drawing.Size(88, 20);
+            this.dtpBirthdate.TabIndex = 5;
             // 
             // label7
             // 
@@ -143,63 +150,63 @@
             this.label7.TabIndex = 3;
             this.label7.Text = "Gender";
             // 
-            // textBox5
+            // txtBirthPlace
             // 
-            this.textBox5.Location = new System.Drawing.Point(131, 267);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(258, 20);
-            this.textBox5.TabIndex = 4;
+            this.txtBirthPlace.Location = new System.Drawing.Point(131, 267);
+            this.txtBirthPlace.Name = "txtBirthPlace";
+            this.txtBirthPlace.Size = new System.Drawing.Size(258, 20);
+            this.txtBirthPlace.TabIndex = 4;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(16, 181);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(18, 13);
+            this.label6.Size = new System.Drawing.Size(48, 13);
             this.label6.TabIndex = 3;
-            this.label6.Text = "ID";
+            this.label6.Text = "Passport";
             // 
-            // textBox8
+            // txtGender
             // 
-            this.textBox8.Location = new System.Drawing.Point(131, 217);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(88, 20);
-            this.textBox8.TabIndex = 4;
+            this.txtGender.Location = new System.Drawing.Point(131, 217);
+            this.txtGender.Name = "txtGender";
+            this.txtGender.Size = new System.Drawing.Size(88, 20);
+            this.txtGender.TabIndex = 4;
             // 
-            // textBox7
+            // txtPassport
             // 
-            this.textBox7.Location = new System.Drawing.Point(131, 178);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(88, 20);
-            this.textBox7.TabIndex = 4;
+            this.txtPassport.Location = new System.Drawing.Point(131, 178);
+            this.txtPassport.Name = "txtPassport";
+            this.txtPassport.Size = new System.Drawing.Size(88, 20);
+            this.txtPassport.TabIndex = 4;
             // 
-            // textBox10
+            // txtNationality
             // 
-            this.textBox10.Location = new System.Drawing.Point(301, 178);
-            this.textBox10.Name = "textBox10";
-            this.textBox10.Size = new System.Drawing.Size(88, 20);
-            this.textBox10.TabIndex = 4;
+            this.txtNationality.Location = new System.Drawing.Point(301, 178);
+            this.txtNationality.Name = "txtNationality";
+            this.txtNationality.Size = new System.Drawing.Size(88, 20);
+            this.txtNationality.TabIndex = 4;
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(245, 217);
+            this.label10.Location = new System.Drawing.Point(245, 224);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(49, 13);
             this.label10.TabIndex = 3;
             this.label10.Text = "Birthdate";
             // 
-            // textBox9
+            // txtEmail
             // 
-            this.textBox9.Location = new System.Drawing.Point(301, 147);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(88, 20);
-            this.textBox9.TabIndex = 4;
+            this.txtEmail.Location = new System.Drawing.Point(301, 147);
+            this.txtEmail.Name = "txtEmail";
+            this.txtEmail.Size = new System.Drawing.Size(88, 20);
+            this.txtEmail.TabIndex = 4;
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(245, 178);
+            this.label9.Location = new System.Drawing.Point(238, 185);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(56, 13);
             this.label9.TabIndex = 3;
@@ -264,10 +271,12 @@
             // 
             // txtName
             // 
+            this.txtName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.txtName.Location = new System.Drawing.Point(131, 56);
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(258, 20);
             this.txtName.TabIndex = 4;
+            this.txtName.TextChanged += new System.EventHandler(this.txtName_TextChanged);
             // 
             // label2
             // 
@@ -288,58 +297,107 @@
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // btnSave
             // 
-            this.button1.Location = new System.Drawing.Point(461, 521);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(118, 36);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "Save";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnSave.Location = new System.Drawing.Point(475, 504);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(118, 36);
+            this.btnSave.TabIndex = 4;
+            this.btnSave.Text = "Save";
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(612, 521);
+            this.btnCancel.Location = new System.Drawing.Point(645, 504);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(118, 36);
             this.btnCancel.TabIndex = 4;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            // 
+            // dgvCustomer
+            // 
+            this.dgvCustomer.AllowUserToAddRows = false;
+            this.dgvCustomer.AllowUserToDeleteRows = false;
+            this.dgvCustomer.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvCustomer.Location = new System.Drawing.Point(475, 34);
+            this.dgvCustomer.MultiSelect = false;
+            this.dgvCustomer.Name = "dgvCustomer";
+            this.dgvCustomer.ReadOnly = true;
+            this.dgvCustomer.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvCustomer.Size = new System.Drawing.Size(401, 388);
+            this.dgvCustomer.TabIndex = 5;
+            this.dgvCustomer.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCustomer_CellClick);
+            this.dgvCustomer.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCustomer_CellContentClick);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(472, 12);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(88, 13);
+            this.label1.TabIndex = 6;
+            this.label1.Text = "Customer Search";
+            // 
+            // btnClear
+            // 
+            this.btnClear.Location = new System.Drawing.Point(16, 504);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(118, 36);
+            this.btnClear.TabIndex = 4;
+            this.btnClear.Text = "Clear";
+            this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.Click += new System.EventHandler(this.btnSave_Click);
+            // 
+            // txtCustName
+            // 
+            this.txtCustName.Location = new System.Drawing.Point(35, 448);
+            this.txtCustName.Name = "txtCustName";
+            this.txtCustName.Size = new System.Drawing.Size(100, 20);
+            this.txtCustName.TabIndex = 7;
             // 
             // AddCustomerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(761, 569);
+            this.ClientSize = new System.Drawing.Size(899, 569);
+            this.Controls.Add(this.txtCustName);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.dgvCustomer);
             this.Controls.Add(this.btnCancel);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnClear);
+            this.Controls.Add(this.btnSave);
             this.Controls.Add(this.tabControl1);
             this.Name = "AddCustomerForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AddCustomerForm";
             this.Load += new System.EventHandler(this.AddCustomerForm_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCustomer)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox txtComment;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker dtpBirthdate;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox txtBirthPlace;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox textBox8;
-        private System.Windows.Forms.TextBox textBox7;
-        private System.Windows.Forms.TextBox textBox10;
+        private System.Windows.Forms.TextBox txtGender;
+        private System.Windows.Forms.TextBox txtPassport;
+        private System.Windows.Forms.TextBox txtNationality;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox textBox9;
+        private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox txtPhone;
         private System.Windows.Forms.Label label8;
@@ -351,7 +409,11 @@
         private System.Windows.Forms.TextBox txtName;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.DataGridView dgvCustomer;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnClear;
+        private System.Windows.Forms.TextBox txtCustName;
     }
 }
