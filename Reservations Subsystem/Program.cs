@@ -16,7 +16,7 @@ namespace Reservations_Subsystem
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new main_form());
+            Application.Run(new ROS_Main());
         }
     }
 }
