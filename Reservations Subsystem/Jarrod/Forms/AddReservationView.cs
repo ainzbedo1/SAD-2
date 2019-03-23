@@ -904,6 +904,7 @@ namespace Reservations_Subsystem
         {
             if (e.KeyData == Keys.Enter)
             {
+                /*
                 MessageBox.Show(txtCustomerName.Text);
                 CustomerDataService customerDataService = new CustomerDataService();
                 //CustomerInfo myCustomerInfo = new CustomerInfo();
@@ -911,19 +912,20 @@ namespace Reservations_Subsystem
                 TheCustomerInfo = customerDataService.GetCustomerInfoByName(txtCustomerName.Text);
 
                 //theCustomerInfo = myCustomerInfo;
+                */
             }
         }
             
         private void btnStatementOfAccount_Click(object sender, EventArgs e)
         {
-            
+            /*
             FrmStateAccount frm = new FrmStateAccount();
             ReservationDataService resData = new ReservationDataService();
             MessageBox.Show(theCustomerInfo.Id.ToString());
             frm.LoadReport(Convert.ToInt32(theCustomerInfo.Id), EndDate);
             frm.referencefrm1 = this;
             frm.Show();
-            
+            */
         }
     }
 }

@@ -1282,8 +1282,7 @@ namespace Reservations_Subsystem
         }
         private void btnViewReservation_Click(object sender, EventArgs e)
         {
-          
-            MSR frm = new MSR();
+          /*            MSR frm = new MSR();
             ReservationDataService resData = new ReservationDataService();
             int month = Array.IndexOf(monthString, btnMainMonth.Text) + 1, year = Int32.Parse(btnMainYear.Text);
 
@@ -1294,10 +1293,12 @@ namespace Reservations_Subsystem
             frm.referencefrm1 = this;
 
             frm.Show();
+            */
         }
+
         private void btnOccRep_Click(object sender, EventArgs e)
         {
-
+            /*
             FrmOccupancy frm = new FrmOccupancy();
             ReservationDataService resData = new ReservationDataService();
             int month = Array.IndexOf(monthString, btnMainMonth.Text) + 1, year = Int32.Parse(btnMainYear.Text);
@@ -1309,6 +1310,7 @@ namespace Reservations_Subsystem
             frm.referencefrm1 = this;
 
             frm.Show();
+            */
         }
     } 
 
