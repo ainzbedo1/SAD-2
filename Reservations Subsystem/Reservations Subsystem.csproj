@@ -33,7 +33,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="CrystalDecisions.CrystalReports.Design, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.CrystalReports.Design, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <HintPath>..\..\CrystalDecisions.CrystalReports.Design.dll</HintPath>
+    </Reference>
     <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="CrystalDecisions.Data.AdoDotNetInterop, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="CrystalDecisions.ReportSource, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
@@ -194,17 +196,6 @@
       <DependentUpon>UMS_Login.cs</DependentUpon>
     </Compile>
     <Compile Include="Jethro\Classes\ROSQueries.cs" />
-    <Compile Include="ReportGenerator\Reports\DSMonthly.cs">
-      <DependentUpon>DSMonthly.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="ReportGenerator\Reports\DSMonthly.Designer.cs">
-      <DependentUpon>DSMonthly.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ReportGenerator\Reports\DSMonthly1.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DSMonthly.xsd</DependentUpon>
-    </Compile>
     <Compile Include="reportMonthly.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -216,17 +207,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ReportOcc.rpt</DependentUpon>
       <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Reports\DSMonthly.cs">
-      <DependentUpon>DSMonthly.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="Reports\DSMonthly.Designer.cs">
-      <DependentUpon>DSMonthly.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Reports\DSMonthly1.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DSMonthly.xsd</DependentUpon>
     </Compile>
     <Compile Include="rptStateAccount.cs">
       <AutoGen>True</AutoGen>
@@ -338,34 +318,14 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="ReportGenerator\Reports\DSMonthly.xsc">
-      <DependentUpon>DSMonthly.xsd</DependentUpon>
-    </None>
-    <None Include="ReportGenerator\Reports\DSMonthly.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>DSMonthly1.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="ReportGenerator\Reports\DSMonthly.xss">
-      <DependentUpon>DSMonthly.xsd</DependentUpon>
-    </None>
-    <None Include="Reports\DSMonthly.xsc">
-      <DependentUpon>DSMonthly.xsd</DependentUpon>
-    </None>
-    <None Include="Reports\DSMonthly.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>DSMonthly1.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Reports\DSMonthly.xss">
-      <DependentUpon>DSMonthly.xsd</DependentUpon>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="bin\Debug\" />
+    <Folder Include="ReportGenerator\Reports\" />
+    <Folder Include="Reports\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />

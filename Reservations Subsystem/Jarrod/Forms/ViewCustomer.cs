@@ -18,7 +18,7 @@ namespace Reservations_Subsystem
         public ViewCustomer()
         {
             InitializeComponent();
-            conn = new MySqlConnection("Server=localhost;Database=sad2_db;Uid=root;Pwd=root;");
+            conn = new MySqlConnection("Server=localhost;Database=sad2_db;Uid=root;Pwd=root;SslMode=none;");
         }
 
         private void ViewCustomer_Load(object sender, EventArgs e)
@@ -31,7 +31,7 @@ namespace Reservations_Subsystem
             try
             {
                 conn.Open();
-                MySqlCommand comm = new MySqlCommand("Select id, name AS Name, company AS Company, address AS Address, phone AS Contact, email AS E-Mail, passport AS Passport, nationality AS Nationality, gender AS Gender, birthdate AS Birthdate, birthplace AS Birthplace, comment AS Comment from customer", conn);
+                MySqlCommand comm = new MySqlCommand("Select id, name AS Name, company AS Company, address AS Address, phone AS Contact, email AS eMail, passport AS Passport, nationality AS Nationality, gender AS Gender, birthdate AS Birthdate, birthplace AS Birthplace, comment AS Comment from customer", conn);
                 MySqlDataAdapter adp = new MySqlDataAdapter(comm);
                 DataTable dt = new DataTable();
                 adp.Fill(dt);
