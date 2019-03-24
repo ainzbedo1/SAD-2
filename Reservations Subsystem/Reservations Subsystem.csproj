@@ -100,6 +100,12 @@
     <Compile Include="FrmStateAccount.Designer.cs">
       <DependentUpon>FrmStateAccount.cs</DependentUpon>
     </Compile>
+    <Compile Include="Jarrod\Forms\AddCustomerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Jarrod\Forms\AddCustomerForm.Designer.cs">
+      <DependentUpon>AddCustomerForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Jarrod\Forms\MSRDataTable.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -114,12 +120,6 @@
     </Compile>
     <Compile Include="Jethro\Classes\DBConnect.cs" />
     <Compile Include="Jarrod\DataService\CustomerDataService.cs" />
-    <Compile Include="Jarrod\Forms\AddCustomerForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Jarrod\Forms\AddCustomerForm.Designer.cs">
-      <DependentUpon>AddCustomerForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="Jarrod\DataService\ReservationDataPresenter.cs" />
     <Compile Include="Jarrod\DataService\ReservationDataService.cs" />
     <Compile Include="Jarrod\Forms\AddReservationView.cs">
