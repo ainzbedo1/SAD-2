@@ -15,6 +15,7 @@ namespace Reservations_Subsystem
     {
         public MySqlConnection conn;
         public ReservationCalendarForm referencefrm1 { get; set; }
+        public int currID;
         public ViewCustomer()
         {
             InitializeComponent();
@@ -73,12 +74,53 @@ namespace Reservations_Subsystem
 
         private void btnAddCustomer_Click(object sender, EventArgs e)
         {
-
+            AddCustomerForm cusadd = new AddCustomerForm();
+            cusadd.reference= this;
+            this.Hide();
+            if (cusadd.ShowDialog() == DialogResult.OK)
+            {
+                refreshcCustomer();
+            }
         }
 
         private void btnEditCustomer_Click(object sender, EventArgs e)
         {
-
+            currID = int.Parse(view.SelectedRows[0].Cells[0].Value.ToString());
+            EditCustomerForm cusedit = new EditCustomerForm();
+            cusedit.reference = this;
+            cusedit.currID = this.currID;
+            this.Hide();
+            if (cusedit.ShowDialog() == DialogResult.OK)
+            {
+                refreshcCustomer();
+            }
         }
+
+        #region drag
+        public const int WM_NCLBUTTONDOWN = 0xA1;
+        public const int HT_CAPTION = 0x2;
+
+        [System.Runtime.InteropServices.DllImportAttribute("user32.dll")]
+        public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
+        [System.Runtime.InteropServices.DllImportAttribute("user32.dll")]
+        public static extern bool ReleaseCapture();
+        private void panel1_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                ReleaseCapture();
+                SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
+            }
+        }
+
+        private void label1_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                ReleaseCapture();
+                SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
+            }
+        }
+        #endregion
     }
 }

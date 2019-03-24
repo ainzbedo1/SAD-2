@@ -192,57 +192,51 @@ namespace Reservations_Subsystem
                 int CustomerExists = Convert.ToInt32(cmd.ExecuteScalar());
                 if (CustomerExists > 0)
                 {
-                    DialogResult dialogResult = MessageBox.Show("A customer with same name exists already" +
-                        "would you like create a new customer with the same name" +
-                        "?", "Confirm", MessageBoxButtons.YesNo);
-
-                    if (dialogResult == DialogResult.Yes)
+                    MessageBox.Show("customer with the same name exist please choose " +
+                        "another name");
+                }
+                else
+                {
+                    // user clicked no
+                    try
                     {
-                        // if user clicked yes 
+                        CustomerDataService customerData = new CustomerDataService();
+                        //insert into customer
+                        // insert into statement of account
+                        // insert into question reservation form
+                        // inesrt into customer
+                        // insert into reservation
+                        long lastInsertedCustomer = customerData.InsertIntoCustomer(Customer.Name, Customer.Company, Customer.Address, Customer.Phone, Customer.Email, Customer.Passport, Customer.Nationality, Customer.Gender, Customer.BirthDate, Customer.BirthPlace, Customer.Comment);
+                        //public void InsertIntoReservation(int roomId, int customerId, string description, string checkInDate, string checkOutDate, Boolean occupied, string totalPrice, string lengthOfStay)
+                        //reserveNow = GetByRoomNumber(Convert.ToString(roomId));
+                        ResNow.CustomerId = Convert.ToInt32(lastInsertedCustomer);
 
+                        long lastInsertReservation = AddReservation(Convert.ToInt32(ResNow.RoomId), ResNow.CustomerId, ResNow.Desc, ResNow.StartDate, ResNow.EndDate, 0, ResNow.TotalPrice, ResNow.LenghtOfStay, ResNow.RoomRate);
+                        //calendar.displayReservationButt()
+                        //if reseravtion is in range of datagridview 
+
+                        if ((ResNow.StartDate.Year == ResNow.EndDate.Year) && (ResNow.StartDate.Month == ResNow.EndDate.Month))
+                        {
+                            //ReservationCalendarForm calendar = new ReservationCalendarForm();                                
+                            RoomDataService roomDataService = new RoomDataService();
+                            RoomInfo selectedRoom = new RoomInfo();
+
+
+                            selectedRoom = roomDataService.getRoomInfoById(Convert.ToInt32(ResNow.RoomId));
+                            string myRoomId = selectedRoom.RoomId;
+                            calendar.findFirstcell(ResNow.StartDate, ResNow.EndDate, lastInsertReservation, ResNow.RoomId);
+                            //calendar.createb(
+                        }
 
                     }
-                    else if (dialogResult == DialogResult.No)
+                    catch (Exception ex)
                     {
-                        // user clicked no
-                        try
-                        {
-                            CustomerDataService customerData = new CustomerDataService();
-                            //insert into customer
-                            // insert into statement of account
-                            // insert into question reservation form
-                            // inesrt into customer
-                            // insert into reservation
-                            long lastInsertedCustomer = customerData.InsertIntoCustomer(Customer.Name, Customer.Company, Customer.Address, Customer.Phone, Customer.Email, Customer.Passport, Customer.Nationality, Customer.Gender, Customer.BirthDate, Customer.BirthPlace, Customer.Comment);
-                            //public void InsertIntoReservation(int roomId, int customerId, string description, string checkInDate, string checkOutDate, Boolean occupied, string totalPrice, string lengthOfStay)
-                            //reserveNow = GetByRoomNumber(Convert.ToString(roomId));
-                            ResNow.CustomerId = Convert.ToInt32(lastInsertedCustomer);
-
-                            long lastInsertReservation = AddReservation(Convert.ToInt32(ResNow.RoomId), ResNow.CustomerId, ResNow.Desc, ResNow.StartDate, ResNow.EndDate, 0, ResNow.TotalPrice, ResNow.LenghtOfStay, ResNow.RoomRate);
-                            //calendar.displayReservationButt()
-                            //if reseravtion is in range of datagridview 
-
-                            if ((ResNow.StartDate.Year == ResNow.EndDate.Year) && (ResNow.StartDate.Month == ResNow.EndDate.Month))
-                            {
-                                //ReservationCalendarForm calendar = new ReservationCalendarForm();                                
-                                RoomDataService roomDataService = new RoomDataService();
-                                RoomInfo selectedRoom = new RoomInfo();
-
-
-                                selectedRoom = roomDataService.getRoomInfoById(Convert.ToInt32(ResNow.RoomId));
-                                string myRoomId = selectedRoom.RoomId;
-                                calendar.findFirstcell(ResNow.StartDate, ResNow.EndDate, lastInsertReservation, ResNow.RoomId);
-                                //calendar.createb(
-                            }
-
-                        }
-                        catch (Exception ex)
-                        {
-                            MessageBox.Show(ex.ToString());
-                        }
-
+                        MessageBox.Show(ex.ToString());
                     }
                 }
+            }
+
+                    /*
                 // MessageBox is not triggered
                 else
                 {
@@ -283,6 +277,7 @@ namespace Reservations_Subsystem
                     }
                 }
             }
+            */
         }
 
         //

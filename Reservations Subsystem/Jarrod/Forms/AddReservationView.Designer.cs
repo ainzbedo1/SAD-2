@@ -234,6 +234,7 @@
             // 
             // cmbRoomNumber
             // 
+            this.cmbRoomNumber.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbRoomNumber.FormattingEnabled = true;
             this.cmbRoomNumber.Location = new System.Drawing.Point(202, 40);
             this.cmbRoomNumber.Name = "cmbRoomNumber";
@@ -243,6 +244,7 @@
             // 
             // cmbRoomType
             // 
+            this.cmbRoomType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbRoomType.FormattingEnabled = true;
             this.cmbRoomType.Location = new System.Drawing.Point(15, 40);
             this.cmbRoomType.Name = "cmbRoomType";

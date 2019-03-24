@@ -288,6 +288,7 @@ namespace Reservations_Subsystem
             StringCollection nameCollection = new StringCollection();
             //nameCollection = custDataService.AutoCompleteCollection();
             txtCustomerName.AutoCompleteCustomSource = custDataService.AutoCompleteCollection(); 
+            
         }
         private void AddReservation_Load(object sender, EventArgs e)
         {
@@ -716,7 +717,7 @@ namespace Reservations_Subsystem
         {
             AddCustomerForm frm = new AddCustomerForm();
             frm.reference = this;
-            frm.SurName = CustomerName;
+            frm.SurName.Text = txtCustomerName.Text;
             frm.ShowDialog();
             
         }
@@ -873,8 +874,8 @@ namespace Reservations_Subsystem
                 int custId = Convert.ToInt32(theCustomerInfo.Id);
                 custInfo = custData.GetCustomerInfoById(custId);
                 //MessageBox.Show(custInfo.Id.ToString());
-                frm.SetCustomerInformation(custInfo);
-                frm.editForm = true;
+                //frm.SetCustomerInformation(custInfo);
+                //frm.editForm = true;
                 frm.reference = this;
                 //frm.SurName = CustomerName;
                 frm.ShowDialog();
