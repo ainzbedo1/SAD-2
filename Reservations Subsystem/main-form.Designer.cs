@@ -70,6 +70,7 @@
             this.btn_POS.TabIndex = 12;
             this.btn_POS.Text = "POS";
             this.btn_POS.UseVisualStyleBackColor = false;
+            this.btn_POS.Click += new System.EventHandler(this.btn_POS_Click);
             // 
             // btn_Inv
             // 
@@ -85,6 +86,7 @@
             this.btn_Inv.TabIndex = 11;
             this.btn_Inv.Text = "Inventory";
             this.btn_Inv.UseVisualStyleBackColor = false;
+            this.btn_Inv.Click += new System.EventHandler(this.btn_Inv_Click);
             // 
             // btn_Sched
             // 
@@ -100,6 +102,7 @@
             this.btn_Sched.TabIndex = 10;
             this.btn_Sched.Text = "Schedule";
             this.btn_Sched.UseVisualStyleBackColor = false;
+            this.btn_Sched.Click += new System.EventHandler(this.btn_Sched_Click);
             // 
             // button1
             // 
