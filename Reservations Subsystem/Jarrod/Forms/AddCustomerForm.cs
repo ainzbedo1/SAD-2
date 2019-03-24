@@ -15,6 +15,7 @@ namespace Reservations_Subsystem
     {
         public MySqlConnection conn;
         public AddReservationView reference { get; set; }
+        public ViewCustomer vcustomer { get; set; }
 
         public AddCustomerForm()
         {
@@ -25,6 +26,34 @@ namespace Reservations_Subsystem
         private void AddCustomerForm_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                conn.Open();
+                MySqlCommand command = new MySqlCommand("INSERT into customer(name, company, address, phone, email, passport, nationality, gender, birthdate, birthplace, comment) values('" + SurName.Text + "','" + company.Text + "','" + address.Text + "','" + phone.Text + "','" + email.Text + "','" + passport.Text + "','" + nationality.Text + "','" + gender.Text + "','" + bdate.Value.ToString("yyyy-MM-dd") + "','" + bplace.Text + "','" + comment.Text + "')", conn);
+
+                if (command.ExecuteNonQuery() == 1) MessageBox.Show("Data Inserted");
+                else MessageBox.Show("Data not inserted");
+            }
+            catch (Exception ee)
+            {
+                MessageBox.Show("" + ee);
+                conn.Close();
+            }
+            this.DialogResult = DialogResult.OK;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void AddCustomerForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            vcustomer.Show();
         }
     }
 }

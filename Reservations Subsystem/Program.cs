@@ -16,7 +16,7 @@ namespace Reservations_Subsystem
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new AddCustomerForm());
+            Application.Run(new ViewCustomer());
             //Application.Run(new ReservationCalendarForm());
         }
     }

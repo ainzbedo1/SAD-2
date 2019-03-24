@@ -106,6 +106,12 @@
     <Compile Include="Jarrod\Forms\AddCustomerForm.Designer.cs">
       <DependentUpon>AddCustomerForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Jarrod\Forms\EditCustomerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Jarrod\Forms\EditCustomerForm.Designer.cs">
+      <DependentUpon>EditCustomerForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Jarrod\Forms\MSRDataTable.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -245,6 +251,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Jarrod\Forms\AddReservationView.resx">
       <DependentUpon>AddReservationView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Jarrod\Forms\EditCustomerForm.resx">
+      <DependentUpon>EditCustomerForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Jarrod\Forms\MSRDataTable.resx">
       <DependentUpon>MSRDataTable.cs</DependentUpon>
