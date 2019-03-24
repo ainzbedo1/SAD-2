@@ -8,7 +8,7 @@ namespace Reservations_Subsystem
 {
     public class RoomInfo
     {
-
+        
         private string roomType { get; set; }
         private string roomNumber { get; set; }
         private string roomId { get; set; }
