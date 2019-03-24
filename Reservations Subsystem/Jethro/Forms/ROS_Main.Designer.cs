@@ -378,6 +378,7 @@
             this.menuSearch.Name = "menuSearch";
             this.menuSearch.Size = new System.Drawing.Size(259, 35);
             this.menuSearch.TabIndex = 4;
+            this.menuSearch.TextChanged += new System.EventHandler(this.menuSearch_TextChanged);
             // 
             // ROS_Main
             // 

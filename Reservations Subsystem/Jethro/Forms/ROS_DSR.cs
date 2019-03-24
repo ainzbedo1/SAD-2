@@ -75,7 +75,18 @@ namespace Reservations_Subsystem
 
             da.Fill(dt);
             orderReceiptsGridView.DataSource = dt;
-        }
+        }/*
+        public void loadAllOrders()
+        {
+            DBConnect db = new DBConnect();
+            MySqlConnection con = db.connect();
+            String Menu = "SELECT menuitem.name, menuitem.price, order_menuitem.quantity FROM order_menuitem JOIN menuitem ON order_menuitem.menuitem_id = menuitem.id WHERE order_menuitem.order_id = " + order_id;
+            DataTable dt = new DataTable();
+            MySqlDataAdapter da = new MySqlDataAdapter(Menu, con);
+
+            da.Fill(dt);
+            ordersGridView.DataSource = dt;
+        }*/
         public void loadOrders()
         {
             DBConnect db = new DBConnect();

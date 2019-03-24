@@ -38,30 +38,34 @@
             this.OrderLabel = new System.Windows.Forms.Label();
             this.OrderTopPanel = new System.Windows.Forms.Panel();
             this.DSRPanel = new System.Windows.Forms.Panel();
+            this.DSRGridView = new System.Windows.Forms.DataGridView();
             this.MainPanel = new System.Windows.Forms.Panel();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.Orders = new System.Windows.Forms.TabPage();
+            this.Consumed = new System.Windows.Forms.TabPage();
             this.yearValue = new System.Windows.Forms.ComboBox();
             this.monthValue = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.orderReceiptsGridView = new System.Windows.Forms.DataGridView();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.OrderPanel = new System.Windows.Forms.Panel();
+            this.ordersGridView = new System.Windows.Forms.DataGridView();
             this.panel6 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
-            this.DSRGridView = new System.Windows.Forms.DataGridView();
-            this.orderReceiptsGridView = new System.Windows.Forms.DataGridView();
-            this.ordersGridView = new System.Windows.Forms.DataGridView();
             this.OrderTopPanel.SuspendLayout();
             this.DSRPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DSRGridView)).BeginInit();
             this.MainPanel.SuspendLayout();
+            this.tabControl1.SuspendLayout();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.orderReceiptsGridView)).BeginInit();
             this.panel3.SuspendLayout();
             this.OrderPanel.SuspendLayout();
-            this.panel6.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.DSRGridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.orderReceiptsGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ordersGridView)).BeginInit();
+            this.panel6.SuspendLayout();
             this.SuspendLayout();
             // 
             // backButton
@@ -109,10 +113,46 @@
             this.DSRPanel.Size = new System.Drawing.Size(400, 500);
             this.DSRPanel.TabIndex = 0;
             // 
+            // DSRGridView
+            // 
+            this.DSRGridView.AllowUserToAddRows = false;
+            this.DSRGridView.AllowUserToDeleteRows = false;
+            this.DSRGridView.AllowUserToResizeColumns = false;
+            this.DSRGridView.AllowUserToResizeRows = false;
+            this.DSRGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DSRGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.DSRGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.DSRGridView.DefaultCellStyle = dataGridViewCellStyle2;
+            this.DSRGridView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.DSRGridView.Location = new System.Drawing.Point(0, 49);
+            this.DSRGridView.MultiSelect = false;
+            this.DSRGridView.Name = "DSRGridView";
+            this.DSRGridView.ReadOnly = true;
+            this.DSRGridView.RowHeadersVisible = false;
+            this.DSRGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.DSRGridView.Size = new System.Drawing.Size(398, 449);
+            this.DSRGridView.TabIndex = 4;
+            this.DSRGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DSRGridView_CellClick);
+            // 
             // MainPanel
             // 
             this.MainPanel.BackColor = System.Drawing.SystemColors.Control;
             this.MainPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.MainPanel.Controls.Add(this.tabControl1);
             this.MainPanel.Controls.Add(this.yearValue);
             this.MainPanel.Controls.Add(this.monthValue);
             this.MainPanel.Controls.Add(this.label1);
@@ -125,6 +165,39 @@
             this.MainPanel.Name = "MainPanel";
             this.MainPanel.Size = new System.Drawing.Size(1250, 600);
             this.MainPanel.TabIndex = 1;
+            // 
+            // tabControl1
+            // 
+            this.tabControl1.Controls.Add(this.Orders);
+            this.tabControl1.Controls.Add(this.Consumed);
+            this.tabControl1.Location = new System.Drawing.Point(417, 22);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(365, 487);
+            this.tabControl1.TabIndex = 16;
+            this.tabControl1.Visible = false;
+            // 
+            // Orders
+            // 
+            this.Orders.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Orders.Location = new System.Drawing.Point(4, 22);
+            this.Orders.Name = "Orders";
+            this.Orders.Padding = new System.Windows.Forms.Padding(3);
+            this.Orders.Size = new System.Drawing.Size(357, 461);
+            this.Orders.TabIndex = 0;
+            this.Orders.Text = "Orders";
+            this.Orders.UseVisualStyleBackColor = true;
+            // 
+            // Consumed
+            // 
+            this.Consumed.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Consumed.Location = new System.Drawing.Point(4, 22);
+            this.Consumed.Name = "Consumed";
+            this.Consumed.Padding = new System.Windows.Forms.Padding(3);
+            this.Consumed.Size = new System.Drawing.Size(357, 461);
+            this.Consumed.TabIndex = 1;
+            this.Consumed.Text = "Consumed";
+            this.Consumed.UseVisualStyleBackColor = true;
             // 
             // yearValue
             // 
@@ -194,94 +267,6 @@
             this.panel1.Size = new System.Drawing.Size(400, 500);
             this.panel1.TabIndex = 10;
             // 
-            // panel3
-            // 
-            this.panel3.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel3.Controls.Add(this.label2);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel3.Location = new System.Drawing.Point(0, 0);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(398, 49);
-            this.panel3.TabIndex = 0;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(2, 6);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(230, 37);
-            this.label2.TabIndex = 7;
-            this.label2.Text = "Order Receipts";
-            // 
-            // OrderPanel
-            // 
-            this.OrderPanel.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.OrderPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.OrderPanel.Controls.Add(this.ordersGridView);
-            this.OrderPanel.Controls.Add(this.panel6);
-            this.OrderPanel.Location = new System.Drawing.Point(836, 14);
-            this.OrderPanel.Name = "OrderPanel";
-            this.OrderPanel.Size = new System.Drawing.Size(400, 500);
-            this.OrderPanel.TabIndex = 11;
-            // 
-            // panel6
-            // 
-            this.panel6.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.panel6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel6.Controls.Add(this.label4);
-            this.panel6.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel6.Location = new System.Drawing.Point(0, 0);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(398, 49);
-            this.panel6.TabIndex = 0;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(2, 6);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(115, 37);
-            this.label4.TabIndex = 7;
-            this.label4.Text = "Orders";
-            // 
-            // DSRGridView
-            // 
-            this.DSRGridView.AllowUserToAddRows = false;
-            this.DSRGridView.AllowUserToDeleteRows = false;
-            this.DSRGridView.AllowUserToResizeColumns = false;
-            this.DSRGridView.AllowUserToResizeRows = false;
-            this.DSRGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DSRGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.DSRGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.DSRGridView.DefaultCellStyle = dataGridViewCellStyle2;
-            this.DSRGridView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.DSRGridView.Location = new System.Drawing.Point(0, 49);
-            this.DSRGridView.MultiSelect = false;
-            this.DSRGridView.Name = "DSRGridView";
-            this.DSRGridView.ReadOnly = true;
-            this.DSRGridView.RowHeadersVisible = false;
-            this.DSRGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DSRGridView.Size = new System.Drawing.Size(398, 449);
-            this.DSRGridView.TabIndex = 4;
-            this.DSRGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DSRGridView_CellClick);
-            // 
             // orderReceiptsGridView
             // 
             this.orderReceiptsGridView.AllowUserToAddRows = false;
@@ -317,6 +302,38 @@
             this.orderReceiptsGridView.TabIndex = 4;
             this.orderReceiptsGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.orderReceiptsGridView_CellClick);
             // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel3.Controls.Add(this.label2);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel3.Location = new System.Drawing.Point(0, 0);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(398, 49);
+            this.panel3.TabIndex = 0;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(2, 6);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(230, 37);
+            this.label2.TabIndex = 7;
+            this.label2.Text = "Order Receipts";
+            // 
+            // OrderPanel
+            // 
+            this.OrderPanel.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.OrderPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.OrderPanel.Controls.Add(this.ordersGridView);
+            this.OrderPanel.Controls.Add(this.panel6);
+            this.OrderPanel.Location = new System.Drawing.Point(836, 14);
+            this.OrderPanel.Name = "OrderPanel";
+            this.OrderPanel.Size = new System.Drawing.Size(400, 500);
+            this.OrderPanel.TabIndex = 11;
+            // 
             // ordersGridView
             // 
             this.ordersGridView.AllowUserToAddRows = false;
@@ -351,6 +368,27 @@
             this.ordersGridView.Size = new System.Drawing.Size(398, 449);
             this.ordersGridView.TabIndex = 4;
             // 
+            // panel6
+            // 
+            this.panel6.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.panel6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel6.Controls.Add(this.label4);
+            this.panel6.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel6.Location = new System.Drawing.Point(0, 0);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(398, 49);
+            this.panel6.TabIndex = 0;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(2, 6);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(115, 37);
+            this.label4.TabIndex = 7;
+            this.label4.Text = "Orders";
+            // 
             // ROS_DSR
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -369,17 +407,18 @@
             this.OrderTopPanel.ResumeLayout(false);
             this.OrderTopPanel.PerformLayout();
             this.DSRPanel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.DSRGridView)).EndInit();
             this.MainPanel.ResumeLayout(false);
             this.MainPanel.PerformLayout();
+            this.tabControl1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.orderReceiptsGridView)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.OrderPanel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.ordersGridView)).EndInit();
             this.panel6.ResumeLayout(false);
             this.panel6.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.DSRGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.orderReceiptsGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ordersGridView)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -404,5 +443,8 @@
         private System.Windows.Forms.DataGridView DSRGridView;
         private System.Windows.Forms.DataGridView orderReceiptsGridView;
         private System.Windows.Forms.DataGridView ordersGridView;
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabPage Orders;
+        private System.Windows.Forms.TabPage Consumed;
     }
 }

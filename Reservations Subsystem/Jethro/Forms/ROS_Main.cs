@@ -159,8 +159,9 @@ namespace Reservations_Subsystem
                         MessageBox.Show("Sales Report for the day has been created!");
                         MySqlCommand comm2 = new MySqlCommand("INSERT INTO dailysalesreport (reportDate) VALUES (NOW())", con);
                         comm2.ExecuteNonQuery();
+                        adp.Fill(dt);
                         con.Close();
-                        DSR_ID = 1;
+                        DSR_ID = Int32.Parse(dt.Rows[0]["id"].ToString());
                     }
                     else
                     {
@@ -229,7 +230,7 @@ namespace Reservations_Subsystem
         }
         #endregion
 
-        #region QUERIES
+        #region MENU QUERY OR SUMTHIN IDK
         public void refreshMenu()
         {
             DBConnect db = new DBConnect();
@@ -240,6 +241,37 @@ namespace Reservations_Subsystem
 
             da.Fill(dt);
             menuGridView.DataSource = dt;
+        }
+        #endregion
+
+        #region SEARCH
+        private void menuSearch_TextChanged(object sender, EventArgs e)
+        {
+
+            DBConnect db = new DBConnect();
+            using (MySqlConnection conn = db.connect())
+            {
+                if (String.IsNullOrWhiteSpace(menuSearch.Text))
+                {
+                    conn.Open();
+                    string query = ("SELECT * FROM menuitem");
+                    MySqlDataAdapter testing1 = new MySqlDataAdapter(query, conn);
+                    DataTable testing2 = new DataTable();
+                    testing1.Fill(testing2);
+                    menuGridView.DataSource = testing2;
+                }
+                else
+                {
+                    conn.Open();
+                    string query = ("SELECT * FROM menuitem WHERE name LIKE '" + menuSearch.Text + "%'");
+                    MySqlDataAdapter testing1 = new MySqlDataAdapter(query, conn);
+                    DataTable testing2 = new DataTable();
+                    testing1.Fill(testing2);
+                    menuGridView.DataSource = testing2;
+                }
+                menuGridView.ClearSelection();
+                addButton.Enabled = false;
+            }
         }
         #endregion
     }
