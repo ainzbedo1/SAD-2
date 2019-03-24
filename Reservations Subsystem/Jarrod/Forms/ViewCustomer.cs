@@ -15,15 +15,16 @@ namespace Reservations_Subsystem
     {
         public MySqlConnection conn;
         public ReservationCalendarForm referencefrm1 { get; set; }
+        public int currID;
         public ViewCustomer()
         {
             InitializeComponent();
-            conn = new MySqlConnection("Server=localhost;Database=prototype_sad;Uid=root;Pwd=root;");
+            conn = new MySqlConnection("Server=localhost;Database=sad2_db;Uid=root;Pwd=root;SslMode=none;");
         }
 
         private void ViewCustomer_Load(object sender, EventArgs e)
         {
-
+            refreshcCustomer();
         }
 
         public void refreshcCustomer()
@@ -31,7 +32,7 @@ namespace Reservations_Subsystem
             try
             {
                 conn.Open();
-                MySqlCommand comm = new MySqlCommand("Select id, name AS Name, company AS Company, address AS Address, phone AS Contact, email AS E-Mail, passport AS Passport, nationality AS Nationality, gender AS Gender, birthdate AS Birthdate, birthplace AS Birthplace, comment AS Comment from customer", conn);
+                MySqlCommand comm = new MySqlCommand("Select id, name AS Name, company AS Company, address AS Address, phone AS Contact, email AS eMail, passport AS Passport, nationality AS Nationality, gender AS Gender, birthdate AS Birthdate, birthplace AS Birthplace, comment AS Comment from customer", conn);
                 MySqlDataAdapter adp = new MySqlDataAdapter(comm);
                 DataTable dt = new DataTable();
                 adp.Fill(dt);
@@ -47,7 +48,7 @@ namespace Reservations_Subsystem
                 foreach (DataGridViewColumn ya in view.Columns)
                 {
                     ya.SortMode = DataGridViewColumnSortMode.NotSortable;
-                    ya.Width = 100;
+                    ya.Width = 150;
                 }
                 foreach (DataGridViewRow ro in view.Rows)
                 {
@@ -73,12 +74,64 @@ namespace Reservations_Subsystem
 
         private void btnAddCustomer_Click(object sender, EventArgs e)
         {
-
+            currID = int.Parse(view.SelectedRows[0].Cells[0].Value.ToString());
+            try
+            {
+                conn.Open();
+                MySqlCommand comm = new MySqlCommand("UPDATE items SET status='Active' WHERE itemID = '" + currID + "';", conn);
+                comm.ExecuteNonQuery();
+                conn.Close();
+            }
+            catch (Exception ee)
+            {
+                MessageBox.Show("" + ee);
+                conn.Close();
+            }
+            refreshcCustomer();
         }
 
         private void btnEditCustomer_Click(object sender, EventArgs e)
         {
-
+            currID = int.Parse(view.SelectedRows[0].Cells[0].Value.ToString());
+            try
+            {
+                conn.Open();
+                MySqlCommand comm = new MySqlCommand("UPDATE items SET status='Active' WHERE itemID = '" + currID + "';", conn);
+                comm.ExecuteNonQuery();
+                conn.Close();
+            }
+            catch (Exception ee)
+            {
+                MessageBox.Show("" + ee);
+                conn.Close();
+            }
+            refreshcCustomer();
         }
+        #region drag
+        public const int WM_NCLBUTTONDOWN = 0xA1;
+        public const int HT_CAPTION = 0x2;
+
+        [System.Runtime.InteropServices.DllImportAttribute("user32.dll")]
+        public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
+        [System.Runtime.InteropServices.DllImportAttribute("user32.dll")]
+        public static extern bool ReleaseCapture();
+        private void panel1_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                ReleaseCapture();
+                SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
+            }
+        }
+
+        private void label1_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                ReleaseCapture();
+                SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
+            }
+        }
+        #endregion
     }
 }
