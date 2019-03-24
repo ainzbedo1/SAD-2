@@ -57,7 +57,7 @@ namespace Reservations_Subsystem
             AddRoom addRoom = new AddRoom();
             RoomDataService roomData = new RoomDataService();
             RoomInfo myRoomInfo = new RoomInfo();
-
+            addRoom.id = RoomId;
             myRoomInfo = roomData.getRoomInfoById(RoomId);
             addRoom.EditForm = true;
             addRoom.SettingRoomInfo(myRoomInfo);

@@ -18,6 +18,7 @@ namespace Reservations_Subsystem
         public MySqlConnection conn;
         public ViewRoom referenceViewRoomList { get; set; }
         public Boolean EditForm;
+        public int id { get; set; }
         public RoomInfo theRoomInfo {get; set;}
        // public Room roomForm;
         public RoomInfo TheRoomInfo
@@ -39,7 +40,6 @@ namespace Reservations_Subsystem
         public void SettingRoomInfo(RoomInfo room)
         {
             txtRoomNumber.Text = room.RoomNumber;
-            MessageBox.Show(room.RoomType.ToString());
             cmbRoomType.SelectedText = room.RoomType;
             cmbFloor.SelectedValue = room.FloorLevel;
         }
@@ -106,6 +106,7 @@ namespace Reservations_Subsystem
 
         private void AddRoom_Load(object sender, EventArgs e)
         {
+            MessageBox.Show(id.ToString());
             //referenceViewRoomList.Show();
             //this.Hide();
         }

@@ -61,7 +61,10 @@ namespace Reservations_Subsystem
                 }
             }
 
-            string query = "SELECT roomNumber, roomType  FROM room";
+            string query = "SELECT room.roomNumber, rt.roomType " +
+                "FROM sad2_db.room_type rt " +
+                "INNER JOIN sad2_db.room room " +
+                "ON rt.id = room.roomTypeId";
             using (MySqlDataAdapter blah = new MySqlDataAdapter(query, conn))
             {
                 try

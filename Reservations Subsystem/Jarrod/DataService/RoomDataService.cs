@@ -47,7 +47,8 @@ namespace Reservations_Subsystem
         }
         public RoomInfo getRoomInfoById(int roomId)
         {
-            string query = "SELECT id, roomNumber, roomType, description FROM room WHERE id = '" + roomId + "' ";
+            "SELECT room.roomNumber, rt.roomType FROM sad2_db.room_type rt INNER JOIN sad2_db.room room ON rt.id = room.roomTypeId; "
+            string query = "SELECT room, roomNumber, roomType, description FROM room WHERE id = '" + roomId + "' ";
             MySqlConnection.ClearPool(conn);
             using (MySqlCommand cmd = new MySqlCommand(query, conn))
             {
@@ -79,7 +80,7 @@ namespace Reservations_Subsystem
         public List<RoomTextBoxItems> getRoomInfoByType(string roomType)
         {
             var myComboItemsList = new List<RoomTextBoxItems>();
-            string query = "SELECT id, roomNumber, roomType FROM room WHERE roomType ='"+roomType+"' ";
+            string query = "SELECT id, typeName FROM room WHERE room_type ='"+roomType+"' ";
             using (MySqlDataAdapter blah = new MySqlDataAdapter(query, conn))
             {
                 try
@@ -91,8 +92,7 @@ namespace Reservations_Subsystem
                     {
                         RoomTextBoxItems myComboItems = new RoomTextBoxItems();
                         myComboItems.ID = Convert.ToInt32(drow[0]);
-                        myComboItems.RoomNumber = (drow[1]).ToString();
-                        myComboItems.RoomType = (drow[2]).ToString();
+                        myComboItems.roomType = (drow[1]).ToString();
 
                         myComboItemsList.Add(myComboItems);
                     }
@@ -200,12 +200,12 @@ namespace Reservations_Subsystem
         public void AddRoom(string roomNumber, string roomType, string floorLevel, string description)
         {
 
-            string query = "INSERT INTO room(roomNumber, roomType, floorLevel, description) VALUES(@roomNumber, @roomType, @floorLevel, @description)";
+            string query = "INSERT INTO room(roomNumber, floorLevel, description) VALUES(@roomNumber, @roomType, @floorLevel, @description)";
             using (MySqlCommand cmd = new MySqlCommand(query, conn))
             {
                 
                 cmd.Parameters.AddWithValue("@roomNumber", roomNumber);
-                cmd.Parameters.AddWithValue("@roomType", roomType);
+                //cmd.Parameters.AddWithValue("@roomType", roomType);
                 cmd.Parameters.AddWithValue("@floorLevel", floorLevel);
                 cmd.Parameters.AddWithValue("@description", description);
                 //cmd.Parameters.AddWithValue("@description", description);
@@ -221,15 +221,16 @@ namespace Reservations_Subsystem
                 }
             }
         }
+        
         public void UpdateRoom(string roomNumber, string roomType, string floorLevel, string description)
         {
 
-            string query = "INSERT INTO room(roomNumber, roomType, floorLevel, description) VALUES(@roomNumber, @roomType, @floorLevel, @description)";
+            string query = "INSERT INTO room(roomNumber, floorLevel, description) VALUES(@roomNumber, @floorLevel, @description)";
             using (MySqlCommand cmd = new MySqlCommand(query, conn))
             {
 
                 cmd.Parameters.AddWithValue("@roomNumber", roomNumber);
-                cmd.Parameters.AddWithValue("@roomType", roomType);
+                //cmd.Parameters.AddWithValue("@roomType", roomType);
                 cmd.Parameters.AddWithValue("@floorLevel", floorLevel);
                 cmd.Parameters.AddWithValue("@description", description);
                 //cmd.Parameters.AddWithValue("@description", description);

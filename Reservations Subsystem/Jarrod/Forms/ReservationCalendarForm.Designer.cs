@@ -163,6 +163,7 @@
             // 
             // btnViewReservation
             // 
+            this.btnViewReservation.Cursor = System.Windows.Forms.Cursors.No;
             this.btnViewReservation.Location = new System.Drawing.Point(6, 19);
             this.btnViewReservation.Name = "btnViewReservation";
             this.btnViewReservation.Size = new System.Drawing.Size(119, 23);

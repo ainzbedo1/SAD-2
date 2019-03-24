@@ -25,7 +25,8 @@ namespace Reservations_Subsystem
 
         private void btnBack_Click(object sender, EventArgs e)
         {
-            referencefrm1.Show();
+            //referencefrm1.Show();
+            this.Close();
         }
 
         private void ViewCustomer_FormClosing(object sender, FormClosingEventArgs e)
