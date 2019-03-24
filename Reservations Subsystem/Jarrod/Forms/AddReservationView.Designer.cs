@@ -45,13 +45,17 @@
             this.cmbRoomType = new System.Windows.Forms.ComboBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
+            this.lblTotalAccomadation = new System.Windows.Forms.Label();
             this.txtRate = new System.Windows.Forms.TextBox();
             this.cmbPerNight2 = new System.Windows.Forms.ComboBox();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.label13 = new System.Windows.Forms.Label();
             this.lblsomething = new System.Windows.Forms.Label();
-            this.lblTotalAccomadation = new System.Windows.Forms.Label();
             this.lblPerNight = new System.Windows.Forms.Label();
             this.lblNumOfNights = new System.Windows.Forms.Label();
             this.btnStatementOfAccount = new System.Windows.Forms.Button();
@@ -60,6 +64,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
@@ -77,11 +82,6 @@
             this.btnDelete = new System.Windows.Forms.Button();
             this.label15 = new System.Windows.Forms.Label();
             this.txtCustomName = new System.Windows.Forms.TextBox();
-            this.label17 = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label19 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.grpBoxRoomData.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -282,6 +282,40 @@
             this.tabPage1.Text = "Room Information";
             this.tabPage1.Click += new System.EventHandler(this.tabPage1_Click);
             // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(227, 462);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(100, 20);
+            this.textBox2.TabIndex = 10;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(227, 429);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(100, 20);
+            this.textBox1.TabIndex = 10;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.textBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(23, 462);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(67, 13);
+            this.label19.TabIndex = 9;
+            this.label19.Text = "Amount Paid";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(24, 436);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(67, 13);
+            this.label17.TabIndex = 9;
+            this.label17.Text = "Amount Paid";
+            // 
             // label16
             // 
             this.label16.AutoSize = true;
@@ -290,6 +324,15 @@
             this.label16.Size = new System.Drawing.Size(78, 13);
             this.label16.TabIndex = 8;
             this.label16.Text = "Price Per Night";
+            // 
+            // lblTotalAccomadation
+            // 
+            this.lblTotalAccomadation.AutoSize = true;
+            this.lblTotalAccomadation.Location = new System.Drawing.Point(224, 404);
+            this.lblTotalAccomadation.Name = "lblTotalAccomadation";
+            this.lblTotalAccomadation.Size = new System.Drawing.Size(41, 13);
+            this.lblTotalAccomadation.TabIndex = 7;
+            this.lblTotalAccomadation.Text = "label13";
             // 
             // txtRate
             // 
@@ -349,15 +392,6 @@
             this.lblsomething.Size = new System.Drawing.Size(12, 13);
             this.lblsomething.TabIndex = 8;
             this.lblsomething.Text = "x";
-            // 
-            // lblTotalAccomadation
-            // 
-            this.lblTotalAccomadation.AutoSize = true;
-            this.lblTotalAccomadation.Location = new System.Drawing.Point(224, 404);
-            this.lblTotalAccomadation.Name = "lblTotalAccomadation";
-            this.lblTotalAccomadation.Size = new System.Drawing.Size(41, 13);
-            this.lblTotalAccomadation.TabIndex = 7;
-            this.lblTotalAccomadation.Text = "label13";
             // 
             // lblPerNight
             // 
@@ -431,6 +465,16 @@
             this.label3.Size = new System.Drawing.Size(78, 13);
             this.label3.TabIndex = 0;
             this.label3.Text = "Price Per Night";
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(24, 404);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(66, 13);
+            this.label18.TabIndex = 5;
+            this.label18.Text = "Amount Due";
+            this.label18.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // tabPage2
             // 
@@ -599,50 +643,6 @@
             this.txtCustomName.Name = "txtCustomName";
             this.txtCustomName.Size = new System.Drawing.Size(100, 20);
             this.txtCustomName.TabIndex = 10;
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(24, 436);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(67, 13);
-            this.label17.TabIndex = 9;
-            this.label17.Text = "Amount Paid";
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(24, 404);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(66, 13);
-            this.label18.TabIndex = 5;
-            this.label18.Text = "Amount Due";
-            this.label18.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(227, 429);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 10;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
-            this.textBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(23, 462);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(67, 13);
-            this.label19.TabIndex = 9;
-            this.label19.Text = "Amount Paid";
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(227, 462);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
-            this.textBox2.TabIndex = 10;
             // 
             // AddReservationView
             // 
