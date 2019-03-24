@@ -14,8 +14,7 @@ namespace Reservations_Subsystem
     public partial class AddCustomerForm : Form
     {
         public MySqlConnection conn;
-        public AddReservationView reference { get; set; }
-        public ViewCustomer vcustomer { get; set; }
+        public Form reference { get; set; }
 
         public AddCustomerForm()
         {
@@ -53,7 +52,7 @@ namespace Reservations_Subsystem
 
         private void AddCustomerForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            vcustomer.Show();
+            reference.Show();
         }
     }
 }

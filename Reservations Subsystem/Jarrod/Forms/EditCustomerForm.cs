@@ -14,7 +14,7 @@ namespace Reservations_Subsystem
     public partial class EditCustomerForm : Form
     {
         public MySqlConnection conn;
-        public ViewCustomer vcustomer { get; set; }
+        public Form reference { get; set; }
         public int currID { get; set; }
         public EditCustomerForm()
         {
@@ -69,7 +69,7 @@ namespace Reservations_Subsystem
 
         private void EditCustomerForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            vcustomer.Show();
+            reference.Show();
         }
 
         private void btnSave_Click(object sender, EventArgs e)
