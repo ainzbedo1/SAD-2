@@ -75,7 +75,7 @@ namespace Reservations_Subsystem
         private void btnAddCustomer_Click(object sender, EventArgs e)
         {
             AddCustomerForm cusadd = new AddCustomerForm();
-            cusadd.vcustomer= this;
+            cusadd.reference= this;
             this.Hide();
             if (cusadd.ShowDialog() == DialogResult.OK)
             {
@@ -87,7 +87,7 @@ namespace Reservations_Subsystem
         {
             currID = int.Parse(view.SelectedRows[0].Cells[0].Value.ToString());
             EditCustomerForm cusedit = new EditCustomerForm();
-            cusedit.vcustomer = this;
+            cusedit.reference = this;
             cusedit.currID = this.currID;
             this.Hide();
             if (cusedit.ShowDialog() == DialogResult.OK)
