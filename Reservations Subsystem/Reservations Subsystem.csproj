@@ -376,6 +376,7 @@
     <Content Include="obj\Debug\TempPE\ReportOcc.cs.dll" />
     <Content Include="obj\Debug\TempPE\Reports.DSMonthly1.Designer.cs.dll" />
     <Content Include="obj\Debug\TempPE\rptStateAccount.cs.dll" />
+    <None Include="Resources\filter-results-button.png" />
     <None Include="Resources\search.png" />
     <None Include="Resources\restore.png" />
     <None Include="Resources\003-add.png" />

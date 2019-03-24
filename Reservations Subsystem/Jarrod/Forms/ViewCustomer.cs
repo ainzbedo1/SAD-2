@@ -18,12 +18,12 @@ namespace Reservations_Subsystem
         public ViewCustomer()
         {
             InitializeComponent();
-            conn = new MySqlConnection("Server=localhost;Database=prototype_sad;Uid=root;Pwd=root;");
+            conn = new MySqlConnection("Server=localhost;Database=sad2_db;Uid=root;Pwd=root;");
         }
 
         private void ViewCustomer_Load(object sender, EventArgs e)
         {
-
+            refreshcCustomer();
         }
 
         public void refreshcCustomer()
@@ -47,7 +47,7 @@ namespace Reservations_Subsystem
                 foreach (DataGridViewColumn ya in view.Columns)
                 {
                     ya.SortMode = DataGridViewColumnSortMode.NotSortable;
-                    ya.Width = 100;
+                    ya.Width = 150;
                 }
                 foreach (DataGridViewRow ro in view.Rows)
                 {
