@@ -120,7 +120,6 @@
     <Compile Include="Jarrod\Room\AddRoom.Designer.cs">
       <DependentUpon>AddRoom.cs</DependentUpon>
     </Compile>
-    <Compile Include="Jarrod\Classes Info\Room.cs" />
     <Compile Include="Jarrod\Classes Info\ReservationInfo.cs" />
     <Compile Include="Jarrod\Classes Info\CustomerInfo.cs" />
     <Compile Include="Jarrod\Forms\ViewCustomer.cs">

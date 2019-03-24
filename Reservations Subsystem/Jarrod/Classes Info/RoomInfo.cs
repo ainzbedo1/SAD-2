@@ -18,10 +18,11 @@ namespace Reservations_Subsystem
         private DateTime dateCreated { get; set; }
         private string singleBesd { get; set; }
         private Boolean occupied { get; set; }
-    
+
         private string desc { get; set; }
         // private string checkInDate { get; set; }
         // private string checkOutDate { get; set; }
+
 
 
         public string RoomRate
@@ -50,6 +51,11 @@ namespace Reservations_Subsystem
             set { desc = value; }
             get { return desc; }
         }
+        public string FloorLevel
+        {
+            set { floorLevel = value; }
+            get { return floorLevel; }
+        }
         /*
         public int NumberOfDays
         {
@@ -57,10 +63,7 @@ namespace Reservations_Subsystem
             get { return numberOfDays; }
         }
         */
-        private void hello()
-        {
 
-        }
         public MySqlConnection conn = new MySqlConnection("Server=localhost;Database=sad2_db;Uid=root;Pwd=root;");
         public void AddReservation(int roomId, int customerId, string description, DateTime checkInDate, DateTime checkOutDate, Boolean occupied, int price)
         {

@@ -48,7 +48,7 @@ namespace Reservations_Subsystem
             _form = form;
           
                 //public void setValuesBasedOnReservationId(string roomType, string roomNumber, DateTime startDate, DateTime endDate, string description, decimal lengthOfStay)
-            form.setValuesBasedOnReservationId(myRoomInfo, myRoomInfo.RoomType, myRoomInfo.RoomNumber, myResInfo.StartDate, myResInfo.EndDate, myResInfo.Desc, myResInfo.RoomRate);
+            form.setValuesBasedOnReservationId(myRoomInfo, myRoomInfo.RoomType, myRoomInfo.RoomNumber, myResInfo.StartDate, myResInfo.EndDate, myResInfo.Desc, myResInfo.RoomRate, myResInfo.GroupStatus, myResInfo.AmtPaid);
             form.theCustomerInfo = myCustomerInfo;
             form.theReservation = myResInfo;
             form.referenceButton = resButt;

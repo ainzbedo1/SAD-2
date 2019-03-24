@@ -1059,6 +1059,12 @@ namespace Reservations_Subsystem.Reports {
             
             private global::System.Data.DataColumn columnrate;
             
+            private global::System.Data.DataColumn columndaily_sales_report_id;
+            
+            private global::System.Data.DataColumn columngroupStatus;
+            
+            private global::System.Data.DataColumn columnamtPaid;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public StateAccDataTable() {
@@ -1174,6 +1180,30 @@ namespace Reservations_Subsystem.Reports {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn daily_sales_report_idColumn {
+                get {
+                    return this.columndaily_sales_report_id;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn groupStatusColumn {
+                get {
+                    return this.columngroupStatus;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn amtPaidColumn {
+                get {
+                    return this.columnamtPaid;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -1209,7 +1239,7 @@ namespace Reservations_Subsystem.Reports {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public StateAccRow AddStateAccRow(string id, string room_id, string customer_id, string description, string startDate, string endDate, string occupied, string totalPrice, string lengthOfStay, string rate) {
+            public StateAccRow AddStateAccRow(string id, string room_id, string customer_id, string description, string startDate, string endDate, string occupied, string totalPrice, string lengthOfStay, string rate, string daily_sales_report_id, string groupStatus, string amtPaid) {
                 StateAccRow rowStateAccRow = ((StateAccRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         id,
@@ -1221,7 +1251,10 @@ namespace Reservations_Subsystem.Reports {
                         occupied,
                         totalPrice,
                         lengthOfStay,
-                        rate};
+                        rate,
+                        daily_sales_report_id,
+                        groupStatus,
+                        amtPaid};
                 rowStateAccRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowStateAccRow);
                 return rowStateAccRow;
@@ -1254,6 +1287,9 @@ namespace Reservations_Subsystem.Reports {
                 this.columntotalPrice = base.Columns["totalPrice"];
                 this.columnlengthOfStay = base.Columns["lengthOfStay"];
                 this.columnrate = base.Columns["rate"];
+                this.columndaily_sales_report_id = base.Columns["daily_sales_report_id"];
+                this.columngroupStatus = base.Columns["groupStatus"];
+                this.columnamtPaid = base.Columns["amtPaid"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1279,6 +1315,12 @@ namespace Reservations_Subsystem.Reports {
                 base.Columns.Add(this.columnlengthOfStay);
                 this.columnrate = new global::System.Data.DataColumn("rate", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnrate);
+                this.columndaily_sales_report_id = new global::System.Data.DataColumn("daily_sales_report_id", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columndaily_sales_report_id);
+                this.columngroupStatus = new global::System.Data.DataColumn("groupStatus", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columngroupStatus);
+                this.columnamtPaid = new global::System.Data.DataColumn("amtPaid", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnamtPaid);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2059,6 +2101,54 @@ namespace Reservations_Subsystem.Reports {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string daily_sales_report_id {
+                get {
+                    try {
+                        return ((string)(this[this.tableStateAcc.daily_sales_report_idColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'daily_sales_report_id\' in table \'StateAcc\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableStateAcc.daily_sales_report_idColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string groupStatus {
+                get {
+                    try {
+                        return ((string)(this[this.tableStateAcc.groupStatusColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'groupStatus\' in table \'StateAcc\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableStateAcc.groupStatusColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string amtPaid {
+                get {
+                    try {
+                        return ((string)(this[this.tableStateAcc.amtPaidColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'amtPaid\' in table \'StateAcc\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableStateAcc.amtPaidColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IsidNull() {
                 return this.IsNull(this.tableStateAcc.idColumn);
             }
@@ -2175,6 +2265,42 @@ namespace Reservations_Subsystem.Reports {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetrateNull() {
                 this[this.tableStateAcc.rateColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool Isdaily_sales_report_idNull() {
+                return this.IsNull(this.tableStateAcc.daily_sales_report_idColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void Setdaily_sales_report_idNull() {
+                this[this.tableStateAcc.daily_sales_report_idColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsgroupStatusNull() {
+                return this.IsNull(this.tableStateAcc.groupStatusColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetgroupStatusNull() {
+                this[this.tableStateAcc.groupStatusColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsamtPaidNull() {
+                return this.IsNull(this.tableStateAcc.amtPaidColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetamtPaidNull() {
+                this[this.tableStateAcc.amtPaidColumn] = global::System.Convert.DBNull;
             }
         }
         

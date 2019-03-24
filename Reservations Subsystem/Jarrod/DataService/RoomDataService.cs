@@ -16,7 +16,8 @@ namespace Reservations_Subsystem
         // Get roomInfo by room number
         public RoomInfo getRoomInfoByRoomNumber(string roomNumber)
         {
-            string query = "SELECT id, roomNumber, roomType, description, occupied FROM room WHERE roomNumber = '" + roomNumber + "' ";
+
+            string query = "SELECT id, roomNumber, roomType, description FROM room WHERE roomNumber = '" + roomNumber + "' ";
             using (MySqlCommand cmd = new MySqlCommand(query, conn))
             {
                 MySqlDataReader myReader;
@@ -46,7 +47,7 @@ namespace Reservations_Subsystem
         }
         public RoomInfo getRoomInfoById(int roomId)
         {
-            string query = "SELECT id, roomNumber, roomType, description, occupied FROM room WHERE id = '" + roomId + "' ";
+            string query = "SELECT id, roomNumber, roomType, description FROM room WHERE id = '" + roomId + "' ";
             MySqlConnection.ClearPool(conn);
             using (MySqlCommand cmd = new MySqlCommand(query, conn))
             {
@@ -196,5 +197,102 @@ namespace Reservations_Subsystem
 
 
         }
+        public void AddRoom(string roomNumber, string roomType, string floorLevel, string description)
+        {
+
+            string query = "INSERT INTO room(roomNumber, roomType, floorLevel, description) VALUES(@roomNumber, @roomType, @floorLevel, @description)";
+            using (MySqlCommand cmd = new MySqlCommand(query, conn))
+            {
+                
+                cmd.Parameters.AddWithValue("@roomNumber", roomNumber);
+                cmd.Parameters.AddWithValue("@roomType", roomType);
+                cmd.Parameters.AddWithValue("@floorLevel", floorLevel);
+                cmd.Parameters.AddWithValue("@description", description);
+                //cmd.Parameters.AddWithValue("@description", description);
+                try
+                {
+                    conn.Open();
+                    Int32 rowsAffected = cmd.ExecuteNonQuery();
+                    Console.WriteLine("RowsAffected: {0}", rowsAffected);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                }
+            }
+        }
+        public void UpdateRoom(string roomNumber, string roomType, string floorLevel, string description)
+        {
+
+            string query = "INSERT INTO room(roomNumber, roomType, floorLevel, description) VALUES(@roomNumber, @roomType, @floorLevel, @description)";
+            using (MySqlCommand cmd = new MySqlCommand(query, conn))
+            {
+
+                cmd.Parameters.AddWithValue("@roomNumber", roomNumber);
+                cmd.Parameters.AddWithValue("@roomType", roomType);
+                cmd.Parameters.AddWithValue("@floorLevel", floorLevel);
+                cmd.Parameters.AddWithValue("@description", description);
+                //cmd.Parameters.AddWithValue("@description", description);
+                try
+                {
+                    conn.Open();
+                    Int32 rowsAffected = cmd.ExecuteNonQuery();
+                    Console.WriteLine("RowsAffected: {0}", rowsAffected);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                }
+            }
+        }
+        /*
+        public DataTable AllRoomId()
+        {
+            string query = "SELECT id, roomNumber, roomType FROM room";
+            using(MySqlCommand cmd = new MySqlCommand(query, conn))
+            {
+                try
+                {
+                    conn.Open();
+                    DataTable myTable = new DataTable();
+                    myTable 
+                    Console.WriteLine("RowsAffected: {0}", rowsAffected);
+                    
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+
+            }
+        }
+        */
+
+        public void EditRoom(int id, string roomNumber, string roomType, string floorLevel, string description)
+        {
+            // "UPDATE Inventory SET Inventorynumber='"+ num +"',Inventory_Name='"+name+"', Quantity ='"+ quant+"',Location ='"+ location+"' Category ='"+ category+"' WHERE Inventorynumber ='"+ numquery +"';";
+            string query = "UPDATE room SET roomNumber=@roomNumber,roomNumber=@roomNumber, roomType=@roomType ,floorLevel=@floorLevel,description=@description WHERE id =@id";
+            using (MySqlCommand cmd = new MySqlCommand(query, conn))
+            {
+
+                cmd.CommandText = query;
+                cmd.Parameters.AddWithValue("@id", id);
+                cmd.Parameters.AddWithValue("@roomNumber", roomNumber);
+                cmd.Parameters.AddWithValue("@roomType", roomType);
+                cmd.Parameters.AddWithValue("@floorLevel", floorLevel);
+                cmd.Parameters.AddWithValue("@description", description);
+                try
+                {
+                    conn.Open();
+                    Int32 rowsAffected = cmd.ExecuteNonQuery();
+                    Console.WriteLine("RowsAffected: {0}", rowsAffected);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+            }
+        }
     }
+
 }

@@ -25,6 +25,20 @@ namespace Reservations_Subsystem
         // private string checkOutDate { get; set; }
         private int price { get; set; }
         private int resId { get; set; }
+        private int amtPaid { get; set; }
+        private int groupStatus { get; set; }
+
+        public int AmtPaid
+        {
+            set { amtPaid = value; }
+            get { return amtPaid; }
+        }
+
+        public int GroupStatus
+        {
+            set { groupStatus = value; }
+            get { return groupStatus; }
+        }
 
         public int RoomRate
         {

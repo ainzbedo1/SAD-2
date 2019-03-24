@@ -28,8 +28,21 @@ namespace Reservations_Subsystem
         public bool resButtClicked = false;
         private int dgvMonth { get; set; }
         private int dgvYear { get; set; }
+        private int isGroupFalse { get; set; }
+        private int amountPaid { get; set; }
         //private bool CustomerInfoExist = false;
 
+        public int IsGroup
+        {
+            set { isGroupFalse = value; }
+            get { return isGroupFalse; }
+        }
+
+        public int AmountPaid
+        {
+            set { isGroupFalse = value; }
+            get { return isGroupFalse; }
+        }
         public int DgvMonth
         {
             set { dgvMonth = value; }
@@ -143,7 +156,7 @@ namespace Reservations_Subsystem
 
         }
         //this method only fires on update
-        public void setValuesBasedOnReservationId(RoomInfo customInfo, string roomType, string roomNumber, DateTime startDate, DateTime endDate, string description, int roomRate)
+        public void setValuesBasedOnReservationId(RoomInfo customInfo, string roomType, string roomNumber, DateTime startDate, DateTime endDate, string description, int roomRate, int isGrouped, int amtPaid)
         {
             lengthOfStay.ValueChanged -= lengthOfStay_ValueChanged;
             dtpEndDate.ValueChanged -= dtpEndDate_ValueChanged;
@@ -161,6 +174,8 @@ namespace Reservations_Subsystem
             LblNumOfNights = LengthOfStay.ToString();
             LblPricePerNight = RoomRate.ToString();
             TotalAccomadation = (Convert.ToInt32(LblNumOfNights) * (Convert.ToInt32(LblPricePerNight))).ToString();
+            IsGroup = isGrouped;
+            AmountPaid = amountPaid;
            
 
             //TotalAccomadation = (Convert.ToInt32(LblReserveDays) * (Convert.ToInt32(LblPerNight))).ToString();
@@ -530,14 +545,13 @@ namespace Reservations_Subsystem
                     {
                         MessageBox.Show("IM UPDATING BOIS");
                         ReservationDataService frm = new ReservationDataService();
-                        ReservationInfo myReservation = new ReservationInfo();
 
 
                         //myCustomer.Name = CustomerName;
-                        MessageBox.Show(myReservation.ResId.ToString()+"My res ID");
-                        frm.UpdateReservation(myReservation.ResId, Convert.ToInt32(myReservation.RoomId), Convert.ToInt32(theCustomerInfo.Id), myReservation.Desc,
-                            myReservation.StartDate, myReservation.EndDate, 0, myReservation.TotalPrice, myReservation.LenghtOfStay,
-                            myReservation.RoomRate);
+                        MessageBox.Show(theReservation.ResId.ToString()+"My res ID");
+                        frm.UpdateReservation(theReservation.ResId, Convert.ToInt32(theReservation.RoomId), Convert.ToInt32(theCustomerInfo.Id), Description,
+                            StartDate, EndDate, 0, Convert.ToInt32(TotalAccomadation), Convert.ToInt32(LengthOfStay),
+                            Convert.ToInt32(RoomRate));
                         //frm.verifyCustomerInfoAndCreateReservation(myCustomer, myReservation, referencefrm1);
 
                         this.Close();
@@ -926,6 +940,27 @@ namespace Reservations_Subsystem
             frm.referencefrm1 = this;
             frm.Show();
             */
+        }
+
+        private void tabPage1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            if (String.IsNullOrEmpty(textBox1.Text))
+            {
+                // Do something...
+            }
+        }
+
+        private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
         }
     }
 }

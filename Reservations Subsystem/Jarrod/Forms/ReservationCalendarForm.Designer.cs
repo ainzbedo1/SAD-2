@@ -36,11 +36,7 @@
             this.btnMainYear = new System.Windows.Forms.Button();
             this.btnNextYear = new System.Windows.Forms.Button();
             this.btnAddRoom = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.btnViewCustomers = new System.Windows.Forms.Button();
-            this.txtFirstDate = new System.Windows.Forms.TextBox();
-            this.txtLastDate = new System.Windows.Forms.TextBox();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
             this.dtpTest = new System.Windows.Forms.DateTimePicker();
             this.btnCreateReservation = new System.Windows.Forms.Button();
             this.btnViewReservation = new System.Windows.Forms.Button();
@@ -52,6 +48,7 @@
             // 
             // calendar
             // 
+            this.calendar.AllowUserToAddRows = false;
             this.calendar.AllowUserToResizeColumns = false;
             this.calendar.AllowUserToResizeRows = false;
             this.calendar.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -136,44 +133,15 @@
             this.btnAddRoom.UseVisualStyleBackColor = true;
             this.btnAddRoom.Click += new System.EventHandler(this.button3_Click);
             // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(1097, 43);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 10;
-            // 
             // btnViewCustomers
             // 
-            this.btnViewCustomers.Location = new System.Drawing.Point(1028, 97);
+            this.btnViewCustomers.Location = new System.Drawing.Point(705, 134);
             this.btnViewCustomers.Name = "btnViewCustomers";
             this.btnViewCustomers.Size = new System.Drawing.Size(123, 23);
             this.btnViewCustomers.TabIndex = 11;
             this.btnViewCustomers.Text = "View Customers";
             this.btnViewCustomers.UseVisualStyleBackColor = true;
             this.btnViewCustomers.Click += new System.EventHandler(this.btnViewCustomers_Click);
-            // 
-            // txtFirstDate
-            // 
-            this.txtFirstDate.Location = new System.Drawing.Point(129, 136);
-            this.txtFirstDate.Name = "txtFirstDate";
-            this.txtFirstDate.Size = new System.Drawing.Size(100, 20);
-            this.txtFirstDate.TabIndex = 12;
-            // 
-            // txtLastDate
-            // 
-            this.txtLastDate.Location = new System.Drawing.Point(129, 162);
-            this.txtLastDate.Name = "txtLastDate";
-            this.txtLastDate.Size = new System.Drawing.Size(100, 20);
-            this.txtLastDate.TabIndex = 13;
-            // 
-            // comboBox3
-            // 
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(317, 162);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(121, 21);
-            this.comboBox3.TabIndex = 14;
             // 
             // dtpTest
             // 
@@ -232,11 +200,7 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnCreateReservation);
             this.Controls.Add(this.dtpTest);
-            this.Controls.Add(this.comboBox3);
-            this.Controls.Add(this.txtLastDate);
-            this.Controls.Add(this.txtFirstDate);
             this.Controls.Add(this.btnViewCustomers);
-            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.btnAddRoom);
             this.Controls.Add(this.btnNextYear);
             this.Controls.Add(this.btnMainYear);
@@ -253,7 +217,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.calendar)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -267,11 +230,7 @@
         private System.Windows.Forms.Button btnMainYear;
         private System.Windows.Forms.Button btnNextYear;
         private System.Windows.Forms.Button btnAddRoom;
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button btnViewCustomers;
-        private System.Windows.Forms.TextBox txtFirstDate;
-        private System.Windows.Forms.TextBox txtLastDate;
-        private System.Windows.Forms.ComboBox comboBox3;
         private System.Windows.Forms.DateTimePicker dtpTest;
         private System.Windows.Forms.Button btnCreateReservation;
         private System.Windows.Forms.Button btnViewReservation;

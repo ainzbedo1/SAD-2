@@ -32,5 +32,15 @@ namespace Reservations_Subsystem
         {
             referencefrm1.Show();
         }
+
+        private void btnAddCustomer_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnEditCustomer_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -46,6 +46,8 @@
             this.txtRoomNumber.Name = "txtRoomNumber";
             this.txtRoomNumber.Size = new System.Drawing.Size(121, 20);
             this.txtRoomNumber.TabIndex = 0;
+            this.txtRoomNumber.TextChanged += new System.EventHandler(this.txtRoomNumber_TextChanged);
+            this.txtRoomNumber.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtRoomNumber_KeyPress);
             // 
             // label1
             // 
@@ -151,6 +153,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(742, 508);
+            this.ControlBox = false;
             this.Controls.Add(this.txtDesc);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnSave);
@@ -161,6 +164,8 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtRoomNumber);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "AddRoom";
             this.Text = "AddRoom";
             this.Activated += new System.EventHandler(this.AddRoom_Activated);

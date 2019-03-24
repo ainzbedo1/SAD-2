@@ -32,7 +32,7 @@ namespace Reservations_Subsystem
 
         public ReservationInfo GetReservationInfoById(int resId)
         {
-            string query = "SELECT id, room_id, customer_id, description, startDate, endDate, occupied, totalPrice, lengthOfStay, rate FROM reservation id WHERE id = '" + resId + "' ";
+            string query = "SELECT id, room_id, customer_id, description, startDate, endDate, occupied, totalPrice, lengthOfStay, rate, groupStatus, amtPaid FROM reservation id WHERE id = '" + resId + "' ";
             using (MySqlCommand cmd = new MySqlCommand(query, conn))
             {
                 MySqlDataReader myReader;
@@ -107,6 +107,7 @@ namespace Reservations_Subsystem
 
         public long AddReservation(int roomId, int customerId, string description, DateTime startDate, DateTime endDate, int occupied, int totalPrice, int lengthOfStay, int rate)
         {
+
             string query = "INSERT INTO reservation(room_id, customer_id, description, startDate, endDate, occupied, totalPrice, lengthOfStay, rate) VALUES((SELECT id FROM room WHERE id = @room_id), @customer_id, @description, @startDate, @endDate, @occupied, @totalPrice, @lengthOfStay, @rate)";
             using (MySqlCommand cmd = new MySqlCommand(query, conn))
             {

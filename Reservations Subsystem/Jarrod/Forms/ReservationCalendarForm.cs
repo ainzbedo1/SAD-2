@@ -821,6 +821,22 @@ namespace Reservations_Subsystem
 
         public virtual void createButton(int centerPointFirstCell, int y1, int totalWidth, int reserveId, int roomId)
         {
+            //INfo for button gathered from database
+            ReservationInfo myResInfo = new ReservationInfo();
+            CustomerInfo myCustomerInfo = new CustomerInfo();
+
+            ReservationDataService reservationDataService = new ReservationDataService();
+            RoomDataService roomDataService = new RoomDataService();
+            CustomerDataService customerDataService = new CustomerDataService();
+
+            myResInfo = reservationDataService.GetReservationInfoById(reserveId);
+            int myCustomerId = myResInfo.CustomerId;
+            myCustomerInfo = customerDataService.GetCustomerInfoById(myCustomerId);
+            ReservationDataService resData = new ReservationDataService();
+            CustomerDataService custData = new CustomerDataService();
+
+
+            //ReservationInfo resInfo = resData.GetReservationInfoById(reserveId);
             ToolTip tip = new ToolTip();
             buttonCreateCounter++;
             //Button new_Button = new Button();
@@ -832,11 +848,12 @@ namespace Reservations_Subsystem
             dynamicButton.Width = totalWidth;
             dynamicButton.BackColor = Color.Red;
             dynamicButton.ForeColor = Color.Blue;
+           
 
-            dynamicButton.Text = "Metro";
+            dynamicButton.Text = myCustomerInfo.Name;
             dynamicButton.Name = reserveId.ToString();
             dynamicButton.roomId = roomId;
-            dynamicButton.Font = new Font("Georgia", 16);
+            //dynamicButton.Font = new Font("Georgia", 16);
             tip.ShowAlways = true;
             tip.SetToolTip(dynamicButton, ToolTipInfo(reserveId, roomId));
             
@@ -844,7 +861,11 @@ namespace Reservations_Subsystem
             
             Controls.Add(dynamicButton);
             dynamicButton.BringToFront();
-           
+
+
+
+
+
         }
         public string ToolTipInfo(int reserveId, int roomId)
         {
@@ -904,7 +925,6 @@ namespace Reservations_Subsystem
                     ReservationDataService reservationDataService = new ReservationDataService();
                     RoomDataService roomDataService = new RoomDataService();
                     CustomerDataService customerDataService = new CustomerDataService();
-
                     
                     theFrmView.referencefrm1 = this;
                     myResInfo = reservationDataService.GetReservationInfoById(Convert.ToInt32(myButton.Name));
@@ -913,6 +933,8 @@ namespace Reservations_Subsystem
                     int myCustomerId = myResInfo.CustomerId;
                     myCustomerInfo = customerDataService.GetCustomerInfoById(myCustomerId);
                     int month = Array.IndexOf(monthString, btnMainMonth.Text) + 1, year = Int32.Parse(btnMainYear.Text);
+                    MessageBox.Show(myResInfo.ResId.ToString() + "over here");
+
                     theFrmView.viewYear = year;
                     theFrmView.viewMonth = month;
                     theFrmView.DgvYear = year;
@@ -967,8 +989,8 @@ namespace Reservations_Subsystem
         {
             ViewRoom frm2 = new ViewRoom();
             frm2.referencefrm1 = this;
-            frm2.Show();
-            this.Hide();
+            frm2.ShowDialog();
+            //this.Hide();
         }
 
         private void calendar_CellClick(object sender, DataGridViewCellEventArgs e)

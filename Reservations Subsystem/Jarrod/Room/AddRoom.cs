@@ -16,8 +16,15 @@ namespace Reservations_Subsystem
     {
         //public ViewRoom referenceViewRoom { get; set; }
         public MySqlConnection conn;
-        public ViewRoom referenceViewRoomList {get; set;}
+        public ViewRoom referenceViewRoomList { get; set; }
+        public Boolean EditForm;
+        public RoomInfo theRoomInfo {get; set;}
        // public Room roomForm;
+        public RoomInfo TheRoomInfo
+        {
+            set { theRoomInfo = value; }
+            get { return theRoomInfo;  }
+        }
         public AddRoom()
         {
             InitializeComponent();
@@ -29,18 +36,72 @@ namespace Reservations_Subsystem
 
         }
         
-
+        public void SettingRoomInfo(RoomInfo room)
+        {
+            txtRoomNumber.Text = room.RoomNumber;
+            MessageBox.Show(room.RoomType.ToString());
+            cmbRoomType.SelectedText = room.RoomType;
+            cmbFloor.SelectedValue = room.FloorLevel;
+        }
         private void btnSave_Click(object sender, EventArgs e)
         {
-           
-            Room testRoom = new Room();
-            testRoom.AddRoom(txtRoomNumber.Text, cmbRoomType.Text, cmbFloor.Text, txtDesc.Text);
-            referenceViewRoomList.Refresh();
-            referenceViewRoomList.refreshing();
-            referenceViewRoomList.Show();
-            this.Hide();
+            if (EditForm == true)
+            {
+                if (CheckingFields() == false)
+                {
+                    RoomDataService testRoom = new RoomDataService();
+                    testRoom.UpdateRoom(txtRoomNumber.Text, cmbRoomType.Text, cmbFloor.Text, txtDesc.Text);
+                    referenceViewRoomList.Refresh();
+
+                    referenceViewRoomList.refreshing();
+                    referenceViewRoomList.DisableButtons();
+                    referenceViewRoomList.Show();
+                    this.Close();
+                    
+                }
+                else
+                {
+                    MessageBox.Show("There are missing fields please fill them up");
+                }
+                
+            }
+            else
+            {
+                if (CheckingFields() == false)
+                {
+                    RoomDataService testRoom = new RoomDataService();
+                    testRoom.AddRoom(txtRoomNumber.Text, cmbRoomType.Text, cmbFloor.Text, txtDesc.Text);
+                    referenceViewRoomList.Refresh();
+
+                    referenceViewRoomList.refreshing();
+                    referenceViewRoomList.DisableButtons();
+                    referenceViewRoomList.Show();
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("There are missing fields please fill them up");
+                }
+            }
 
             
+        }
+        public Boolean CheckingFields()
+        {
+            Boolean nullFields = false;
+            if (String.IsNullOrEmpty(txtRoomNumber.Text))
+            {             
+                nullFields = true;
+            }
+            if (String.IsNullOrEmpty(cmbFloor.Text))
+            {
+                nullFields = true;
+            }
+            if (String.IsNullOrEmpty(cmbRoomType.Text))
+            {
+                nullFields = true;
+            }
+            return nullFields;
         }
 
         private void AddRoom_Load(object sender, EventArgs e)
@@ -64,6 +125,19 @@ namespace Reservations_Subsystem
         private void AddRoom_Activated(object sender, EventArgs e)
         {
             referenceViewRoomList.Refresh();
+        }
+
+        private void txtRoomNumber_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtRoomNumber_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

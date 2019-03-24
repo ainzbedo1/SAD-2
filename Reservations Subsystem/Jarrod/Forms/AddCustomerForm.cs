@@ -175,7 +175,20 @@ namespace Reservations_Subsystem
         {
             this.Close();
         }
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            txtCompany.Clear();
+            txtAddress.Clear();
+            txtPhone.Clear();
+            txtPassport.Clear();
+            txtPhone.Clear();
+            txtGender.Clear();
+            txtEmail.Clear();
+            txtNationality.Clear();
+            txtBirthPlace.Clear();
+            txtComment.Clear();
 
+        }
         private void btnSave_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(txtName.Text)){
@@ -250,7 +263,6 @@ namespace Reservations_Subsystem
             CustomerDataService myCustomerDataService2 = new CustomerDataService();
 
             custInfo = myCustomerDataService2.GetCustomerInfoById(Convert.ToInt32(id));
-            MessageBox.Show(custInfo.Id.ToString() + "over here bois");
             return custInfo;
         }
 

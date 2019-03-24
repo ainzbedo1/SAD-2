@@ -45,6 +45,7 @@
             this.btnAddCustomer.TabIndex = 0;
             this.btnAddCustomer.Text = "Add Customer";
             this.btnAddCustomer.UseVisualStyleBackColor = true;
+            this.btnAddCustomer.Click += new System.EventHandler(this.btnAddCustomer_Click);
             // 
             // btnEditCustomer
             // 
@@ -54,6 +55,7 @@
             this.btnEditCustomer.TabIndex = 0;
             this.btnEditCustomer.Text = "Edit Customer";
             this.btnEditCustomer.UseVisualStyleBackColor = true;
+            this.btnEditCustomer.Click += new System.EventHandler(this.btnEditCustomer_Click);
             // 
             // btnRemoveCustomer
             // 

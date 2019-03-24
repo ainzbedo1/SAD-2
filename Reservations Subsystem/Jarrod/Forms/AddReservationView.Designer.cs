@@ -77,6 +77,11 @@
             this.btnDelete = new System.Windows.Forms.Button();
             this.label15 = new System.Windows.Forms.Label();
             this.txtCustomName = new System.Windows.Forms.TextBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label19 = new System.Windows.Forms.Label();
+            this.textBox2 = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.grpBoxRoomData.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -258,17 +263,24 @@
             // tabPage1
             // 
             this.tabPage1.BackColor = System.Drawing.Color.AntiqueWhite;
+            this.tabPage1.Controls.Add(this.textBox2);
+            this.tabPage1.Controls.Add(this.textBox1);
+            this.tabPage1.Controls.Add(this.label19);
+            this.tabPage1.Controls.Add(this.label17);
             this.tabPage1.Controls.Add(this.label16);
+            this.tabPage1.Controls.Add(this.lblTotalAccomadation);
             this.tabPage1.Controls.Add(this.txtRate);
             this.tabPage1.Controls.Add(this.cmbPerNight2);
             this.tabPage1.Controls.Add(this.groupBox6);
             this.tabPage1.Controls.Add(this.label3);
+            this.tabPage1.Controls.Add(this.label18);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage1.Size = new System.Drawing.Size(386, 550);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Room Information";
+            this.tabPage1.Click += new System.EventHandler(this.tabPage1_Click);
             // 
             // label16
             // 
@@ -306,7 +318,6 @@
             // 
             this.groupBox6.Controls.Add(this.label13);
             this.groupBox6.Controls.Add(this.lblsomething);
-            this.groupBox6.Controls.Add(this.lblTotalAccomadation);
             this.groupBox6.Controls.Add(this.lblPerNight);
             this.groupBox6.Controls.Add(this.lblNumOfNights);
             this.groupBox6.Controls.Add(this.btnStatementOfAccount);
@@ -314,7 +325,7 @@
             this.groupBox6.Controls.Add(this.label4);
             this.groupBox6.Controls.Add(this.label6);
             this.groupBox6.Controls.Add(this.label5);
-            this.groupBox6.Location = new System.Drawing.Point(13, 320);
+            this.groupBox6.Location = new System.Drawing.Point(13, 149);
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.Size = new System.Drawing.Size(367, 218);
             this.groupBox6.TabIndex = 5;
@@ -342,7 +353,7 @@
             // lblTotalAccomadation
             // 
             this.lblTotalAccomadation.AutoSize = true;
-            this.lblTotalAccomadation.Location = new System.Drawing.Point(286, 113);
+            this.lblTotalAccomadation.Location = new System.Drawing.Point(224, 404);
             this.lblTotalAccomadation.Name = "lblTotalAccomadation";
             this.lblTotalAccomadation.Size = new System.Drawing.Size(41, 13);
             this.lblTotalAccomadation.TabIndex = 7;
@@ -589,6 +600,50 @@
             this.txtCustomName.Size = new System.Drawing.Size(100, 20);
             this.txtCustomName.TabIndex = 10;
             // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(24, 436);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(67, 13);
+            this.label17.TabIndex = 9;
+            this.label17.Text = "Amount Paid";
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(24, 404);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(66, 13);
+            this.label18.TabIndex = 5;
+            this.label18.Text = "Amount Due";
+            this.label18.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(227, 429);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(100, 20);
+            this.textBox1.TabIndex = 10;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.textBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(23, 462);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(67, 13);
+            this.label19.TabIndex = 9;
+            this.label19.Text = "Amount Paid";
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(227, 462);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(100, 20);
+            this.textBox2.TabIndex = 10;
+            // 
             // AddReservationView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -680,5 +735,10 @@
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.TextBox txtCustomName;
         private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label label18;
     }
 }

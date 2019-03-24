@@ -14,25 +14,25 @@ namespace Reservations_Subsystem
     {
         public ReservationCalendarForm referencefrm1 { get; set; }
         public MySqlConnection conn;
+        public int roomId {get; set;}
         public ViewRoom()
         {
             InitializeComponent();
             conn = new MySqlConnection("Server=localhost;Database=sad2_db;Uid=root;Pwd=root;");
             
         }
+        public int RoomId
+        {
+            set { roomId = value; }
+            get { return roomId; }
+        }
+
         
 
-        private void AddRoomView_Load(object sender, EventArgs e)
-        {
-            DisplayRoom();
-            btnEdit.Enabled = false;
-            btnRemove.Enabled = false;
-            datagridViewRoom.ClearSelection();
-            datagridViewRoom.CurrentCell = null;
-        }
+
         public void refreshData()
         {
-            datagridViewRoom.Refresh();
+            dgvRoom.Refresh();
         }
         private void DisplayRoom()
         {
@@ -44,17 +44,26 @@ namespace Reservations_Subsystem
             {
                 DataTable table = new DataTable();
                 dadapter.Fill(table);
-                this.datagridViewRoom.DataSource = table;
+                this.dgvRoom.DataSource = table;
             }
-            datagridViewRoom.Columns[0].Visible = false;
+            dgvRoom.Columns[0].Visible = false;
 
-            datagridViewRoom.ClearSelection();
+            dgvRoom.ClearSelection();
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
-      
-            
+
+            AddRoom addRoom = new AddRoom();
+            RoomDataService roomData = new RoomDataService();
+            RoomInfo myRoomInfo = new RoomInfo();
+
+            myRoomInfo = roomData.getRoomInfoById(RoomId);
+            addRoom.EditForm = true;
+            addRoom.SettingRoomInfo(myRoomInfo);
+            addRoom.referenceViewRoomList = this;
+            addRoom.Show();
+            this.Hide();
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -67,28 +76,43 @@ namespace Reservations_Subsystem
 
         private void btnBack_Click(object sender, EventArgs e)
         {
-            this.Hide();
+            this.Close();
+            //this.Hide();
+            referencefrm1.Refresh();
             referencefrm1.Show();
+
             
         }
 
-        private void room_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void dgvRoom_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            btnEdit.Enabled = true;
-            btnRemove.Enabled = false;
+            /*
+            if (dgvRoom.SelectedRows.Count > 0) // make sure user select at least 1 row 
+            {
+                try
+                {
+                    RoomId = dgvRoom.
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("selecting from datagridview failed " + ex.ToString());
+                }
+
+            }
+            */
         }
 
         private void ViewRoom_Shown(object sender, EventArgs e)
         {
-            datagridViewRoom.ClearSelection();
-            datagridViewRoom.Refresh();
+            dgvRoom.ClearSelection();
+            dgvRoom.Refresh();
 
         }
         public void refreshing()
         {
             DisplayRoom();
-            datagridViewRoom.ClearSelection();
-            datagridViewRoom.Refresh();
+            dgvRoom.ClearSelection();
+            dgvRoom.Refresh();
 
         }
 
@@ -97,9 +121,39 @@ namespace Reservations_Subsystem
             this.Refresh();
             this.refreshing();
         }
-
+        public void DisableButtons()
+        {
+            btnEdit.Enabled = false;
+            btnRemove.Enabled = false;
+        }
         private void ViewRoom_Load(object sender, EventArgs e)
         {
+            dgvRoom.ClearSelection();
+            DisplayRoom();
+            btnEdit.Enabled = false;
+            btnRemove.Enabled = false;
+            dgvRoom.ClearSelection();
+            dgvRoom.CurrentCell = null;
+            btnEdit.Enabled = false;
+            btnRemove.Enabled = false;
+
+        }
+        private void dgvRoom_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgvRoom.SelectedRows.Count > 0) // make sure user select at least 1 row 
+            {
+                try
+                {
+                    RoomId = Convert.ToInt32(dgvRoom.SelectedRows[0].Cells[0].Value);
+                    btnEdit.Enabled = true;
+                    btnRemove.Enabled = true;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("selecting from datagridview failed " + ex.ToString());
+                }
+
+            }
 
         }
     }
