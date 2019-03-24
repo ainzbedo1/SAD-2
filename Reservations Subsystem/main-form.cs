@@ -64,5 +64,29 @@ namespace Reservations_Subsystem
                 }
             }
         }
+
+        private void btn_Sched_Click(object sender, EventArgs e)
+        {
+            ReservationCalendarForm resCalendar = new ReservationCalendarForm();
+            //resCalendar.reftomain = this;
+            resCalendar.Show();
+            this.Hide();
+        }
+
+        private void btn_POS_Click(object sender, EventArgs e)
+        {
+            ROS_Main ros = new ROS_Main();
+            //ros.reftomain = this;
+            ros.Show();
+            this.Hide();
+        }
+
+        private void btn_Inv_Click(object sender, EventArgs e)
+        {
+            //Inventorymgt inv = new Inventorymgt();
+            //inv.reftomain = this;
+            //inv.Show();
+            //this.Hide();
+        }
     }
 }
