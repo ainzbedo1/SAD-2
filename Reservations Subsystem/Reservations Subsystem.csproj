@@ -369,9 +369,13 @@
     <None Include="Resources\003-add.png" />
     <None Include="Resources\002-delete-button.png" />
     <None Include="Resources\001-writing.png" />
+    <None Include="Resources\ASD.png" />
+    <None Include="Resources\DFG.png" />
     <Content Include="Resources\LOGO1.png" />
     <Content Include="Resources\LOGO2.png" />
     <Content Include="Resources\LOGO3.png" />
+    <None Include="Resources\minus-symbol.png" />
+    <None Include="Resources\plus-black-symbol.png" />
     <Content Include="Resources\vine.png" />
     <Content Include="Resources\wood.png" />
   </ItemGroup>
