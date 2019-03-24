@@ -47,11 +47,20 @@ namespace Reservations_Subsystem
         }
         public RoomInfo getRoomInfoById(int roomId)
         {
-            //"SELECT room.roomNumber, rt.roomType FROM sad2_db.room_type rt INNER JOIN sad2_db.room room ON rt.id = room.roomTypeId; ";
-            string query = "SELECT room, roomNumber, roomType, description FROM room WHERE id = '" + roomId + "' ";
+            //"SELECT room.roomNumber, rt.roomType FROM sad2_db.room_type rt INNER JOIN sad2_db.room room ON rt.id = room.roomTypeId; "
+            string query = "SELECT room.id, room.roomNumber, rt.roomType " +
+                "FROM room_type rt " +
+                "INNER JOIN room room " +
+                    "ON rt.id = room.roomTypeId " +
+                "INNER JOIN sad2_db.room_rate rate " +
+                    "ON room.id = rate.room_Type_id " +
+                "WHERE room.id = @id";
+            //string query = "SELECT room, roomNumber, roomType, description FROM room WHERE id = '" + roomId + "' ";
             MySqlConnection.ClearPool(conn);
             using (MySqlCommand cmd = new MySqlCommand(query, conn))
             {
+                MessageBox.Show(roomId.ToString());
+                cmd.Parameters.AddWithValue("@id", roomId);
                 MySqlDataReader myReader;
                 conn.Open();
                 using (myReader = cmd.ExecuteReader())

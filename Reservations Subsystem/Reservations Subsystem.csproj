@@ -33,15 +33,13 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="CrystalDecisions.CrystalReports.Design, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
-      <HintPath>..\..\CrystalDecisions.CrystalReports.Design.dll</HintPath>
-    </Reference>
+    <Reference Include="CrystalDecisions.CrystalReports.Design, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="CrystalDecisions.Data.AdoDotNetInterop, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="CrystalDecisions.ReportSource, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="CrystalDecisions.Shared, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
-    <Reference Include="MySql.Data, Version=6.9.9.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
+    <Reference Include="MySql.Data, Version=8.0.15.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -100,18 +98,6 @@
     <Compile Include="FrmStateAccount.Designer.cs">
       <DependentUpon>FrmStateAccount.cs</DependentUpon>
     </Compile>
-    <Compile Include="Jarrod\Forms\AddCustomerForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Jarrod\Forms\AddCustomerForm.Designer.cs">
-      <DependentUpon>AddCustomerForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Jarrod\Forms\EditCustomerForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Jarrod\Forms\EditCustomerForm.Designer.cs">
-      <DependentUpon>EditCustomerForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="Jarrod\Forms\MSRDataTable.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -126,6 +112,12 @@
     </Compile>
     <Compile Include="Jethro\Classes\DBConnect.cs" />
     <Compile Include="Jarrod\DataService\CustomerDataService.cs" />
+    <Compile Include="Jarrod\Forms\AddCustomerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Jarrod\Forms\AddCustomerForm.Designer.cs">
+      <DependentUpon>AddCustomerForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Jarrod\DataService\ReservationDataPresenter.cs" />
     <Compile Include="Jarrod\DataService\ReservationDataService.cs" />
     <Compile Include="Jarrod\Forms\AddReservationView.cs">
@@ -214,6 +206,17 @@
       <DependentUpon>ReportOcc.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Reports\DSMonthly.cs">
+      <DependentUpon>DSMonthly.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\DSMonthly.Designer.cs">
+      <DependentUpon>DSMonthly.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\DSMonthly1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DSMonthly.xsd</DependentUpon>
+    </Compile>
     <Compile Include="rptStateAccount.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -251,9 +254,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Jarrod\Forms\AddReservationView.resx">
       <DependentUpon>AddReservationView.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Jarrod\Forms\EditCustomerForm.resx">
-      <DependentUpon>EditCustomerForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Jarrod\Forms\MSRDataTable.resx">
       <DependentUpon>MSRDataTable.cs</DependentUpon>
@@ -327,14 +327,23 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="Reports\DSMonthly.xsc">
+      <DependentUpon>DSMonthly.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\DSMonthly.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DSMonthly1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Reports\DSMonthly.xss">
+      <DependentUpon>DSMonthly.xsd</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="bin\Debug\" />
-    <Folder Include="ReportGenerator\Reports\" />
-    <Folder Include="Reports\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
@@ -345,7 +354,6 @@
     <Content Include="obj\Debug\TempPE\ReportOcc.cs.dll" />
     <Content Include="obj\Debug\TempPE\Reports.DSMonthly1.Designer.cs.dll" />
     <Content Include="obj\Debug\TempPE\rptStateAccount.cs.dll" />
-    <None Include="Resources\filter-results-button.png" />
     <None Include="Resources\search.png" />
     <None Include="Resources\restore.png" />
     <None Include="Resources\003-add.png" />

@@ -65,6 +65,7 @@ namespace Reservations_Subsystem
                 "FROM sad2_db.room_type rt " +
                 "INNER JOIN sad2_db.room room " +
                 "ON rt.id = room.roomTypeId";
+
             using (MySqlDataAdapter blah = new MySqlDataAdapter(query, conn))
             {
                 try
@@ -691,6 +692,8 @@ namespace Reservations_Subsystem
                 RoomDataService roomDataService = new RoomDataService();
 
                 // initializing search values
+                MessageBox.Show(roomId.ToString());
+
                 roomInfo = roomDataService.getRoomInfoById(Convert.ToInt32(roomId));
                 string searchValueRow = roomInfo.RoomNumber;
 
