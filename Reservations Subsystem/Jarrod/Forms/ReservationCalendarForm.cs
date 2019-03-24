@@ -597,7 +597,6 @@ namespace Reservations_Subsystem
 
                 // getting timespan of whole date
                 TimeSpan stayInDays = endDate - startDate;
-                //MessageBox.Show(stayInDays.Days +"reserveId is"+ reserveId.ToString());
                 int totalWidth = (stayInDays.Days * 40);
                 string name = Convert.ToString(reserveId);
 
@@ -692,7 +691,6 @@ namespace Reservations_Subsystem
                 RoomDataService roomDataService = new RoomDataService();
 
                 // initializing search values
-                MessageBox.Show(roomId.ToString());
 
                 roomInfo = roomDataService.getRoomInfoById(Convert.ToInt32(roomId));
                 string searchValueRow = roomInfo.RoomNumber;
@@ -1169,7 +1167,6 @@ namespace Reservations_Subsystem
             lastSelectedDateOnDgv = DateTime.ParseExact(strEndDate, "yyyy-MM-dd HH:mm:ss", System.Globalization.CultureInfo.InvariantCulture);
             
             myReservationList = reservationDataService.FilterReservationByDgvDate(firstSelectedDateOnDgv, lastSelectedDateOnDgv, roomId);
-            //MessageBox.Show(myReservationList.Count.ToString());
             return myReservationList.Count();
 
         }

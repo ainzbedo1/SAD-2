@@ -288,6 +288,7 @@ namespace Reservations_Subsystem
             StringCollection nameCollection = new StringCollection();
             //nameCollection = custDataService.AutoCompleteCollection();
             txtCustomerName.AutoCompleteCustomSource = custDataService.AutoCompleteCollection(); 
+            
         }
         private void AddReservation_Load(object sender, EventArgs e)
         {
