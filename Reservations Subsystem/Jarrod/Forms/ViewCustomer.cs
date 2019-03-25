@@ -217,5 +217,10 @@ namespace Reservations_Subsystem
         {
             this.Close();
         }
+
+        private void btn_filter_Click(object sender, EventArgs e)
+        {
+            
+        }
     }
 }
