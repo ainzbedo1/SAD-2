@@ -38,7 +38,13 @@
             this.btn_POS = new System.Windows.Forms.Button();
             this.btn_Inv = new System.Windows.Forms.Button();
             this.btn_Sched = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // btn_Exit
@@ -48,10 +54,10 @@
             this.btn_Exit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_Exit.Font = new System.Drawing.Font("Segoe UI Semilight", 19F);
             this.btn_Exit.ForeColor = System.Drawing.Color.White;
-            this.btn_Exit.Location = new System.Drawing.Point(527, 5);
+            this.btn_Exit.Location = new System.Drawing.Point(541, 5);
             this.btn_Exit.Margin = new System.Windows.Forms.Padding(0);
             this.btn_Exit.Name = "btn_Exit";
-            this.btn_Exit.Size = new System.Drawing.Size(89, 52);
+            this.btn_Exit.Size = new System.Drawing.Size(75, 52);
             this.btn_Exit.TabIndex = 16;
             this.btn_Exit.Text = "EXIT";
             this.btn_Exit.UseVisualStyleBackColor = false;
@@ -73,7 +79,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI Semilight", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(223, 10);
+            this.label1.Location = new System.Drawing.Point(224, 11);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(176, 40);
             this.label1.TabIndex = 18;
@@ -89,12 +95,11 @@
             this.btn_Acc.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_Acc.Font = new System.Drawing.Font("Segoe UI Semilight", 19F);
             this.btn_Acc.ForeColor = System.Drawing.Color.White;
-            this.btn_Acc.Location = new System.Drawing.Point(465, 350);
+            this.btn_Acc.Location = new System.Drawing.Point(480, 330);
             this.btn_Acc.Margin = new System.Windows.Forms.Padding(0);
             this.btn_Acc.Name = "btn_Acc";
-            this.btn_Acc.Size = new System.Drawing.Size(155, 127);
+            this.btn_Acc.Size = new System.Drawing.Size(120, 120);
             this.btn_Acc.TabIndex = 20;
-            this.btn_Acc.Text = "Accounts";
             this.btn_Acc.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btn_Acc.UseVisualStyleBackColor = false;
             // 
@@ -106,9 +111,9 @@
             this.button1.Enabled = false;
             this.button1.FlatAppearance.BorderSize = 0;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Location = new System.Drawing.Point(93, 98);
+            this.button1.Location = new System.Drawing.Point(109, 85);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(444, 220);
+            this.button1.Size = new System.Drawing.Size(407, 203);
             this.button1.TabIndex = 21;
             this.button1.UseVisualStyleBackColor = false;
             // 
@@ -147,12 +152,11 @@
             this.btn_POS.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_POS.Font = new System.Drawing.Font("Segoe UI Semilight", 19F);
             this.btn_POS.ForeColor = System.Drawing.Color.White;
-            this.btn_POS.Location = new System.Drawing.Point(310, 350);
+            this.btn_POS.Location = new System.Drawing.Point(325, 330);
             this.btn_POS.Margin = new System.Windows.Forms.Padding(0);
             this.btn_POS.Name = "btn_POS";
-            this.btn_POS.Size = new System.Drawing.Size(155, 127);
+            this.btn_POS.Size = new System.Drawing.Size(120, 120);
             this.btn_POS.TabIndex = 12;
-            this.btn_POS.Text = "POS";
             this.btn_POS.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btn_POS.UseVisualStyleBackColor = false;
             this.btn_POS.Click += new System.EventHandler(this.btn_POS_Click);
@@ -165,13 +169,12 @@
             this.btn_Inv.FlatAppearance.BorderSize = 0;
             this.btn_Inv.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_Inv.Font = new System.Drawing.Font("Segoe UI Semilight", 19F);
-            this.btn_Inv.ForeColor = System.Drawing.Color.White;
-            this.btn_Inv.Location = new System.Drawing.Point(155, 350);
+            this.btn_Inv.ForeColor = System.Drawing.Color.Lime;
+            this.btn_Inv.Location = new System.Drawing.Point(170, 330);
             this.btn_Inv.Margin = new System.Windows.Forms.Padding(0);
             this.btn_Inv.Name = "btn_Inv";
-            this.btn_Inv.Size = new System.Drawing.Size(155, 127);
+            this.btn_Inv.Size = new System.Drawing.Size(120, 120);
             this.btn_Inv.TabIndex = 11;
-            this.btn_Inv.Text = "Inventory";
             this.btn_Inv.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btn_Inv.UseVisualStyleBackColor = false;
             this.btn_Inv.Click += new System.EventHandler(this.btn_Inv_Click);
@@ -184,17 +187,72 @@
             this.btn_Sched.FlatAppearance.BorderSize = 0;
             this.btn_Sched.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_Sched.Font = new System.Drawing.Font("Segoe UI Semilight", 19F);
-            this.btn_Sched.ForeColor = System.Drawing.Color.White;
+            this.btn_Sched.ForeColor = System.Drawing.Color.Lime;
             this.btn_Sched.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btn_Sched.Location = new System.Drawing.Point(0, 350);
+            this.btn_Sched.Location = new System.Drawing.Point(15, 330);
             this.btn_Sched.Margin = new System.Windows.Forms.Padding(0);
             this.btn_Sched.Name = "btn_Sched";
-            this.btn_Sched.Size = new System.Drawing.Size(155, 127);
+            this.btn_Sched.Size = new System.Drawing.Size(120, 120);
             this.btn_Sched.TabIndex = 10;
-            this.btn_Sched.Text = "Schedule";
             this.btn_Sched.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btn_Sched.UseVisualStyleBackColor = false;
             this.btn_Sched.Click += new System.EventHandler(this.btn_Sched_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI Semilight", 16F);
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(9, 136);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(140, 30);
+            this.label2.TabIndex = 22;
+            this.label2.Text = "SCHEDULING";
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(127)))), ((int)(((byte)(0)))));
+            this.panel2.Controls.Add(this.label5);
+            this.panel2.Controls.Add(this.label4);
+            this.panel2.Controls.Add(this.label3);
+            this.panel2.Controls.Add(this.label2);
+            this.panel2.Location = new System.Drawing.Point(-1, 314);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(621, 179);
+            this.panel2.TabIndex = 23;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Segoe UI Semilight", 16F);
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(169, 136);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(126, 30);
+            this.label3.TabIndex = 23;
+            this.label3.Text = "INVENTORY";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Segoe UI Semilight", 16F);
+            this.label4.ForeColor = System.Drawing.Color.White;
+            this.label4.Location = new System.Drawing.Point(346, 136);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(53, 30);
+            this.label4.TabIndex = 24;
+            this.label4.Text = "POS";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Segoe UI Semilight", 16F);
+            this.label5.ForeColor = System.Drawing.Color.White;
+            this.label5.Location = new System.Drawing.Point(480, 136);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(124, 30);
+            this.label5.TabIndex = 25;
+            this.label5.Text = "ACCOUNTS";
             // 
             // main_form
             // 
@@ -210,13 +268,16 @@
             this.Controls.Add(this.btn_POS);
             this.Controls.Add(this.btn_Inv);
             this.Controls.Add(this.btn_Sched);
+            this.Controls.Add(this.panel2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "main_form";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "main_form";
+            this.Text = "A";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.main_form_FormClosing);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -232,5 +293,10 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button btn_Acc;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label4;
     }
 }
