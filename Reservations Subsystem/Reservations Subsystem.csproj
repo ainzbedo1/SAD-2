@@ -57,44 +57,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Elijah\DbConnect.cs" />
-    <Compile Include="Elijah\dbconnector.cs" />
-    <Compile Include="Elijah\Inventorymgt.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Elijah\Inventorymgt.designer.cs">
-      <DependentUpon>Inventorymgt.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Elijah\itemmgt.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Elijah\itemmgt.designer.cs">
-      <DependentUpon>itemmgt.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Elijah\orderlistmgt.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Elijah\orderlistmgt.designer.cs">
-      <DependentUpon>orderlistmgt.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Elijah\stockinmgt.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Elijah\stockinmgt.designer.cs">
-      <DependentUpon>stockinmgt.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Elijah\stockoutlist.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Elijah\stockoutlist.designer.cs">
-      <DependentUpon>stockoutlist.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Elijah\viewarchive.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Elijah\viewarchive.designer.cs">
-      <DependentUpon>viewarchive.cs</DependentUpon>
-    </Compile>
     <Compile Include="FrmStateAccount.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -106,6 +68,12 @@
     </Compile>
     <Compile Include="Jarrod\Forms\EditCustomerForm.Designer.cs">
       <DependentUpon>EditCustomerForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Jarrod\Forms\FrmOccupancy.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Jarrod\Forms\FrmOccupancy.designer.cs">
+      <DependentUpon>FrmOccupancy.cs</DependentUpon>
     </Compile>
     <Compile Include="Jarrod\Forms\MSRDataTable.cs">
       <SubType>Form</SubType>
@@ -226,6 +194,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DSMonthly.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Jarrod\Custom Objects\RoomRateTextBox.cs" />
     <Compile Include="rptStateAccount.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -237,24 +206,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Window2.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Elijah\Inventorymgt.resx">
-      <DependentUpon>Inventorymgt.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Elijah\itemmgt.resx">
-      <DependentUpon>itemmgt.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Elijah\orderlistmgt.resx">
-      <DependentUpon>orderlistmgt.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Elijah\stockinmgt.resx">
-      <DependentUpon>stockinmgt.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Elijah\stockoutlist.resx">
-      <DependentUpon>stockoutlist.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Elijah\viewarchive.resx">
-      <DependentUpon>viewarchive.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="FrmStateAccount.resx">
       <DependentUpon>FrmStateAccount.cs</DependentUpon>
     </EmbeddedResource>
@@ -266,6 +217,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Jarrod\Forms\EditCustomerForm.resx">
       <DependentUpon>EditCustomerForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Jarrod\Forms\FrmOccupancy.resx">
+      <DependentUpon>FrmOccupancy.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Jarrod\Forms\MSRDataTable.resx">
       <DependentUpon>MSRDataTable.cs</DependentUpon>
@@ -356,6 +310,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="bin\Debug\" />
+    <Folder Include="Elijah\" />
+    <Folder Include="Jarrod\ReperotGenerator\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />

@@ -17,11 +17,17 @@ namespace Reservations_Subsystem
         public RoomInfo getRoomInfoByRoomNumber(string roomNumber)
         {
 
-            string query = "SELECT id, roomNumber, roomType, description FROM room WHERE roomNumber = '" + roomNumber + "' ";
+            string query = "SELECT room.id, room.roomNumber, rt.roomType " +
+                "FROM sad2_db.room_type rt " +
+                "INNER JOIN sad2_db.room room " +
+                    "ON rt.id = room.roomTypeId " +
+                "WHERE room.roomNumber = @roomNumber";
             using (MySqlCommand cmd = new MySqlCommand(query, conn))
             {
                 MySqlDataReader myReader;
                 conn.Open();
+                cmd.Parameters.AddWithValue("@roomNumber", roomNumber);
+
                 using (myReader = cmd.ExecuteReader())
                 {
 
@@ -39,7 +45,7 @@ namespace Reservations_Subsystem
 
 
                 }
-   
+
 
             }
 
@@ -52,18 +58,6 @@ namespace Reservations_Subsystem
                 "INNER JOIN sad2_db.room room " +
                     "ON rt.id = room.roomTypeId " +
                 "WHERE room.id = @roomId";
-                /*
-            //"SELECT room.roomNumber, rt.roomType FROM sad2_db.room_type rt INNER JOIN sad2_db.room room ON rt.id = room.roomTypeId; "
-            string query = "SELECT room.id, room.roomNumber, rt.roomType " +
-                "FROM room_type rt " +
-                "INNER JOIN room room " +
-                    "ON rt.id = room.roomTypeId " +
-                "INNER JOIN sad2_db.room_rate rate " +
-                    "ON room.id = rate.room_Type_id " +
-                "WHERE room.id = @id";
-                */
-            //string query = "SELECT room, roomNumber, roomType, description FROM room WHERE id = '" + roomId + "' ";
-            //MySqlConnection.ClearPool(conn);
             using (MySqlCommand cmd = new MySqlCommand(query, conn))
             {
                 MySqlDataReader myReader;
@@ -92,11 +86,16 @@ namespace Reservations_Subsystem
             MySqlConnection.ClearPool(conn);
             return null;
         }
-        
+
         public List<RoomTextBoxItems> getRoomInfoByType(string roomType)
         {
             var myComboItemsList = new List<RoomTextBoxItems>();
-            string query = "SELECT id, typeName FROM room WHERE room_type ='"+roomType+"' ";
+            string query = "SELECT room.id, room.roomNumber, rt.roomType " +
+                "FROM sad2_db.room_type rt " +
+                "INNER JOIN sad2_db.room room " +
+                "ON rt.id = room.roomTypeId " +
+                "WHERE rt.roomType = '" + roomType + "' ";
+            //string query = "SELECT id, typeName FROM room WHERE room_type ='"+roomType+"' ";
             using (MySqlDataAdapter blah = new MySqlDataAdapter(query, conn))
             {
                 try
@@ -107,8 +106,11 @@ namespace Reservations_Subsystem
                     foreach (DataRow drow in dt.Rows)
                     {
                         RoomTextBoxItems myComboItems = new RoomTextBoxItems();
+                        /*
                         myComboItems.ID = Convert.ToInt32(drow[0]);
                         myComboItems.roomType = (drow[1]).ToString();
+                        */
+                        myComboItems.RoomNumber = (drow[1]).ToString();
 
                         myComboItemsList.Add(myComboItems);
                     }
@@ -121,7 +123,7 @@ namespace Reservations_Subsystem
             }
             return myComboItemsList;
         }
-        
+
         public List<RoomTextBoxItems> getAllRoomId()
         {
             var myComboItemsList = new List<RoomTextBoxItems>();
@@ -129,11 +131,11 @@ namespace Reservations_Subsystem
             using (MySqlDataAdapter blah = new MySqlDataAdapter(query, conn))
             {
                 try
-                { 
+                {
 
                     DataTable dt = new DataTable();
                     blah.Fill(dt);
-                    foreach (DataRow drow in dt.Rows)  
+                    foreach (DataRow drow in dt.Rows)
                     {
                         RoomTextBoxItems myComboItems = new RoomTextBoxItems();
                         myComboItems.ID = Convert.ToInt32(drow[0]);
@@ -146,7 +148,7 @@ namespace Reservations_Subsystem
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.ToString());
-                   // Console.WriteLine(ex);
+                    // Console.WriteLine(ex);
                 }
             }
             return myComboItemsList;
@@ -159,7 +161,7 @@ namespace Reservations_Subsystem
         {
 
             var myRoomTypes = new List<string>();
-            string query = "SELECT Distinct roomType FROM sad2_db.room order by roomType";
+            string query = "SELECT Distinct roomType FROM sad2_db.room_type order by roomType";
             using (MySqlDataAdapter blah = new MySqlDataAdapter(query, conn))
             {
                 try
@@ -219,7 +221,7 @@ namespace Reservations_Subsystem
             string query = "INSERT INTO room(roomNumber, floorLevel, description) VALUES(@roomNumber, @roomType, @floorLevel, @description)";
             using (MySqlCommand cmd = new MySqlCommand(query, conn))
             {
-                
+
                 cmd.Parameters.AddWithValue("@roomNumber", roomNumber);
                 //cmd.Parameters.AddWithValue("@roomType", roomType);
                 cmd.Parameters.AddWithValue("@floorLevel", floorLevel);
@@ -237,7 +239,7 @@ namespace Reservations_Subsystem
                 }
             }
         }
-        
+
         public void UpdateRoom(string roomNumber, string roomType, string floorLevel, string description)
         {
 
@@ -309,6 +311,38 @@ namespace Reservations_Subsystem
                     Console.WriteLine(ex.Message);
                 }
             }
+        }
+        public List<string> GetRoomRate(int roomId)
+        {
+            var myRoomRates = new List<string>();
+
+            string query = "SELECT room.roomNumber, rt.roomType, rate.rate, rate.description " +
+                "FROM sad2_db.room room " +
+                "INNER JOIN sad2_db.room_type rt " +
+                "ON rt.id = room.roomTypeId " +
+                "JOIN sad2_db.room_rate rate " +
+                "ON rate.room_type_id = rt.id " +
+                "WHERE room.id = '"+roomId+"' ";
+            using (MySqlDataAdapter blah = new MySqlDataAdapter(query, conn))
+            {
+                try
+                {
+                    DataTable dt = new DataTable();
+                    blah.Fill(dt);
+                    foreach (DataRow drow in dt.Rows)
+                    {
+                        RoomTextBoxItems myComboItems = new RoomTextBoxItems();
+                        myRoomRates.Add(drow[2].ToString()+" "+"("+drow[3].ToString()+")");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                    // Console.WriteLine(ex);
+                }
+            }
+
+            return myRoomRates;
         }
     }
 
