@@ -44,6 +44,7 @@ namespace Reservations_Subsystem
             orderReceiptsGridView.ClearSelection();
             orderReceiptsGridView.Columns[0].Visible = false;
             ordersGridView.Columns.Clear();
+            //loadAllOrders();
         }
         //MIDDLE PANEL
         private void orderReceiptsGridView_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -58,7 +59,6 @@ namespace Reservations_Subsystem
             DBConnect db = new DBConnect();
             MySqlConnection con = db.connect();
             String Menu = "SELECT id, reportDate as Date, revenue as Revenue FROM dailysalesreport ORDER BY reportDate DESC";
-            //String Menu = "SELECT * FROM dailysalesreport";
             DataTable dt = new DataTable();
             MySqlDataAdapter da = new MySqlDataAdapter(Menu, con);
 
@@ -91,7 +91,7 @@ namespace Reservations_Subsystem
         {
             DBConnect db = new DBConnect();
             MySqlConnection con = db.connect();
-            String Menu = "SELECT menuitem.name, menuitem.price, order_menuitem.quantity FROM order_menuitem JOIN menuitem ON order_menuitem.menuitem_id = menuitem.id WHERE order_menuitem.order_id = " + order_id;
+            String Menu = "SELECT menuitem.name, order_menuitem.quantity FROM order_menuitem JOIN menuitem ON order_menuitem.menuitem_id = menuitem.id WHERE order_menuitem.order_id = " + order_id;
             DataTable dt = new DataTable();
             MySqlDataAdapter da = new MySqlDataAdapter(Menu, con);
 

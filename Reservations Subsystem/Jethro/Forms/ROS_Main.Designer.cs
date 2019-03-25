@@ -46,16 +46,16 @@
             this.MenuLabel = new System.Windows.Forms.Label();
             this.menuSearch = new System.Windows.Forms.TextBox();
             this.OrderBottomPanel = new System.Windows.Forms.Panel();
-            this.priceLabel = new System.Windows.Forms.Label();
             this.amountLabel = new System.Windows.Forms.Label();
+            this.priceLabel = new System.Windows.Forms.Label();
             this.OrderTopPanel = new System.Windows.Forms.Panel();
             this.OrderLabel = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.removeButton = new System.Windows.Forms.Button();
             this.addButton = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.orderGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.menuGridView)).BeginInit();
             this.MenuTopPanel.SuspendLayout();
@@ -209,6 +209,7 @@
             this.menuGridView.AllowUserToResizeColumns = false;
             this.menuGridView.AllowUserToResizeRows = false;
             this.menuGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.menuGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.menuGridView.BackgroundColor = System.Drawing.Color.White;
             this.menuGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.menuGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
@@ -286,17 +287,6 @@
             this.OrderBottomPanel.Size = new System.Drawing.Size(398, 49);
             this.OrderBottomPanel.TabIndex = 1;
             // 
-            // priceLabel
-            // 
-            this.priceLabel.AutoSize = true;
-            this.priceLabel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.priceLabel.Font = new System.Drawing.Font("Segoe UI Semilight", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.priceLabel.Location = new System.Drawing.Point(2, 0);
-            this.priceLabel.Name = "priceLabel";
-            this.priceLabel.Size = new System.Drawing.Size(116, 45);
-            this.priceLabel.TabIndex = 7;
-            this.priceLabel.Text = "PRICE: ";
-            // 
             // amountLabel
             // 
             this.amountLabel.AutoSize = true;
@@ -307,6 +297,17 @@
             this.amountLabel.Size = new System.Drawing.Size(96, 45);
             this.amountLabel.TabIndex = 8;
             this.amountLabel.Text = "P0.00";
+            // 
+            // priceLabel
+            // 
+            this.priceLabel.AutoSize = true;
+            this.priceLabel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.priceLabel.Font = new System.Drawing.Font("Segoe UI Semilight", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.priceLabel.Location = new System.Drawing.Point(2, 0);
+            this.priceLabel.Name = "priceLabel";
+            this.priceLabel.Size = new System.Drawing.Size(116, 45);
+            this.priceLabel.TabIndex = 7;
+            this.priceLabel.Text = "PRICE: ";
             // 
             // OrderTopPanel
             // 
@@ -339,6 +340,17 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1300, 48);
             this.panel1.TabIndex = 10;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI Semilight", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(3, 5);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(212, 37);
+            this.label1.TabIndex = 10;
+            this.label1.Text = "POINT OF SALES";
             // 
             // panel2
             // 
@@ -395,17 +407,6 @@
             this.addButton.TabIndex = 2;
             this.addButton.UseVisualStyleBackColor = false;
             this.addButton.Click += new System.EventHandler(this.addButton_Click);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI Semilight", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(3, 5);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(212, 37);
-            this.label1.TabIndex = 10;
-            this.label1.Text = "POINT OF SALES";
             // 
             // ROS_Main
             // 

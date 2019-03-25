@@ -18,6 +18,7 @@ namespace Reservations_Subsystem
         //public ViewRoom referenceViewRoom { get; set; }
         //public AddReservation AddReservationForm { get; set; }
         public MySqlConnection conn;
+        public main_form reftomain { get; set; }
         public AddReservationView reference { get; set; }
         public string[] monthString = { "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" };
         public int buttonCreateCounter = 0;
@@ -1336,6 +1337,11 @@ namespace Reservations_Subsystem
 
             frm.Show();
             */
+        }
+
+        private void ReservationCalendarForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            reftomain.Show();
         }
     } 
 

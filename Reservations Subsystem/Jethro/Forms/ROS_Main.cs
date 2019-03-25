@@ -13,6 +13,7 @@ namespace Reservations_Subsystem
 {
     public partial class ROS_Main : Form
     {
+        public main_form reference { get; set; }
         int quantity;
         float totalPrice = 0.00f;
         public int DSR_ID;
@@ -21,6 +22,15 @@ namespace Reservations_Subsystem
         public ROS_Main()
         {
             InitializeComponent();
+        }
+        public ROS_Main(int posmenu)
+        {
+            InitializeComponent();
+            if (posmenu == 0)
+            {
+                viewDSRButton.Enabled = false;
+                viewMenuButton.Enabled = false;
+            }
         }
         private void ROS_Main_Load(object sender, EventArgs e)
         {
@@ -33,7 +43,7 @@ namespace Reservations_Subsystem
         }
         private void ROS_Main_FormClosing(object sender, FormClosingEventArgs e)
         {
-            //Redirect to Main Menu
+            reference.Show();
         }
         #endregion
 
@@ -188,6 +198,7 @@ namespace Reservations_Subsystem
                     MySqlCommand comm4;
                     int menuitemID;
 
+                    //ADDS QUANTITY TO MENUITEM
                     foreach (DataGridViewRow row in orderGridView.Rows)
                     {
                         command1 = new MySqlCommand("SELECT id FROM menuitem WHERE name = '" + row.Cells[0].Value.ToString() + "'", con);
@@ -199,6 +210,13 @@ namespace Reservations_Subsystem
                                                           "VALUES (" + orderID + "," + menuitemID + "," + Int32.Parse(row.Cells[2].Value.ToString()) + ")", con);
                         comm4.ExecuteNonQuery();
                     }
+
+                    //UPDATES DSR REVENUE
+                    String updateRevenue = ("UPDATE dailysalesreport SET revenue = revenue + " + totalPrice + " WHERE reportDate = CURDATE()");
+
+                    MySqlCommand updateRev = new MySqlCommand(updateRevenue, con);
+                    updateRev.ExecuteNonQuery();
+
                     con.Close();
                 }
                 catch(Exception ex)

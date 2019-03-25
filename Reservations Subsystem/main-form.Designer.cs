@@ -37,6 +37,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
+            this.btn_Acc = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -47,7 +48,7 @@
             this.btn_Exit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_Exit.Font = new System.Drawing.Font("Segoe UI Semilight", 19F);
             this.btn_Exit.ForeColor = System.Drawing.Color.White;
-            this.btn_Exit.Location = new System.Drawing.Point(-1, 450);
+            this.btn_Exit.Location = new System.Drawing.Point(-1, 577);
             this.btn_Exit.Margin = new System.Windows.Forms.Padding(0);
             this.btn_Exit.Name = "btn_Exit";
             this.btn_Exit.Size = new System.Drawing.Size(155, 127);
@@ -147,7 +148,7 @@
             this.button2.Enabled = false;
             this.button2.FlatAppearance.BorderSize = 0;
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Location = new System.Drawing.Point(386, 177);
+            this.button2.Location = new System.Drawing.Point(383, 254);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(245, 223);
             this.button2.TabIndex = 18;
@@ -160,17 +161,33 @@
             this.button3.Enabled = false;
             this.button3.FlatAppearance.BorderSize = 0;
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Location = new System.Drawing.Point(204, 283);
+            this.button3.Location = new System.Drawing.Point(201, 360);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(633, 117);
             this.button3.TabIndex = 19;
             this.button3.UseVisualStyleBackColor = true;
             // 
+            // btn_Acc
+            // 
+            this.btn_Acc.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(127)))), ((int)(((byte)(0)))));
+            this.btn_Acc.FlatAppearance.BorderSize = 0;
+            this.btn_Acc.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_Acc.Font = new System.Drawing.Font("Segoe UI Semilight", 19F);
+            this.btn_Acc.ForeColor = System.Drawing.Color.White;
+            this.btn_Acc.Location = new System.Drawing.Point(-1, 450);
+            this.btn_Acc.Margin = new System.Windows.Forms.Padding(0);
+            this.btn_Acc.Name = "btn_Acc";
+            this.btn_Acc.Size = new System.Drawing.Size(155, 127);
+            this.btn_Acc.TabIndex = 20;
+            this.btn_Acc.Text = "Accounts";
+            this.btn_Acc.UseVisualStyleBackColor = false;
+            // 
             // main_form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(869, 577);
+            this.ClientSize = new System.Drawing.Size(869, 699);
+            this.Controls.Add(this.btn_Acc);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.panel1);
@@ -200,5 +217,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btn_Acc;
     }
 }

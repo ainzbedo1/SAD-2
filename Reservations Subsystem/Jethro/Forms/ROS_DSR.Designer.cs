@@ -38,8 +38,6 @@
             this.OrderLabel = new System.Windows.Forms.Label();
             this.OrderTopPanel = new System.Windows.Forms.Panel();
             this.DSRGridView = new System.Windows.Forms.DataGridView();
-            this.yearValue = new System.Windows.Forms.ComboBox();
-            this.monthValue = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label = new System.Windows.Forms.Label();
             this.orderReceiptsGridView = new System.Windows.Forms.DataGridView();
@@ -49,13 +47,13 @@
             this.panel6 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.monthValue = new System.Windows.Forms.ComboBox();
+            this.yearValue = new System.Windows.Forms.ComboBox();
             this.OrderTopPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DSRGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.orderReceiptsGridView)).BeginInit();
@@ -113,7 +111,7 @@
             this.DSRGridView.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -137,41 +135,6 @@
             this.DSRGridView.Size = new System.Drawing.Size(398, 449);
             this.DSRGridView.TabIndex = 4;
             this.DSRGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DSRGridView_CellClick);
-            // 
-            // yearValue
-            // 
-            this.yearValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.yearValue.FormattingEnabled = true;
-            this.yearValue.Location = new System.Drawing.Point(504, 623);
-            this.yearValue.Name = "yearValue";
-            this.yearValue.Size = new System.Drawing.Size(121, 37);
-            this.yearValue.Sorted = true;
-            this.yearValue.TabIndex = 15;
-            this.yearValue.Visible = false;
-            // 
-            // monthValue
-            // 
-            this.monthValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.monthValue.FormattingEnabled = true;
-            this.monthValue.Items.AddRange(new object[] {
-            "1",
-            "10",
-            "11",
-            "12",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8",
-            "9"});
-            this.monthValue.Location = new System.Drawing.Point(750, 627);
-            this.monthValue.Name = "monthValue";
-            this.monthValue.Size = new System.Drawing.Size(89, 37);
-            this.monthValue.Sorted = true;
-            this.monthValue.TabIndex = 14;
-            this.monthValue.Visible = false;
             // 
             // label1
             // 
@@ -210,7 +173,7 @@
             this.orderReceiptsGridView.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(127)))), ((int)(((byte)(0)))));
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(127)))), ((int)(((byte)(0)))));
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
@@ -219,10 +182,10 @@
             this.orderReceiptsGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(127)))), ((int)(((byte)(0)))));
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(127)))), ((int)(((byte)(0)))));
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.orderReceiptsGridView.DefaultCellStyle = dataGridViewCellStyle4;
             this.orderReceiptsGridView.Location = new System.Drawing.Point(447, 140);
@@ -269,7 +232,7 @@
             this.ordersGridView.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -324,6 +287,17 @@
             this.panel1.Size = new System.Drawing.Size(1305, 48);
             this.panel1.TabIndex = 16;
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Segoe UI Semilight", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(17, 4);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(66, 37);
+            this.label3.TabIndex = 11;
+            this.label3.Text = "DSR";
+            // 
             // button1
             // 
             this.button1.Enabled = false;
@@ -336,17 +310,6 @@
             this.button1.Size = new System.Drawing.Size(1246, 643);
             this.button1.TabIndex = 17;
             this.button1.UseVisualStyleBackColor = true;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI Semilight", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(17, 4);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(66, 37);
-            this.label3.TabIndex = 11;
-            this.label3.Text = "DSR";
             // 
             // button2
             // 
@@ -385,11 +348,11 @@
             this.label6.Text = "Year:";
             this.label6.Visible = false;
             // 
-            // comboBox1
+            // monthValue
             // 
-            this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.monthValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.monthValue.FormattingEnabled = true;
+            this.monthValue.Items.AddRange(new object[] {
             "1",
             "10",
             "11",
@@ -402,23 +365,23 @@
             "7",
             "8",
             "9"});
-            this.comboBox1.Location = new System.Drawing.Point(754, 627);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(89, 37);
-            this.comboBox1.Sorted = true;
-            this.comboBox1.TabIndex = 14;
-            this.comboBox1.Visible = false;
+            this.monthValue.Location = new System.Drawing.Point(750, 627);
+            this.monthValue.Name = "monthValue";
+            this.monthValue.Size = new System.Drawing.Size(89, 37);
+            this.monthValue.Sorted = true;
+            this.monthValue.TabIndex = 14;
+            this.monthValue.Visible = false;
             // 
-            // comboBox2
+            // yearValue
             // 
-            this.comboBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(508, 623);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(121, 37);
-            this.comboBox2.Sorted = true;
-            this.comboBox2.TabIndex = 15;
-            this.comboBox2.Visible = false;
+            this.yearValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.yearValue.FormattingEnabled = true;
+            this.yearValue.Location = new System.Drawing.Point(504, 623);
+            this.yearValue.Name = "yearValue";
+            this.yearValue.Size = new System.Drawing.Size(121, 37);
+            this.yearValue.Sorted = true;
+            this.yearValue.TabIndex = 15;
+            this.yearValue.Visible = false;
             // 
             // ROS_DSR
             // 
@@ -433,10 +396,8 @@
             this.Controls.Add(this.OrderTopPanel);
             this.Controls.Add(this.ordersGridView);
             this.Controls.Add(this.panel3);
-            this.Controls.Add(this.comboBox2);
             this.Controls.Add(this.yearValue);
             this.Controls.Add(this.panel6);
-            this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.monthValue);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
@@ -478,8 +439,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label;
-        private System.Windows.Forms.ComboBox yearValue;
-        private System.Windows.Forms.ComboBox monthValue;
         private System.Windows.Forms.DataGridView DSRGridView;
         private System.Windows.Forms.DataGridView orderReceiptsGridView;
         private System.Windows.Forms.DataGridView ordersGridView;
@@ -489,7 +448,7 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox monthValue;
+        private System.Windows.Forms.ComboBox yearValue;
     }
 }
