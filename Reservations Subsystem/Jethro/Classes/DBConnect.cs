@@ -14,7 +14,7 @@ namespace Reservations_Subsystem
         public MySqlConnection connect()
         {
             string connectionString = "SERVER=localhost;"
-                                    + "DATABASE=sad_db;"
+                                    + "DATABASE=sad2_db;"
                                     + "UID=root;"
                                     + "PASSWORD=root;";
             MySqlConnection conn = new MySqlConnection(connectionString);

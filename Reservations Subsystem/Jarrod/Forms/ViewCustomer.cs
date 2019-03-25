@@ -68,7 +68,7 @@ namespace Reservations_Subsystem
             try
             {
                 conn.Open();
-                MySqlCommand comm = new MySqlCommand("Select id, name AS Name, company AS Company, address AS Address, phone AS Contact, email AS eMail, passport AS Passport, nationality AS Nationality, gender AS Gender, birthdate AS Birthdate, birthplace AS Birthplace, comment AS Comment from customer WHERE name LIKE '%"+ txtSearch.Text + "%' gender LIKE '%" + txtSearch.Text + "%' nationality LIKE '%" + txtSearch.Text + "%'", conn);
+                MySqlCommand comm = new MySqlCommand("Select id, name AS Name, company AS Company, address AS Address, phone AS Contact, email AS eMail, passport AS Passport, nationality AS Nationality, gender AS Gender, birthdate AS Birthdate, birthplace AS Birthplace, comment AS Comment from customer WHERE name LIKE '%"+ txtSearch.Text + "%' OR gender LIKE '%" + txtSearch.Text + "%' OR nationality LIKE '%" + txtSearch.Text + "%'", conn);
                 MySqlDataAdapter adp = new MySqlDataAdapter(comm);
                 DataTable dt = new DataTable();
                 adp.Fill(dt);
@@ -216,6 +216,16 @@ namespace Reservations_Subsystem
         private void button1_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void btn_filter_Click(object sender, EventArgs e)
+        {
+            filterCustomer();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

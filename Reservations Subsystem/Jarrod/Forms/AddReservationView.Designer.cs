@@ -77,11 +77,7 @@
             this.dtpStartDate = new System.Windows.Forms.DateTimePicker();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.txtDesc = new System.Windows.Forms.RichTextBox();
-            this.txtRoomId = new System.Windows.Forms.TextBox();
-            this.label14 = new System.Windows.Forms.Label();
             this.btnDelete = new System.Windows.Forms.Button();
-            this.label15 = new System.Windows.Forms.Label();
-            this.txtCustomName = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.grpBoxRoomData.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -604,23 +600,6 @@
             this.txtDesc.TabIndex = 0;
             this.txtDesc.Text = "";
             // 
-            // txtRoomId
-            // 
-            this.txtRoomId.Location = new System.Drawing.Point(186, 604);
-            this.txtRoomId.Name = "txtRoomId";
-            this.txtRoomId.Size = new System.Drawing.Size(100, 20);
-            this.txtRoomId.TabIndex = 6;
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(95, 611);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(44, 13);
-            this.label14.TabIndex = 7;
-            this.label14.Text = "room ID";
-            this.label14.Click += new System.EventHandler(this.label14_Click);
-            // 
             // btnDelete
             // 
             this.btnDelete.Location = new System.Drawing.Point(346, 628);
@@ -631,32 +610,12 @@
             this.btnDelete.UseVisualStyleBackColor = true;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(95, 641);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(65, 13);
-            this.label15.TabIndex = 9;
-            this.label15.Text = "Customer ID";
-            // 
-            // txtCustomName
-            // 
-            this.txtCustomName.Location = new System.Drawing.Point(186, 638);
-            this.txtCustomName.Name = "txtCustomName";
-            this.txtCustomName.Size = new System.Drawing.Size(100, 20);
-            this.txtCustomName.TabIndex = 10;
-            // 
             // AddReservationView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(928, 672);
-            this.Controls.Add(this.txtCustomName);
-            this.Controls.Add(this.label15);
-            this.Controls.Add(this.label14);
-            this.Controls.Add(this.txtRoomId);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.btnDelete);
@@ -683,7 +642,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.lengthOfStay)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -728,15 +686,11 @@
         private System.Windows.Forms.ComboBox cmbRoomRate;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label lblsomething;
-        private System.Windows.Forms.TextBox txtRoomId;
-        private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Button btnRemoveCust;
         private System.Windows.Forms.Button btnChangeCustomer;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.TextBox txtRate;
         private System.Windows.Forms.DateTimePicker dtpEndDate;
-        private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.TextBox txtCustomName;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Button button1;

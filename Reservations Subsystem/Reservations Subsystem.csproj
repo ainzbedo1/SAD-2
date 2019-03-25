@@ -57,6 +57,44 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DbConnect.cs" />
+    <Compile Include="dbconnector.cs" />
+    <Compile Include="Elijah\Inventorymgt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Elijah\Inventorymgt.Designer.cs">
+      <DependentUpon>Inventorymgt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Elijah\itemmgt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Elijah\itemmgt.designer.cs">
+      <DependentUpon>itemmgt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Elijah\orderlistmgt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Elijah\orderlistmgt.designer.cs">
+      <DependentUpon>orderlistmgt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Elijah\stockinmgt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Elijah\stockinmgt.designer.cs">
+      <DependentUpon>stockinmgt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Elijah\stockoutlist.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Elijah\stockoutlist.designer.cs">
+      <DependentUpon>stockoutlist.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Elijah\viewarchive.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Elijah\viewarchive.designer.cs">
+      <DependentUpon>viewarchive.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmStateAccount.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -86,6 +124,12 @@
     </Compile>
     <Compile Include="Jarrod\Forms\MSRForm.Designer.cs">
       <DependentUpon>MSRForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Jarrod\Forms\others.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Jarrod\Forms\others.Designer.cs">
+      <DependentUpon>others.cs</DependentUpon>
     </Compile>
     <Compile Include="Jethro\Classes\DBConnect.cs" />
     <Compile Include="Jarrod\DataService\CustomerDataService.cs" />
@@ -132,10 +176,10 @@
     <Compile Include="Jarrod\Custom Objects\MyButton.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="main-form.cs">
+    <Compile Include="Elijah\main-form.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="main-form.Designer.cs">
+    <Compile Include="Elijah\main-form.Designer.cs">
       <DependentUpon>main-form.cs</DependentUpon>
     </Compile>
     <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
@@ -212,6 +256,24 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Window2.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Elijah\Inventorymgt.resx">
+      <DependentUpon>Inventorymgt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Elijah\itemmgt.resx">
+      <DependentUpon>itemmgt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Elijah\orderlistmgt.resx">
+      <DependentUpon>orderlistmgt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Elijah\stockinmgt.resx">
+      <DependentUpon>stockinmgt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Elijah\stockoutlist.resx">
+      <DependentUpon>stockoutlist.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Elijah\viewarchive.resx">
+      <DependentUpon>viewarchive.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmStateAccount.resx">
       <DependentUpon>FrmStateAccount.cs</DependentUpon>
     </EmbeddedResource>
@@ -233,6 +295,9 @@
     <EmbeddedResource Include="Jarrod\Forms\MSRForm.resx">
       <DependentUpon>MSRForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Jarrod\Forms\others.resx">
+      <DependentUpon>others.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Jarrod\Room\AddRoom.resx">
       <DependentUpon>AddRoom.cs</DependentUpon>
     </EmbeddedResource>
@@ -248,7 +313,7 @@
     <EmbeddedResource Include="Jethro\Forms\ROS_Main.resx">
       <DependentUpon>ROS_Main.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="main-form.resx">
+    <EmbeddedResource Include="Elijah\main-form.resx">
       <DependentUpon>main-form.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -319,7 +384,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="bin\Debug\" />
-    <Folder Include="Elijah\" />
     <Folder Include="Jarrod\ReperotGenerator\" />
   </ItemGroup>
   <ItemGroup>
@@ -338,6 +402,9 @@
     <None Include="Resources\001-writing.png" />
     <None Include="Resources\ASD.png" />
     <None Include="Resources\DFG.png" />
+    <None Include="Resources\budget.png" />
+    <None Include="Resources\calendar.png" />
+    <None Include="Resources\chest.png" />
     <Content Include="Resources\filter-results-button.png" />
     <None Include="Resources\filter-results-button2.png" />
     <None Include="Resources\lock.png" />
@@ -349,6 +416,7 @@
     <None Include="Resources\minus-symbol.png" />
     <None Include="Resources\plus-black-symbol.png" />
     <None Include="Resources\man-user.png" />
+    <None Include="Resources\round-account-button-with-user-inside.png" />
     <Content Include="Resources\vine.png" />
     <Content Include="Resources\wood.png" />
   </ItemGroup>
