@@ -31,12 +31,7 @@ namespace Reservations_Subsystem
 
 
         }
-        public DateTime TestDate
-        {
-            get { return dtpTest.Value; }
-            set { dtpTest.Value = value; }
 
-        }
 
         #region
         public DataGridView displayCalendar(int month, int year)
@@ -114,9 +109,9 @@ namespace Reservations_Subsystem
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            dtpTest.CustomFormat = "dd MMMM yyyy dddd";
+            //dtpTest.CustomFormat = "dd MMMM yyyy dddd";
             //dtpEndDate.CustomFormat = "dd MMMM yyyy dddd";
-            TestDate = DateTime.Today.AddDays(1);
+            //TestDate = DateTime.Today.AddDays(1);
             RoomDataService roomData = new RoomDataService();
             //roomData.getAllRoomId();
 
@@ -128,7 +123,7 @@ namespace Reservations_Subsystem
             int colCount = this.calendar.ColumnCount;
             this.Size = new Size(colCount * 40 + 80, 652);
             calendar.Size = new Size(colCount * 40 + 65, 652);
-            dtpTest.CustomFormat = "dd-MM-yyyy";
+            //dtpTest.CustomFormat = "dd-MM-yyyy";
             displayReservationButt(month, year);
             //DeleteAllButtons();
         }

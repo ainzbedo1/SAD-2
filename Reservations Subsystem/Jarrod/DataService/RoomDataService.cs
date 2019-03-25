@@ -14,9 +14,52 @@ namespace Reservations_Subsystem
     {
         public MySqlConnection conn = new MySqlConnection("Server=localhost;Database=sad2_db;Uid=root;Pwd=root;");
         // Get roomInfo by room number
+
+        public RoomInfo getRoomsWithSameType(string roomType)
+        {
+            string query = "SELECT  room.roomNumber, rt.roomType" +
+                "FROM sad2_db.room_type rt " +
+                "INNER JOIN sad2_db.room room " +
+                "ON rt.id = room.roomTypeId " +
+                "WHERE rt.roomType = 'Double'";
+            using (MySqlCommand cmd = new MySqlCommand(query, conn))
+            {
+                MySqlDataReader myReader;
+                conn.Open();
+                cmd.Parameters.AddWithValue("@roomNumber", roomType);
+
+                using (myReader = cmd.ExecuteReader())
+                {
+
+                    if (myReader.Read())
+                    {
+                        return new RoomInfo
+                        {
+
+                            RoomId = (myReader[0]).ToString(),
+                            RoomNumber = myReader[1].ToString(),
+                            RoomType = (myReader[2]).ToString()
+
+                        };
+                    }
+
+
+                }
+
+
+            }
+
+            return null;
+        }
         public RoomInfo getRoomInfoByRoomNumber(string roomNumber)
         {
-
+            /*
+            string query = "SELECT room.id, room.roomNumber, rt.roomType " +
+                "FROM sad2_db.room_type rt " +
+                "INNER JOIN sad2_db.room room " +
+                    "ON rt.id = room.roomTypeId " +
+                "WHERE room.roomNumber = @roomNumber";
+                */
             string query = "SELECT room.id, room.roomNumber, rt.roomType " +
                 "FROM sad2_db.room_type rt " +
                 "INNER JOIN sad2_db.room room " +
