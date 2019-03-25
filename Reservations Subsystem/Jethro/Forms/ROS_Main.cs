@@ -16,6 +16,7 @@ namespace Reservations_Subsystem
         public main_form reference { get; set; }
         int quantity;
         float totalPrice = 0.00f;
+        float totalCostPrice = 0.00f;
         public int DSR_ID;
 
         #region FORMS
@@ -23,10 +24,10 @@ namespace Reservations_Subsystem
         {
             InitializeComponent();
         }
-        public ROS_Main(int posmenu)
+        public ROS_Main(bool posmenu)
         {
             InitializeComponent();
-            if (posmenu == 0)
+            if (!posmenu)
             {
                 viewDSRButton.Enabled = false;
                 viewMenuButton.Enabled = false;
@@ -38,6 +39,8 @@ namespace Reservations_Subsystem
             menuGridView.ClearSelection();
             menuGridView.Columns[0].Visible = false;
             menuGridView.Columns[3].Visible = false;
+            menuGridView.Columns[4].Visible = false;
+            orderGridView.Columns[3].Visible = false;
             amountLabel.Text = "P" + totalPrice.ToString("0.00");
             orderGridView.ClearSelection();
         }
@@ -89,6 +92,7 @@ namespace Reservations_Subsystem
             quantity = 1;
             string itemName = menuGridView.SelectedRows[0].Cells[1].Value + string.Empty;
             decimal price = decimal.Parse(menuGridView.SelectedRows[0].Cells[2].Value.ToString());
+            decimal costPrice = decimal.Parse(menuGridView.SelectedRows[0].Cells[3].Value.ToString());
 
             Boolean found = false;
             foreach (DataGridViewRow row in menuGridView.SelectedRows)
@@ -105,9 +109,10 @@ namespace Reservations_Subsystem
                 }
                 if (!found)
                 {
-                    orderGridView.Rows.Add(itemName, price, quantity);
+                    orderGridView.Rows.Add(itemName, price, quantity, costPrice);
                 }
                 totalPrice += float.Parse(row.Cells[2].Value.ToString());
+                totalCostPrice += float.Parse(row.Cells[3].Value.ToString());
                 amountLabel.Text = "P" + totalPrice.ToString("0.00");
             }
             orderGridView.ClearSelection();
@@ -140,6 +145,8 @@ namespace Reservations_Subsystem
                     row.Cells[2].Value = quantity;
                 }else orderGridView.Rows.RemoveAt(row.Index);
                 totalPrice -= float.Parse(row.Cells[1].Value.ToString());
+                totalCostPrice -= float.Parse(row.Cells[3].Value.ToString());
+                MessageBox.Show(totalCostPrice.ToString());
                 amountLabel.Text = "P" + totalPrice.ToString("0.00");
             }
         }
@@ -212,7 +219,7 @@ namespace Reservations_Subsystem
                     }
 
                     //UPDATES DSR REVENUE
-                    String updateRevenue = ("UPDATE dailysalesreport SET revenue = revenue + " + totalPrice + " WHERE reportDate = CURDATE()");
+                    String updateRevenue = ("UPDATE dailysalesreport SET revenue = revenue + " + (totalPrice - totalCostPrice) + " WHERE reportDate = CURDATE()");
 
                     MySqlCommand updateRev = new MySqlCommand(updateRevenue, con);
                     updateRev.ExecuteNonQuery();
@@ -225,6 +232,9 @@ namespace Reservations_Subsystem
                 }
                 MessageBox.Show("Transaction has been recorded!");
                 orderGridView.Rows.Clear();
+                totalPrice = 0.00f;
+                totalCostPrice = 0.00f;
+                amountLabel.Text = "P" + totalPrice.ToString("0.00");
             }
         }
         #endregion
@@ -244,6 +254,7 @@ namespace Reservations_Subsystem
                 }
             } while (orderGridView.Rows.Count > 0);
             totalPrice = 0.00f;
+            totalCostPrice = 0.00f;
             amountLabel.Text = "P" + totalPrice.ToString("0.00");
         }
         #endregion
@@ -253,7 +264,7 @@ namespace Reservations_Subsystem
         {
             DBConnect db = new DBConnect();
             MySqlConnection con = db.connect();
-            String Menu = "SELECT * FROM menuitem";
+            String Menu = "SELECT * FROM menuitem WHERE status = 1";
             DataTable dt = new DataTable();
             MySqlDataAdapter da = new MySqlDataAdapter(Menu, con);
 

@@ -105,6 +105,7 @@
             this.DSRGridView.AllowUserToResizeColumns = false;
             this.DSRGridView.AllowUserToResizeRows = false;
             this.DSRGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.DSRGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.DSRGridView.BackgroundColor = System.Drawing.Color.White;
             this.DSRGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.DSRGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
@@ -167,6 +168,7 @@
             this.orderReceiptsGridView.AllowUserToResizeColumns = false;
             this.orderReceiptsGridView.AllowUserToResizeRows = false;
             this.orderReceiptsGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.orderReceiptsGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.orderReceiptsGridView.BackgroundColor = System.Drawing.Color.White;
             this.orderReceiptsGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.orderReceiptsGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
@@ -226,6 +228,7 @@
             this.ordersGridView.AllowUserToResizeColumns = false;
             this.ordersGridView.AllowUserToResizeRows = false;
             this.ordersGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.ordersGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.ordersGridView.BackgroundColor = System.Drawing.Color.White;
             this.ordersGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.ordersGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
