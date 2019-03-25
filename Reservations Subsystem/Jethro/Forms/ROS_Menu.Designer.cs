@@ -42,18 +42,19 @@
             this.itemNameTxt = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.archiveButton = new System.Windows.Forms.Button();
-            this.updateButton = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.createButton = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.editButton = new System.Windows.Forms.Button();
             this.menuSearch = new System.Windows.Forms.TextBox();
             this.MenuLabel = new System.Windows.Forms.Label();
             this.MenuTopPanel = new System.Windows.Forms.Panel();
             this.menuGridView = new System.Windows.Forms.DataGridView();
+            this.createButton = new System.Windows.Forms.Button();
+            this.updateButton = new System.Windows.Forms.Button();
+            this.archiveButton = new System.Windows.Forms.Button();
+            this.editButton = new System.Windows.Forms.Button();
+            this.filterButton = new System.Windows.Forms.Button();
             this.OrderTopPanel.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -82,7 +83,7 @@
             this.DetailsLabel.AutoSize = true;
             this.DetailsLabel.Font = new System.Drawing.Font("Segoe UI Semilight", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DetailsLabel.ForeColor = System.Drawing.Color.White;
-            this.DetailsLabel.Location = new System.Drawing.Point(2, 6);
+            this.DetailsLabel.Location = new System.Drawing.Point(3, 3);
             this.DetailsLabel.Name = "DetailsLabel";
             this.DetailsLabel.Size = new System.Drawing.Size(113, 37);
             this.DetailsLabel.TabIndex = 7;
@@ -149,9 +150,9 @@
             this.clearButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.clearButton.Font = new System.Drawing.Font("Segoe UI Semilight", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.clearButton.ForeColor = System.Drawing.Color.White;
-            this.clearButton.Location = new System.Drawing.Point(285, 396);
+            this.clearButton.Location = new System.Drawing.Point(285, 385);
             this.clearButton.Name = "clearButton";
-            this.clearButton.Size = new System.Drawing.Size(102, 40);
+            this.clearButton.Size = new System.Drawing.Size(102, 54);
             this.clearButton.TabIndex = 11;
             this.clearButton.Text = "Clear";
             this.clearButton.UseVisualStyleBackColor = false;
@@ -199,37 +200,6 @@
             this.label1.TabIndex = 8;
             this.label1.Text = "Item Name:";
             // 
-            // archiveButton
-            // 
-            this.archiveButton.BackColor = System.Drawing.Color.Transparent;
-            this.archiveButton.BackgroundImage = global::Reservations_Subsystem.Properties.Resources.DFG;
-            this.archiveButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.archiveButton.FlatAppearance.BorderSize = 0;
-            this.archiveButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.archiveButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.archiveButton.Location = new System.Drawing.Point(22, 538);
-            this.archiveButton.Name = "archiveButton";
-            this.archiveButton.Size = new System.Drawing.Size(57, 57);
-            this.archiveButton.TabIndex = 14;
-            this.archiveButton.UseVisualStyleBackColor = false;
-            this.archiveButton.Click += new System.EventHandler(this.archiveButton_Click);
-            // 
-            // updateButton
-            // 
-            this.updateButton.BackColor = System.Drawing.Color.Transparent;
-            this.updateButton.BackgroundImage = global::Reservations_Subsystem.Properties.Resources.ASD;
-            this.updateButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.updateButton.Enabled = false;
-            this.updateButton.FlatAppearance.BorderSize = 0;
-            this.updateButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.updateButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.updateButton.Location = new System.Drawing.Point(22, 456);
-            this.updateButton.Name = "updateButton";
-            this.updateButton.Size = new System.Drawing.Size(57, 57);
-            this.updateButton.TabIndex = 13;
-            this.updateButton.UseVisualStyleBackColor = false;
-            this.updateButton.Click += new System.EventHandler(this.updateButton_Click);
-            // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(127)))), ((int)(((byte)(0)))));
@@ -262,21 +232,6 @@
             this.panel3.Size = new System.Drawing.Size(101, 609);
             this.panel3.TabIndex = 16;
             // 
-            // createButton
-            // 
-            this.createButton.BackColor = System.Drawing.Color.Transparent;
-            this.createButton.BackgroundImage = global::Reservations_Subsystem.Properties.Resources.plus_black_symbol;
-            this.createButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.createButton.FlatAppearance.BorderSize = 0;
-            this.createButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.createButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.createButton.Location = new System.Drawing.Point(22, 374);
-            this.createButton.Name = "createButton";
-            this.createButton.Size = new System.Drawing.Size(57, 57);
-            this.createButton.TabIndex = 10;
-            this.createButton.UseVisualStyleBackColor = false;
-            this.createButton.Click += new System.EventHandler(this.createButton_Click);
-            // 
             // button1
             // 
             this.button1.Enabled = false;
@@ -289,21 +244,6 @@
             this.button1.Size = new System.Drawing.Size(1081, 550);
             this.button1.TabIndex = 18;
             this.button1.UseVisualStyleBackColor = true;
-            // 
-            // editButton
-            // 
-            this.editButton.BackColor = System.Drawing.Color.Transparent;
-            this.editButton.BackgroundImage = global::Reservations_Subsystem.Properties.Resources.ASD;
-            this.editButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.editButton.FlatAppearance.BorderSize = 0;
-            this.editButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.editButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.editButton.Location = new System.Drawing.Point(282, 3);
-            this.editButton.Name = "editButton";
-            this.editButton.Size = new System.Drawing.Size(44, 41);
-            this.editButton.TabIndex = 12;
-            this.editButton.UseVisualStyleBackColor = false;
-            this.editButton.Click += new System.EventHandler(this.editButton_Click);
             // 
             // menuSearch
             // 
@@ -319,7 +259,7 @@
             this.MenuLabel.AutoSize = true;
             this.MenuLabel.Font = new System.Drawing.Font("Segoe UI Semilight", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MenuLabel.ForeColor = System.Drawing.Color.White;
-            this.MenuLabel.Location = new System.Drawing.Point(1, 6);
+            this.MenuLabel.Location = new System.Drawing.Point(59, 3);
             this.MenuLabel.Name = "MenuLabel";
             this.MenuLabel.Size = new System.Drawing.Size(92, 37);
             this.MenuLabel.TabIndex = 7;
@@ -329,6 +269,7 @@
             // 
             this.MenuTopPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(127)))), ((int)(((byte)(0)))));
             this.MenuTopPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.MenuTopPanel.Controls.Add(this.filterButton);
             this.MenuTopPanel.Controls.Add(this.MenuLabel);
             this.MenuTopPanel.Controls.Add(this.menuSearch);
             this.MenuTopPanel.Controls.Add(this.editButton);
@@ -374,6 +315,82 @@
             this.menuGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.menuGridView.Size = new System.Drawing.Size(598, 449);
             this.menuGridView.TabIndex = 4;
+            // 
+            // createButton
+            // 
+            this.createButton.BackColor = System.Drawing.Color.Transparent;
+            this.createButton.BackgroundImage = global::Reservations_Subsystem.Properties.Resources.plus_black_symbol;
+            this.createButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.createButton.FlatAppearance.BorderSize = 0;
+            this.createButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.createButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.createButton.Location = new System.Drawing.Point(22, 374);
+            this.createButton.Name = "createButton";
+            this.createButton.Size = new System.Drawing.Size(57, 57);
+            this.createButton.TabIndex = 10;
+            this.createButton.UseVisualStyleBackColor = false;
+            this.createButton.Click += new System.EventHandler(this.createButton_Click);
+            // 
+            // updateButton
+            // 
+            this.updateButton.BackColor = System.Drawing.Color.Transparent;
+            this.updateButton.BackgroundImage = global::Reservations_Subsystem.Properties.Resources.ASD;
+            this.updateButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.updateButton.Enabled = false;
+            this.updateButton.FlatAppearance.BorderSize = 0;
+            this.updateButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.updateButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.updateButton.Location = new System.Drawing.Point(22, 456);
+            this.updateButton.Name = "updateButton";
+            this.updateButton.Size = new System.Drawing.Size(57, 57);
+            this.updateButton.TabIndex = 13;
+            this.updateButton.UseVisualStyleBackColor = false;
+            this.updateButton.Click += new System.EventHandler(this.updateButton_Click);
+            // 
+            // archiveButton
+            // 
+            this.archiveButton.BackColor = System.Drawing.Color.Transparent;
+            this.archiveButton.BackgroundImage = global::Reservations_Subsystem.Properties.Resources.DFG;
+            this.archiveButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.archiveButton.FlatAppearance.BorderSize = 0;
+            this.archiveButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.archiveButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.archiveButton.Location = new System.Drawing.Point(22, 538);
+            this.archiveButton.Name = "archiveButton";
+            this.archiveButton.Size = new System.Drawing.Size(57, 57);
+            this.archiveButton.TabIndex = 14;
+            this.archiveButton.UseVisualStyleBackColor = false;
+            this.archiveButton.Click += new System.EventHandler(this.archiveButton_Click);
+            // 
+            // editButton
+            // 
+            this.editButton.BackColor = System.Drawing.Color.Transparent;
+            this.editButton.BackgroundImage = global::Reservations_Subsystem.Properties.Resources.ASD;
+            this.editButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.editButton.FlatAppearance.BorderSize = 0;
+            this.editButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.editButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.editButton.Location = new System.Drawing.Point(282, 3);
+            this.editButton.Name = "editButton";
+            this.editButton.Size = new System.Drawing.Size(44, 41);
+            this.editButton.TabIndex = 12;
+            this.editButton.UseVisualStyleBackColor = false;
+            this.editButton.Click += new System.EventHandler(this.editButton_Click);
+            // 
+            // filterButton
+            // 
+            this.filterButton.BackColor = System.Drawing.Color.Transparent;
+            this.filterButton.BackgroundImage = global::Reservations_Subsystem.Properties.Resources.filter_results_button2;
+            this.filterButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.filterButton.FlatAppearance.BorderSize = 0;
+            this.filterButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.filterButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.filterButton.Location = new System.Drawing.Point(9, 3);
+            this.filterButton.Name = "filterButton";
+            this.filterButton.Size = new System.Drawing.Size(44, 41);
+            this.filterButton.TabIndex = 13;
+            this.filterButton.UseVisualStyleBackColor = false;
+            this.filterButton.Click += new System.EventHandler(this.filterButton_Click);
             // 
             // ROS_Menu
             // 
@@ -436,5 +453,6 @@
         private System.Windows.Forms.DataGridView menuGridView;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Button filterButton;
     }
 }

@@ -139,5 +139,10 @@ namespace Reservations_Subsystem
             }
             refreshMenu();
         }
+
+        private void filterButton_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
