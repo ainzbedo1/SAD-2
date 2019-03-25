@@ -45,25 +45,25 @@
             this.cmbRoomType = new System.Windows.Forms.ComboBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label19 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.label16 = new System.Windows.Forms.Label();
-            this.lblTotalAccomadation = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
             this.txtRate = new System.Windows.Forms.TextBox();
-            this.cmbPerNight2 = new System.Windows.Forms.ComboBox();
+            this.cmbRoomRate = new System.Windows.Forms.ComboBox();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.label13 = new System.Windows.Forms.Label();
             this.lblsomething = new System.Windows.Forms.Label();
             this.lblPerNight = new System.Windows.Forms.Label();
             this.lblNumOfNights = new System.Windows.Forms.Label();
+            this.lblTotalAccomadation = new System.Windows.Forms.Label();
             this.btnStatementOfAccount = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.btnSave = new System.Windows.Forms.Button();
@@ -234,23 +234,23 @@
             // 
             // cmbRoomNumber
             // 
-            this.cmbRoomNumber.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbRoomNumber.FormattingEnabled = true;
             this.cmbRoomNumber.Location = new System.Drawing.Point(202, 40);
             this.cmbRoomNumber.Name = "cmbRoomNumber";
             this.cmbRoomNumber.Size = new System.Drawing.Size(121, 21);
             this.cmbRoomNumber.TabIndex = 1;
             this.cmbRoomNumber.SelectedIndexChanged += new System.EventHandler(this.cmbRoomNumber_SelectedIndexChanged);
+            this.cmbRoomNumber.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cmbRoomNumber_KeyPress);
             // 
             // cmbRoomType
             // 
-            this.cmbRoomType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbRoomType.FormattingEnabled = true;
             this.cmbRoomType.Location = new System.Drawing.Point(15, 40);
             this.cmbRoomType.Name = "cmbRoomType";
             this.cmbRoomType.Size = new System.Drawing.Size(133, 21);
             this.cmbRoomType.TabIndex = 0;
             this.cmbRoomType.SelectedIndexChanged += new System.EventHandler(this.cmbRoomType_SelectedIndexChanged);
+            this.cmbRoomType.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cmbRoomType_KeyPress);
             // 
             // tabControl1
             // 
@@ -265,16 +265,15 @@
             // tabPage1
             // 
             this.tabPage1.BackColor = System.Drawing.Color.AntiqueWhite;
-            this.tabPage1.Controls.Add(this.textBox2);
-            this.tabPage1.Controls.Add(this.textBox1);
-            this.tabPage1.Controls.Add(this.label19);
-            this.tabPage1.Controls.Add(this.label17);
+            this.tabPage1.Controls.Add(this.button1);
             this.tabPage1.Controls.Add(this.label16);
-            this.tabPage1.Controls.Add(this.lblTotalAccomadation);
+            this.tabPage1.Controls.Add(this.label19);
+            this.tabPage1.Controls.Add(this.label20);
             this.tabPage1.Controls.Add(this.txtRate);
-            this.tabPage1.Controls.Add(this.cmbPerNight2);
+            this.tabPage1.Controls.Add(this.cmbRoomRate);
             this.tabPage1.Controls.Add(this.groupBox6);
             this.tabPage1.Controls.Add(this.label3);
+            this.tabPage1.Controls.Add(this.label17);
             this.tabPage1.Controls.Add(this.label18);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
@@ -284,39 +283,14 @@
             this.tabPage1.Text = "Room Information";
             this.tabPage1.Click += new System.EventHandler(this.tabPage1_Click);
             // 
-            // textBox2
+            // button1
             // 
-            this.textBox2.Location = new System.Drawing.Point(227, 462);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
-            this.textBox2.TabIndex = 10;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(227, 429);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 10;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
-            this.textBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(23, 462);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(67, 13);
-            this.label19.TabIndex = 9;
-            this.label19.Text = "Amount Paid";
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(24, 436);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(67, 13);
-            this.label17.TabIndex = 9;
-            this.label17.Text = "Amount Paid";
+            this.button1.Location = new System.Drawing.Point(170, 38);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(103, 23);
+            this.button1.TabIndex = 11;
+            this.button1.Text = "Add Room Rate";
+            this.button1.UseVisualStyleBackColor = true;
             // 
             // label16
             // 
@@ -327,37 +301,45 @@
             this.label16.TabIndex = 8;
             this.label16.Text = "Price Per Night";
             // 
-            // lblTotalAccomadation
+            // label19
             // 
-            this.lblTotalAccomadation.AutoSize = true;
-            this.lblTotalAccomadation.Location = new System.Drawing.Point(224, 404);
-            this.lblTotalAccomadation.Name = "lblTotalAccomadation";
-            this.lblTotalAccomadation.Size = new System.Drawing.Size(41, 13);
-            this.lblTotalAccomadation.TabIndex = 7;
-            this.lblTotalAccomadation.Text = "label13";
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(299, 404);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(41, 13);
+            this.label19.TabIndex = 7;
+            this.label19.Text = "label13";
+            this.label19.Visible = false;
+            this.label19.Click += new System.EventHandler(this.label19_Click);
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(299, 460);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(41, 13);
+            this.label20.TabIndex = 7;
+            this.label20.Text = "label13";
+            this.label20.Visible = false;
             // 
             // txtRate
             // 
             this.txtRate.Location = new System.Drawing.Point(27, 85);
             this.txtRate.Name = "txtRate";
+            this.txtRate.ReadOnly = true;
             this.txtRate.Size = new System.Drawing.Size(121, 20);
             this.txtRate.TabIndex = 7;
             this.txtRate.TextChanged += new System.EventHandler(this.txtRate_TextChanged);
             // 
-            // cmbPerNight2
+            // cmbRoomRate
             // 
-            this.cmbPerNight2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbPerNight2.FormattingEnabled = true;
-            this.cmbPerNight2.Items.AddRange(new object[] {
-            "1000",
-            "2000",
-            "3000",
-            "4000 "});
-            this.cmbPerNight2.Location = new System.Drawing.Point(27, 40);
-            this.cmbPerNight2.Name = "cmbPerNight2";
-            this.cmbPerNight2.Size = new System.Drawing.Size(121, 21);
-            this.cmbPerNight2.TabIndex = 6;
-            this.cmbPerNight2.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.cmbRoomRate.FormattingEnabled = true;
+            this.cmbRoomRate.Location = new System.Drawing.Point(27, 40);
+            this.cmbRoomRate.Name = "cmbRoomRate";
+            this.cmbRoomRate.Size = new System.Drawing.Size(121, 21);
+            this.cmbRoomRate.TabIndex = 6;
+            this.cmbRoomRate.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.cmbRoomRate.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cmbPerNight2_KeyPress);
             // 
             // groupBox6
             // 
@@ -365,6 +347,7 @@
             this.groupBox6.Controls.Add(this.lblsomething);
             this.groupBox6.Controls.Add(this.lblPerNight);
             this.groupBox6.Controls.Add(this.lblNumOfNights);
+            this.groupBox6.Controls.Add(this.lblTotalAccomadation);
             this.groupBox6.Controls.Add(this.btnStatementOfAccount);
             this.groupBox6.Controls.Add(this.label7);
             this.groupBox6.Controls.Add(this.label4);
@@ -400,19 +383,25 @@
             this.lblPerNight.AutoSize = true;
             this.lblPerNight.Location = new System.Drawing.Point(286, 72);
             this.lblPerNight.Name = "lblPerNight";
-            this.lblPerNight.Size = new System.Drawing.Size(41, 13);
+            this.lblPerNight.Size = new System.Drawing.Size(0, 13);
             this.lblPerNight.TabIndex = 7;
-            this.lblPerNight.Text = "label13";
             // 
             // lblNumOfNights
             // 
             this.lblNumOfNights.AutoSize = true;
             this.lblNumOfNights.Location = new System.Drawing.Point(286, 29);
             this.lblNumOfNights.Name = "lblNumOfNights";
-            this.lblNumOfNights.Size = new System.Drawing.Size(41, 13);
+            this.lblNumOfNights.Size = new System.Drawing.Size(0, 13);
             this.lblNumOfNights.TabIndex = 7;
-            this.lblNumOfNights.Text = "label13";
             this.lblNumOfNights.Click += new System.EventHandler(this.lblReserveDays_Click);
+            // 
+            // lblTotalAccomadation
+            // 
+            this.lblTotalAccomadation.AutoSize = true;
+            this.lblTotalAccomadation.Location = new System.Drawing.Point(286, 116);
+            this.lblTotalAccomadation.Name = "lblTotalAccomadation";
+            this.lblTotalAccomadation.Size = new System.Drawing.Size(0, 13);
+            this.lblTotalAccomadation.TabIndex = 7;
             // 
             // btnStatementOfAccount
             // 
@@ -464,19 +453,31 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(24, 18);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(78, 13);
+            this.label3.Size = new System.Drawing.Size(66, 13);
             this.label3.TabIndex = 0;
-            this.label3.Text = "Price Per Night";
+            this.label3.Text = "Room Rates";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(24, 404);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(73, 13);
+            this.label17.TabIndex = 5;
+            this.label17.Text = "Extra Charges";
+            this.label17.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label17.Visible = false;
             // 
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(24, 404);
+            this.label18.Location = new System.Drawing.Point(24, 460);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(66, 13);
             this.label18.TabIndex = 5;
             this.label18.Text = "Amount Due";
             this.label18.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label18.Visible = false;
             // 
             // tabPage2
             // 
@@ -724,7 +725,7 @@
         private System.Windows.Forms.Label lblTotalAccomadation;
         private System.Windows.Forms.Label lblPerNight;
         private System.Windows.Forms.Label lblNumOfNights;
-        private System.Windows.Forms.ComboBox cmbPerNight2;
+        private System.Windows.Forms.ComboBox cmbRoomRate;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label lblsomething;
         private System.Windows.Forms.TextBox txtRoomId;
@@ -737,10 +738,10 @@
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.TextBox txtCustomName;
         private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label label20;
     }
 }

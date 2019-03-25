@@ -33,7 +33,7 @@ namespace Reservations_Subsystem
             {
                 conn.Open();
                 MySqlCommand command = new MySqlCommand("INSERT into customer(name, company, address, phone, email, passport, nationality, gender, birthdate, birthplace, comment) values('" + SurName.Text + "','" + company.Text + "','" + address.Text + "','" + phone.Text + "','" + email.Text + "','" + passport.Text + "','" + nationality.Text + "','" + gender.Text + "','" + bdate.Value.ToString("yyyy-MM-dd") + "','" + bplace.Text + "','" + comment.Text + "')", conn);
-
+                int id = (int)command.ExecuteScalar();
                 if (command.ExecuteNonQuery() == 1) MessageBox.Show("Data Inserted");
                 else MessageBox.Show("Data not inserted");
             }
