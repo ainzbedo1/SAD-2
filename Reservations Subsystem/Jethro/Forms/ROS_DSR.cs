@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Linq;
 
 namespace Reservations_Subsystem
 {
@@ -43,8 +44,9 @@ namespace Reservations_Subsystem
             loadOrderReceipts();
             orderReceiptsGridView.ClearSelection();
             orderReceiptsGridView.Columns[0].Visible = false;
-            ordersGridView.Columns.Clear();
-            //loadAllOrders();
+
+            loadAllOrders();
+            ordersGridView.ClearSelection();
         }
         //MIDDLE PANEL
         private void orderReceiptsGridView_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -75,18 +77,70 @@ namespace Reservations_Subsystem
 
             da.Fill(dt);
             orderReceiptsGridView.DataSource = dt;
-        }/*
+        }
         public void loadAllOrders()
         {
-            DBConnect db = new DBConnect();
-            MySqlConnection con = db.connect();
-            String Menu = "SELECT menuitem.name, menuitem.price, order_menuitem.quantity FROM order_menuitem JOIN menuitem ON order_menuitem.menuitem_id = menuitem.id WHERE order_menuitem.order_id = " + order_id;
-            DataTable dt = new DataTable();
-            MySqlDataAdapter da = new MySqlDataAdapter(Menu, con);
+            
+            try
+            {
+                DBConnect db = new DBConnect();
+                MySqlConnection con = db.connect();
+                String Menu = "SELECT menuitem.name, order_menuitem.quantity FROM dailysalesreport JOIN order_receipt ON order_receipt.dailysalesreport_id = dailysalesreport.id JOIN order_menuitem ON order_menuitem.order_id = order_receipt.id JOIN menuitem ON order_menuitem.menuitem_id = menuitem.id WHERE dailysalesreport.id = " + dsr_id + "  ORDER BY menuitem.name";
+                DataTable dt = new DataTable();
+                MySqlDataAdapter da = new MySqlDataAdapter(Menu, con);
 
-            da.Fill(dt);
-            ordersGridView.DataSource = dt;
-        }*/
+                da.Fill(dt);
+                string[] array1 = new string[dt.Rows.Count]; //idk
+                int[] array2 = new int[] { }; //quantity
+                int sumthin, counter = 0;
+                if (dt.Rows.Count > 0)
+                {
+
+                    //GETS UNIQUE NAMES
+                    for (int i = 0; i < dt.Rows.Count; i++)
+                    {
+                        if (!array1.Contains(dt.Rows[i][0].ToString()))
+                        {
+                            array1[counter] = dt.Rows[i][0].ToString();
+                            //MessageBox.Show(array1[counter].ToString());
+                            counter++;
+                        }
+                    }
+                    array2 = new int[array1.Length];
+                    //FILL 0
+                    for (int a = 0; a < array1.Length; a++)
+                    {
+                        array2[a] = 0;
+                    }
+                    //CALCULATES QUANTITY
+                    for (int j = 0; j < array1.Length; j++)
+                    {
+                        sumthin = Array.IndexOf(array1, dt.Rows[j][0].ToString());
+                        array2[sumthin] = array2[sumthin] + Int32.Parse(dt.Rows[j][1].ToString());
+                    }
+                    DataTable dt2 = new DataTable();
+                    DataRow dr;
+                    dt2.Columns.Add("Name");
+                    dt2.Columns.Add("#");
+                    dr = dt2.NewRow();
+                    for (int i = 0; i < dt.Rows.Count; i++)
+                    {
+                        if (array2[i] != 0)
+                        {
+                            dr["Name"] = array1[i];
+                            dr["#"] = array2[i];
+                            dt2.Rows.Add(dr);
+                            dr = dt2.NewRow();
+                        }
+                    }
+                    ordersGridView.DataSource = dt2;
+
+                }
+            }catch(Exception ee)
+            {
+                MessageBox.Show(ee.ToString());
+            }
+        }
         public void loadOrders()
         {
             DBConnect db = new DBConnect();

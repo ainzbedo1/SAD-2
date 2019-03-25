@@ -373,9 +373,11 @@
     <None Include="Resources\001-writing.png" />
     <None Include="Resources\ASD.png" />
     <None Include="Resources\DFG.png" />
-    <None Include="Resources\LOGO.png" />
-    <None Include="Resources\lock.png" />
     <Content Include="Resources\filter-results-button.png" />
+    <None Include="Resources\filter-results-button2.png" />
+    <None Include="Resources\lock.png" />
+    <None Include="Resources\LOGO.png" />
+    <None Include="Resources\LOGO - Copy.png" />
     <Content Include="Resources\LOGO1.png" />
     <Content Include="Resources\LOGO2.png" />
     <Content Include="Resources\LOGO3.png" />
