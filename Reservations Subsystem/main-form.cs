@@ -12,9 +12,19 @@ namespace Reservations_Subsystem
 {
     public partial class main_form : Form
     {
+        public UMS_Login reference { get; set; }
         public main_form()
         {
             InitializeComponent();
+        }
+        public main_form(bool reservation, bool inventory, bool pos, bool posmenu, bool accounts)
+        {
+            InitializeComponent();
+
+            if (!reservation) btn_Sched.Enabled = false;
+            if (!inventory) btn_Inv.Enabled = false;
+            if (!pos) btn_POS.Enabled = false;
+            if (!accounts) btn_Acc.Enabled = false;
         }
         public const int WM_NCLBUTTONDOWN = 0xA1;
         public const int HT_CAPTION = 0x2;
@@ -68,7 +78,7 @@ namespace Reservations_Subsystem
         private void btn_Sched_Click(object sender, EventArgs e)
         {
             ReservationCalendarForm resCalendar = new ReservationCalendarForm();
-            //resCalendar.reftomain = this;
+            resCalendar.reftomain = this;
             resCalendar.Show();
             this.Hide();
         }
@@ -76,7 +86,7 @@ namespace Reservations_Subsystem
         private void btn_POS_Click(object sender, EventArgs e)
         {
             ROS_Main ros = new ROS_Main();
-            //ros.reftomain = this;
+            ros.reference = this;
             ros.Show();
             this.Hide();
         }

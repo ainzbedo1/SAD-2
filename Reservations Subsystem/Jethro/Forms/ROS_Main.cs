@@ -13,6 +13,7 @@ namespace Reservations_Subsystem
 {
     public partial class ROS_Main : Form
     {
+        public main_form reference { get; set; }
         int quantity;
         float totalPrice = 0.00f;
         public int DSR_ID;
@@ -21,6 +22,15 @@ namespace Reservations_Subsystem
         public ROS_Main()
         {
             InitializeComponent();
+        }
+        public ROS_Main(int posmenu)
+        {
+            InitializeComponent();
+            if (posmenu == 0)
+            {
+                viewDSRButton.Enabled = false;
+                viewMenuButton.Enabled = false;
+            }
         }
         private void ROS_Main_Load(object sender, EventArgs e)
         {
@@ -33,7 +43,7 @@ namespace Reservations_Subsystem
         }
         private void ROS_Main_FormClosing(object sender, FormClosingEventArgs e)
         {
-            //Redirect to Main Menu
+            reference.Show();
         }
         #endregion
 
@@ -159,8 +169,9 @@ namespace Reservations_Subsystem
                         MessageBox.Show("Sales Report for the day has been created!");
                         MySqlCommand comm2 = new MySqlCommand("INSERT INTO dailysalesreport (reportDate) VALUES (NOW())", con);
                         comm2.ExecuteNonQuery();
+                        adp.Fill(dt);
                         con.Close();
-                        DSR_ID = 1;
+                        DSR_ID = Int32.Parse(dt.Rows[0]["id"].ToString());
                     }
                     else
                     {
@@ -187,6 +198,7 @@ namespace Reservations_Subsystem
                     MySqlCommand comm4;
                     int menuitemID;
 
+                    //ADDS QUANTITY TO MENUITEM
                     foreach (DataGridViewRow row in orderGridView.Rows)
                     {
                         command1 = new MySqlCommand("SELECT id FROM menuitem WHERE name = '" + row.Cells[0].Value.ToString() + "'", con);
@@ -198,6 +210,13 @@ namespace Reservations_Subsystem
                                                           "VALUES (" + orderID + "," + menuitemID + "," + Int32.Parse(row.Cells[2].Value.ToString()) + ")", con);
                         comm4.ExecuteNonQuery();
                     }
+
+                    //UPDATES DSR REVENUE
+                    String updateRevenue = ("UPDATE dailysalesreport SET revenue = revenue + " + totalPrice + " WHERE reportDate = CURDATE()");
+
+                    MySqlCommand updateRev = new MySqlCommand(updateRevenue, con);
+                    updateRev.ExecuteNonQuery();
+
                     con.Close();
                 }
                 catch(Exception ex)
@@ -229,7 +248,7 @@ namespace Reservations_Subsystem
         }
         #endregion
 
-        #region QUERIES
+        #region MENU QUERY OR SUMTHIN IDK
         public void refreshMenu()
         {
             DBConnect db = new DBConnect();
@@ -240,6 +259,37 @@ namespace Reservations_Subsystem
 
             da.Fill(dt);
             menuGridView.DataSource = dt;
+        }
+        #endregion
+
+        #region SEARCH
+        private void menuSearch_TextChanged(object sender, EventArgs e)
+        {
+
+            DBConnect db = new DBConnect();
+            using (MySqlConnection conn = db.connect())
+            {
+                if (String.IsNullOrWhiteSpace(menuSearch.Text))
+                {
+                    conn.Open();
+                    string query = ("SELECT * FROM menuitem");
+                    MySqlDataAdapter testing1 = new MySqlDataAdapter(query, conn);
+                    DataTable testing2 = new DataTable();
+                    testing1.Fill(testing2);
+                    menuGridView.DataSource = testing2;
+                }
+                else
+                {
+                    conn.Open();
+                    string query = ("SELECT * FROM menuitem WHERE name LIKE '" + menuSearch.Text + "%'");
+                    MySqlDataAdapter testing1 = new MySqlDataAdapter(query, conn);
+                    DataTable testing2 = new DataTable();
+                    testing1.Fill(testing2);
+                    menuGridView.DataSource = testing2;
+                }
+                menuGridView.ClearSelection();
+                addButton.Enabled = false;
+            }
         }
         #endregion
     }

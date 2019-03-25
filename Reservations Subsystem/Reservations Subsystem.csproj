@@ -33,7 +33,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="CrystalDecisions.CrystalReports.Design, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.CrystalReports.Design, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\Downloads\CrystalDecisions.CrystalReports.Design.dll</HintPath>
+    </Reference>
     <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="CrystalDecisions.Data.AdoDotNetInterop, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="CrystalDecisions.ReportSource, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
@@ -327,11 +329,15 @@
     <None Include="Resources\001-writing.png" />
     <None Include="Resources\ASD.png" />
     <None Include="Resources\DFG.png" />
+    <None Include="Resources\LOGO.png" />
+    <None Include="Resources\lock.png" />
+    <Content Include="Resources\filter-results-button.png" />
     <Content Include="Resources\LOGO1.png" />
     <Content Include="Resources\LOGO2.png" />
     <Content Include="Resources\LOGO3.png" />
     <None Include="Resources\minus-symbol.png" />
     <None Include="Resources\plus-black-symbol.png" />
+    <None Include="Resources\man-user.png" />
     <Content Include="Resources\vine.png" />
     <Content Include="Resources\wood.png" />
   </ItemGroup>

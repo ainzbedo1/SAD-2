@@ -214,6 +214,7 @@
             this.Name = "ReservationCalendarForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Reservation Form";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ReservationCalendarForm_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.calendar)).EndInit();
             this.groupBox1.ResumeLayout(false);

@@ -93,6 +93,16 @@ namespace Reservations_Subsystem.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _lock {
+            get {
+                object obj = ResourceManager.GetObject("_lock", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap ASD {
             get {
                 object obj = ResourceManager.GetObject("ASD", resourceCulture);
@@ -136,6 +146,16 @@ namespace Reservations_Subsystem.Properties {
         internal static System.Drawing.Bitmap LOGO3 {
             get {
                 object obj = ResourceManager.GetObject("LOGO3", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap man_user {
+            get {
+                object obj = ResourceManager.GetObject("man_user", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
