@@ -329,6 +329,9 @@
     <None Include="Resources\001-writing.png" />
     <None Include="Resources\ASD.png" />
     <None Include="Resources\DFG.png" />
+    <None Include="Resources\budget.png" />
+    <None Include="Resources\calendar.png" />
+    <None Include="Resources\chest.png" />
     <Content Include="Resources\filter-results-button.png" />
     <None Include="Resources\filter-results-button2.png" />
     <None Include="Resources\lock.png" />
@@ -340,6 +343,7 @@
     <None Include="Resources\minus-symbol.png" />
     <None Include="Resources\plus-black-symbol.png" />
     <None Include="Resources\man-user.png" />
+    <None Include="Resources\round-account-button-with-user-inside.png" />
     <Content Include="Resources\vine.png" />
     <Content Include="Resources\wood.png" />
   </ItemGroup>
