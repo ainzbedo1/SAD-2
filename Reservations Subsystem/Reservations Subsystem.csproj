@@ -322,6 +322,7 @@
     <Content Include="obj\Debug\TempPE\ReportOcc.cs.dll" />
     <Content Include="obj\Debug\TempPE\Reports.DSMonthly1.Designer.cs.dll" />
     <Content Include="obj\Debug\TempPE\rptStateAccount.cs.dll" />
+    <None Include="Resources\LOGO.png" />
     <None Include="Resources\search.png" />
     <None Include="Resources\restore.png" />
     <None Include="Resources\003-add.png" />
@@ -329,9 +330,9 @@
     <None Include="Resources\001-writing.png" />
     <None Include="Resources\ASD.png" />
     <None Include="Resources\DFG.png" />
-    <None Include="Resources\LOGO.png" />
     <None Include="Resources\lock.png" />
     <Content Include="Resources\filter-results-button.png" />
+    <None Include="Resources\filter-results-button2.png" />
     <Content Include="Resources\LOGO1.png" />
     <Content Include="Resources\LOGO2.png" />
     <Content Include="Resources\LOGO3.png" />
