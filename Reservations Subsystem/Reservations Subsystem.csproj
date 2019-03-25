@@ -375,6 +375,7 @@
     <None Include="Resources\DFG.png" />
     <None Include="Resources\LOGO.png" />
     <None Include="Resources\lock.png" />
+    <Content Include="Resources\filter-results-button.png" />
     <Content Include="Resources\LOGO1.png" />
     <Content Include="Resources\LOGO2.png" />
     <Content Include="Resources\LOGO3.png" />
