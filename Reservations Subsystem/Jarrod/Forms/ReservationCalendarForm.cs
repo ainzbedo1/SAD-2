@@ -32,7 +32,7 @@ namespace Reservations_Subsystem
 
         }
 
-        }
+    
 
         #region
         public DataGridView displayCalendar(int month, int year)

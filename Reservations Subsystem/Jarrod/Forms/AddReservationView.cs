@@ -289,7 +289,7 @@ namespace Reservations_Subsystem
             //RoomDataService 
 
         }
-        /*
+        
         private void LoadRoomTypeCombo()
         {
             //get combo box items
@@ -306,7 +306,7 @@ namespace Reservations_Subsystem
             //RoomDataService 
 
         }
-        */
+        
         private void LoadCustomerNames()
         {
             CustomerDataService custDataService = new CustomerDataService();
@@ -360,8 +360,10 @@ namespace Reservations_Subsystem
                 StartDate = DateTime.Today;
                 dtpEndDate.Value = DateTime.Today.AddDays(1);
 
+                LoadRoomTypeCombo();
                 //LoadRoomComboBoxes();
-                LoadRoomComboBoxes();                //LoadComboRoomRate();
+                //LoadRoomComboBoxes();                
+                //LoadComboRoomRate();
 
                 cmbRoomType.Text = RoomType;
                 cmbRoomNumber.Text = RoomNumber.ToString();
@@ -392,7 +394,7 @@ namespace Reservations_Subsystem
                 lengthOfStay.ValueChanged -= lengthOfStay_ValueChanged;
                 cmbRoomType.SelectedIndexChanged -= cmbRoomType_SelectedIndexChanged;
 
-                //LoadRoomTypeCombo();
+                LoadRoomTypeCombo();
 
                 LoadRoomComboBoxes();       
                     //LoadComboRoomRate();
@@ -670,10 +672,12 @@ namespace Reservations_Subsystem
                 {
                     MessageBox.Show("there are missing fields please fill it in");
                 }
+                /*
                 else if (duplicatesTable.Rows.Count == 1)
                 {
                     MessageBox.Show("This name conflicts with another person name please try another");
                 }
+                */
                 else if (String.IsNullOrEmpty(cmbRoomRate.Text))
                 {
                     MessageBox.Show("Missing room rate");
@@ -713,6 +717,10 @@ namespace Reservations_Subsystem
                         referencefrm1.displayReservationButt(dgvMonth, dgvYear);
 
                         referencefrm1.Show();
+                    }
+                    else if (duplicatesTable.Rows.Count == 1)
+                    {
+                        MessageBox.Show("This name conflicts with another person name please try another");
                     }
                     else //if a new customer added
                     {
