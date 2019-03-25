@@ -21,7 +21,7 @@ namespace Reservations_Subsystem
                 //_form.OnShowReservationInfo += View_OnShowReservationInfo;
 
                 _service = roomService;
-                var info = _service.getRoomInfoByRoomNumber(_form.RoomNumber);
+                var info = _service.getRoomInfoByRoomNumber(_form.myRoomNum);
 
                 if (info == null)
                 {

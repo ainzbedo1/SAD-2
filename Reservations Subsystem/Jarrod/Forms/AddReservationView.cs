@@ -30,7 +30,14 @@ namespace Reservations_Subsystem
         private int dgvYear { get; set; }
         private int isGroupFalse { get; set; }
         private int amountPaid { get; set; }
+        public string myRoomNum { get; set; }
+        public int cmbRate { get; set;  }
         //private bool CustomerInfoExist = false;
+        public int CmbRate
+        {
+            set { cmbRate = value; }
+            get { return cmbRate; }
+        }
 
         public int IsGroup
         {
@@ -71,14 +78,11 @@ namespace Reservations_Subsystem
             get { return txtRate.Text; }
             set { txtRate.Text = value; }
         }
-
         public Boolean EditForm
         {
             get { return editForm; }
             set { editForm = value; }
         }
-
-
         public string RoomType
         {
             get { return cmbRoomType.Text; }
@@ -252,7 +256,6 @@ namespace Reservations_Subsystem
         {
             //get combo box items
             // filter by type
-            //wpfUC.UcWpf uc = elementHost1.Child as wpfUC.UcWpf;
             //ComboBox hello = elementHOs   
             List<RoomTextBoxItems> myRooms = new List<RoomTextBoxItems>();
 
@@ -265,12 +268,25 @@ namespace Reservations_Subsystem
             //RoomDataService 
 
         }
+        public void LoadComboRoomRate()
+        {
+            List<string> myRates = new List<string>();
+
+            RoomDataService myRoomDataService = new RoomDataService();
+            myRates = myRoomDataService.GetRoomRate(Convert.ToInt32(RoomId));
+            foreach (var item in myRates)
+            {
+                cmbRoomRate.Items.Add(item);
+            }
+            //RoomDataService 
+
+        }
         private void LoadRoomTypeCombo()
         {
             //get combo box items
             // filter by type
-            //wpfUC.UcWpf uc = elementHost1.Child as wpfUC.UcWpf;
             //ComboBox hello = elementHOs   
+            MessageBox.Show("im here motherfucker 287 adres");
             List<string> myRooms = new List<string>();
 
             RoomDataService myRoomDataService = new RoomDataService();
@@ -292,12 +308,14 @@ namespace Reservations_Subsystem
         }
         private void AddReservation_Load(object sender, EventArgs e)
         {
-                LoadCustomerNames();
+            btnStatementOfAccount.Enabled = false;
+           // txtRate.Text = "0.0";
+            LoadCustomerNames();
             //btnAddCustomer.Visible = false;
             //if the form is in edit mode
             if (editForm)
             {
-
+                btnStatementOfAccount.Enabled = true;
                 // numeric up down Valuechanged event is removed before setting values
                 lengthOfStay.ValueChanged -= lengthOfStay_ValueChanged;
                 dtpEndDate.ValueChanged -= dtpEndDate_ValueChanged;
@@ -305,6 +323,8 @@ namespace Reservations_Subsystem
                 txtRate.TextChanged -= txtRate_TextChanged;
 
                 LoadRoomComboBoxes();
+                LoadComboRoomRate();
+                LoadComboRoomRate();
                 EditFormIsTrue();
 
                 /*
@@ -344,13 +364,15 @@ namespace Reservations_Subsystem
              
                 //LoadRoomComboBoxes();
                 LoadRoomTypeCombo();
+                LoadComboRoomRate();
+
                 cmbRoomType.Text = RoomType;
                 cmbRoomNumber.Text = RoomNumber.ToString();
-                cmbPerNight2.SelectedIndex = 0;
+                cmbRoomRate.SelectedIndex = 0;
 
                 LengthOfStay = (dtpEndDate.Value - dtpStartDate.Value).Days;
                 LblNumOfNights = LengthOfStay.ToString();
-                LblPricePerNight = cmbPerNight2.Text;
+                LblPricePerNight = cmbRoomRate.Text;
                 TotalAccomadation = (Convert.ToInt32(LblNumOfNights) * Convert.ToInt32(LblPricePerNight)).ToString();
                 RoomRate = txtRate.Text;
 
@@ -366,26 +388,31 @@ namespace Reservations_Subsystem
             }
             else //if reservation creation is by selection 
             {
-                MessageBox.Show("Selection ");
-                dtpEndDate.ValueChanged -= dtpEndDate_ValueChanged;
+                //dtpEndDate.ValueChanged -= dtpEndDate_ValueChanged;
                 dtpStartDate.ValueChanged -= dtpStartDate_ValueChanged;
                 lengthOfStay.ValueChanged -= lengthOfStay_ValueChanged;
+                cmbRoomType.SelectedIndexChanged -= cmbRoomType_SelectedIndexChanged;
 
-                LoadRoomTypeCombo();
+                //LoadRoomTypeCombo();
+
+                LoadRoomComboBoxes();
+                LoadComboRoomRate();
                 cmbRoomType.Text = RoomType;
                 cmbRoomNumber.Text = RoomNumber.ToString();
-                cmbPerNight2.SelectedIndex = 0;
+
+                //cmbPerNight2.SelectedIndex = 1;
 
                 LengthOfStay = (dtpEndDate.Value - dtpStartDate.Value).Days;
                 LblNumOfNights = LengthOfStay.ToString();
                 RoomRate = txtRate.Text;
-                TotalAccomadation = (Convert.ToInt32(LblNumOfNights) * Convert.ToInt32(LblPricePerNight)).ToString();
+                //TotalAccomadation = (Convert.ToInt32(LblNumOfNights) * Convert.ToInt32(LblPricePerNight)).ToString();
 
-                LblPricePerNight = cmbPerNight2.Text;
+                LblPricePerNight = cmbRoomRate.Text;
 
                 lengthOfStay.ValueChanged += lengthOfStay_ValueChanged;
                 dtpEndDate.ValueChanged += dtpEndDate_ValueChanged;
                 dtpStartDate.ValueChanged += dtpStartDate_ValueChanged;
+                //cmbRoomType.SelectedIndexChanged += cmbRoomType_SelectedIndexChanged;
 
 
                 //button
@@ -468,7 +495,11 @@ namespace Reservations_Subsystem
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            RoomRate = cmbPerNight2.Text;
+            //string phrase = row.Cells[0].Value.ToString();
+            //string[] words = .Split(' ');
+            //if (words[0].Equals(searchValueRow))
+            string[] strRoomRate = cmbRoomRate.Text.Split(' ');
+            RoomRate = strRoomRate[0];
 
             /*
             lblPerNight.Text = cmbPerNight2.Text;
@@ -489,6 +520,7 @@ namespace Reservations_Subsystem
             myReservation.TotalPrice = Convert.ToInt32(TotalAccomadation);
             myReservation.LenghtOfStay = Convert.ToInt32(lengthOfStay.Value);
             myReservation.RoomRate = Convert.ToInt32(RoomRate);
+            //myReservation.CmbRate = Convert.ToInt32(RoomRate);
             return myReservation;
         }
         private void btnSave_Click(object sender, EventArgs e)
@@ -539,18 +571,21 @@ namespace Reservations_Subsystem
                 {
                     MessageBox.Show("A customer is missing in the reservation");
                 }
+                else if (String.IsNullOrEmpty(cmbRoomRate.Text))
+                {
+                    MessageBox.Show("Missing room rate please fill it in");
+
+                }
                 else
                 {
                     // if txtCustomer is ReadOnly do not insert into Customer table just UPdate Reservation
                     if (txtCustomerName.ReadOnly)
                     {
-                        MessageBox.Show("IM UPDATING BOIS");
-                        ReservationDataService frm = new ReservationDataService();
+                       ReservationDataService frm = new ReservationDataService();
 
 
                         //myCustomer.Name = CustomerName;
-                        MessageBox.Show(theReservation.ResId.ToString()+"My res ID");
-                        frm.UpdateReservation(theReservation.ResId, Convert.ToInt32(theReservation.RoomId), Convert.ToInt32(theCustomerInfo.Id), Description,
+                        frm.UpdateReservation(theReservation.ResId, Convert.ToInt32(RoomId), Convert.ToInt32(theCustomerInfo.Id), Description,
                             StartDate, EndDate, 0, Convert.ToInt32(TotalAccomadation), Convert.ToInt32(LengthOfStay),
                             Convert.ToInt32(RoomRate));
                         //frm.verifyCustomerInfoAndCreateReservation(myCustomer, myReservation, referencefrm1);
@@ -640,6 +675,11 @@ namespace Reservations_Subsystem
                 else if (duplicatesTable.Rows.Count == 1)
                 {
                     MessageBox.Show("This name conflicts with another person name please try another");
+                }
+                else if (String.IsNullOrEmpty(cmbRoomRate.Text))
+                {
+                    MessageBox.Show("Missing room rate");
+
                 }
                 else // if reservation details are good
                 {
@@ -766,7 +806,7 @@ namespace Reservations_Subsystem
 
         private void cmbRoomType_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
+            //cmbRoomNumber.Text = null;
             cmbRoomNumber.Items.Clear();
             LoadRoomComboBoxes();
             
@@ -867,11 +907,12 @@ namespace Reservations_Subsystem
             if (txtCustomerName.ReadOnly)
             {
 
-                AddCustomerForm frm = new AddCustomerForm();
+                EditCustomerForm frm = new EditCustomerForm();
                 CustomerDataService custData = new CustomerDataService();
                 CustomerInfo custInfo = new CustomerInfo();
 
                 int custId = Convert.ToInt32(theCustomerInfo.Id);
+                frm.currID = custId;
                 custInfo = custData.GetCustomerInfoById(custId);
                 //MessageBox.Show(custInfo.Id.ToString());
                 //frm.SetCustomerInformation(custInfo);
@@ -933,14 +974,15 @@ namespace Reservations_Subsystem
             
         private void btnStatementOfAccount_Click(object sender, EventArgs e)
         {
-            /*
+
+            
             FrmStateAccount frm = new FrmStateAccount();
             ReservationDataService resData = new ReservationDataService();
             MessageBox.Show(theCustomerInfo.Id.ToString());
-            frm.LoadReport(Convert.ToInt32(theCustomerInfo.Id), EndDate);
+            frm.LoadReport(Convert.ToInt32(theCustomerInfo.Id), StartDate, EndDate);
             frm.referencefrm1 = this;
             frm.Show();
-            */
+            
         }
 
         private void tabPage1_Click(object sender, EventArgs e)
@@ -950,10 +992,12 @@ namespace Reservations_Subsystem
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
+            /*
             if (String.IsNullOrEmpty(textBox1.Text))
             {
                 // Do something...
             }
+            */
         }
 
         private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
@@ -962,6 +1006,26 @@ namespace Reservations_Subsystem
             {
                 e.Handled = true;
             }
+        }
+
+        private void cmbRoomType_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
+        }
+
+        private void cmbRoomNumber_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
+        }
+
+        private void cmbPerNight2_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
+        }
+
+        private void label19_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

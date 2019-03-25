@@ -118,8 +118,7 @@ namespace Reservations_Subsystem
             TestDate = DateTime.Today.AddDays(1);
             RoomDataService roomData = new RoomDataService();
             //roomData.getAllRoomId();
-            //MessageBox.Show(DateTime.Now.ToString("MMMM"));
-            //MessageBox.Show(DateTime.Now.Year.ToString());
+
             //int month = Array.IndexOf(monthString, DateTime.Now.ToString("MMMM")) + 1, year = Int32.Parse(DateTime.Now.ToString("yyyy"));
             int month = Array.IndexOf(monthString, btnMainMonth.Text) + 1, year = Int32.Parse(btnMainYear.Text);
             displayCalendar(month, year);
@@ -281,7 +280,6 @@ namespace Reservations_Subsystem
         {
             AddReservationView frm2 = new AddReservationView();
             frm2.referencefrm1 = this;
-            MessageBox.Show("jk;ljkl;");
             frm2.Show();
 
         }
@@ -319,7 +317,7 @@ namespace Reservations_Subsystem
 
             }
         }
-        
+
         //creates a button based on date given
         // startDate - endDate is width
         // remember to handle if dates go over a month handle month first
@@ -360,7 +358,7 @@ namespace Reservations_Subsystem
                 y1 = this.calendar.GetCellDisplayRectangle(firstColumnIndex,
                 firstRowIndex, false).Top + calendar.Top;
 
-                 //getting leftmost pixel of first cell and right most
+                //getting leftmost pixel of first cell and right most
                 int firstLeftCellX, firstRightCellX;
                 firstLeftCellX = this.calendar.GetCellDisplayRectangle(lastColumnIndex,
                 lastRowIndex, false).Left + calendar.Left;
@@ -375,39 +373,43 @@ namespace Reservations_Subsystem
                 //method for this is below createButton overload
                 int totalWidth = (this.calendar.SelectedCells.Count * 40) - 40;
                 //createButton(centerPointFirstCell, y1, totalWidth, 20);
-                
+
                 //get column headers of first cell and last cell of selection
                 string firstDateReservation = calendar.Columns[lastColumnIndex].HeaderText;
                 string lastDateReservation = calendar.Columns[firstColumnIndex].HeaderText;
-                
-               
+
+
 
                 AddReservationView frm = new AddReservationView();
                 frm.referencefrm1 = this;
                 //string phrase = row.Cells[0].Value.ToString();
                 //string[] words = phrase.Split(' ');
                 string[] words = calendar.Rows[rowIndexes.Min()].Cells["rooms"].Value.ToString().Split(' ');
-                frm.RoomNumber = words[0];
-                //frm.StartDate = DateFormat(firstDateReservation);
-                //frm.EndDate = DateFormat(lastDateReservation);
+
+                //frm.RoomNumber = words[0];
+                frm.myRoomNum = words[0];
+
                 frm.SetValuesOnSelection(DateFormat(firstDateReservation), DateFormat(lastDateReservation));
                 int startDay = DateFormat(firstDateReservation).Day;
                 int endDay = DateFormat(lastDateReservation).Day;
-  
+
                 int month = Array.IndexOf(monthString, btnMainMonth.Text) + 1, year = Int32.Parse(btnMainYear.Text);
                 frm.DgvYear = year;
                 frm.DgvMonth = month;
                 RoomDataService roomDateService = new RoomDataService();
                 RoomInfo myRoomInfo = new RoomInfo();
-                myRoomInfo = roomDateService.getRoomInfoByRoomNumber(frm.RoomNumber);
-                int roomId = Convert.ToInt32(myRoomInfo.RoomId);
 
+                myRoomInfo = roomDateService.getRoomInfoByRoomNumber(words[0]);
+                //myRoomInfo = roomDateService.getRoomInfoByRoomNumber(words[0]);
+
+
+                int roomId = Convert.ToInt32(myRoomInfo.RoomId);
                 int reservationIntefere = ReservationCheck(Convert.ToInt32(startDay), Convert.ToInt32(endDay), month, year, roomId);
 
                 //int resStart = ReservationCheck(Convert.ToInt32(startDay), Convert.ToInt32(endDay), month, year, roomId);
                 if (reservationIntefere >= 1)
                 {
-                    MessageBox.Show("Selection is not allowed here reservation have confliciting dates"); 
+                    MessageBox.Show("Selection is not allowed here reservation have confliciting dates");
                 }
                 else
                 {
@@ -419,15 +421,20 @@ namespace Reservations_Subsystem
                         //editing is false
                         frm.viewMonth = month;
                         frm.viewYear = year;
+                        //frm.RoomNumber = "1234";
                         ReservationDataPresenter data = new ReservationDataPresenter(frm, why);
                         data.Show();
                     }
-                    catch(Exception ex)
+                    catch (Exception ex)
                     {
                         MessageBox.Show(ex.ToString());
                     }
                 }
             }
+
+
+
+
 
 
 
@@ -471,7 +478,7 @@ namespace Reservations_Subsystem
                     //method for this is below createButton overload
                     int totalWidth = ((columnIndexes.Max() - columnIndexes.Min()) * 40);
                     //createButton(centerPointFirstCell, y1, totalWidth, 20);
-   
+
                 }
 
             }
@@ -937,7 +944,6 @@ namespace Reservations_Subsystem
                     int myCustomerId = myResInfo.CustomerId;
                     myCustomerInfo = customerDataService.GetCustomerInfoById(myCustomerId);
                     int month = Array.IndexOf(monthString, btnMainMonth.Text) + 1, year = Int32.Parse(btnMainYear.Text);
-                    MessageBox.Show(myResInfo.ResId.ToString() + "over here");
 
                     theFrmView.viewYear = year;
                     theFrmView.viewMonth = month;
@@ -1307,7 +1313,7 @@ namespace Reservations_Subsystem
         }
         private void btnViewReservation_Click(object sender, EventArgs e)
         {
-          /*            MSR frm = new MSR();
+            MSR frm = new MSR();
             ReservationDataService resData = new ReservationDataService();
             int month = Array.IndexOf(monthString, btnMainMonth.Text) + 1, year = Int32.Parse(btnMainYear.Text);
 
@@ -1318,12 +1324,12 @@ namespace Reservations_Subsystem
             frm.referencefrm1 = this;
 
             frm.Show();
-            */
+            
         }
 
         private void btnOccRep_Click(object sender, EventArgs e)
         {
-            /*
+            
             FrmOccupancy frm = new FrmOccupancy();
             ReservationDataService resData = new ReservationDataService();
             int month = Array.IndexOf(monthString, btnMainMonth.Text) + 1, year = Int32.Parse(btnMainYear.Text);
@@ -1335,7 +1341,7 @@ namespace Reservations_Subsystem
             frm.referencefrm1 = this;
 
             frm.Show();
-            */
+            
         }
     } 
 

@@ -60,18 +60,19 @@ namespace Reservations_Subsystem
                     }
                 }
 
-
             }
 
             return null;
         }
-        public DataTable FindGroupRes(int customerId, DateTime endDate)
+        public DataTable FindGroupRes(int customerId, DateTime startDate, DateTime endDate)
         {
-            string query = "SELECT * FROM sad2_db.reservation WHERE customer_id = @customerId AND endDate = @endDate";
+            string query = "SELECT * FROM sad2_db.reservation WHERE customer_id = @customerId AND startDate = @startDate AND endDate = @endDate";
             DataTable dt = new DataTable();
             using (MySqlCommand cmd = new MySqlCommand(query, conn))
             {
                 cmd.Parameters.AddWithValue("@customerId", customerId);
+                cmd.Parameters.AddWithValue("@startDate", startDate);
+
                 cmd.Parameters.AddWithValue("@endDate", endDate);
 
                 try
