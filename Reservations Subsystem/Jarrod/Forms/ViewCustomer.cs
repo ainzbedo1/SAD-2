@@ -16,6 +16,7 @@ namespace Reservations_Subsystem
         public MySqlConnection conn;
         public ReservationCalendarForm referencefrm1 { get; set; }
         public int currID;
+        public bool alter = true;
         public ViewCustomer()
         {
             InitializeComponent();
@@ -33,6 +34,88 @@ namespace Reservations_Subsystem
             {
                 conn.Open();
                 MySqlCommand comm = new MySqlCommand("Select id, name AS Name, company AS Company, address AS Address, phone AS Contact, email AS eMail, passport AS Passport, nationality AS Nationality, gender AS Gender, birthdate AS Birthdate, birthplace AS Birthplace, comment AS Comment from customer", conn);
+                MySqlDataAdapter adp = new MySqlDataAdapter(comm);
+                DataTable dt = new DataTable();
+                adp.Fill(dt);
+
+                view.DataSource = dt;
+
+                if (dt.Rows.Count > 0)
+                {
+                    view.Columns["id"].Visible = false;
+                }
+
+                conn.Close();
+                foreach (DataGridViewColumn ya in view.Columns)
+                {
+                    ya.SortMode = DataGridViewColumnSortMode.NotSortable;
+                    ya.Width = 150;
+                }
+                foreach (DataGridViewRow ro in view.Rows)
+                {
+                    ro.Height = 60;
+                }
+            }
+            catch (Exception ee)
+            {
+                MessageBox.Show("Nah! " + ee);
+                conn.Close();
+            }
+        }
+
+        public void searchCustomer()
+        {
+            try
+            {
+                conn.Open();
+                MySqlCommand comm = new MySqlCommand("Select id, name AS Name, company AS Company, address AS Address, phone AS Contact, email AS eMail, passport AS Passport, nationality AS Nationality, gender AS Gender, birthdate AS Birthdate, birthplace AS Birthplace, comment AS Comment from customer WHERE name LIKE '%"+ txtSearch.Text + "%' gender LIKE '%" + txtSearch.Text + "%' nationality LIKE '%" + txtSearch.Text + "%'", conn);
+                MySqlDataAdapter adp = new MySqlDataAdapter(comm);
+                DataTable dt = new DataTable();
+                adp.Fill(dt);
+
+                view.DataSource = dt;
+
+                if (dt.Rows.Count > 0)
+                {
+                    view.Columns["id"].Visible = false;
+                }
+
+                conn.Close();
+                foreach (DataGridViewColumn ya in view.Columns)
+                {
+                    ya.SortMode = DataGridViewColumnSortMode.NotSortable;
+                    ya.Width = 150;
+                }
+                foreach (DataGridViewRow ro in view.Rows)
+                {
+                    ro.Height = 60;
+                }
+            }
+            catch (Exception ee)
+            {
+                MessageBox.Show("Nah! " + ee);
+                conn.Close();
+            }
+        }
+
+        public void filterCustomer()
+        {
+            string strquery = "";
+            
+            if (alter)
+            {
+                alter = false;
+                strquery = "Select id, name AS Name, company AS Company, address AS Address, phone AS Contact, email AS eMail, passport AS Passport, nationality AS Nationality, gender AS Gender, birthdate AS Birthdate, birthplace AS Birthplace, comment AS Comment from customer ORDER BY Name ASC";
+            }
+            else
+            {
+                alter = true;
+                strquery = "Select id, name AS Name, company AS Company, address AS Address, phone AS Contact, email AS eMail, passport AS Passport, nationality AS Nationality, gender AS Gender, birthdate AS Birthdate, birthplace AS Birthplace, comment AS Comment from customer ORDER BY Name DESC";
+            }
+            try
+            {
+                conn.Open();
+                MySqlCommand comm = new MySqlCommand(strquery, conn);
                 MySqlDataAdapter adp = new MySqlDataAdapter(comm);
                 DataTable dt = new DataTable();
                 adp.Fill(dt);
@@ -122,5 +205,12 @@ namespace Reservations_Subsystem
             }
         }
         #endregion
+
+
+        //search
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+            searchCustomer();
+        }
     }
 }
