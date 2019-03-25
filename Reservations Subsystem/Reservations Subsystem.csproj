@@ -87,6 +87,12 @@
     <Compile Include="Jarrod\Forms\MSRForm.Designer.cs">
       <DependentUpon>MSRForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Jarrod\Forms\others.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Jarrod\Forms\others.Designer.cs">
+      <DependentUpon>others.cs</DependentUpon>
+    </Compile>
     <Compile Include="Jethro\Classes\DBConnect.cs" />
     <Compile Include="Jarrod\DataService\CustomerDataService.cs" />
     <Compile Include="Jarrod\Forms\AddCustomerForm.cs">
@@ -226,6 +232,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Jarrod\Forms\MSRForm.resx">
       <DependentUpon>MSRForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Jarrod\Forms\others.resx">
+      <DependentUpon>others.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Jarrod\Room\AddRoom.resx">
       <DependentUpon>AddRoom.cs</DependentUpon>

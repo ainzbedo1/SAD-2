@@ -226,11 +226,6 @@ namespace Reservations_Subsystem
             displayReservationButt(month, year);
         }
 
-        private void mainYearBTN_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnPrevYear_Click(object sender, EventArgs e)
         {
             btnMainYear.Text = (Int32.Parse(btnMainYear.Text) - 1).ToString();
@@ -1349,6 +1344,123 @@ namespace Reservations_Subsystem
         {
             reftomain.Show();
         }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        #region drag
+        public const int WM_NCLBUTTONDOWN = 0xA1;
+        public const int HT_CAPTION = 0x2;
+
+        [System.Runtime.InteropServices.DllImportAttribute("user32.dll")]
+        public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
+        [System.Runtime.InteropServices.DllImportAttribute("user32.dll")]
+        public static extern bool ReleaseCapture();
+        private void panel1_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                ReleaseCapture();
+                SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
+            }
+        }
+
+        private void label1_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                ReleaseCapture();
+                SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
+            }
+        }
+        #endregion
+
+        #region traverse year and month
+        private void btnMainMonth_Click(object sender, EventArgs e)
+        {
+            others ot = new others();
+            ot.tabSelection.SelectedIndex = 1;
+            ot.res = this;
+            DialogResult rest = ot.ShowDialog();
+            if (rest == DialogResult.OK)
+            {
+                //refresh calendar
+                DeleteAllButtons();
+                int month = Array.IndexOf(monthString, btnMainMonth.Text) + 1, year = Int32.Parse(btnMainYear.Text);
+                displayCalendar(month, year);
+                int colCount = this.calendar.ColumnCount;
+                this.Size = new Size(colCount * 40 + 80, 652);
+                calendar.Size = new Size(colCount * 40 + 65, 652);
+                displayReservationButt(month, year);
+            }
+        }
+
+        private void mainYearBTN_Click(object sender, EventArgs e)
+        {
+            others ot = new others();
+            ot.tabSelection.SelectedIndex = 0;
+            ot.res = this;
+            DialogResult rest = ot.ShowDialog();
+            if (rest == DialogResult.OK)
+            {
+                //refresh calendar
+                DeleteAllButtons();
+                int month = Array.IndexOf(monthString, btnMainMonth.Text) + 1, year = Int32.Parse(btnMainYear.Text);
+                displayCalendar(month, year);
+                int colCount = this.calendar.ColumnCount;
+                this.Size = new Size(colCount * 40 + 80, 652);
+                calendar.Size = new Size(colCount * 40 + 65, 652);
+                displayReservationButt(month, year);
+            }
+        }
+
+        public void adjustCustom(int type, String now)
+        {
+            if (type == 0)
+            {
+                btnMainMonth.Text = now;
+                int i = Array.IndexOf(monthString, now);
+                if (i == 11)   // December
+                {
+                    btnNextMonth.Text = monthString[0];
+                    btnPrevMonth.Text = monthString[i - 1];
+                }
+                else if (i == 0)    // January
+                {
+                    btnNextMonth.Text = monthString[i + 1];
+                    btnPrevMonth.Text = monthString[11];
+                }
+                else
+                {
+                    btnNextMonth.Text = monthString[i + 1];
+                    btnPrevMonth.Text = monthString[i - 1];
+                }
+            }
+            else
+            {
+                btnMainYear.Text = now;
+                if (int.Parse(now) == 1960)
+                {
+                    btnPrevYear.Text = "";
+                    btnPrevYear.Enabled = false;
+                    btnNextYear.Text = (int.Parse(now) + 1).ToString();
+                }
+                else if (int.Parse(now) == 2099)
+                {
+                    btnNextYear.Text = "";
+                    btnNextYear.Enabled = false;
+                    btnPrevYear.Text = (int.Parse(now) - 1).ToString();
+                }
+                else
+                {
+                    btnNextYear.Text = (int.Parse(now) + 1).ToString();
+                    btnPrevYear.Text = (int.Parse(now) - 1).ToString();
+                }
+            }
+        }
+        #endregion
     } 
 
 
