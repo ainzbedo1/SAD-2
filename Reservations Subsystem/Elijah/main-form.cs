@@ -103,7 +103,10 @@ namespace Reservations_Subsystem
 
         private void btn_Acc_Click(object sender, EventArgs e)
         {
-
+            UMS_Accounts acc = new UMS_Accounts();
+            acc.reference = this;
+            acc.Show();
+            this.Hide();
         }
     }
 }
