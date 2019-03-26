@@ -28,11 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btn_update = new System.Windows.Forms.Button();
             this.btn_create = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.panel5 = new System.Windows.Forms.Panel();
             this.cmbSup = new System.Windows.Forms.ComboBox();
             this.Supplier = new System.Windows.Forms.Label();
             this.txtsell = new System.Windows.Forms.TextBox();
@@ -51,10 +55,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.btnClose = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.panel4 = new System.Windows.Forms.Panel();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgv_itemmgt)).BeginInit();
             this.panel1.SuspendLayout();
@@ -120,6 +120,38 @@
             this.groupBox1.TabIndex = 10;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Item Details";
+            // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(127)))), ((int)(((byte)(0)))));
+            this.panel4.Location = new System.Drawing.Point(583, 111);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(274, 2);
+            this.panel4.TabIndex = 55;
+            // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(127)))), ((int)(((byte)(0)))));
+            this.panel3.Location = new System.Drawing.Point(583, 68);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(274, 2);
+            this.panel3.TabIndex = 54;
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(127)))), ((int)(((byte)(0)))));
+            this.panel2.Location = new System.Drawing.Point(148, 114);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(274, 2);
+            this.panel2.TabIndex = 53;
+            // 
+            // panel5
+            // 
+            this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(127)))), ((int)(((byte)(0)))));
+            this.panel5.Location = new System.Drawing.Point(148, 67);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(81, 2);
+            this.panel5.TabIndex = 52;
             // 
             // cmbSup
             // 
@@ -239,23 +271,23 @@
             this.dtgv_itemmgt.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dtgv_itemmgt.BackgroundColor = System.Drawing.Color.White;
             this.dtgv_itemmgt.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F);
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtgv_itemmgt.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgv_itemmgt.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dtgv_itemmgt.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F);
-            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dtgv_itemmgt.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dtgv_itemmgt.DefaultCellStyle = dataGridViewCellStyle4;
             this.dtgv_itemmgt.Location = new System.Drawing.Point(5, 127);
             this.dtgv_itemmgt.Name = "dtgv_itemmgt";
             this.dtgv_itemmgt.ReadOnly = true;
@@ -350,6 +382,7 @@
             this.btnClose.TabIndex = 2;
             this.btnClose.Text = "x";
             this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // button3
             // 
@@ -361,38 +394,6 @@
             this.button3.Size = new System.Drawing.Size(885, 65);
             this.button3.TabIndex = 16;
             this.button3.UseVisualStyleBackColor = true;
-            // 
-            // panel5
-            // 
-            this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(127)))), ((int)(((byte)(0)))));
-            this.panel5.Location = new System.Drawing.Point(148, 67);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(81, 2);
-            this.panel5.TabIndex = 52;
-            // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(127)))), ((int)(((byte)(0)))));
-            this.panel2.Location = new System.Drawing.Point(148, 114);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(274, 2);
-            this.panel2.TabIndex = 53;
-            // 
-            // panel3
-            // 
-            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(127)))), ((int)(((byte)(0)))));
-            this.panel3.Location = new System.Drawing.Point(583, 68);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(274, 2);
-            this.panel3.TabIndex = 54;
-            // 
-            // panel4
-            // 
-            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(127)))), ((int)(((byte)(0)))));
-            this.panel4.Location = new System.Drawing.Point(583, 111);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(274, 2);
-            this.panel4.TabIndex = 55;
             // 
             // itemmgt
             // 
@@ -413,6 +414,7 @@
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "itemmgt";
             this.Text = "itemmgt";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.itemmgt_FormClosing);
             this.Load += new System.EventHandler(this.itemmgt_Load);
             this.Click += new System.EventHandler(this.itemmgt_Click);
             this.groupBox1.ResumeLayout(false);
