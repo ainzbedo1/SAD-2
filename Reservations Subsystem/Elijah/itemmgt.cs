@@ -249,7 +249,6 @@ namespace Reservations_Subsystem
 
         private void itemmgt_FormClosing(object sender, FormClosingEventArgs e)
         {
-            reference.Show();
         }
     }
     

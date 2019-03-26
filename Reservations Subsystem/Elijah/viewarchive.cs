@@ -64,7 +64,6 @@ namespace Reservations_Subsystem
 
         private void viewarchive_FormClosing(object sender, FormClosingEventArgs e)
         {
-            reference.Show();
         }
     }
 }

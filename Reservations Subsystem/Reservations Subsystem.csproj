@@ -245,11 +245,17 @@
       <DependentUpon>rptStateAccount.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="UMS_Accounts.cs">
+    <Compile Include="Jethro\Forms\UMS_Accounts.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UMS_Accounts.Designer.cs">
+    <Compile Include="Jethro\Forms\UMS_Accounts.Designer.cs">
       <DependentUpon>UMS_Accounts.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Jethro\Forms\UMS_Roles.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Jethro\Forms\UMS_Roles.Designer.cs">
+      <DependentUpon>UMS_Roles.cs</DependentUpon>
     </Compile>
     <Compile Include="Window2.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -316,6 +322,9 @@
     <EmbeddedResource Include="Elijah\main-form.resx">
       <DependentUpon>main-form.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Jethro\Forms\UMS_Roles.resx">
+      <DependentUpon>UMS_Roles.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -347,7 +356,7 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptStateAccount.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="UMS_Accounts.resx">
+    <EmbeddedResource Include="Jethro\Forms\UMS_Accounts.resx">
       <DependentUpon>UMS_Accounts.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Window2.resx">

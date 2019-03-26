@@ -217,7 +217,6 @@ namespace Reservations_Subsystem
 
         private void stockinmgt_FormClosing(object sender, FormClosingEventArgs e)
         {
-            reference.Show();
         }
     }
 }

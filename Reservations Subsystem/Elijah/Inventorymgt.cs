@@ -108,6 +108,7 @@ namespace Reservations_Subsystem
             frmsinout = new stockinmgt();
             //frmsinout.reference = this;
             frmsinout.ShowDialog();
+            readdata();
         }
 
         public itemmgt frmim;

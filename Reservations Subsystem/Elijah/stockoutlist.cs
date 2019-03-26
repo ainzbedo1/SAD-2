@@ -58,7 +58,6 @@ namespace Reservations_Subsystem
 
         private void stockoutlist_FormClosing(object sender, FormClosingEventArgs e)
         {
-            reference.Show();
         }
     }
 }

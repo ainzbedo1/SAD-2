@@ -612,7 +612,6 @@ namespace Reservations_Subsystem
 
         private void orderlistmgt_FormClosing(object sender, FormClosingEventArgs e)
         {
-            previousform.Show();
         }
     }
 }
