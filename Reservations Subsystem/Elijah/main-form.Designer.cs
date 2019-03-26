@@ -102,6 +102,7 @@
             this.btn_Acc.TabIndex = 20;
             this.btn_Acc.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btn_Acc.UseVisualStyleBackColor = false;
+            this.btn_Acc.Click += new System.EventHandler(this.btn_Acc_Click);
             // 
             // button1
             // 
