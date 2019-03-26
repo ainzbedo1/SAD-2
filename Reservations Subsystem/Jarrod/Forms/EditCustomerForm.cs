@@ -88,7 +88,24 @@ namespace Reservations_Subsystem
                 MessageBox.Show("" + ee);
                 conn.Close();
             }
+
+            /*
             this.DialogResult = DialogResult.OK;
+                        {
+                txtCustomerName.Text = frm.SurName.Text;
+                txtCustomerName.ReadOnly = true;
+                btnEditCustomer.Enabled = true;
+                btnRemoveCust.Enabled = true;
+
+
+            }
+            else
+            {
+                MessageBox.Show("passed here");
+                txtCustomerName.ReadOnly = false;
+
+            }
+            */
         }
     }
 }

@@ -35,7 +35,7 @@ namespace Reservations_Subsystem
                 rptStateAccount crpt = new rptStateAccount();
                 ReservationDataService myResDataServ = new ReservationDataService();
 
-                DataTable storeData = myResDataServ.FindGroupRes( resId);
+                DataTable storeData = myResDataServ.FindGroupRes(resId);
 
                 //dgvMsr.DataSource = storeData;
                 //MonthlyReportData = storeData;

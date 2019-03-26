@@ -66,7 +66,7 @@ namespace Reservations_Subsystem
         }
         public DataTable FindGroupRes(int resId)
         {
-            string query = "SELECT * FROM sad2_db.reservation WHERE reservationId = '"+resId+"',";
+            string query = "SELECT * FROM sad2_db.reservation WHERE reservationId = '"+resId+"' ";
             DataTable dt = new DataTable();
             using (MySqlCommand cmd = new MySqlCommand(query, conn))
             {

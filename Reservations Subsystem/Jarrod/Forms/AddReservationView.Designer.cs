@@ -393,6 +393,7 @@
             this.txtRate.ReadOnly = true;
             this.txtRate.Size = new System.Drawing.Size(121, 29);
             this.txtRate.TabIndex = 7;
+            this.txtRate.Text = "0.00";
             this.txtRate.TextChanged += new System.EventHandler(this.txtRate_TextChanged);
             // 
             // cmbRoomRate
@@ -472,8 +473,9 @@
             this.lblTotalAccomadation.AutoSize = true;
             this.lblTotalAccomadation.Location = new System.Drawing.Point(286, 116);
             this.lblTotalAccomadation.Name = "lblTotalAccomadation";
-            this.lblTotalAccomadation.Size = new System.Drawing.Size(0, 21);
+            this.lblTotalAccomadation.Size = new System.Drawing.Size(31, 21);
             this.lblTotalAccomadation.TabIndex = 7;
+            this.lblTotalAccomadation.Text = "0.0";
             // 
             // btnStatementOfAccount
             // 

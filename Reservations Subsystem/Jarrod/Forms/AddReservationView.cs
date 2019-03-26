@@ -448,8 +448,21 @@ namespace Reservations_Subsystem
                 lengthOfStay.ValueChanged -= lengthOfStay_ValueChanged;
 
                 EndDate = StartDate.AddDays(1);
+                
                 LengthOfStay = Convert.ToDecimal((dtpEndDate.Value.Date - dtpStartDate.Value.Date).Days);
                 LblNumOfNights = LengthOfStay.ToString();
+                /*
+                if(Convert.ToInt32(LblNumOfNights) == 0)
+                {
+                    LblNumOfNights = "0";
+                }
+                if (Convert.ToInt32(LblPricePerNight) == 0)
+                {
+                    LblPricePerNight = "0";
+
+                }
+                */
+                //TotalAccomadation = (Convert.ToInt32(lblNumOfNights.Text) * Convert.ToInt32(lblPr.Text)).ToString();
                 TotalAccomadation = (Convert.ToInt32(LblNumOfNights) * Convert.ToInt32(LblPricePerNight)).ToString();
 
 
@@ -780,10 +793,19 @@ namespace Reservations_Subsystem
             if(frm.ShowDialog() == DialogResult.OK)
             {
                 txtCustomerName.Text = frm.SurName.Text;
-                btnAddCustomer.Enabled = false;
-                
+                txtCustomerName.ReadOnly = true;
+                btnEditCustomer.Enabled = true;
+                btnRemoveCust.Enabled = true;
+
+
             }
-            
+            else
+            {
+                MessageBox.Show("passed here");
+                txtCustomerName.ReadOnly = false;
+
+            }
+
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -1006,9 +1028,7 @@ namespace Reservations_Subsystem
         }
             
         private void btnStatementOfAccount_Click(object sender, EventArgs e)
-        {
-
-            
+        {            
             FrmStateAccount frm = new FrmStateAccount();
             ReservationDataService resData = new ReservationDataService();
             //MessageBox.Show(theCustomerInfo.Id.ToString());
