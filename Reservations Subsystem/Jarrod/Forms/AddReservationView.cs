@@ -35,6 +35,7 @@ namespace Reservations_Subsystem
         public string myRoomNum { get; set; }
         public int cmbRate { get; set;  }
         public string RoomId { get; set; }
+        public string EditName { get; set; }
         #region
         //private bool CustomerInfoExist = false;
         public int CmbRate
@@ -975,6 +976,23 @@ namespace Reservations_Subsystem
                 frm.reference = this;
                 //frm.SurName = CustomerName;
                 frm.ShowDialog();
+                if (frm.ShowDialog() == DialogResult.OK)
+                {
+                    txtCustomerName.Text = frm.SurName.Text;
+                    txtCustomerName.ReadOnly = true;
+                    btnEditCustomer.Enabled = true;
+                    btnRemoveCust.Enabled = true;
+                    EditName = frm.SurName.Text;
+
+
+
+                }
+                else
+                {
+                    MessageBox.Show("passed here");
+                    txtCustomerName.ReadOnly = false;
+
+                }
 
 
             }
