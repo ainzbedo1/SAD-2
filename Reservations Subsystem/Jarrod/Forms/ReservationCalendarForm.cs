@@ -102,7 +102,6 @@ namespace Reservations_Subsystem
             calendar.RowHeadersVisible = false;
             calendar.Columns[0].ReadOnly = true;
             
-            calendar.Columns[0].DefaultCellStyle.BackColor = Color.Gray;
             calendar.ReadOnly = true;
             return calendar;
         }
@@ -1467,6 +1466,11 @@ namespace Reservations_Subsystem
             }
         }
         #endregion
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     } 
 
 
