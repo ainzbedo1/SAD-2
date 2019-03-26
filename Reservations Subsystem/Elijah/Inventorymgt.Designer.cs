@@ -295,6 +295,7 @@
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Inventorymgt";
             this.Text = "Inventory";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Inventorymgt_FormClosing);
             this.Load += new System.EventHandler(this.Inventorymgt_Load);
             ((System.ComponentModel.ISupportInitialize)(this.datagridview_inventory)).EndInit();
             this.groupBox2.ResumeLayout(false);
