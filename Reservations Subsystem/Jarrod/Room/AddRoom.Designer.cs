@@ -90,7 +90,6 @@
             // 
             // cmbRoomType
             // 
-            this.cmbRoomType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbRoomType.FormattingEnabled = true;
             this.cmbRoomType.Items.AddRange(new object[] {
             "Single",
@@ -99,10 +98,10 @@
             this.cmbRoomType.Name = "cmbRoomType";
             this.cmbRoomType.Size = new System.Drawing.Size(121, 21);
             this.cmbRoomType.TabIndex = 5;
+            this.cmbRoomType.SelectedIndexChanged += new System.EventHandler(this.cmbRoomType_SelectedIndexChanged);
             // 
             // cmbFloor
             // 
-            this.cmbFloor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbFloor.FormattingEnabled = true;
             this.cmbFloor.Items.AddRange(new object[] {
             "1",

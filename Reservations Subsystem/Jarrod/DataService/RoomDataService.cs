@@ -51,6 +51,62 @@ namespace Reservations_Subsystem
 
             return null;
         }
+
+
+        public RoomTypeInfo getRoomTypeByName(string roomType)
+        {
+            string query = "SELECT* FROM sad2_db.room_type WHERE " +
+                "roomType = @roomType";
+            using (MySqlCommand cmd = new MySqlCommand(query, conn))
+            {
+                MySqlDataReader myReader;
+                conn.Open();
+                cmd.Parameters.AddWithValue("@roomType", roomType);
+
+                using (myReader = cmd.ExecuteReader())
+                {
+
+                    if (myReader.Read())
+                    {
+                        return new RoomTypeInfo
+                        {
+
+                            TypeId = Convert.ToInt32((myReader[0])),
+                            TypeName = myReader[1].ToString(),
+
+                        };
+                    }
+                }
+            }
+            return null;
+        }
+        public RoomTypeInfo getRoomTypeByInt(int roomTypeId)
+        {
+            string query = "SELECT* FROM sad2_db.room_type WHERE " +
+                "id = @roomTypeId";
+            using (MySqlCommand cmd = new MySqlCommand(query, conn))
+            {
+                MySqlDataReader myReader;
+                conn.Open();
+                cmd.Parameters.AddWithValue("@roomTypeId", roomTypeId);
+
+                using (myReader = cmd.ExecuteReader())
+                {
+
+                    if (myReader.Read())
+                    {
+                        return new RoomTypeInfo
+                        {
+
+                            TypeId = Convert.ToInt32((myReader[0])),
+                            TypeName = myReader[1].ToString(),
+
+                        };
+                    }
+                }
+            }
+            return null;
+        }
         public RoomInfo getRoomInfoByRoomNumber(string roomNumber)
         {
             /*
@@ -88,6 +144,7 @@ namespace Reservations_Subsystem
 
 
                 }
+       
 
 
             }
@@ -258,18 +315,17 @@ namespace Reservations_Subsystem
 
 
         }
-        public void AddRoom(string roomNumber, string roomType, string floorLevel, string description)
+        public void AddRoom(string roomNumber, int roomTypeId, string floorLevel, string description)
         {
 
-            string query = "INSERT INTO room(roomNumber, floorLevel, description) VALUES(@roomNumber, @roomType, @floorLevel, @description)";
+            string query = "INSERT INTO room(roomNumber, roomTypeId, floorLevel, description) VALUES(@roomNumber, @roomTypeId,  @floorLevel, @description)";
             using (MySqlCommand cmd = new MySqlCommand(query, conn))
             {
 
                 cmd.Parameters.AddWithValue("@roomNumber", roomNumber);
-                //cmd.Parameters.AddWithValue("@roomType", roomType);
+                cmd.Parameters.AddWithValue("@roomTypeId", roomTypeId);
                 cmd.Parameters.AddWithValue("@floorLevel", floorLevel);
                 cmd.Parameters.AddWithValue("@description", description);
-                //cmd.Parameters.AddWithValue("@description", description);
                 try
                 {
                     conn.Open();
@@ -282,7 +338,28 @@ namespace Reservations_Subsystem
                 }
             }
         }
+        public void AddRoomRate(int roomTypeId, string rate)
+        {
 
+            string query = "INSERT INTO room_rate(room_type_id, rate) VALUES(@roomTypeId, @rate)";
+            using (MySqlCommand cmd = new MySqlCommand(query, conn))
+            {
+
+                cmd.Parameters.AddWithValue("@roomTypeId", roomTypeId);
+                cmd.Parameters.AddWithValue("@rate", rate);
+
+                try
+                {
+                    conn.Open();
+                    Int32 rowsAffected = cmd.ExecuteNonQuery();
+                    Console.WriteLine("RowsAffected: {0}", rowsAffected);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                }
+            }
+        }
         public void UpdateRoom(string roomNumber, string roomType, string floorLevel, string description)
         {
 
@@ -355,7 +432,7 @@ namespace Reservations_Subsystem
                 }
             }
         }
-        public List<string> GetRoomRate(int roomId)
+        public List<string> GetRoomRates(int roomId)
         {
             var myRoomRates = new List<string>();
 

@@ -54,13 +54,12 @@ namespace Reservations_Subsystem
         private void btnEdit_Click(object sender, EventArgs e)
         {
 
-            AddRoom addRoom = new AddRoom();
+            EditRoom addRoom = new EditRoom();
             RoomDataService roomData = new RoomDataService();
             RoomInfo myRoomInfo = new RoomInfo();
-            addRoom.id = RoomId;
-            myRoomInfo = roomData.getRoomInfoById(RoomId);
-            addRoom.EditForm = true;
-            addRoom.SettingRoomInfo(myRoomInfo);
+            addRoom.RoomId = RoomId;
+            //myRoomInfo = roomData.getRoomInfoById(RoomId);
+            //addRoom.SettingRoomInfo(myRoomInfo);
             addRoom.referenceViewRoomList = this;
             addRoom.Show();
             this.Hide();
@@ -77,6 +76,7 @@ namespace Reservations_Subsystem
         private void btnBack_Click(object sender, EventArgs e)
         {
             this.Close();
+            referencefrm1.DgvRefresh();
             //this.Hide();
             referencefrm1.Refresh();
             referencefrm1.Show();
@@ -154,6 +154,11 @@ namespace Reservations_Subsystem
                 }
 
             }
+
+        }
+
+        private void btnRemove_Click(object sender, EventArgs e)
+        {
 
         }
     }

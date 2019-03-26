@@ -16,7 +16,7 @@ namespace Reservations_Subsystem
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new UMS_Login());
+            Application.Run(new ReservationCalendarForm());
             //Application.Run(new ReservationCalendarForm());
         }
     }

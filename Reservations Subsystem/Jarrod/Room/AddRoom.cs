@@ -19,12 +19,18 @@ namespace Reservations_Subsystem
         public ViewRoom referenceViewRoomList { get; set; }
         public Boolean EditForm;
         public int id { get; set; }
-        public RoomInfo theRoomInfo {get; set;}
-       // public Room roomForm;
+        public RoomInfo theRoomInfo { get; set; }
+        // public Room roomForm;
+        private int roomTypeId { get; set; }
+        public int RoomTypeId
+        {
+            set { roomTypeId = value; }
+            get { return roomTypeId; }
+        }
         public RoomInfo TheRoomInfo
         {
             set { theRoomInfo = value; }
-            get { return theRoomInfo;  }
+            get { return theRoomInfo; }
         }
         public AddRoom()
         {
@@ -36,7 +42,7 @@ namespace Reservations_Subsystem
         {
 
         }
-        
+
         public void SettingRoomInfo(RoomInfo room)
         {
             txtRoomNumber.Text = room.RoomNumber;
@@ -45,47 +51,41 @@ namespace Reservations_Subsystem
         }
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if (EditForm == true)
+            if (CheckingFields() == false)
             {
-                if (CheckingFields() == false)
-                {
-                    RoomDataService testRoom = new RoomDataService();
-                    testRoom.UpdateRoom(txtRoomNumber.Text, cmbRoomType.Text, cmbFloor.Text, txtDesc.Text);
-                    referenceViewRoomList.Refresh();
+                RoomDataService testRoom = new RoomDataService();
+                testRoom.AddRoom(txtRoomNumber.Text, RoomTypeId, cmbFloor.Text, txtDesc.Text);
+                referenceViewRoomList.Refresh();
 
-                    referenceViewRoomList.refreshing();
-                    referenceViewRoomList.DisableButtons();
-                    referenceViewRoomList.Show();
-                    this.Close();
-                    
-                }
-                else
-                {
-                    MessageBox.Show("There are missing fields please fill them up");
-                }
-                
+                referenceViewRoomList.refreshing();
+                referenceViewRoomList.DisableButtons();
+                referenceViewRoomList.Show();
+                this.Close();
             }
             else
             {
-                if (CheckingFields() == false)
-                {
-                    RoomDataService testRoom = new RoomDataService();
-                    testRoom.AddRoom(txtRoomNumber.Text, cmbRoomType.Text, cmbFloor.Text, txtDesc.Text);
-                    referenceViewRoomList.Refresh();
-
-                    referenceViewRoomList.refreshing();
-                    referenceViewRoomList.DisableButtons();
-                    referenceViewRoomList.Show();
-                    this.Close();
-                }
-                else
-                {
-                    MessageBox.Show("There are missing fields please fill them up");
-                }
+                MessageBox.Show("There are missing fields please fill them up");
             }
-
-            
         }
+
+        private void LoadRoomTypeCombo()
+        {
+            //get combo box items
+            // filter by type
+            //ComboBox hello = elementHOs   
+            List<string> myRooms = new List<string>();
+
+            RoomDataService myRoomDataService = new RoomDataService();
+            myRooms = myRoomDataService.getRoomTypes();
+            foreach (var item in myRooms)
+            {
+                cmbRoomType.Items.Add(item);
+            }
+            //RoomDataService 
+
+        }
+
+
         public Boolean CheckingFields()
         {
             Boolean nullFields = false;
@@ -138,6 +138,16 @@ namespace Reservations_Subsystem
 
         private void txtRoomNumber_TextChanged(object sender, EventArgs e)
         {
+
+        }
+
+        private void cmbRoomType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            RoomDataService myRoomDataService = new RoomDataService();
+            RoomTypeInfo myRoomTypeInfo = new RoomTypeInfo();
+            myRoomTypeInfo = myRoomDataService.getRoomTypeByName(cmbRoomType.Text);
+            RoomTypeId = myRoomTypeInfo.TypeId;
 
         }
     }

@@ -158,7 +158,7 @@
             // panel5
             // 
             this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(127)))), ((int)(((byte)(0)))));
-            this.panel5.Location = new System.Drawing.Point(147, 64);
+            this.panel5.Location = new System.Drawing.Point(147, 69);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(285, 2);
             this.panel5.TabIndex = 51;

@@ -30,7 +30,7 @@ namespace Reservations_Subsystem
         public void initializeData()
         {
             try
-            {
+            {   
                 conn.Open();
                 MySqlCommand comm = new MySqlCommand("Select * from customer WHERE id =" + currID, conn);
                 MySqlDataAdapter adp = new MySqlDataAdapter(comm);
@@ -47,7 +47,9 @@ namespace Reservations_Subsystem
                     passport.Text = dt.Rows[0]["passport"].ToString();
                     nationality.Text = dt.Rows[0]["nationality"].ToString();
                     gender.Text = dt.Rows[0]["gender"].ToString();
+                    
                     bdate.Value = Convert.ToDateTime(dt.Rows[0]["birthdate"].ToString());
+                    
                     bplace.Text = dt.Rows[0]["birthplace"].ToString();
                     comment.Text = dt.Rows[0]["comment"].ToString();
 

@@ -32,6 +32,8 @@ namespace Reservations_Subsystem
 
         }
 
+    
+
         #region
         public DataGridView displayCalendar(int month, int year)
         {
@@ -100,7 +102,6 @@ namespace Reservations_Subsystem
             calendar.RowHeadersVisible = false;
             calendar.Columns[0].ReadOnly = true;
             
-            calendar.Columns[0].DefaultCellStyle.BackColor = Color.Gray;
             calendar.ReadOnly = true;
             return calendar;
         }
@@ -166,7 +167,7 @@ namespace Reservations_Subsystem
                 btnPrevMonth.Text = monthString[monthprev - 1];
                 //decrementYear = 1;
             }
-            /*
+            
             DeleteAllButtons();
 
             int month = Array.IndexOf(monthString, btnMainMonth.Text) + 1, year = Int32.Parse(btnMainYear.Text);
@@ -175,7 +176,7 @@ namespace Reservations_Subsystem
             this.Size = new Size(colCount * 40 + 80, 652);
             calendar.Size = new Size(colCount * 40 + 65, 652);
             displayReservationButt(month, year);
-            */
+            
         }
 
         private void btnNextMonth_Click(object sender, EventArgs e)
@@ -211,6 +212,16 @@ namespace Reservations_Subsystem
                 btnMainMonth.Text = btnNextMonth.Text;
                 btnNextMonth.Text = monthString[monthnext + 1];
             }
+            DeleteAllButtons();
+            int month = Array.IndexOf(monthString, btnMainMonth.Text) + 1, year = Int32.Parse(btnMainYear.Text);
+            displayCalendar(month, year);
+            int colCount = this.calendar.ColumnCount;
+            this.Size = new Size(colCount * 40 + 80, 652);
+            calendar.Size = new Size(colCount * 40 + 65, 652);
+            displayReservationButt(month, year);
+        }
+        public void DgvRefresh()
+        {
             DeleteAllButtons();
             int month = Array.IndexOf(monthString, btnMainMonth.Text) + 1, year = Int32.Parse(btnMainYear.Text);
             displayCalendar(month, year);
@@ -1336,7 +1347,7 @@ namespace Reservations_Subsystem
 
         private void ReservationCalendarForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            reftomain.Show();
+            //reftomain.Show();
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -1455,6 +1466,11 @@ namespace Reservations_Subsystem
             }
         }
         #endregion
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     } 
 
 
