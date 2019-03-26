@@ -150,5 +150,15 @@ namespace Reservations_Subsystem
             RoomTypeId = myRoomTypeInfo.TypeId;
 
         }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void AddRoom_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            referenceViewRoomList.Show();
+        }
     }
 }

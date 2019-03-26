@@ -161,5 +161,14 @@ namespace Reservations_Subsystem
         {
 
         }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            referencefrm1.DgvRefresh();
+            //this.Hide();
+            referencefrm1.Refresh();
+            referencefrm1.Show();
+        }
     }
 }
