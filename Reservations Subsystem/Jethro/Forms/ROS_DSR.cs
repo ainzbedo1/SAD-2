@@ -121,14 +121,14 @@ namespace Reservations_Subsystem
                     DataTable dt2 = new DataTable();
                     DataRow dr;
                     dt2.Columns.Add("Name");
-                    dt2.Columns.Add("#");
+                    dt2.Columns.Add("Quantity");
                     dr = dt2.NewRow();
                     for (int i = 0; i < dt.Rows.Count; i++)
                     {
                         if (array2[i] != 0)
                         {
                             dr["Name"] = array1[i];
-                            dr["#"] = array2[i];
+                            dr["Quantity"] = array2[i];
                             dt2.Rows.Add(dr);
                             dr = dt2.NewRow();
                         }
@@ -145,7 +145,7 @@ namespace Reservations_Subsystem
         {
             DBConnect db = new DBConnect();
             MySqlConnection con = db.connect();
-            String Menu = "SELECT menuitem.name, order_menuitem.quantity FROM order_menuitem JOIN menuitem ON order_menuitem.menuitem_id = menuitem.id WHERE order_menuitem.order_id = " + order_id;
+            String Menu = "SELECT menuitem.name, order_menuitem.quantity FROM order_menuitem JOIN menuitem ON order_menuitem.menuitem_id = menuitem.id WHERE order_menuitem.order_id = " + order_id + " ORDER BY menuitem.name";
             DataTable dt = new DataTable();
             MySqlDataAdapter da = new MySqlDataAdapter(Menu, con);
 

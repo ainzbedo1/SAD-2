@@ -38,9 +38,6 @@
             this.clearButton = new System.Windows.Forms.Button();
             this.createButton = new System.Windows.Forms.Button();
             this.orderGridView = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuGridView = new System.Windows.Forms.DataGridView();
             this.MenuTopPanel = new System.Windows.Forms.Panel();
             this.MenuLabel = new System.Windows.Forms.Label();
@@ -56,6 +53,10 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.removeButton = new System.Windows.Forms.Button();
             this.addButton = new System.Windows.Forms.Button();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.costPRice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.orderGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.menuGridView)).BeginInit();
             this.MenuTopPanel.SuspendLayout();
@@ -164,7 +165,8 @@
             this.orderGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
             this.Column2,
-            this.Quantity});
+            this.Column3,
+            this.costPRice});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI Semilight", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -183,24 +185,6 @@
             this.orderGridView.TabIndex = 4;
             this.orderGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.orderGridView_CellClick);
             this.orderGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.orderGridView_CellDoubleClick);
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "Item";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "Price";
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            // 
-            // Quantity
-            // 
-            this.Quantity.HeaderText = "#";
-            this.Quantity.Name = "Quantity";
-            this.Quantity.ReadOnly = true;
             // 
             // menuGridView
             // 
@@ -408,6 +392,30 @@
             this.addButton.UseVisualStyleBackColor = false;
             this.addButton.Click += new System.EventHandler(this.addButton_Click);
             // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "Item";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "Price";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "Quantity";
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            // 
+            // costPRice
+            // 
+            this.costPRice.HeaderText = "costPrice";
+            this.costPRice.Name = "costPRice";
+            this.costPRice.ReadOnly = true;
+            // 
             // ROS_Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -459,9 +467,6 @@
         private System.Windows.Forms.Button viewDSRButton;
         private System.Windows.Forms.Button viewMenuButton;
         private System.Windows.Forms.DataGridView orderGridView;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Quantity;
         private System.Windows.Forms.Panel OrderBottomPanel;
         private System.Windows.Forms.Label amountLabel;
         private System.Windows.Forms.Label priceLabel;
@@ -471,5 +476,9 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn costPRice;
     }
 }
