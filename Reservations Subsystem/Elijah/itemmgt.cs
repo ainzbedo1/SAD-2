@@ -241,6 +241,16 @@ namespace Reservations_Subsystem
             loadmenu();
             clear();
         }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void itemmgt_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            reference.Show();
+        }
     }
     
 }

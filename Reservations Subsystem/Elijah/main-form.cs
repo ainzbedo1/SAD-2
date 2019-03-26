@@ -12,6 +12,7 @@ namespace Reservations_Subsystem
 {
     public partial class main_form : Form
     {
+        bool posmenuStatus;
         public UMS_Login reference { get; set; }
         public main_form()
         {
@@ -25,6 +26,7 @@ namespace Reservations_Subsystem
             if (!inventory) btn_Inv.Enabled = false;
             if (!pos) btn_POS.Enabled = false;
             if (!accounts) btn_Acc.Enabled = false;
+            posmenuStatus = posmenu;
         }
         public const int WM_NCLBUTTONDOWN = 0xA1;
         public const int HT_CAPTION = 0x2;
@@ -85,7 +87,7 @@ namespace Reservations_Subsystem
 
         private void btn_POS_Click(object sender, EventArgs e)
         {
-            ROS_Main ros = new ROS_Main();
+            ROS_Main ros = new ROS_Main(posmenuStatus);
             ros.reference = this;
             ros.Show();
             this.Hide();
@@ -93,10 +95,18 @@ namespace Reservations_Subsystem
 
         private void btn_Inv_Click(object sender, EventArgs e)
         {
-            //Inventorymgt inv = new Inventorymgt();
-            //inv.reftomain = this;
-            //inv.Show();
-            //this.Hide();
+            Inventorymgt inv = new Inventorymgt();
+            inv.reference = this;
+            inv.Show();
+            this.Hide();
+        }
+
+        private void btn_Acc_Click(object sender, EventArgs e)
+        {
+            UMS_Accounts acc = new UMS_Accounts();
+            acc.reference = this;
+            acc.Show();
+            this.Hide();
         }
     }
 }

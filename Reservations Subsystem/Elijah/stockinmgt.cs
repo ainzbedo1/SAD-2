@@ -210,5 +210,14 @@ namespace Reservations_Subsystem
             }
         }
 
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void stockinmgt_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            reference.Show();
+        }
     }
 }

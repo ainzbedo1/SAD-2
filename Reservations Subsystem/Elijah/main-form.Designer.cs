@@ -40,9 +40,9 @@
             this.btn_Sched = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -102,6 +102,7 @@
             this.btn_Acc.TabIndex = 20;
             this.btn_Acc.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btn_Acc.UseVisualStyleBackColor = false;
+            this.btn_Acc.Click += new System.EventHandler(this.btn_Acc_Click);
             // 
             // button1
             // 
@@ -221,16 +222,16 @@
             this.panel2.Size = new System.Drawing.Size(621, 179);
             this.panel2.TabIndex = 23;
             // 
-            // label3
+            // label5
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI Semilight", 16F);
-            this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(169, 136);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(126, 30);
-            this.label3.TabIndex = 23;
-            this.label3.Text = "INVENTORY";
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Segoe UI Semilight", 16F);
+            this.label5.ForeColor = System.Drawing.Color.White;
+            this.label5.Location = new System.Drawing.Point(480, 136);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(124, 30);
+            this.label5.TabIndex = 25;
+            this.label5.Text = "ACCOUNTS";
             // 
             // label4
             // 
@@ -243,16 +244,16 @@
             this.label4.TabIndex = 24;
             this.label4.Text = "POS";
             // 
-            // label5
+            // label3
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Segoe UI Semilight", 16F);
-            this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(480, 136);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(124, 30);
-            this.label5.TabIndex = 25;
-            this.label5.Text = "ACCOUNTS";
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Segoe UI Semilight", 16F);
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(169, 136);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(126, 30);
+            this.label3.TabIndex = 23;
+            this.label3.Text = "INVENTORY";
             // 
             // main_form
             // 

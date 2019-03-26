@@ -604,5 +604,15 @@ namespace Reservations_Subsystem
             dtgvPOLCL.Columns["Supplier"].HeaderText = "Supplier";
 
         }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void orderlistmgt_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            previousform.Show();
+        }
     }
 }

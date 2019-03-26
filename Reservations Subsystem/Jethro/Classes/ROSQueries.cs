@@ -19,7 +19,6 @@ namespace Reservations_Subsystem
 
         public void refreshMenu()
         {
-            string query = "SELECT * FROM menuitem";
 
         }
     }

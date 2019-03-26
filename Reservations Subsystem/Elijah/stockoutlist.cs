@@ -14,7 +14,7 @@ namespace Reservations_Subsystem
     public partial class stockoutlist : Form
     {
         public MySqlConnection dbconnection;
-        // public FormInventory reference { get; set; }
+        public Inventorymgt reference { get; set; }
         dbconnector connect = new dbconnector();
         MySqlDataAdapter adapter;
         DataTable dt;
@@ -23,11 +23,6 @@ namespace Reservations_Subsystem
         public stockoutlist()
         {
             InitializeComponent();
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            this.Close();
         }
 
         private void stockoutlist_Load(object sender, EventArgs e)
@@ -54,6 +49,16 @@ namespace Reservations_Subsystem
                 datagridview_stockout.Columns["mstkoutcol"].Visible = false;
 
             }
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void stockoutlist_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            reference.Show();
         }
     }
 }

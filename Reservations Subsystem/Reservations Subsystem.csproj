@@ -259,6 +259,12 @@
       <DependentUpon>rptStateAccount.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="UMS_Accounts.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UMS_Accounts.Designer.cs">
+      <DependentUpon>UMS_Accounts.cs</DependentUpon>
+    </Compile>
     <Compile Include="Window2.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -360,6 +366,9 @@
     <EmbeddedResource Include="rptStateAccount.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptStateAccount.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UMS_Accounts.resx">
+      <DependentUpon>UMS_Accounts.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Window2.resx">
       <Generator>ResXFileCodeGenerator</Generator>
