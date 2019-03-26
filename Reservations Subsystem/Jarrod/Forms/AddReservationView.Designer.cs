@@ -40,7 +40,6 @@
             this.txtCustomerName = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.grpBoxRoomData = new System.Windows.Forms.GroupBox();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.cmbRoomNumber = new System.Windows.Forms.ComboBox();
@@ -238,7 +237,6 @@
             // grpBoxRoomData
             // 
             this.grpBoxRoomData.BackColor = System.Drawing.Color.LightYellow;
-            this.grpBoxRoomData.Controls.Add(this.groupBox4);
             this.grpBoxRoomData.Controls.Add(this.label2);
             this.grpBoxRoomData.Controls.Add(this.label1);
             this.grpBoxRoomData.Controls.Add(this.cmbRoomNumber);
@@ -251,16 +249,6 @@
             this.grpBoxRoomData.TabIndex = 1;
             this.grpBoxRoomData.TabStop = false;
             this.grpBoxRoomData.Text = "Room Data";
-            // 
-            // groupBox4
-            // 
-            this.groupBox4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(127)))), ((int)(((byte)(0)))));
-            this.groupBox4.Location = new System.Drawing.Point(12, 92);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(358, 65);
-            this.groupBox4.TabIndex = 4;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "groupBox4";
             // 
             // label2
             // 
@@ -822,7 +810,6 @@
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnClose;
-        private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox cmbRoomNumber;
