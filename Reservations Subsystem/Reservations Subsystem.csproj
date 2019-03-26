@@ -57,6 +57,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Jarrod\Room\EditRoom.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Jarrod\Room\EditRoom.Designer.cs">
+      <DependentUpon>EditRoom.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Jarrod\Forms\AddRoomRate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Jarrod\Forms\AddRoomRate.Designer.cs">
+      <DependentUpon>AddRoomRate.cs</DependentUpon>
+    </Compile>
     <Compile Include="DbConnect.cs" />
     <Compile Include="dbconnector.cs" />
     <Compile Include="Elijah\Inventorymgt.cs">
@@ -101,6 +113,7 @@
     <Compile Include="FrmStateAccount.Designer.cs">
       <DependentUpon>FrmStateAccount.cs</DependentUpon>
     </Compile>
+    <Compile Include="Jarrod\DataService\TestDataService.cs" />
     <Compile Include="Jarrod\Forms\EditCustomerForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -239,6 +252,7 @@
       <DependentUpon>DSMonthly.xsd</DependentUpon>
     </Compile>
     <Compile Include="Jarrod\Custom Objects\RoomRateTextBox.cs" />
+    <Compile Include="Jarrod\Classes Info\RoomTypeInfo.cs" />
     <Compile Include="rptStateAccount.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -250,6 +264,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Window2.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Jarrod\Room\EditRoom.resx">
+      <DependentUpon>EditRoom.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Elijah\Inventorymgt.resx">
       <DependentUpon>Inventorymgt.cs</DependentUpon>
     </EmbeddedResource>
@@ -276,6 +293,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Jarrod\Forms\AddReservationView.resx">
       <DependentUpon>AddReservationView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Jarrod\Forms\AddRoomRate.resx">
+      <DependentUpon>AddRoomRate.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Jarrod\Forms\EditCustomerForm.resx">
       <DependentUpon>EditCustomerForm.cs</DependentUpon>

@@ -64,16 +64,12 @@ namespace Reservations_Subsystem
 
             return null;
         }
-        public DataTable FindGroupRes(int customerId, DateTime startDate, DateTime endDate)
+        public DataTable FindGroupRes(int resId)
         {
-            string query = "SELECT * FROM sad2_db.reservation WHERE customer_id = @customerId AND startDate = @startDate AND endDate = @endDate";
+            string query = "SELECT * FROM sad2_db.reservation WHERE reservationId = '"+resId+"',";
             DataTable dt = new DataTable();
             using (MySqlCommand cmd = new MySqlCommand(query, conn))
             {
-                cmd.Parameters.AddWithValue("@customerId", customerId);
-                cmd.Parameters.AddWithValue("@startDate", startDate);
-
-                cmd.Parameters.AddWithValue("@endDate", endDate);
 
                 try
                 {
@@ -135,7 +131,7 @@ namespace Reservations_Subsystem
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message + " thing failed Reservation Failed");
+                    MessageBox.Show(ex.ToString() + " the failed Reservation Failed");
 
                     return 0;
 
@@ -143,6 +139,7 @@ namespace Reservations_Subsystem
 
             }
         }
+
         public long UpdateReservation(int id, int roomId, int customerId, string description, DateTime startDate, DateTime endDate, int occupied, int totalPrice, int lengthOfStay, int rate)
         {
             string query = "UPDATE reservation SET room_id = @room_id, customer_id = @customer_id, description = @description, " +

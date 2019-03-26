@@ -50,9 +50,11 @@
             // 
             this.groupBox2.Controls.Add(this.dtgvInv);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(613, 53);
+            this.groupBox2.Location = new System.Drawing.Point(460, 43);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(687, 603);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox2.Size = new System.Drawing.Size(515, 490);
             this.groupBox2.TabIndex = 4;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Inventory Preview";
@@ -68,14 +70,14 @@
             this.dtgvInv.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dtgvInv.BackgroundColor = System.Drawing.Color.White;
             this.dtgvInv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgvInv.Location = new System.Drawing.Point(19, 44);
-            this.dtgvInv.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dtgvInv.Location = new System.Drawing.Point(14, 36);
+            this.dtgvInv.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dtgvInv.Name = "dtgvInv";
             this.dtgvInv.ReadOnly = true;
             this.dtgvInv.RowHeadersVisible = false;
             this.dtgvInv.RowTemplate.Height = 24;
             this.dtgvInv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtgvInv.Size = new System.Drawing.Size(652, 525);
+            this.dtgvInv.Size = new System.Drawing.Size(489, 427);
             this.dtgvInv.TabIndex = 10;
             // 
             // groupBox1
@@ -83,9 +85,11 @@
             this.groupBox1.Controls.Add(this.dtgvPO);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.ForeColor = System.Drawing.Color.Black;
-            this.groupBox1.Location = new System.Drawing.Point(12, 53);
+            this.groupBox1.Location = new System.Drawing.Point(9, 43);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(579, 603);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Size = new System.Drawing.Size(434, 490);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "List Of Delivered Orders";
@@ -101,14 +105,14 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dtgvPO.BackgroundColor = System.Drawing.Color.White;
             this.dtgvPO.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgvPO.Location = new System.Drawing.Point(15, 32);
-            this.dtgvPO.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dtgvPO.Location = new System.Drawing.Point(11, 26);
+            this.dtgvPO.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dtgvPO.Name = "dtgvPO";
             this.dtgvPO.ReadOnly = true;
             this.dtgvPO.RowHeadersVisible = false;
             this.dtgvPO.RowTemplate.Height = 24;
             this.dtgvPO.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtgvPO.Size = new System.Drawing.Size(534, 215);
+            this.dtgvPO.Size = new System.Drawing.Size(400, 175);
             this.dtgvPO.TabIndex = 8;
             this.dtgvPO.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgvPO_CellClick);
             // 
@@ -121,10 +125,9 @@
             this.btnin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnin.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnin.ForeColor = System.Drawing.Color.White;
-            this.btnin.Location = new System.Drawing.Point(-156, 279);
-            this.btnin.Margin = new System.Windows.Forms.Padding(4);
+            this.btnin.Location = new System.Drawing.Point(-117, 227);
             this.btnin.Name = "btnin";
-            this.btnin.Size = new System.Drawing.Size(111, 38);
+            this.btnin.Size = new System.Drawing.Size(83, 31);
             this.btnin.TabIndex = 58;
             this.btnin.Text = "Stock-in";
             this.btnin.UseVisualStyleBackColor = false;
@@ -140,14 +143,14 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dtgvPOL.BackgroundColor = System.Drawing.Color.White;
             this.dtgvPOL.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgvPOL.Location = new System.Drawing.Point(6, 32);
-            this.dtgvPOL.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dtgvPOL.Location = new System.Drawing.Point(4, 26);
+            this.dtgvPOL.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dtgvPOL.Name = "dtgvPOL";
             this.dtgvPOL.ReadOnly = true;
             this.dtgvPOL.RowHeadersVisible = false;
             this.dtgvPOL.RowTemplate.Height = 24;
             this.dtgvPOL.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtgvPOL.Size = new System.Drawing.Size(534, 199);
+            this.dtgvPOL.Size = new System.Drawing.Size(400, 162);
             this.dtgvPOL.TabIndex = 59;
             this.dtgvPOL.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgvPOL_CellClick);
             // 
@@ -159,9 +162,11 @@
             this.groupBox3.Controls.Add(this.btnin);
             this.groupBox3.Controls.Add(this.dtgvPOL);
             this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox3.Location = new System.Drawing.Point(12, 332);
+            this.groupBox3.Location = new System.Drawing.Point(9, 270);
+            this.groupBox3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(579, 324);
+            this.groupBox3.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox3.Size = new System.Drawing.Size(434, 263);
             this.groupBox3.TabIndex = 60;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Delivered Order Line";
@@ -171,9 +176,10 @@
             this.cb.AutoSize = true;
             this.cb.Checked = true;
             this.cb.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cb.Location = new System.Drawing.Point(14, 239);
+            this.cb.Location = new System.Drawing.Point(10, 194);
+            this.cb.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cb.Name = "cb";
-            this.cb.Size = new System.Drawing.Size(142, 33);
+            this.cb.Size = new System.Drawing.Size(113, 28);
             this.cb.TabIndex = 159;
             this.cb.Text = "Expiration";
             this.cb.UseVisualStyleBackColor = true;
@@ -182,9 +188,10 @@
             // StockInBtn
             // 
             this.StockInBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.StockInBtn.Location = new System.Drawing.Point(452, 276);
+            this.StockInBtn.Location = new System.Drawing.Point(320, 222);
+            this.StockInBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.StockInBtn.Name = "StockInBtn";
-            this.StockInBtn.Size = new System.Drawing.Size(121, 42);
+            this.StockInBtn.Size = new System.Drawing.Size(91, 34);
             this.StockInBtn.TabIndex = 61;
             this.StockInBtn.Text = "Stock In";
             this.StockInBtn.UseVisualStyleBackColor = true;
@@ -195,20 +202,20 @@
             this.expirationDtp.CustomFormat = "yyyy-MM-dd";
             this.expirationDtp.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.expirationDtp.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.expirationDtp.Location = new System.Drawing.Point(15, 276);
-            this.expirationDtp.Margin = new System.Windows.Forms.Padding(4);
+            this.expirationDtp.Location = new System.Drawing.Point(11, 224);
             this.expirationDtp.Name = "expirationDtp";
-            this.expirationDtp.Size = new System.Drawing.Size(197, 30);
+            this.expirationDtp.Size = new System.Drawing.Size(149, 26);
             this.expirationDtp.TabIndex = 158;
             // 
             // stockinmgt
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1357, 724);
+            this.ClientSize = new System.Drawing.Size(1018, 588);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "stockinmgt";
             this.Text = "stockinmgt";
             this.Load += new System.EventHandler(this.stockinmgt_Load);

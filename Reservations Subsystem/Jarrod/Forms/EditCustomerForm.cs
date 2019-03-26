@@ -30,7 +30,7 @@ namespace Reservations_Subsystem
         public void initializeData()
         {
             try
-            {
+            {   
                 conn.Open();
                 MySqlCommand comm = new MySqlCommand("Select * from customer WHERE id =" + currID, conn);
                 MySqlDataAdapter adp = new MySqlDataAdapter(comm);

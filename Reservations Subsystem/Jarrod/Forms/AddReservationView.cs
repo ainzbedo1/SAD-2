@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.ComponentModel;
@@ -14,6 +15,7 @@ namespace Reservations_Subsystem
 {
     public partial class AddReservationView : Form
     {
+        public MySqlConnection conn;
         public ReservationCalendarForm referencefrm1 { get; set; }
         public event EventHandler OnShowReservationInfo;
         public CustomerInfo theCustomerInfo { get; set; }
@@ -33,7 +35,7 @@ namespace Reservations_Subsystem
         public string myRoomNum { get; set; }
         public int cmbRate { get; set;  }
         public string RoomId { get; set; }
-
+        #region
         //private bool CustomerInfoExist = false;
         public int CmbRate
         {
@@ -148,7 +150,7 @@ namespace Reservations_Subsystem
             get { return theCustomerInfo; }
             set { theCustomerInfo = value; }
         }
-
+        #endregion
 
         //public void AutoCompleteCustomer
         public void testwhat(object sender, EventArgs e)
@@ -164,7 +166,7 @@ namespace Reservations_Subsystem
 
         }
         //this method only fires on update
-        public void setValuesBasedOnReservationId(RoomInfo customInfo, string roomType, string roomNumber, DateTime startDate, DateTime endDate, string description, int roomRate, int isGrouped, int amtPaid)
+        public void setValuesBasedOnReservationId(RoomInfo customInfo, string roomType, string roomNumber, DateTime startDate, DateTime endDate, string description, int roomRate1, int isGrouped, int amtPaid)
         {
             lengthOfStay.ValueChanged -= lengthOfStay_ValueChanged;
             dtpEndDate.ValueChanged -= dtpEndDate_ValueChanged;
@@ -177,13 +179,14 @@ namespace Reservations_Subsystem
             StartDate = startDate;
             EndDate = endDate;
             Description = description;
-            RoomRate = roomRate.ToString();
+            RoomRate = roomRate1.ToString();
             LengthOfStay = (dtpEndDate.Value - dtpStartDate.Value).Days;
             LblNumOfNights = LengthOfStay.ToString();
             LblPricePerNight = RoomRate.ToString();
             TotalAccomadation = (Convert.ToInt32(LblNumOfNights) * (Convert.ToInt32(LblPricePerNight))).ToString();
             IsGroup = isGrouped;
             AmountPaid = amountPaid;
+            cmbRoomRate.Text = roomRate1.ToString();
            
 
             //TotalAccomadation = (Convert.ToInt32(LblReserveDays) * (Convert.ToInt32(LblPerNight))).ToString();
@@ -213,6 +216,7 @@ namespace Reservations_Subsystem
 
             InitializeComponent();
             // CustomerInfo _customerInfo = new CustomerInfo();
+            conn = new MySqlConnection("Server=localhost;Database=sad2_db;Uid=root;Pwd=root;");
 
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
 
@@ -235,7 +239,7 @@ namespace Reservations_Subsystem
             dtpEndDate.CustomFormat = "dd MMMM yyyy dddd";
 
         }
-
+        #region
         public void EditFormIsTrue()
         {
             btnRemoveCust.Enabled = true;
@@ -275,13 +279,13 @@ namespace Reservations_Subsystem
 
         }
         
-        public void LoadComboRoomRate()
+        public void LoadComboRoomRates()
         {
             List<string> myRates = new List<string>();
 
             RoomDataService myRoomDataService = new RoomDataService();
             //MessageBox.Show(RoomId.ToString());
-            myRates = myRoomDataService.GetRoomRate(Convert.ToInt32(RoomId));
+            myRates = myRoomDataService.GetRoomRates(Convert.ToInt32(RoomId));
             foreach (var item in myRates)
             {
                 cmbRoomRate.Items.Add(item);
@@ -315,6 +319,7 @@ namespace Reservations_Subsystem
             txtCustomerName.AutoCompleteCustomSource = custDataService.AutoCompleteCollection(); 
             
         }
+        #endregion
         private void AddReservation_Load(object sender, EventArgs e)
         {
             btnStatementOfAccount.Enabled = false;
@@ -332,7 +337,7 @@ namespace Reservations_Subsystem
                 txtRate.TextChanged -= txtRate_TextChanged;
 
                 LoadRoomComboBoxes();
-                LoadComboRoomRate();
+                LoadComboRoomRates();
                 EditFormIsTrue();
 
               
@@ -361,12 +366,14 @@ namespace Reservations_Subsystem
                 dtpEndDate.Value = DateTime.Today.AddDays(1);
 
                 LoadRoomTypeCombo();
-                //LoadRoomComboBoxes();
-                //LoadRoomComboBoxes();                
-                //LoadComboRoomRate();
+
 
                 cmbRoomType.Text = RoomType;
                 cmbRoomNumber.Text = RoomNumber.ToString();
+                //LoadRoomComboBoxes();
+
+                LoadComboRoomRates();
+
                 //cmbRoomRate.SelectedIndex = 0;
 
                 /*
@@ -395,11 +402,15 @@ namespace Reservations_Subsystem
                 cmbRoomType.SelectedIndexChanged -= cmbRoomType_SelectedIndexChanged;
 
                 LoadRoomTypeCombo();
+                MessageBox.Show("402");
 
-                LoadRoomComboBoxes();       
-                    //LoadComboRoomRate();
+
+                //LoadComboRoomRate();
                 cmbRoomType.Text = RoomType;
                 cmbRoomNumber.Text = RoomNumber.ToString();
+
+                LoadRoomComboBoxes();
+                LoadComboRoomRates();
 
                 //cmbPerNight2.SelectedIndex = 1;
 
@@ -550,7 +561,7 @@ namespace Reservations_Subsystem
 
            
             }
-
+            #region
             if (EditForm) // if the form is in editing state perform an update
             {
                 if (emptyTextBox)
@@ -648,7 +659,8 @@ namespace Reservations_Subsystem
 
                 }
             }
-            else if(emptyTextBox){
+            #endregion
+            else if (emptyTextBox){
                 MessageBox.Show("room data is empty please fill in room data");
 
             }
@@ -665,7 +677,7 @@ namespace Reservations_Subsystem
                 // if reservation details are bad
                 // check for date range
                 // check for missing customer in
-                DataTable duplicatesTable = customDataServ.CheckDuplicateNames(txtCustomerName.Text);
+                //DataTable duplicatesTable = customDataServ.CheckDuplicateNames(txtCustomerName.Text);
 
                 //perform a search if duplicate customername is in database
                 if (String.IsNullOrWhiteSpace(txtCustomerName.Text) || StartDate == null || EndDate == null)
@@ -690,7 +702,7 @@ namespace Reservations_Subsystem
                     //if a customer was selected from autocomplete
                     if (txtCustomerName.ReadOnly)
                     {
-                        ReservationDataService frm = new ReservationDataService();
+                        TestDataService frm = new TestDataService();
                         CustomerInfo myCustomer = new CustomerInfo();
                         ReservationInfo myReservation = new ReservationInfo();
 
@@ -707,38 +719,39 @@ namespace Reservations_Subsystem
                         myCustomer.Name = CustomerName;
                         myReservation = SettingReservationInfo();
 
-                        frm.AddReservation(Convert.ToInt32(myReservation.RoomId), Convert.ToInt32(theCustomerInfo.Id), myReservation.Desc,
-                            myReservation.StartDate, myReservation.EndDate, 0, myReservation.TotalPrice, myReservation.LenghtOfStay,
-                            myReservation.RoomRate);
-                        //frm.verifyCustomerInfoAndCreateReservation(myCustomer, myReservation, referencefrm1);
+                        /*
+                        frm.AddReservation(Convert.ToInt32(myReservation.RoomId), Convert.ToInt32(TheCustomerInfo.Id), myReservation.Desc,
+                           myReservation.StartDate, myReservation.EndDate, 0, myReservation.TotalPrice, myReservation.LenghtOfStay, myReservation.RoomRate);
+                           */
+                        MessageBox.Show(StartDate.ToString());
+                        MessageBox.Show(EndDate.ToString());
 
-                        this.Close();
+                        frm.AddReservation2nd(Convert.ToInt32(myReservation.RoomId), Convert.ToInt32(TheCustomerInfo.Id), myReservation.Desc,
+                           myReservation.StartDate, myReservation.EndDate, 0, myReservation.TotalPrice, myReservation.LenghtOfStay, myReservation.RoomRate);
+                        
+                     //frm.verifyCustomerInfoAndCreateReservation(myCustomer, myRe2nservation, referencefrm1);
+
+                     this.Close();
                         this.Dispose();
                         referencefrm1.displayReservationButt(dgvMonth, dgvYear);
 
                         referencefrm1.Show();
                     }
+                    /*
                     else if (duplicatesTable.Rows.Count == 1)
                     {
                         MessageBox.Show("This name conflicts with another person name please try another");
                     }
+                    */
                     else //if a new customer added
                     {
                         ReservationDataService frm = new ReservationDataService();
                         CustomerInfo myCustomer = new CustomerInfo();
                         ReservationInfo myReservation = new ReservationInfo();
-                        /*
-                        myReservation.RoomId = RoomId;
-                        myReservation.Desc = Description;
-                        myReservation.startDate = StartDate;
-                        myReservation.EndDate = EndDate;
-                        //myReservation.LenghtOfStay = lengthOfStay;
-                        myReservation.TotalPrice = Convert.ToInt32(TotalAccomadation);
-                        myReservation.LenghtOfStay = Convert.ToInt32(lengthOfStay.Value);
-                        myReservation.RoomRate = Convert.ToInt32(RoomRate);
-                        */
+
                         myReservation = SettingReservationInfo();
                         myCustomer.Name = CustomerName;
+                        MessageBox.Show("751 is here");
                         frm.verifyCustomerInfoAndCreateReservation(myCustomer, myReservation, referencefrm1);
 
                         this.Close();
@@ -804,10 +817,14 @@ namespace Reservations_Subsystem
 
         private void cmbRoomNumber_SelectedIndexChanged(object sender, EventArgs e)
         {
+
+            cmbRoomRate.Items.Clear();
+            cmbRoomRate.Text = null;
             RoomDataService myRoomDataService = new RoomDataService();
             RoomInfo myRoomInfo = new RoomInfo();
             myRoomInfo = myRoomDataService.getRoomInfoByRoomNumber(cmbRoomNumber.Text);
             RoomId = myRoomInfo.RoomId;
+            LoadComboRoomRates();
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
@@ -819,7 +836,11 @@ namespace Reservations_Subsystem
         {
             //cmbRoomNumber.Text = null;
             cmbRoomNumber.Items.Clear();
-            LoadRoomComboBoxes();              //LoadComboRoomRate();
+            cmbRoomNumber.Text = null;
+            cmbRoomRate.Items.Clear();
+            cmbRoomRate.Text = null;
+            MessageBox.Show("over here boi 825 addres");
+            LoadRoomComboBoxes();              
 
 
         }
@@ -990,8 +1011,8 @@ namespace Reservations_Subsystem
             
             FrmStateAccount frm = new FrmStateAccount();
             ReservationDataService resData = new ReservationDataService();
-            MessageBox.Show(theCustomerInfo.Id.ToString());
-            frm.LoadReport(Convert.ToInt32(theCustomerInfo.Id), StartDate, EndDate);
+            //MessageBox.Show(theCustomerInfo.Id.ToString());
+            frm.LoadReport(theReservation.ResId);
             frm.referencefrm1 = this;
             frm.Show();
             
@@ -1037,6 +1058,30 @@ namespace Reservations_Subsystem
 
         private void label19_Click(object sender, EventArgs e)
         {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            AddRoomRate frm2 = new AddRoomRate();
+            frm2.referencefrm1 = this;
+            frm2.ShowDialog();
+            /*
+            try
+            {
+                conn.Open();
+                MySqlCommand command = new MySqlCommand("INSERT into customer(name, company, address, phone, email, passport, nationality, gender, birthdate, birthplace, comment) values('" + SurName.Text + "','" + company.Text + "','" + address.Text + "','" + phone.Text + "','" + email.Text + "','" + passport.Text + "','" + nationality.Text + "','" + gender.Text + "','" + bdate.Value.ToString("yyyy-MM-dd") + "','" + bplace.Text + "','" + comment.Text + "')", conn);
+                //int id = (int)command.ExecuteScalar();
+                if (command.ExecuteNonQuery() == 1) MessageBox.Show("Data Inserted");
+                else MessageBox.Show("Data not inserted");
+            }
+            catch (Exception ee)
+            {
+                MessageBox.Show("" + ee);
+                conn.Close();
+            }
+            this.DialogResult = DialogResult.OK;
+            */
 
         }
     }

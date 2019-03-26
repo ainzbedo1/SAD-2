@@ -54,5 +54,10 @@ namespace Reservations_Subsystem
         {
             reference.Show();
         }
+
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

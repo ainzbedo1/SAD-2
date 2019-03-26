@@ -45,7 +45,7 @@
             this.cmbRoomType = new System.Windows.Forms.ComboBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnAddRoomRate = new System.Windows.Forms.Button();
             this.label16 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
@@ -114,6 +114,7 @@
             this.btnChangeCustomer.TabIndex = 5;
             this.btnChangeCustomer.Text = "Change Customer";
             this.btnChangeCustomer.UseVisualStyleBackColor = true;
+            this.btnChangeCustomer.Visible = false;
             this.btnChangeCustomer.Click += new System.EventHandler(this.btnChangeCustomer_Click);
             // 
             // btnRemoveCust
@@ -261,7 +262,7 @@
             // tabPage1
             // 
             this.tabPage1.BackColor = System.Drawing.Color.AntiqueWhite;
-            this.tabPage1.Controls.Add(this.button1);
+            this.tabPage1.Controls.Add(this.btnAddRoomRate);
             this.tabPage1.Controls.Add(this.label16);
             this.tabPage1.Controls.Add(this.label19);
             this.tabPage1.Controls.Add(this.label20);
@@ -279,14 +280,15 @@
             this.tabPage1.Text = "Room Information";
             this.tabPage1.Click += new System.EventHandler(this.tabPage1_Click);
             // 
-            // button1
+            // btnAddRoomRate
             // 
-            this.button1.Location = new System.Drawing.Point(170, 38);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(103, 23);
-            this.button1.TabIndex = 11;
-            this.button1.Text = "Add Room Rate";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnAddRoomRate.Location = new System.Drawing.Point(170, 38);
+            this.btnAddRoomRate.Name = "btnAddRoomRate";
+            this.btnAddRoomRate.Size = new System.Drawing.Size(103, 23);
+            this.btnAddRoomRate.TabIndex = 11;
+            this.btnAddRoomRate.Text = "Add Room Rate";
+            this.btnAddRoomRate.UseVisualStyleBackColor = true;
+            this.btnAddRoomRate.Click += new System.EventHandler(this.button1_Click);
             // 
             // label16
             // 
@@ -693,7 +695,7 @@
         private System.Windows.Forms.DateTimePicker dtpEndDate;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnAddRoomRate;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label20;

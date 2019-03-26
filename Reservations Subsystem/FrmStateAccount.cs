@@ -28,14 +28,14 @@ namespace Reservations_Subsystem
         private void FrmStateAccount_Load(object sender, EventArgs e)
         {
         }
-        public void LoadReport(int custId, DateTime startDate, DateTime endDate)
+        public void LoadReport(int resId)
         {
             try
             {
                 rptStateAccount crpt = new rptStateAccount();
                 ReservationDataService myResDataServ = new ReservationDataService();
 
-                DataTable storeData = myResDataServ.FindGroupRes(custId, startDate, endDate);
+                DataTable storeData = myResDataServ.FindGroupRes( resId);
 
                 //dgvMsr.DataSource = storeData;
                 //MonthlyReportData = storeData;
