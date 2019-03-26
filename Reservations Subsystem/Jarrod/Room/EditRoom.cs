@@ -111,5 +111,15 @@ namespace Reservations_Subsystem
             myRoomTypeInfo = myRoomDataService.getRoomTypeByName(cmbRoomType.Text);
             RoomTypeIdCombo = myRoomTypeInfo.TypeId;
         }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void EditRoom_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            referenceViewRoomList.Show();
+        }
     }
 }
