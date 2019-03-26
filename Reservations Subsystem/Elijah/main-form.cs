@@ -95,10 +95,15 @@ namespace Reservations_Subsystem
 
         private void btn_Inv_Click(object sender, EventArgs e)
         {
-            //Inventorymgt inv = new Inventorymgt();
-            //inv.reftomain = this;
-            //inv.Show();
-            //this.Hide();
+            Inventorymgt inv = new Inventorymgt();
+            inv.reference = this;
+            inv.Show();
+            this.Hide();
+        }
+
+        private void btn_Acc_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
