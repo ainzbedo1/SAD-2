@@ -13,7 +13,7 @@ namespace Reservations_Subsystem
 {
     public partial class Inventorymgt : Form
     {
-        //public mainform reference { get; set; }
+        public main_form reference { get; set; }
         public MySqlConnection dbconnection;
         dbconnector connect = new dbconnector();
         MySqlDataAdapter adapter;
@@ -172,6 +172,20 @@ namespace Reservations_Subsystem
                 quantity = datagridview_inventory.Rows[e.RowIndex].Cells["quantity"].Value.ToString();
         }
 
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btn_dashboard_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void Inventorymgt_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            reference.Show();
+        }
     }
     
 }
