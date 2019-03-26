@@ -65,6 +65,7 @@
             this.btn_dashboard.TabIndex = 10;
             this.btn_dashboard.Text = "Dashboard";
             this.btn_dashboard.UseVisualStyleBackColor = false;
+            this.btn_dashboard.Click += new System.EventHandler(this.btn_dashboard_Click);
             // 
             // btn_items
             // 
