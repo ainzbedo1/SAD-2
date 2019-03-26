@@ -16,7 +16,6 @@ namespace Reservations_Subsystem
     public partial class AddReservationView : Form
     {
         public MySqlConnection conn;
-        public main_form reftomain { get; set; }
         public ReservationCalendarForm referencefrm1 { get; set; }
         public event EventHandler OnShowReservationInfo;
         public CustomerInfo theCustomerInfo { get; set; }
@@ -1093,7 +1092,7 @@ namespace Reservations_Subsystem
 
         private void AddReservationView_FormClosing(object sender, FormClosingEventArgs e)
         {
-            reftomain.Show();
+            referencefrm1.Show();
         }
     }
 }

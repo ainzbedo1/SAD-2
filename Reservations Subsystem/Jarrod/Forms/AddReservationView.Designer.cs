@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.panel5 = new System.Windows.Forms.Panel();
             this.btnChangeCustomer = new System.Windows.Forms.Button();
             this.btnRemoveCust = new System.Windows.Forms.Button();
             this.btnEditCustomer = new System.Windows.Forms.Button();
@@ -81,8 +83,6 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.label14 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
             this.button2 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.grpBoxRoomData.SuspendLayout();
@@ -116,6 +116,22 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Customer Info";
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(127)))), ((int)(((byte)(0)))));
+            this.panel2.Location = new System.Drawing.Point(123, 93);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(345, 2);
+            this.panel2.TabIndex = 53;
+            // 
+            // panel5
+            // 
+            this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(127)))), ((int)(((byte)(0)))));
+            this.panel5.Location = new System.Drawing.Point(123, 62);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(345, 2);
+            this.panel5.TabIndex = 52;
             // 
             // btnChangeCustomer
             // 
@@ -437,16 +453,18 @@
             this.lblPerNight.AutoSize = true;
             this.lblPerNight.Location = new System.Drawing.Point(286, 72);
             this.lblPerNight.Name = "lblPerNight";
-            this.lblPerNight.Size = new System.Drawing.Size(0, 21);
+            this.lblPerNight.Size = new System.Drawing.Size(31, 21);
             this.lblPerNight.TabIndex = 7;
+            this.lblPerNight.Text = "0.0";
             // 
             // lblNumOfNights
             // 
             this.lblNumOfNights.AutoSize = true;
             this.lblNumOfNights.Location = new System.Drawing.Point(286, 29);
             this.lblNumOfNights.Name = "lblNumOfNights";
-            this.lblNumOfNights.Size = new System.Drawing.Size(0, 21);
+            this.lblNumOfNights.Size = new System.Drawing.Size(31, 21);
             this.lblNumOfNights.TabIndex = 7;
+            this.lblNumOfNights.Text = "0.0";
             this.lblNumOfNights.Click += new System.EventHandler(this.lblReserveDays_Click);
             // 
             // lblTotalAccomadation
@@ -548,10 +566,10 @@
             // 
             // tabPage2
             // 
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Location = new System.Drawing.Point(4, 30);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(386, 576);
+            this.tabPage2.Size = new System.Drawing.Size(386, 568);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -739,22 +757,6 @@
             this.button1.Text = "x";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click_1);
-            // 
-            // panel5
-            // 
-            this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(127)))), ((int)(((byte)(0)))));
-            this.panel5.Location = new System.Drawing.Point(123, 62);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(345, 2);
-            this.panel5.TabIndex = 52;
-            // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(127)))), ((int)(((byte)(0)))));
-            this.panel2.Location = new System.Drawing.Point(123, 93);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(345, 2);
-            this.panel2.TabIndex = 53;
             // 
             // button2
             // 
