@@ -39,7 +39,6 @@ namespace Reservations_Subsystem
             testRoom.AddRoomRate(TypeId, txtRoomRate.Text);
             referencefrm1.LoadComboRoomRates();
             this.Close();
-            referencefrm1.Show();
         }
 
         private void AddRoomRate_Load(object sender, EventArgs e)
@@ -76,6 +75,16 @@ namespace Reservations_Subsystem
         {
             e.Handled = true;
 
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void AddRoomRate_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            referencefrm1.Show();
         }
     }
 }
