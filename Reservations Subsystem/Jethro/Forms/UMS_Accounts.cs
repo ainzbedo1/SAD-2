@@ -194,5 +194,10 @@ namespace Reservations_Subsystem
             umsroles.Show();
             this.Hide();
         }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

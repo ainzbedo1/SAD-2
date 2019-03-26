@@ -199,6 +199,7 @@
             // 
             // button3
             // 
+            this.button3.Enabled = false;
             this.button3.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(127)))), ((int)(((byte)(0)))));
             this.button3.FlatAppearance.BorderSize = 4;
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
