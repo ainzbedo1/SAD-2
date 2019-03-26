@@ -13,6 +13,7 @@ namespace Reservations_Subsystem
 {
     public partial class UMS_Accounts : Form
     {
+        public main_form reference { get; set; }
         public UMS_Accounts()
         {
             InitializeComponent();
@@ -32,6 +33,11 @@ namespace Reservations_Subsystem
 
             da.Fill(dt);
             accountsGridView.DataSource = dt;
+        }
+
+        private void UMS_Accounts_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            reference.Show();
         }
     }
 }

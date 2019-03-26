@@ -28,12 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.backButton = new System.Windows.Forms.Button();
             this.DetailsLabel = new System.Windows.Forms.Label();
             this.OrderTopPanel = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.costPriceTxt = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
@@ -45,19 +48,16 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.createButton = new System.Windows.Forms.Button();
+            this.updateButton = new System.Windows.Forms.Button();
+            this.archiveButton = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.menuSearch = new System.Windows.Forms.TextBox();
             this.MenuLabel = new System.Windows.Forms.Label();
             this.MenuTopPanel = new System.Windows.Forms.Panel();
-            this.menuGridView = new System.Windows.Forms.DataGridView();
-            this.createButton = new System.Windows.Forms.Button();
-            this.updateButton = new System.Windows.Forms.Button();
-            this.archiveButton = new System.Windows.Forms.Button();
             this.filterButton = new System.Windows.Forms.Button();
             this.editButton = new System.Windows.Forms.Button();
-            this.panel6 = new System.Windows.Forms.Panel();
-            this.costPriceTxt = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
+            this.menuGridView = new System.Windows.Forms.DataGridView();
             this.OrderTopPanel.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -121,6 +121,35 @@
             this.panel1.Size = new System.Drawing.Size(398, 449);
             this.panel1.TabIndex = 1;
             // 
+            // panel6
+            // 
+            this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(127)))), ((int)(((byte)(0)))));
+            this.panel6.Location = new System.Drawing.Point(10, 250);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(376, 2);
+            this.panel6.TabIndex = 23;
+            // 
+            // costPriceTxt
+            // 
+            this.costPriceTxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.costPriceTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.costPriceTxt.Location = new System.Drawing.Point(8, 215);
+            this.costPriceTxt.Name = "costPriceTxt";
+            this.costPriceTxt.Size = new System.Drawing.Size(379, 28);
+            this.costPriceTxt.TabIndex = 22;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.Color.Transparent;
+            this.label5.Font = new System.Drawing.Font("Segoe UI Semilight", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(127)))), ((int)(((byte)(0)))));
+            this.label5.Location = new System.Drawing.Point(1, 175);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(209, 37);
+            this.label5.TabIndex = 21;
+            this.label5.Text = "Production Cost:";
+            // 
             // panel5
             // 
             this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(127)))), ((int)(((byte)(0)))));
@@ -148,6 +177,7 @@
             this.label3.Size = new System.Drawing.Size(155, 37);
             this.label3.TabIndex = 11;
             this.label3.Text = "Ingredients:";
+            this.label3.Visible = false;
             // 
             // clearButton
             // 
@@ -238,6 +268,52 @@
             this.panel3.Size = new System.Drawing.Size(101, 609);
             this.panel3.TabIndex = 16;
             // 
+            // createButton
+            // 
+            this.createButton.BackColor = System.Drawing.Color.Transparent;
+            this.createButton.BackgroundImage = global::Reservations_Subsystem.Properties.Resources.plus_black_symbol;
+            this.createButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.createButton.FlatAppearance.BorderSize = 0;
+            this.createButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.createButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.createButton.Location = new System.Drawing.Point(22, 364);
+            this.createButton.Name = "createButton";
+            this.createButton.Size = new System.Drawing.Size(57, 57);
+            this.createButton.TabIndex = 10;
+            this.createButton.UseVisualStyleBackColor = false;
+            this.createButton.Click += new System.EventHandler(this.createButton_Click);
+            // 
+            // updateButton
+            // 
+            this.updateButton.BackColor = System.Drawing.Color.Transparent;
+            this.updateButton.BackgroundImage = global::Reservations_Subsystem.Properties.Resources.ASD;
+            this.updateButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.updateButton.Enabled = false;
+            this.updateButton.FlatAppearance.BorderSize = 0;
+            this.updateButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.updateButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.updateButton.Location = new System.Drawing.Point(22, 446);
+            this.updateButton.Name = "updateButton";
+            this.updateButton.Size = new System.Drawing.Size(57, 57);
+            this.updateButton.TabIndex = 13;
+            this.updateButton.UseVisualStyleBackColor = false;
+            this.updateButton.Click += new System.EventHandler(this.updateButton_Click);
+            // 
+            // archiveButton
+            // 
+            this.archiveButton.BackColor = System.Drawing.Color.Transparent;
+            this.archiveButton.BackgroundImage = global::Reservations_Subsystem.Properties.Resources.DFG;
+            this.archiveButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.archiveButton.FlatAppearance.BorderSize = 0;
+            this.archiveButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.archiveButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.archiveButton.Location = new System.Drawing.Point(22, 528);
+            this.archiveButton.Name = "archiveButton";
+            this.archiveButton.Size = new System.Drawing.Size(57, 57);
+            this.archiveButton.TabIndex = 14;
+            this.archiveButton.UseVisualStyleBackColor = false;
+            this.archiveButton.Click += new System.EventHandler(this.archiveButton_Click);
+            // 
             // button1
             // 
             this.button1.Enabled = false;
@@ -285,90 +361,6 @@
             this.MenuTopPanel.Size = new System.Drawing.Size(598, 49);
             this.MenuTopPanel.TabIndex = 1;
             // 
-            // menuGridView
-            // 
-            this.menuGridView.AllowUserToAddRows = false;
-            this.menuGridView.AllowUserToDeleteRows = false;
-            this.menuGridView.AllowUserToResizeColumns = false;
-            this.menuGridView.AllowUserToResizeRows = false;
-            this.menuGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.menuGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            this.menuGridView.BackgroundColor = System.Drawing.Color.White;
-            this.menuGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.menuGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            this.menuGridView.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.menuGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            this.menuGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(127)))), ((int)(((byte)(0)))));
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(127)))), ((int)(((byte)(0)))));
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.menuGridView.DefaultCellStyle = dataGridViewCellStyle4;
-            this.menuGridView.Location = new System.Drawing.Point(576, 143);
-            this.menuGridView.MultiSelect = false;
-            this.menuGridView.Name = "menuGridView";
-            this.menuGridView.ReadOnly = true;
-            this.menuGridView.RowHeadersVisible = false;
-            this.menuGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.menuGridView.Size = new System.Drawing.Size(598, 449);
-            this.menuGridView.TabIndex = 4;
-            // 
-            // createButton
-            // 
-            this.createButton.BackColor = System.Drawing.Color.Transparent;
-            this.createButton.BackgroundImage = global::Reservations_Subsystem.Properties.Resources.plus_black_symbol;
-            this.createButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.createButton.FlatAppearance.BorderSize = 0;
-            this.createButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.createButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.createButton.Location = new System.Drawing.Point(22, 364);
-            this.createButton.Name = "createButton";
-            this.createButton.Size = new System.Drawing.Size(57, 57);
-            this.createButton.TabIndex = 10;
-            this.createButton.UseVisualStyleBackColor = false;
-            this.createButton.Click += new System.EventHandler(this.createButton_Click);
-            // 
-            // updateButton
-            // 
-            this.updateButton.BackColor = System.Drawing.Color.Transparent;
-            this.updateButton.BackgroundImage = global::Reservations_Subsystem.Properties.Resources.ASD;
-            this.updateButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.updateButton.Enabled = false;
-            this.updateButton.FlatAppearance.BorderSize = 0;
-            this.updateButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.updateButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.updateButton.Location = new System.Drawing.Point(22, 446);
-            this.updateButton.Name = "updateButton";
-            this.updateButton.Size = new System.Drawing.Size(57, 57);
-            this.updateButton.TabIndex = 13;
-            this.updateButton.UseVisualStyleBackColor = false;
-            this.updateButton.Click += new System.EventHandler(this.updateButton_Click);
-            // 
-            // archiveButton
-            // 
-            this.archiveButton.BackColor = System.Drawing.Color.Transparent;
-            this.archiveButton.BackgroundImage = global::Reservations_Subsystem.Properties.Resources.DFG;
-            this.archiveButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.archiveButton.FlatAppearance.BorderSize = 0;
-            this.archiveButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.archiveButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.archiveButton.Location = new System.Drawing.Point(22, 528);
-            this.archiveButton.Name = "archiveButton";
-            this.archiveButton.Size = new System.Drawing.Size(57, 57);
-            this.archiveButton.TabIndex = 14;
-            this.archiveButton.UseVisualStyleBackColor = false;
-            this.archiveButton.Click += new System.EventHandler(this.archiveButton_Click);
-            // 
             // filterButton
             // 
             this.filterButton.BackColor = System.Drawing.Color.Transparent;
@@ -399,34 +391,43 @@
             this.editButton.UseVisualStyleBackColor = false;
             this.editButton.Click += new System.EventHandler(this.editButton_Click);
             // 
-            // panel6
+            // menuGridView
             // 
-            this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(127)))), ((int)(((byte)(0)))));
-            this.panel6.Location = new System.Drawing.Point(10, 250);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(376, 2);
-            this.panel6.TabIndex = 23;
-            // 
-            // costPriceTxt
-            // 
-            this.costPriceTxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.costPriceTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.costPriceTxt.Location = new System.Drawing.Point(8, 215);
-            this.costPriceTxt.Name = "costPriceTxt";
-            this.costPriceTxt.Size = new System.Drawing.Size(379, 28);
-            this.costPriceTxt.TabIndex = 22;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.BackColor = System.Drawing.Color.Transparent;
-            this.label5.Font = new System.Drawing.Font("Segoe UI Semilight", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(127)))), ((int)(((byte)(0)))));
-            this.label5.Location = new System.Drawing.Point(1, 175);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(209, 37);
-            this.label5.TabIndex = 21;
-            this.label5.Text = "Production Cost:";
+            this.menuGridView.AllowUserToAddRows = false;
+            this.menuGridView.AllowUserToDeleteRows = false;
+            this.menuGridView.AllowUserToResizeColumns = false;
+            this.menuGridView.AllowUserToResizeRows = false;
+            this.menuGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.menuGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.menuGridView.BackgroundColor = System.Drawing.Color.White;
+            this.menuGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.menuGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.menuGridView.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.menuGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.menuGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(127)))), ((int)(((byte)(0)))));
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(127)))), ((int)(((byte)(0)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.menuGridView.DefaultCellStyle = dataGridViewCellStyle2;
+            this.menuGridView.Location = new System.Drawing.Point(576, 143);
+            this.menuGridView.MultiSelect = false;
+            this.menuGridView.Name = "menuGridView";
+            this.menuGridView.ReadOnly = true;
+            this.menuGridView.RowHeadersVisible = false;
+            this.menuGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.menuGridView.Size = new System.Drawing.Size(598, 449);
+            this.menuGridView.TabIndex = 4;
             // 
             // ROS_Menu
             // 
