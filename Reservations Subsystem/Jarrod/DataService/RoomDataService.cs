@@ -432,6 +432,7 @@ namespace Reservations_Subsystem
                 }
             }
         }
+        
         public List<string> GetRoomRates(int roomId)
         {
             var myRoomRates = new List<string>();

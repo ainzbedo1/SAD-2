@@ -184,6 +184,7 @@ namespace Reservations_Subsystem
 
         }
         //this method only fires on update
+        #region setting values
         public void setValuesBasedOnReservationId(RoomInfo customInfo, string roomType, string roomNumber, DateTime startDate, DateTime endDate, string description, int roomRate1, int isGrouped, int amtPaid)
         {
             lengthOfStay.ValueChanged -= lengthOfStay_ValueChanged;
@@ -214,6 +215,9 @@ namespace Reservations_Subsystem
             dtpStartDate.ValueChanged += dtpStartDate_ValueChanged;
             txtRate.TextChanged += txtRate_TextChanged;
         }
+        #endregion
+
+        #region set values by selection
         public void SetValuesOnSelection(DateTime startDate, DateTime endDate)
         {
             lengthOfStay.ValueChanged -= lengthOfStay_ValueChanged;
@@ -229,7 +233,8 @@ namespace Reservations_Subsystem
             dtpStartDate.ValueChanged += dtpStartDate_ValueChanged;
             txtRate.TextChanged += txtRate_TextChanged;
         }
-   
+        #endregion
+
         public AddReservationView(ReservationInfo resInfo, RoomInfo roomInfo)
         {
             InitializeComponent();
@@ -324,6 +329,7 @@ namespace Reservations_Subsystem
             
         }
         #endregion
+        #region Load Reservation
         private void AddReservation_Load(object sender, EventArgs e)
         {
             btnStatementOfAccount.Enabled = false;
@@ -403,15 +409,18 @@ namespace Reservations_Subsystem
                 //dtpEndDate.ValueChanged -= dtpEndDate_ValueChanged;
                 dtpStartDate.ValueChanged -= dtpStartDate_ValueChanged;
                 lengthOfStay.ValueChanged -= lengthOfStay_ValueChanged;
-                cmbRoomType.SelectedIndexChanged -= cmbRoomType_SelectedIndexChanged;
+                //cmbRoomType.SelectedIndexChanged -= cmbRoomType_SelectedIndexChanged;
 
                 LoadRoomTypeCombo();
+                LoadRoomComboBoxes();
                 MessageBox.Show("402");
 
 
                 //LoadComboRoomRate();
-                cmbRoomType.Text = RoomType;
-                cmbRoomNumber.Text = RoomNumber.ToString();
+                //cmbRoomType.SelectedIndex = RoomType;
+                cmbRoomType.SelectedIndex = cmbRoomType.FindString(RoomType);
+                //cmbRoomNumber.Text = RoomNumber.ToString();
+                cmbRoomNumber.SelectedIndex = cmbRoomNumber.FindString(RoomNumber);
 
                 LoadRoomComboBoxes();
                 //LoadComboRoomRates();
@@ -437,6 +446,7 @@ namespace Reservations_Subsystem
             }
 
         }
+        #endregion
         private void groupBox3_Enter(object sender, EventArgs e)
         {
 
@@ -578,7 +588,7 @@ namespace Reservations_Subsystem
 
            
             }
-            #region
+            #region If the form is in editing state
             if (EditForm) // if the form is in editing state perform an update
             {
                 if (emptyTextBox)
@@ -620,6 +630,7 @@ namespace Reservations_Subsystem
 
                         this.Close();
                         this.Dispose();
+
 
 
                         referencefrm1.DeleteAllButtons();
@@ -677,6 +688,7 @@ namespace Reservations_Subsystem
                 }
             }
             #endregion
+
             else if (emptyTextBox){
                 MessageBox.Show("room data is empty please fill in room data");
 
@@ -691,27 +703,14 @@ namespace Reservations_Subsystem
                 CustomerDataService customDataServ = new CustomerDataService();
                 // Boolean occupied = true;
 
-                // if reservation details are bad
-                // check for date range
-                // check for missing customer in
-                //DataTable duplicatesTable = customDataServ.CheckDuplicateNames(txtCustomerName.Text);
+    
 
                 //perform a search if duplicate customername is in database
                 if (String.IsNullOrWhiteSpace(txtCustomerName.Text) || StartDate == null || EndDate == null)
                 {
                     MessageBox.Show("there are missing fields please fill it in");
                 }
-                /*
-                else if (duplicatesTable.Rows.Count == 1)
-                {
-                    MessageBox.Show("This name conflicts with another person name please try another");
-                }
-                */
-                //else if (String.IsNullOrEmpty(cmbRoomRate.Text))
-                //{
-                //    MessageBox.Show("Missing room rate");
 
-                //}
                 else // if reservation details are good
                 {
 
@@ -769,9 +768,32 @@ namespace Reservations_Subsystem
                         myReservation = SettingReservationInfo();
                         myCustomer.Name = CustomerName;
                         MessageBox.Show("751 is here");
-                        frm.verifyCustomerInfoAndCreateReservation(myCustomer, myReservation, referencefrm1);
+                        List<string> persons = new List<string>();
+                          
+
+                        
+                        
+                        int i = frm.verifyCustomerInfoAndCreateReservation(myCustomer, myReservation, referencefrm1);
+                        foreach (DataGridViewRow row in dgvViewPersons.Rows)
+                        {
+                            
+                            //.Show(row.Cells[0].Value.ToString()); 
+                            if (row.Cells[1].Value.ToString().Equals("YES"))
+                            {
+                                int idPerson = 1;
+                                AddPerson2(row.Cells[0].Value.ToString(), idPerson.ToString(), i.ToString());
+                            }
+                            else
+                            {
+                                int idPerson = 2;
+                                AddPerson2(row.Cells[0].Value.ToString(), idPerson.ToString(), i.ToString());
+
+                            }
+                        }
+
 
                         this.Close();
+
                         this.Dispose();
                         referencefrm1.displayReservationButt(dgvMonth, dgvYear);
 
@@ -782,6 +804,44 @@ namespace Reservations_Subsystem
                 }
 
             }
+        }
+        public void AddPerson2(string p, string id, string reserve)
+        {
+            try
+            {
+                conn.Open();
+                //MySqlCommand command = new MySqlCommand("INSERT into customer(name, company, address, phone, email, passport, nationality, gender, birthdate, birthplace, comment) values('" + SurName.Text + "','" + company.Text + "','" + address.Text + "','" + phone.Text + "','" + email.Text + "','" + passport.Text + "','" + nationality.Text + "','" + gender.Text + "','" + bdate.Value.ToString("yyyy-MM-dd") + "','" + bplace.Text + "','" + comment.Text + "')", conn);
+
+                MySqlCommand command = new MySqlCommand("INSERT into add_person(person, addpersontype_id, reservation_id)" +
+                    " VALUES('" + p + "', '" + id + "','" + reserve + "')", conn);
+                command.ExecuteNonQuery();
+                conn.Close();
+            }
+            catch (Exception ee)
+            {
+                MessageBox.Show("" + ee);
+                conn.Close();
+            }
+
+        }
+        public void AddPerson(string p, string id, string reserve)
+        {
+            try
+            {
+                conn.Open();
+                //MySqlCommand command = new MySqlCommand("INSERT into customer(name, company, address, phone, email, passport, nationality, gender, birthdate, birthplace, comment) values('" + SurName.Text + "','" + company.Text + "','" + address.Text + "','" + phone.Text + "','" + email.Text + "','" + passport.Text + "','" + nationality.Text + "','" + gender.Text + "','" + bdate.Value.ToString("yyyy-MM-dd") + "','" + bplace.Text + "','" + comment.Text + "')", conn);
+
+                MySqlCommand command = new MySqlCommand("INSERT into add_person(person, addpersontype_id, reservation_id)" +
+                    " VALUES('" + p + "', '" + id + "','" + reserve + "')", conn);
+                command.ExecuteNonQuery();
+                conn.Close();
+            }
+            catch (Exception ee)
+            {
+                MessageBox.Show("" + ee);
+                conn.Close();
+            }
+
         }
 
         private void label14_Click(object sender, EventArgs e)
@@ -1176,7 +1236,7 @@ namespace Reservations_Subsystem
             //if(roomPriceControl.SelectedIndex == 0) txtRate.Text = txtDefRoomRate.Text;
             //else if (roomPriceControl.SelectedIndex == 1) txtRate.Text = txtPRoomRate.Text;
         }
-
+        #region room price control
         private void roomPriceControl_SelectedIndexChanged(object sender, EventArgs e)
         {
             cbPartners.SelectedIndex = 1;
@@ -1193,6 +1253,7 @@ namespace Reservations_Subsystem
                 txtRate.Text = (mainprice + Convert.ToDouble(addPersonAmount.Text)).ToString();
             }
         }
+        #endregion
         //get price where request is equal to bla bla 
         private void cbPartners_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -1243,7 +1304,7 @@ namespace Reservations_Subsystem
             {
                 if (am.rbTrue.Checked) row = new string[] { p, "YES", personPrice(1) };
                 else if (am.rbFalse.Checked) row = new string[] { p, "NO", personPrice(0) };
-                viewPersons.Rows.Add(row);
+                dgvViewPersons.Rows.Add(row);
                 personTotal = personTotal + Convert.ToInt32(row[2]);
                 addPersonAmount.Text = personTotal.ToString();
                 txtRate.Text = (Convert.ToInt32(txtRate.Text) + Convert.ToInt32(row[2])).ToString();
@@ -1279,13 +1340,13 @@ namespace Reservations_Subsystem
         private void btnRemovePerson_Click(object sender, EventArgs e)
         {
             int index;
-            if (viewPersons.Rows.Count != 0) { 
-                index = viewPersons.CurrentCell.RowIndex;
-                txtRate.Text = (Convert.ToInt32(txtRate.Text) - Convert.ToInt32(viewPersons.SelectedRows[0].Cells[2].Value.ToString())).ToString();
-                addPersonAmount.Text = (Convert.ToInt32(addPersonAmount.Text) - Convert.ToInt32(viewPersons.SelectedRows[0].Cells[2].Value.ToString())).ToString();
-                personTotal = personTotal - Convert.ToInt32(viewPersons.SelectedRows[0].Cells[2].Value.ToString());
+            if (dgvViewPersons.Rows.Count != 0) { 
+                index = dgvViewPersons.CurrentCell.RowIndex;
+                txtRate.Text = (Convert.ToInt32(txtRate.Text) - Convert.ToInt32(dgvViewPersons.SelectedRows[0].Cells[2].Value.ToString())).ToString();
+                addPersonAmount.Text = (Convert.ToInt32(addPersonAmount.Text) - Convert.ToInt32(dgvViewPersons.SelectedRows[0].Cells[2].Value.ToString())).ToString();
+                personTotal = personTotal - Convert.ToInt32(dgvViewPersons.SelectedRows[0].Cells[2].Value.ToString());
                 //MessageBox.Show(viewPersons.SelectedRows[0].Cells[0].Value.ToString());
-                viewPersons.Rows.RemoveAt(index);
+                dgvViewPersons.Rows.RemoveAt(index);
             }
         }
         //p first column i 2nd column(yes or no) tiny int 1 = true 0 = false 3rd column reserve id

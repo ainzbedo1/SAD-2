@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
@@ -62,7 +62,10 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.addPersonAmount = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.viewPersons = new System.Windows.Forms.DataGridView();
+            this.dgvViewPersons = new System.Windows.Forms.DataGridView();
+            this.person = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.amenity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.price = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnRemovePerson = new System.Windows.Forms.Button();
             this.btnAddPerson = new System.Windows.Forms.Button();
             this.lblAmoutTotal = new System.Windows.Forms.Label();
@@ -96,9 +99,6 @@
             this.label14 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.person = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.amenity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.price = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             this.grpBoxRoomData.SuspendLayout();
             this.roomPriceControl.SuspendLayout();
@@ -106,7 +106,7 @@
             this.tabPage4.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.viewPersons)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvViewPersons)).BeginInit();
             this.groupBox6.SuspendLayout();
             this.groupBox5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lengthOfStay)).BeginInit();
@@ -474,7 +474,7 @@
             this.tabPage1.BackColor = System.Drawing.Color.AntiqueWhite;
             this.tabPage1.Controls.Add(this.addPersonAmount);
             this.tabPage1.Controls.Add(this.label3);
-            this.tabPage1.Controls.Add(this.viewPersons);
+            this.tabPage1.Controls.Add(this.dgvViewPersons);
             this.tabPage1.Controls.Add(this.btnRemovePerson);
             this.tabPage1.Controls.Add(this.btnAddPerson);
             this.tabPage1.Controls.Add(this.lblPriceNight);
@@ -513,44 +513,59 @@
             this.label3.TabIndex = 12;
             this.label3.Text = "Added Amount";
             // 
-            // viewPersons
+            // dgvViewPersons
             // 
-            this.viewPersons.AllowUserToAddRows = false;
-            this.viewPersons.AllowUserToDeleteRows = false;
-            this.viewPersons.AllowUserToResizeColumns = false;
-            this.viewPersons.AllowUserToResizeRows = false;
-            this.viewPersons.BackgroundColor = System.Drawing.Color.AntiqueWhite;
-            this.viewPersons.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.viewPersons.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            this.viewPersons.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(127)))), ((int)(((byte)(0)))));
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 12F);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(127)))), ((int)(((byte)(0)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.viewPersons.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            this.viewPersons.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.viewPersons.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvViewPersons.AllowUserToAddRows = false;
+            this.dgvViewPersons.AllowUserToDeleteRows = false;
+            this.dgvViewPersons.AllowUserToResizeColumns = false;
+            this.dgvViewPersons.AllowUserToResizeRows = false;
+            this.dgvViewPersons.BackgroundColor = System.Drawing.Color.AntiqueWhite;
+            this.dgvViewPersons.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvViewPersons.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.dgvViewPersons.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(127)))), ((int)(((byte)(0)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 12F);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(127)))), ((int)(((byte)(0)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvViewPersons.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvViewPersons.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvViewPersons.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.person,
             this.amenity,
             this.price});
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 12F);
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(127)))), ((int)(((byte)(0)))));
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(127)))), ((int)(((byte)(0)))));
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.viewPersons.DefaultCellStyle = dataGridViewCellStyle4;
-            this.viewPersons.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(127)))), ((int)(((byte)(0)))));
-            this.viewPersons.Location = new System.Drawing.Point(28, 58);
-            this.viewPersons.Name = "viewPersons";
-            this.viewPersons.RowHeadersVisible = false;
-            this.viewPersons.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.viewPersons.Size = new System.Drawing.Size(341, 111);
-            this.viewPersons.TabIndex = 11;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 12F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(127)))), ((int)(((byte)(0)))));
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(127)))), ((int)(((byte)(0)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvViewPersons.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dgvViewPersons.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(127)))), ((int)(((byte)(0)))));
+            this.dgvViewPersons.Location = new System.Drawing.Point(28, 58);
+            this.dgvViewPersons.Name = "dgvViewPersons";
+            this.dgvViewPersons.RowHeadersVisible = false;
+            this.dgvViewPersons.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvViewPersons.Size = new System.Drawing.Size(341, 111);
+            this.dgvViewPersons.TabIndex = 11;
+            // 
+            // person
+            // 
+            this.person.HeaderText = "";
+            this.person.Name = "person";
+            // 
+            // amenity
+            // 
+            this.amenity.HeaderText = "Amenity";
+            this.amenity.Name = "amenity";
+            // 
+            // price
+            // 
+            this.price.HeaderText = "Price";
+            this.price.Name = "price";
             // 
             // btnRemovePerson
             // 
@@ -942,21 +957,6 @@
             this.button2.TabIndex = 14;
             this.button2.UseVisualStyleBackColor = true;
             // 
-            // person
-            // 
-            this.person.HeaderText = "";
-            this.person.Name = "person";
-            // 
-            // amenity
-            // 
-            this.amenity.HeaderText = "Amenity";
-            this.amenity.Name = "amenity";
-            // 
-            // price
-            // 
-            this.price.HeaderText = "Price";
-            this.price.Name = "price";
-            // 
             // AddReservationView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -991,7 +991,7 @@
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.viewPersons)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvViewPersons)).EndInit();
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
             this.groupBox5.ResumeLayout(false);
@@ -1069,7 +1069,7 @@
         private System.Windows.Forms.Label lblPRoomRate;
         private System.Windows.Forms.Button btnRemovePerson;
         private System.Windows.Forms.Button btnAddPerson;
-        private System.Windows.Forms.DataGridView viewPersons;
+        private System.Windows.Forms.DataGridView dgvViewPersons;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label addPersonAmount;
         private System.Windows.Forms.DataGridViewTextBoxColumn person;

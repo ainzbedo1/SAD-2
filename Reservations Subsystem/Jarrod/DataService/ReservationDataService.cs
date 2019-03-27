@@ -180,104 +180,6 @@ namespace Reservations_Subsystem
             }
         }
 
-        public void verifyCustomerInfoAndCreateReservation(CustomerInfo Customer, ReservationInfo ResNow, ReservationCalendarForm calendar) {
-            string query = "SELECT * FROM customer WHERE name=@name";
-            using (MySqlCommand cmd = new MySqlCommand(query, conn))
-            {
-                // Execute Scalar returns the first column of the first row
-                cmd.Parameters.AddWithValue("@name", Customer.Name);
-                conn.Open();
-                int CustomerExists = Convert.ToInt32(cmd.ExecuteScalar());
-                if (CustomerExists > 0)
-                {
-                    MessageBox.Show("customer with the same name exist please choose " +
-                        "another name");
-                }
-                else
-                {
-                    // user clicked no
-                    try
-                    {
-                        CustomerDataService customerData = new CustomerDataService();
-                        //insert into customer
-                        // insert into statement of account
-                        // insert into question reservation form
-                        // inesrt into customer
-                        // insert into reservation
-                        long lastInsertedCustomer = customerData.InsertIntoCustomer(Customer.Name, Customer.Company, Customer.Address, Customer.Phone, Customer.Email, Customer.Passport, Customer.Nationality, Customer.Gender, Customer.BirthDate, Customer.BirthPlace, Customer.Comment);
-                        //public void InsertIntoReservation(int roomId, int customerId, string description, string checkInDate, string checkOutDate, Boolean occupied, string totalPrice, string lengthOfStay)
-                        //reserveNow = GetByRoomNumber(Convert.ToString(roomId));
-                        ResNow.CustomerId = Convert.ToInt32(lastInsertedCustomer);
-
-                        long lastInsertReservation = AddReservation(Convert.ToInt32(ResNow.RoomId), ResNow.CustomerId, ResNow.Desc, ResNow.StartDate, ResNow.EndDate, 0, ResNow.TotalPrice, ResNow.LenghtOfStay, ResNow.RoomRate);
-                        //calendar.displayReservationButt()
-                        //if reseravtion is in range of datagridview 
-
-                        if ((ResNow.StartDate.Year == ResNow.EndDate.Year) && (ResNow.StartDate.Month == ResNow.EndDate.Month))
-                        {
-                            //ReservationCalendarForm calendar = new ReservationCalendarForm();                                
-                            RoomDataService roomDataService = new RoomDataService();
-                            RoomInfo selectedRoom = new RoomInfo();
-
-
-                            selectedRoom = roomDataService.getRoomInfoById(Convert.ToInt32(ResNow.RoomId));
-                            string myRoomId = selectedRoom.RoomId;
-                            calendar.findFirstcell(ResNow.StartDate, ResNow.EndDate, lastInsertReservation, ResNow.RoomId);
-                            //calendar.createb(
-                        }
-
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.ToString());
-                    }
-                }
-            }
-
-                    /*
-                // MessageBox is not triggered
-                else
-                {
-                    try
-                    {
-                        CustomerDataService customerData = new CustomerDataService();
-                        //insert into customer
-                        // insert into statement of account
-                        // insert into question reservation form
-                        // inesrt into customer
-                        // insert into reservation
-                        long lastInsertedCustomer = customerData.InsertIntoCustomer(Customer.Name, Customer.Company, Customer.Address, Customer.Phone, Customer.Email, Customer.Passport, Customer.Nationality, Customer.Gender, Customer.BirthDate, Customer.BirthPlace, Customer.Comment);
-                        //public void InsertIntoReservation(int roomId, int customerId, string description, string checkInDate, string checkOutDate, Boolean occupied, string totalPrice, string lengthOfStay)
-                        //reserveNow = GetByRoomNumber(Convert.ToString(roomId));
-                        ResNow.CustomerId = Convert.ToInt32(lastInsertedCustomer);
-
-                        long lastInsertReservation = AddReservation(Convert.ToInt32(ResNow.RoomId), ResNow.CustomerId, ResNow.Desc, ResNow.StartDate, ResNow.EndDate, 0, ResNow.TotalPrice, ResNow.LenghtOfStay, ResNow.RoomRate);
-                        //calendar.displayReservationButt()
-                        //if reseravtion is in range of datagridview 
-
-                        if ((ResNow.StartDate.Year == ResNow.EndDate.Year) && (ResNow.StartDate.Month == ResNow.EndDate.Month))
-                        {
-                            //ReservationCalendarForm calendar = new ReservationCalendarForm();                                
-                            RoomDataService roomDataService = new RoomDataService();
-                            RoomInfo selectedRoom = new RoomInfo();
-
-
-                            selectedRoom = roomDataService.getRoomInfoById(Convert.ToInt32(ResNow.RoomId));
-                            string myRoomId = selectedRoom.RoomId;
-                            calendar.findFirstcell(ResNow.StartDate, ResNow.EndDate, lastInsertReservation, ResNow.RoomId);
-                            //calendar.createb(
-                        }
-
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.ToString());
-                    }
-                }
-            }
-            */
-        }
-
         //
         public DataTable MsrDataSource(DateTime start, DateTime end)
         {
@@ -378,16 +280,7 @@ namespace Reservations_Subsystem
                         dt.Columns.Add("OccPer", typeof(String));
 
 
-                        /*
-                        dt.Columns["TotRoomNights"].DefaultValue = 0;
-                        foreach (DataColumn col in dt.Columns)
-                        {
-                            if (col.ColumnName != "id") col.DefaultValue = 0;
-                        }
-                        */
-                        // dt.Columns["TotRoomNights"] = (myobject == null) ? DBNull.Value : myvalue;
-                        // dt.Columns.Add("PotentNights", typeof(Int32));
-                        // dt.Columns.Add("TotalReserveDays", typeof(Int32));
+
                         int roomNightsMonth = 0;
                         //dt.Columns.Add("CalcDays", typeof(Int32));
                         int theHell = 0;
@@ -786,7 +679,78 @@ namespace Reservations_Subsystem
 
 
         }
-      
+
+        public void AddPerson(string p, string id, string reserve)
+        {
+            try
+            {
+                conn.Open();
+                //MySqlCommand command = new MySqlCommand("INSERT into customer(name, company, address, phone, email, passport, nationality, gender, birthdate, birthplace, comment) values('" + SurName.Text + "','" + company.Text + "','" + address.Text + "','" + phone.Text + "','" + email.Text + "','" + passport.Text + "','" + nationality.Text + "','" + gender.Text + "','" + bdate.Value.ToString("yyyy-MM-dd") + "','" + bplace.Text + "','" + comment.Text + "')", conn);
+
+                MySqlCommand command = new MySqlCommand("INSERT into add_person(person, addpersontype_id, reservation_id)" +
+                    " VALUES('" + p + "', '" + id + "','" + reserve + "')", conn);
+                command.ExecuteNonQuery();
+                conn.Close();
+            }
+            catch (Exception ee)
+            {
+                MessageBox.Show("" + ee);
+                conn.Close();
+            }
+
+        }
+        public int verifyCustomerInfoAndCreateReservation(CustomerInfo Customer, ReservationInfo ResNow, ReservationCalendarForm calendar)
+        {
+            string query = "SELECT * FROM customer WHERE name=@name";
+            using (MySqlCommand cmd = new MySqlCommand(query, conn))
+            {
+                // Execute Scalar returns the first column of the first row
+                cmd.Parameters.AddWithValue("@name", Customer.Name);
+                conn.Open();
+                int CustomerExists = Convert.ToInt32(cmd.ExecuteScalar());
+                if (CustomerExists > 0)
+                {
+                    MessageBox.Show("customer with the same name exist please choose " +
+                        "another name");
+                }
+                else
+                {
+                    // user clicked no
+                    try
+                    {
+                        CustomerDataService customerData = new CustomerDataService();
+                        //insert into customer
+
+                        long lastInsertedCustomer = customerData.InsertIntoCustomer(Customer.Name, Customer.Company, Customer.Address, Customer.Phone, Customer.Email, Customer.Passport, Customer.Nationality, Customer.Gender, Customer.BirthDate, Customer.BirthPlace, Customer.Comment);
+                        ResNow.CustomerId = Convert.ToInt32(lastInsertedCustomer);
+                        long lastInsertReservation = AddReservation(Convert.ToInt32(ResNow.RoomId), ResNow.CustomerId, ResNow.Desc, ResNow.StartDate, ResNow.EndDate, 0, ResNow.TotalPrice, ResNow.LenghtOfStay, ResNow.RoomRate);
+                        if ((ResNow.StartDate.Year == ResNow.EndDate.Year) && (ResNow.StartDate.Month == ResNow.EndDate.Month))
+                        {
+                            //ReservationCalendarForm calendar = new ReservationCalendarForm();                                
+                            RoomDataService roomDataService = new RoomDataService();
+                            RoomInfo selectedRoom = new RoomInfo();
+
+
+                            selectedRoom = roomDataService.getRoomInfoById(Convert.ToInt32(ResNow.RoomId));
+                            string myRoomId = selectedRoom.RoomId;
+                            calendar.findFirstcell(ResNow.StartDate, ResNow.EndDate, lastInsertReservation, ResNow.RoomId);
+                            //calendar.createb(
+                        }
+                        MessageBox.Show(lastInsertReservation.ToString()+"last inserted");
+                        return Convert.ToInt32(lastInsertReservation);
+
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.ToString());
+                    }
+
+                }
+                MessageBox.Show("not good");
+                return 0;
+            }
+        }
+
     }
 
 

@@ -31,7 +31,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.calendar = new System.Windows.Forms.DataGridView();
+            this.dgvCalendar = new System.Windows.Forms.DataGridView();
             this.btnMainMonth = new System.Windows.Forms.Button();
             this.btnPrevMonth = new System.Windows.Forms.Button();
             this.btnNextMonth = new System.Windows.Forms.Button();
@@ -50,21 +50,21 @@
             this.label3 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
-            ((System.ComponentModel.ISupportInitialize)(this.calendar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCalendar)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
-            // calendar
+            // dgvCalendar
             // 
-            this.calendar.AllowUserToAddRows = false;
-            this.calendar.AllowUserToResizeColumns = false;
-            this.calendar.AllowUserToResizeRows = false;
-            this.calendar.BackgroundColor = System.Drawing.Color.White;
-            this.calendar.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.calendar.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            this.calendar.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            this.dgvCalendar.AllowUserToAddRows = false;
+            this.dgvCalendar.AllowUserToResizeColumns = false;
+            this.dgvCalendar.AllowUserToResizeRows = false;
+            this.dgvCalendar.BackgroundColor = System.Drawing.Color.White;
+            this.dgvCalendar.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvCalendar.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.dgvCalendar.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(127)))), ((int)(((byte)(0)))));
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI Semilight", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -72,37 +72,36 @@
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(127)))), ((int)(((byte)(0)))));
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(127)))), ((int)(((byte)(0)))));
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.calendar.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.calendar.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvCalendar.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvCalendar.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI Semilight", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(127)))), ((int)(((byte)(0)))));
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(127)))), ((int)(((byte)(0)))));
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.calendar.DefaultCellStyle = dataGridViewCellStyle2;
-            this.calendar.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(127)))), ((int)(((byte)(0)))));
-            this.calendar.Location = new System.Drawing.Point(12, 282);
-            this.calendar.Name = "calendar";
-            this.calendar.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.dgvCalendar.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dgvCalendar.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(127)))), ((int)(((byte)(0)))));
+            this.dgvCalendar.Location = new System.Drawing.Point(12, 282);
+            this.dgvCalendar.Name = "dgvCalendar";
+            this.dgvCalendar.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(127)))), ((int)(((byte)(0)))));
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI Semilight", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 36F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(127)))), ((int)(((byte)(0)))));
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.calendar.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            this.calendar.Size = new System.Drawing.Size(1200, 652);
-            this.calendar.TabIndex = 0;
-            this.calendar.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.calendar_CellBeginEdit);
-            this.calendar.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.calendar_CellClick);
-            this.calendar.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.calendar_CellContentClick);
-            this.calendar.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.calendar_CellEnter);
-            this.calendar.SelectionChanged += new System.EventHandler(this.calendar_SelectionChanged);
-            this.calendar.DragOver += new System.Windows.Forms.DragEventHandler(this.calendar_DragOver);
-            this.calendar.KeyDown += new System.Windows.Forms.KeyEventHandler(this.calendar_KeyDown);
+            this.dgvCalendar.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.dgvCalendar.RowTemplate.Height = 50;
+            this.dgvCalendar.Size = new System.Drawing.Size(1200, 652);
+            this.dgvCalendar.TabIndex = 0;
+            this.dgvCalendar.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.calendar_CellBeginEdit);
+            this.dgvCalendar.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.calendar_CellClick);
+            this.dgvCalendar.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.calendar_CellContentClick);
+            this.dgvCalendar.SelectionChanged += new System.EventHandler(this.calendar_SelectionChanged);
+            this.dgvCalendar.KeyDown += new System.Windows.Forms.KeyEventHandler(this.calendar_KeyDown);
             // 
             // btnMainMonth
             // 
@@ -366,14 +365,14 @@
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.calendar);
+            this.Controls.Add(this.dgvCalendar);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "ReservationCalendarForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Reservation Form";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ReservationCalendarForm_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.calendar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCalendar)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
@@ -385,7 +384,7 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView calendar;
+        private System.Windows.Forms.DataGridView dgvCalendar;
         private System.Windows.Forms.Button btnMainMonth;
         private System.Windows.Forms.Button btnPrevMonth;
         private System.Windows.Forms.Button btnNextMonth;

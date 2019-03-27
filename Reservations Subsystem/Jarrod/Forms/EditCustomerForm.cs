@@ -85,9 +85,11 @@ namespace Reservations_Subsystem
             }
             catch (Exception ee)
             {
-                MessageBox.Show("" + ee);
+                MessageBox.Show("" + ee.ToString());
                 conn.Close();
             }
+            this.DialogResult = DialogResult.OK;
+
 
             /*
             this.DialogResult = DialogResult.OK;
