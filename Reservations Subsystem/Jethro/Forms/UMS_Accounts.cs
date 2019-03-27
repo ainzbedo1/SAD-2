@@ -23,6 +23,7 @@ namespace Reservations_Subsystem
         private void UMS_Accounts_Load(object sender, EventArgs e)
         {
             refreshAccounts();
+            accountsGridView.Columns["roles_id"].Visible = false;
 
             DBConnect db = new DBConnect();
             MySqlConnection con = db.connect();
