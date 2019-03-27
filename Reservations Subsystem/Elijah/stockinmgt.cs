@@ -69,7 +69,7 @@ namespace Reservations_Subsystem
 
             dtgvInv.DataSource = dt_inv;
 
-            dtgvInv.Columns["name"].HeaderText = "Date";
+            dtgvInv.Columns["name"].HeaderText = "Name";
             dtgvInv.Columns["quantity"].HeaderText = "Quantity";
             dtgvInv.Columns["expiration_date"].HeaderText = "Expiration";
             dtgvInv.Columns["status"].HeaderText = "Status";

@@ -34,12 +34,13 @@ namespace Reservations_Subsystem
             refreshMenu();
             menuGridView.ClearSelection();
             menuGridView.Columns[0].Visible = false;
+            menuGridView.Columns[5].Visible = false;
         }
         public void refreshMenu()
         {
             DBConnect db = new DBConnect();
             MySqlConnection con = db.connect();
-            String Menu = "SELECT * FROM menuitem WHERE status = '1'";
+            String Menu = "SELECT * FROM menuitem WHERE status = '1' && type = '1'";
             DataTable dt = new DataTable();
             MySqlDataAdapter da = new MySqlDataAdapter(Menu, con);
 
@@ -181,7 +182,7 @@ namespace Reservations_Subsystem
             }
             else status = 1;
 
-            String Menu = "SELECT * FROM menuitem WHERE status = '" + status.ToString() + "'";
+            String Menu = "SELECT * FROM menuitem WHERE status = '" + status.ToString() + "' && type = '1'";
             DataTable dt = new DataTable();
             MySqlDataAdapter da = new MySqlDataAdapter(Menu, con);
 

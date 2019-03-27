@@ -55,6 +55,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.btnClose = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
+            this.cmbType = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgv_itemmgt)).BeginInit();
             this.panel1.SuspendLayout();
@@ -96,6 +98,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.cmbType);
+            this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.panel4);
             this.groupBox1.Controls.Add(this.panel3);
             this.groupBox1.Controls.Add(this.panel2);
@@ -395,6 +399,30 @@
             this.button3.TabIndex = 16;
             this.button3.UseVisualStyleBackColor = true;
             // 
+            // cmbType
+            // 
+            this.cmbType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbType.FormattingEnabled = true;
+            this.cmbType.Items.AddRange(new object[] {
+            "Hotel",
+            "Restaurant"});
+            this.cmbType.Location = new System.Drawing.Point(148, 126);
+            this.cmbType.Margin = new System.Windows.Forms.Padding(2);
+            this.cmbType.Name = "cmbType";
+            this.cmbType.Size = new System.Drawing.Size(110, 40);
+            this.cmbType.TabIndex = 57;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.Black;
+            this.label3.Location = new System.Drawing.Point(24, 131);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(114, 26);
+            this.label3.TabIndex = 56;
+            this.label3.Text = "Item Type:";
+            // 
             // itemmgt
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -453,5 +481,7 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.ComboBox cmbType;
+        private System.Windows.Forms.Label label3;
     }
 }
