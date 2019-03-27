@@ -1197,6 +1197,8 @@ namespace Reservations_Subsystem
         private void cbPartners_SelectedIndexChanged(object sender, EventArgs e)
         {
             getPriceFromRequest();
+            mainprice = Convert.ToDouble(txtPRoomRate.Text);
+            txtRate.Text = (mainprice + Convert.ToDouble(addPersonAmount.Text)).ToString();
         }
 
         public void getPriceFromRequest()
