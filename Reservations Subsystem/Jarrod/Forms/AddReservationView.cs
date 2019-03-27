@@ -1286,18 +1286,13 @@ namespace Reservations_Subsystem
                 viewPersons.Rows.RemoveAt(index);
             }
         }
-        //public void doPerson(int i, string id)
+        //p first column i 2nd column(yes or no) tiny int 1 = true 0 = false 3rd column reserve id
+        //public void doPerson(string p, string id, string reserve)
         //{
-        //    person_counter++;
-        //    string p = "Person " + person_counter;
-        //    string strquery = "";
-
-        //    if (i == 0) strquery = "INSERT into add_person(person, addpersontype_id) values('" + p + "', '" + id + "')";
-        //    else if (i == 1) strquery = "DELETE FROM add_person WHERE id ='"+ id +"'";
         //    try
         //    {
         //        conn.Open();
-        //        MySqlCommand command = new MySqlCommand(strquery, conn);
+        //        MySqlCommand command = new MySqlCommand(INSERT into add_person(person, addpersontype_id, reservation_id) values('" + p + "', '" + id + "', //reservation id here)", conn);
         //        command.ExecuteNonQuery();
         //        conn.Close();
         //    }
@@ -1308,30 +1303,6 @@ namespace Reservations_Subsystem
         //    }
         //    refreshPerson();
         //} 
-
-        //public void refreshPerson()
-        //{
-        //    try
-        //    {
-        //        conn.Open();
-        //        MySqlCommand comm = new MySqlCommand("Select add_person.id AS ID, person AS Person, price AS Price From add_person JOIN addpersontype ON addpersontype_id = addpersontype.id ", conn);
-        //        MySqlDataAdapter adp = new MySqlDataAdapter(comm);
-        //        DataTable dt = new DataTable();
-        //        adp.Fill(dt);
-
-        //        if (dt.Rows.Count > 0)
-        //        {
-        //            viewPersons.DataSource = dt;
-        //            viewPersons.Columns["ID"].Visible = false;
-        //        }
-        //        conn.Close();
-        //    }
-        //    catch (Exception ee)
-        //    {
-        //        MessageBox.Show("Nah! " + ee);
-        //        conn.Close();
-        //    }
-        //}
         #endregion
 
         private void lblTotalAccomadation_TextChanged(object sender, EventArgs e)
