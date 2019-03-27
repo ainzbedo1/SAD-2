@@ -40,6 +40,7 @@ namespace Reservations_Subsystem
             menuGridView.Columns[0].Visible = false;
             menuGridView.Columns[3].Visible = false;
             menuGridView.Columns[4].Visible = false;
+            menuGridView.Columns[5].Visible = false;
             orderGridView.Columns[3].Visible = false;
             amountLabel.Text = "P" + totalPrice.ToString("0.00");
             orderGridView.ClearSelection();

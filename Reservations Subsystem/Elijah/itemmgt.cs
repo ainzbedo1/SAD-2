@@ -152,16 +152,25 @@ namespace Reservations_Subsystem
 
             using (MySqlConnection conn = connect.connector())
             {
-                if (txtitemname.Text == "" || txtsell.Text == "" || txtcost.Text == "")
+                if (txtitemname.Text == "" || txtsell.Text == "" || txtcost.Text == "" || cmbType.Text == "")
                 {
                     MessageBox.Show("Please fill up all fields!", "Missing fields", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
                 }
                 else
                 {
-                   
-                    string query = "INSERT INTO menuitem(name,sell_price,cost_price)" +
-                            "VALUES('" + txtitemname.Text + "','" + txtsell.Text + "','" + txtcost.Text + "')";
+                    int typevalue;
+                    string type = cmbType.Text;
+                    if (type == "Hotel")
+                    {
+                        typevalue = 0;
+                    }
+                    else
+                    {
+                        typevalue = 1;
+                    }
+                    string query = "INSERT INTO menuitem(name,sell_price,cost_price, status, type)" +
+                            "VALUES('" + txtitemname.Text + "','" + txtsell.Text + "','" + txtcost.Text + "',1,'" + typevalue + "')";
                     conn.Open();
                     MySqlCommand comm = new MySqlCommand(query, conn);
                     comm.ExecuteNonQuery();
@@ -177,7 +186,7 @@ namespace Reservations_Subsystem
                 loadmenu();
                 clear();
             }
-           
+
 
             clear();
         }

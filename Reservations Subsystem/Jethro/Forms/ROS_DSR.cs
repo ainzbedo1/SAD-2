@@ -46,6 +46,7 @@ namespace Reservations_Subsystem
 
             loadAllOrders();
             ordersGridView.ClearSelection();
+            ordersGridView.Sort(ordersGridView.Columns["Quantity"], ListSortDirection.Descending);
         }
         //MIDDLE PANEL
         private void orderReceiptsGridView_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -53,6 +54,7 @@ namespace Reservations_Subsystem
             order_id = orderReceiptsGridView.SelectedCells[0].Value.ToString();
             loadOrders();
             ordersGridView.ClearSelection();
+            ordersGridView.Sort(ordersGridView.Columns["Quantity"], ListSortDirection.Descending);
         }
         
         public void loadDSR()
