@@ -328,10 +328,41 @@ namespace Reservations_Subsystem
             txtCustomerName.AutoCompleteCustomSource = custDataService.AutoCompleteCollection(); 
             
         }
+        public void LoadHkAndCoffee(int id)
+        {
+            try
+            {
+                conn.Open();
+                MySqlCommand comm = new MySqlCommand("SELECT menuitem.id, name, sell_price " +
+                    "FROM minventory JOIN menuItem " +
+                    "ON product_id  = menuitem.id WHERE menuitem.type = '" + id+"'", conn);
+
+                MySqlDataAdapter adp = new MySqlDataAdapter(comm);
+                DataTable dt = new DataTable();
+                adp.Fill(dt);
+
+                if (dt.Rows.Count > 0)
+                {
+
+                    MessageBox.Show(id.ToString());
+                    if (id == 0) dgvCoffeeView.DataSource = dt;
+                    else if (id == 1) dgvHKView.DataSource = dt;
+
+                }
+                conn.Close();
+            }
+            catch (Exception ee)
+            {
+                MessageBox.Show("Nah! " + ee);
+                conn.Close();
+            }
+        }
         #endregion
         #region Load Reservation
         private void AddReservation_Load(object sender, EventArgs e)
         {
+            LoadHkAndCoffee(1);
+            LoadHkAndCoffee(0);
             btnStatementOfAccount.Enabled = false;
            // txtRate.Text = "0.0";
             LoadCustomerNames();
@@ -345,12 +376,16 @@ namespace Reservations_Subsystem
                 dtpEndDate.ValueChanged -= dtpEndDate_ValueChanged;
                 dtpStartDate.ValueChanged -= dtpStartDate_ValueChanged;
                 txtRate.TextChanged -= txtRate_TextChanged;
+                LoadRoomTypeCombo();
 
                 LoadRoomComboBoxes();
                 //LoadComboRoomRates();
                 EditFormIsTrue();
+                cmbRoomType.SelectedIndex = cmbRoomType.FindString(RoomType);
+                //cmbRoomNumber.Text = RoomNumber.ToString();
+                cmbRoomNumber.SelectedIndex = cmbRoomNumber.FindString(RoomNumber);
 
-              
+
                 txtCustomerName.TextChanged += new System.EventHandler(this.txtCustomerName_TextChanged);
                 CustomerName = theCustomerInfo.Name;
                 myValue = theReservation.LenghtOfStay;
@@ -1349,28 +1384,83 @@ namespace Reservations_Subsystem
                 dgvViewPersons.Rows.RemoveAt(index);
             }
         }
-        //p first column i 2nd column(yes or no) tiny int 1 = true 0 = false 3rd column reserve id
-        //public void doPerson(string p, string id, string reserve)
-        //{
-        //    try
-        //    {
-        //        conn.Open();
-        //        MySqlCommand command = new MySqlCommand(INSERT into add_person(person, addpersontype_id, reservation_id) values('" + p + "', '" + id + "', //reservation id here)", conn);
-        //        command.ExecuteNonQuery();
-        //        conn.Close();
-        //    }
-        //    catch (Exception ee)
-        //    {
-        //        MessageBox.Show("" + ee);
-        //        conn.Close();
-        //    }
-        //    refreshPerson();
-        //} 
+
         #endregion
 
         private void lblTotalAccomadation_TextChanged(object sender, EventArgs e)
         {
             lblAmoutTotal.Text = lblTotalAccomadation.Text;
+        }
+        public int hkCounter = 0;
+        private void LoadData(int id)
+        {
+            try
+            {
+                conn.Open();
+                MySqlCommand comm = new MySqlCommand("Select * From billing JOIN menuitem " +
+                    " ON billing.menuitem_id = menuitem.id JOIN minventory ON menuitem.id = " +
+                    " minventory.product_id WHERE menuitem.type ='"+id+"' ", conn);
+                MySqlDataAdapter adp = new MySqlDataAdapter(comm);
+                DataTable dt = new DataTable();
+                adp.Fill(dt);
+
+                if (dt.Rows.Count > 0)
+                {
+                    dgvHKAdd.DataSource = dt;
+                }
+                conn.Close();
+            }
+            catch (Exception ee)
+            {
+                MessageBox.Show("Nah! " + ee);
+                conn.Close();
+            }
+        }
+        private void button4_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int id = Convert.ToInt32(dgvHKView.SelectedRows[0].Cells[0].Value.ToString());
+                DateTime dtNow = DateTime.Now;
+
+                string query = "INSERT INTO Billing(menuitem_id, quantity, datetime) " +
+                    "VALUES('" + id + "','" + hkCounter++ + "','" + dtNow.ToString("yyyy-MM-dd")+ 
+                    "')";
+                conn.Open();
+                MySqlCommand comm = new MySqlCommand(query, conn);
+                comm.ExecuteNonQuery();
+                conn.Close();
+            }
+            catch(Exception ex)
+            {
+                conn.Close();
+
+                MessageBox.Show(ex.ToString());
+            }
+            LoadData(1);
+            
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            MessageBox.Show(tbRes.SelectedIndex.ToString());
+            if(tbRes.SelectedIndex == 1)
+            {
+                LoadHkAndCoffee(0);
+
+            }
+            else if(tbRes.SelectedIndex == 2)
+            {
+                LoadHkAndCoffee(1);
+
+            }
+
+
         }
     }
 }
