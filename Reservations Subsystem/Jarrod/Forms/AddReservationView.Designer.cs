@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
@@ -40,18 +42,30 @@
             this.txtCustomerName = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.grpBoxRoomData = new System.Windows.Forms.GroupBox();
+            this.roomPriceControl = new System.Windows.Forms.TabControl();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.txtDefRoomRate = new System.Windows.Forms.TextBox();
+            this.lblDefRoomRate = new System.Windows.Forms.Label();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.txtPRoomRate = new System.Windows.Forms.TextBox();
+            this.btnAddRoomRate = new System.Windows.Forms.Button();
+            this.lblPRoomRate = new System.Windows.Forms.Label();
+            this.lblPartners = new System.Windows.Forms.Label();
+            this.cbPartners = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.cmbRoomNumber = new System.Windows.Forms.ComboBox();
             this.cmbRoomType = new System.Windows.Forms.ComboBox();
+            this.lblPriceNight = new System.Windows.Forms.Label();
+            this.txtRate = new System.Windows.Forms.TextBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.btnAddRoomRate = new System.Windows.Forms.Button();
-            this.label16 = new System.Windows.Forms.Label();
-            this.label19 = new System.Windows.Forms.Label();
-            this.label20 = new System.Windows.Forms.Label();
-            this.txtRate = new System.Windows.Forms.TextBox();
-            this.cmbRoomRate = new System.Windows.Forms.ComboBox();
+            this.addPersonAmount = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.viewPersons = new System.Windows.Forms.DataGridView();
+            this.btnRemovePerson = new System.Windows.Forms.Button();
+            this.btnAddPerson = new System.Windows.Forms.Button();
+            this.lblAmoutTotal = new System.Windows.Forms.Label();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.label13 = new System.Windows.Forms.Label();
             this.lblsomething = new System.Windows.Forms.Label();
@@ -63,8 +77,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
+            this.lblAddPerson = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.btnSave = new System.Windows.Forms.Button();
@@ -83,10 +96,17 @@
             this.label14 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.person = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.amenity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.price = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             this.grpBoxRoomData.SuspendLayout();
+            this.roomPriceControl.SuspendLayout();
+            this.tabPage3.SuspendLayout();
+            this.tabPage4.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.viewPersons)).BeginInit();
             this.groupBox6.SuspendLayout();
             this.groupBox5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lengthOfStay)).BeginInit();
@@ -109,7 +129,7 @@
             this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Font = new System.Drawing.Font("Segoe UI Semilight", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(127)))), ((int)(((byte)(0)))));
-            this.groupBox1.Location = new System.Drawing.Point(12, 367);
+            this.groupBox1.Location = new System.Drawing.Point(12, 447);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(504, 153);
             this.groupBox1.TabIndex = 0;
@@ -237,6 +257,7 @@
             // grpBoxRoomData
             // 
             this.grpBoxRoomData.BackColor = System.Drawing.Color.LightYellow;
+            this.grpBoxRoomData.Controls.Add(this.roomPriceControl);
             this.grpBoxRoomData.Controls.Add(this.label2);
             this.grpBoxRoomData.Controls.Add(this.label1);
             this.grpBoxRoomData.Controls.Add(this.cmbRoomNumber);
@@ -245,10 +266,131 @@
             this.grpBoxRoomData.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(127)))), ((int)(((byte)(0)))));
             this.grpBoxRoomData.Location = new System.Drawing.Point(12, 70);
             this.grpBoxRoomData.Name = "grpBoxRoomData";
-            this.grpBoxRoomData.Size = new System.Drawing.Size(504, 165);
+            this.grpBoxRoomData.Size = new System.Drawing.Size(504, 259);
             this.grpBoxRoomData.TabIndex = 1;
             this.grpBoxRoomData.TabStop = false;
             this.grpBoxRoomData.Text = "Room Data";
+            // 
+            // roomPriceControl
+            // 
+            this.roomPriceControl.Controls.Add(this.tabPage3);
+            this.roomPriceControl.Controls.Add(this.tabPage4);
+            this.roomPriceControl.Location = new System.Drawing.Point(12, 88);
+            this.roomPriceControl.Name = "roomPriceControl";
+            this.roomPriceControl.SelectedIndex = 0;
+            this.roomPriceControl.Size = new System.Drawing.Size(486, 153);
+            this.roomPriceControl.TabIndex = 13;
+            this.roomPriceControl.SelectedIndexChanged += new System.EventHandler(this.roomPriceControl_SelectedIndexChanged);
+            this.roomPriceControl.TabIndexChanged += new System.EventHandler(this.roomPriceControl_TabIndexChanged);
+            // 
+            // tabPage3
+            // 
+            this.tabPage3.BackColor = System.Drawing.Color.LightYellow;
+            this.tabPage3.Controls.Add(this.txtDefRoomRate);
+            this.tabPage3.Controls.Add(this.lblDefRoomRate);
+            this.tabPage3.Location = new System.Drawing.Point(4, 34);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage3.Size = new System.Drawing.Size(478, 115);
+            this.tabPage3.TabIndex = 0;
+            this.tabPage3.Text = "Default";
+            // 
+            // txtDefRoomRate
+            // 
+            this.txtDefRoomRate.Enabled = false;
+            this.txtDefRoomRate.Font = new System.Drawing.Font("Segoe UI Semilight", 14.25F);
+            this.txtDefRoomRate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(127)))), ((int)(((byte)(0)))));
+            this.txtDefRoomRate.Location = new System.Drawing.Point(16, 48);
+            this.txtDefRoomRate.Name = "txtDefRoomRate";
+            this.txtDefRoomRate.ReadOnly = true;
+            this.txtDefRoomRate.Size = new System.Drawing.Size(133, 33);
+            this.txtDefRoomRate.TabIndex = 12;
+            this.txtDefRoomRate.Text = "0.00";
+            this.txtDefRoomRate.TextChanged += new System.EventHandler(this.txtDefRoomRate_TextChanged);
+            // 
+            // lblDefRoomRate
+            // 
+            this.lblDefRoomRate.AutoSize = true;
+            this.lblDefRoomRate.Font = new System.Drawing.Font("Segoe UI Semilight", 14.25F);
+            this.lblDefRoomRate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(127)))), ((int)(((byte)(0)))));
+            this.lblDefRoomRate.Location = new System.Drawing.Point(11, 20);
+            this.lblDefRoomRate.Name = "lblDefRoomRate";
+            this.lblDefRoomRate.Size = new System.Drawing.Size(102, 25);
+            this.lblDefRoomRate.TabIndex = 0;
+            this.lblDefRoomRate.Text = "Room Rate";
+            // 
+            // tabPage4
+            // 
+            this.tabPage4.BackColor = System.Drawing.Color.LightYellow;
+            this.tabPage4.Controls.Add(this.txtPRoomRate);
+            this.tabPage4.Controls.Add(this.btnAddRoomRate);
+            this.tabPage4.Controls.Add(this.lblPRoomRate);
+            this.tabPage4.Controls.Add(this.lblPartners);
+            this.tabPage4.Controls.Add(this.cbPartners);
+            this.tabPage4.Location = new System.Drawing.Point(4, 34);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage4.Size = new System.Drawing.Size(478, 115);
+            this.tabPage4.TabIndex = 1;
+            this.tabPage4.Text = "Partnered";
+            // 
+            // txtPRoomRate
+            // 
+            this.txtPRoomRate.Enabled = false;
+            this.txtPRoomRate.Font = new System.Drawing.Font("Segoe UI Semilight", 14.25F);
+            this.txtPRoomRate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(127)))), ((int)(((byte)(0)))));
+            this.txtPRoomRate.Location = new System.Drawing.Point(169, 53);
+            this.txtPRoomRate.Name = "txtPRoomRate";
+            this.txtPRoomRate.ReadOnly = true;
+            this.txtPRoomRate.Size = new System.Drawing.Size(146, 33);
+            this.txtPRoomRate.TabIndex = 14;
+            this.txtPRoomRate.Text = "0.00";
+            this.txtPRoomRate.TextChanged += new System.EventHandler(this.txtPRoomRate_TextChanged);
+            // 
+            // btnAddRoomRate
+            // 
+            this.btnAddRoomRate.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnAddRoomRate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddRoomRate.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddRoomRate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(127)))), ((int)(((byte)(0)))));
+            this.btnAddRoomRate.Location = new System.Drawing.Point(325, 53);
+            this.btnAddRoomRate.Name = "btnAddRoomRate";
+            this.btnAddRoomRate.Size = new System.Drawing.Size(146, 29);
+            this.btnAddRoomRate.TabIndex = 11;
+            this.btnAddRoomRate.Text = "View Room Rates";
+            this.btnAddRoomRate.UseVisualStyleBackColor = true;
+            this.btnAddRoomRate.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // lblPRoomRate
+            // 
+            this.lblPRoomRate.AutoSize = true;
+            this.lblPRoomRate.Font = new System.Drawing.Font("Segoe UI Semilight", 14.25F);
+            this.lblPRoomRate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(127)))), ((int)(((byte)(0)))));
+            this.lblPRoomRate.Location = new System.Drawing.Point(164, 25);
+            this.lblPRoomRate.Name = "lblPRoomRate";
+            this.lblPRoomRate.Size = new System.Drawing.Size(102, 25);
+            this.lblPRoomRate.TabIndex = 13;
+            this.lblPRoomRate.Text = "Room Rate";
+            // 
+            // lblPartners
+            // 
+            this.lblPartners.AutoSize = true;
+            this.lblPartners.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(127)))), ((int)(((byte)(0)))));
+            this.lblPartners.Location = new System.Drawing.Point(12, 25);
+            this.lblPartners.Name = "lblPartners";
+            this.lblPartners.Size = new System.Drawing.Size(124, 25);
+            this.lblPartners.TabIndex = 3;
+            this.lblPartners.Text = "Request From";
+            // 
+            // cbPartners
+            // 
+            this.cbPartners.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbPartners.FormattingEnabled = true;
+            this.cbPartners.Location = new System.Drawing.Point(17, 53);
+            this.cbPartners.Name = "cbPartners";
+            this.cbPartners.Size = new System.Drawing.Size(137, 33);
+            this.cbPartners.TabIndex = 2;
+            this.cbPartners.SelectedIndexChanged += new System.EventHandler(this.cbPartners_SelectedIndexChanged);
             // 
             // label2
             // 
@@ -272,6 +414,7 @@
             // 
             // cmbRoomNumber
             // 
+            this.cmbRoomNumber.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbRoomNumber.FormattingEnabled = true;
             this.cmbRoomNumber.Location = new System.Drawing.Point(202, 49);
             this.cmbRoomNumber.Name = "cmbRoomNumber";
@@ -282,6 +425,7 @@
             // 
             // cmbRoomType
             // 
+            this.cmbRoomType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbRoomType.FormattingEnabled = true;
             this.cmbRoomType.Location = new System.Drawing.Point(15, 49);
             this.cmbRoomType.Name = "cmbRoomType";
@@ -289,6 +433,30 @@
             this.cmbRoomType.TabIndex = 0;
             this.cmbRoomType.SelectedIndexChanged += new System.EventHandler(this.cmbRoomType_SelectedIndexChanged);
             this.cmbRoomType.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cmbRoomType_KeyPress);
+            // 
+            // lblPriceNight
+            // 
+            this.lblPriceNight.AutoSize = true;
+            this.lblPriceNight.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPriceNight.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(127)))), ((int)(((byte)(0)))));
+            this.lblPriceNight.Location = new System.Drawing.Point(24, 213);
+            this.lblPriceNight.Name = "lblPriceNight";
+            this.lblPriceNight.Size = new System.Drawing.Size(113, 21);
+            this.lblPriceNight.TabIndex = 8;
+            this.lblPriceNight.Text = "Price Per Night";
+            // 
+            // txtRate
+            // 
+            this.txtRate.Enabled = false;
+            this.txtRate.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtRate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(127)))), ((int)(((byte)(0)))));
+            this.txtRate.Location = new System.Drawing.Point(251, 211);
+            this.txtRate.Name = "txtRate";
+            this.txtRate.ReadOnly = true;
+            this.txtRate.Size = new System.Drawing.Size(119, 29);
+            this.txtRate.TabIndex = 7;
+            this.txtRate.Text = "0.00";
+            this.txtRate.TextChanged += new System.EventHandler(this.txtRate_TextChanged);
             // 
             // tabControl1
             // 
@@ -304,15 +472,16 @@
             // tabPage1
             // 
             this.tabPage1.BackColor = System.Drawing.Color.AntiqueWhite;
-            this.tabPage1.Controls.Add(this.btnAddRoomRate);
-            this.tabPage1.Controls.Add(this.label16);
-            this.tabPage1.Controls.Add(this.label19);
-            this.tabPage1.Controls.Add(this.label20);
-            this.tabPage1.Controls.Add(this.txtRate);
-            this.tabPage1.Controls.Add(this.cmbRoomRate);
-            this.tabPage1.Controls.Add(this.groupBox6);
+            this.tabPage1.Controls.Add(this.addPersonAmount);
             this.tabPage1.Controls.Add(this.label3);
-            this.tabPage1.Controls.Add(this.label17);
+            this.tabPage1.Controls.Add(this.viewPersons);
+            this.tabPage1.Controls.Add(this.btnRemovePerson);
+            this.tabPage1.Controls.Add(this.btnAddPerson);
+            this.tabPage1.Controls.Add(this.lblPriceNight);
+            this.tabPage1.Controls.Add(this.lblAmoutTotal);
+            this.tabPage1.Controls.Add(this.txtRate);
+            this.tabPage1.Controls.Add(this.groupBox6);
+            this.tabPage1.Controls.Add(this.lblAddPerson);
             this.tabPage1.Controls.Add(this.label18);
             this.tabPage1.Location = new System.Drawing.Point(4, 30);
             this.tabPage1.Name = "tabPage1";
@@ -322,79 +491,104 @@
             this.tabPage1.Text = "Room Information";
             this.tabPage1.Click += new System.EventHandler(this.tabPage1_Click);
             // 
-            // btnAddRoomRate
+            // addPersonAmount
             // 
-            this.btnAddRoomRate.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.btnAddRoomRate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAddRoomRate.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddRoomRate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(127)))), ((int)(((byte)(0)))));
-            this.btnAddRoomRate.Location = new System.Drawing.Point(160, 39);
-            this.btnAddRoomRate.Name = "btnAddRoomRate";
-            this.btnAddRoomRate.Size = new System.Drawing.Size(103, 29);
-            this.btnAddRoomRate.TabIndex = 11;
-            this.btnAddRoomRate.Text = "Add Room Rate";
-            this.btnAddRoomRate.UseVisualStyleBackColor = true;
-            this.btnAddRoomRate.Click += new System.EventHandler(this.button1_Click);
+            this.addPersonAmount.AutoSize = true;
+            this.addPersonAmount.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.addPersonAmount.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(127)))), ((int)(((byte)(0)))));
+            this.addPersonAmount.Location = new System.Drawing.Point(247, 176);
+            this.addPersonAmount.Name = "addPersonAmount";
+            this.addPersonAmount.Size = new System.Drawing.Size(38, 21);
+            this.addPersonAmount.TabIndex = 13;
+            this.addPersonAmount.Text = "0.00";
             // 
-            // label16
+            // label3
             // 
-            this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(127)))), ((int)(((byte)(0)))));
-            this.label16.Location = new System.Drawing.Point(24, 70);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(113, 21);
-            this.label16.TabIndex = 8;
-            this.label16.Text = "Price Per Night";
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(127)))), ((int)(((byte)(0)))));
+            this.label3.Location = new System.Drawing.Point(118, 176);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(123, 21);
+            this.label3.TabIndex = 12;
+            this.label3.Text = "Added Amount";
             // 
-            // label19
+            // viewPersons
             // 
-            this.label19.AutoSize = true;
-            this.label19.Font = new System.Drawing.Font("Segoe UI Semilight", 12F);
-            this.label19.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(127)))), ((int)(((byte)(0)))));
-            this.label19.Location = new System.Drawing.Point(299, 404);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(57, 21);
-            this.label19.TabIndex = 7;
-            this.label19.Text = "label13";
-            this.label19.Visible = false;
-            this.label19.Click += new System.EventHandler(this.label19_Click);
+            this.viewPersons.AllowUserToAddRows = false;
+            this.viewPersons.AllowUserToDeleteRows = false;
+            this.viewPersons.AllowUserToResizeColumns = false;
+            this.viewPersons.AllowUserToResizeRows = false;
+            this.viewPersons.BackgroundColor = System.Drawing.Color.AntiqueWhite;
+            this.viewPersons.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.viewPersons.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.viewPersons.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(127)))), ((int)(((byte)(0)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 12F);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(127)))), ((int)(((byte)(0)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.viewPersons.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.viewPersons.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.viewPersons.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.person,
+            this.amenity,
+            this.price});
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 12F);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(127)))), ((int)(((byte)(0)))));
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(127)))), ((int)(((byte)(0)))));
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.viewPersons.DefaultCellStyle = dataGridViewCellStyle4;
+            this.viewPersons.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(127)))), ((int)(((byte)(0)))));
+            this.viewPersons.Location = new System.Drawing.Point(28, 58);
+            this.viewPersons.Name = "viewPersons";
+            this.viewPersons.RowHeadersVisible = false;
+            this.viewPersons.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.viewPersons.Size = new System.Drawing.Size(341, 111);
+            this.viewPersons.TabIndex = 11;
             // 
-            // label20
+            // btnRemovePerson
             // 
-            this.label20.AutoSize = true;
-            this.label20.Font = new System.Drawing.Font("Segoe UI Semilight", 12F);
-            this.label20.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(127)))), ((int)(((byte)(0)))));
-            this.label20.Location = new System.Drawing.Point(299, 460);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(57, 21);
-            this.label20.TabIndex = 7;
-            this.label20.Text = "label13";
-            this.label20.Visible = false;
+            this.btnRemovePerson.BackgroundImage = global::Reservations_Subsystem.Properties.Resources.minus_green;
+            this.btnRemovePerson.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnRemovePerson.FlatAppearance.BorderSize = 0;
+            this.btnRemovePerson.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRemovePerson.Location = new System.Drawing.Point(344, 27);
+            this.btnRemovePerson.Name = "btnRemovePerson";
+            this.btnRemovePerson.Size = new System.Drawing.Size(25, 25);
+            this.btnRemovePerson.TabIndex = 9;
+            this.btnRemovePerson.UseVisualStyleBackColor = true;
+            this.btnRemovePerson.Click += new System.EventHandler(this.btnRemovePerson_Click);
             // 
-            // txtRate
+            // btnAddPerson
             // 
-            this.txtRate.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.txtRate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(127)))), ((int)(((byte)(0)))));
-            this.txtRate.Location = new System.Drawing.Point(27, 94);
-            this.txtRate.Name = "txtRate";
-            this.txtRate.ReadOnly = true;
-            this.txtRate.Size = new System.Drawing.Size(121, 29);
-            this.txtRate.TabIndex = 7;
-            this.txtRate.Text = "0.00";
-            this.txtRate.TextChanged += new System.EventHandler(this.txtRate_TextChanged);
+            this.btnAddPerson.BackgroundImage = global::Reservations_Subsystem.Properties.Resources.plusgreen;
+            this.btnAddPerson.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnAddPerson.Enabled = false;
+            this.btnAddPerson.FlatAppearance.BorderSize = 0;
+            this.btnAddPerson.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddPerson.Location = new System.Drawing.Point(308, 27);
+            this.btnAddPerson.Name = "btnAddPerson";
+            this.btnAddPerson.Size = new System.Drawing.Size(25, 25);
+            this.btnAddPerson.TabIndex = 10;
+            this.btnAddPerson.UseVisualStyleBackColor = true;
+            this.btnAddPerson.Click += new System.EventHandler(this.btnAddPerson_Click);
             // 
-            // cmbRoomRate
+            // lblAmoutTotal
             // 
-            this.cmbRoomRate.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbRoomRate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(127)))), ((int)(((byte)(0)))));
-            this.cmbRoomRate.FormattingEnabled = true;
-            this.cmbRoomRate.Location = new System.Drawing.Point(27, 40);
-            this.cmbRoomRate.Name = "cmbRoomRate";
-            this.cmbRoomRate.Size = new System.Drawing.Size(121, 29);
-            this.cmbRoomRate.TabIndex = 6;
-            this.cmbRoomRate.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
-            this.cmbRoomRate.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cmbPerNight2_KeyPress);
+            this.lblAmoutTotal.AutoSize = true;
+            this.lblAmoutTotal.Font = new System.Drawing.Font("Segoe UI Semilight", 16F);
+            this.lblAmoutTotal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(127)))), ((int)(((byte)(0)))));
+            this.lblAmoutTotal.Location = new System.Drawing.Point(165, 529);
+            this.lblAmoutTotal.Name = "lblAmoutTotal";
+            this.lblAmoutTotal.Size = new System.Drawing.Size(78, 30);
+            this.lblAmoutTotal.TabIndex = 7;
+            this.lblAmoutTotal.Text = "label13";
             // 
             // groupBox6
             // 
@@ -410,7 +604,7 @@
             this.groupBox6.Controls.Add(this.label5);
             this.groupBox6.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(127)))), ((int)(((byte)(0)))));
-            this.groupBox6.Location = new System.Drawing.Point(13, 149);
+            this.groupBox6.Location = new System.Drawing.Point(10, 251);
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.Size = new System.Drawing.Size(367, 218);
             this.groupBox6.TabIndex = 5;
@@ -464,6 +658,7 @@
             this.lblTotalAccomadation.Size = new System.Drawing.Size(31, 21);
             this.lblTotalAccomadation.TabIndex = 7;
             this.lblTotalAccomadation.Text = "0.0";
+            this.lblTotalAccomadation.TextChanged += new System.EventHandler(this.lblTotalAccomadation_TextChanged);
             // 
             // btnStatementOfAccount
             // 
@@ -517,42 +712,29 @@
             this.label5.TabIndex = 3;
             this.label5.Text = "Number of nights";
             // 
-            // label3
+            // lblAddPerson
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(127)))), ((int)(((byte)(0)))));
-            this.label3.Location = new System.Drawing.Point(24, 18);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(94, 21);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "Room Rates";
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(127)))), ((int)(((byte)(0)))));
-            this.label17.Location = new System.Drawing.Point(24, 404);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(105, 21);
-            this.label17.TabIndex = 5;
-            this.label17.Text = "Extra Charges";
-            this.label17.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.label17.Visible = false;
+            this.lblAddPerson.AutoSize = true;
+            this.lblAddPerson.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAddPerson.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(127)))), ((int)(((byte)(0)))));
+            this.lblAddPerson.Location = new System.Drawing.Point(24, 31);
+            this.lblAddPerson.Name = "lblAddPerson";
+            this.lblAddPerson.Size = new System.Drawing.Size(89, 21);
+            this.lblAddPerson.TabIndex = 5;
+            this.lblAddPerson.Text = "Add Person";
+            this.lblAddPerson.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.Font = new System.Drawing.Font("Segoe UI", 18F);
             this.label18.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(127)))), ((int)(((byte)(0)))));
-            this.label18.Location = new System.Drawing.Point(24, 460);
+            this.label18.Location = new System.Drawing.Point(7, 527);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(98, 21);
+            this.label18.Size = new System.Drawing.Size(152, 32);
             this.label18.TabIndex = 5;
             this.label18.Text = "Amount Due";
             this.label18.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.label18.Visible = false;
             // 
             // tabPage2
             // 
@@ -569,9 +751,9 @@
             this.btnSave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(127)))), ((int)(((byte)(0)))));
             this.btnSave.FlatAppearance.BorderSize = 0;
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSave.Font = new System.Drawing.Font("Segoe UI Semilight", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSave.Font = new System.Drawing.Font("Segoe UI Semilight", 12F);
             this.btnSave.ForeColor = System.Drawing.Color.White;
-            this.btnSave.Location = new System.Drawing.Point(714, 687);
+            this.btnSave.Location = new System.Drawing.Point(714, 764);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(93, 32);
             this.btnSave.TabIndex = 3;
@@ -584,9 +766,9 @@
             this.btnClose.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(127)))), ((int)(((byte)(0)))));
             this.btnClose.FlatAppearance.BorderSize = 0;
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnClose.Font = new System.Drawing.Font("Segoe UI Semilight", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClose.Font = new System.Drawing.Font("Segoe UI Semilight", 12F);
             this.btnClose.ForeColor = System.Drawing.Color.White;
-            this.btnClose.Location = new System.Drawing.Point(813, 687);
+            this.btnClose.Location = new System.Drawing.Point(813, 764);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(93, 32);
             this.btnClose.TabIndex = 3;
@@ -605,7 +787,7 @@
             this.groupBox5.Controls.Add(this.dtpStartDate);
             this.groupBox5.Font = new System.Drawing.Font("Segoe UI Semilight", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(127)))), ((int)(((byte)(0)))));
-            this.groupBox5.Location = new System.Drawing.Point(12, 247);
+            this.groupBox5.Location = new System.Drawing.Point(12, 335);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(504, 106);
             this.groupBox5.TabIndex = 4;
@@ -680,7 +862,7 @@
             this.groupBox3.Controls.Add(this.txtDesc);
             this.groupBox3.Font = new System.Drawing.Font("Segoe UI Semilight", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(127)))), ((int)(((byte)(0)))));
-            this.groupBox3.Location = new System.Drawing.Point(12, 526);
+            this.groupBox3.Location = new System.Drawing.Point(12, 606);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(504, 146);
             this.groupBox3.TabIndex = 5;
@@ -701,9 +883,9 @@
             this.btnDelete.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(127)))), ((int)(((byte)(0)))));
             this.btnDelete.FlatAppearance.BorderSize = 0;
             this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDelete.Font = new System.Drawing.Font("Segoe UI Semilight", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDelete.Font = new System.Drawing.Font("Segoe UI Semilight", 12F);
             this.btnDelete.ForeColor = System.Drawing.Color.White;
-            this.btnDelete.Location = new System.Drawing.Point(21, 687);
+            this.btnDelete.Location = new System.Drawing.Point(21, 764);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(140, 32);
             this.btnDelete.TabIndex = 3;
@@ -754,18 +936,33 @@
             this.button2.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(127)))), ((int)(((byte)(0)))));
             this.button2.FlatAppearance.BorderSize = 3;
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Location = new System.Drawing.Point(12, 681);
+            this.button2.Location = new System.Drawing.Point(12, 758);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(904, 45);
             this.button2.TabIndex = 14;
             this.button2.UseVisualStyleBackColor = true;
+            // 
+            // person
+            // 
+            this.person.HeaderText = "";
+            this.person.Name = "person";
+            // 
+            // amenity
+            // 
+            this.amenity.HeaderText = "Amenity";
+            this.amenity.Name = "amenity";
+            // 
+            // price
+            // 
+            this.price.HeaderText = "Price";
+            this.price.Name = "price";
             // 
             // AddReservationView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(928, 735);
+            this.ClientSize = new System.Drawing.Size(928, 810);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox5);
@@ -786,9 +983,15 @@
             this.groupBox1.PerformLayout();
             this.grpBoxRoomData.ResumeLayout(false);
             this.grpBoxRoomData.PerformLayout();
+            this.roomPriceControl.ResumeLayout(false);
+            this.tabPage3.ResumeLayout(false);
+            this.tabPage3.PerformLayout();
+            this.tabPage4.ResumeLayout(false);
+            this.tabPage4.PerformLayout();
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.viewPersons)).EndInit();
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
             this.groupBox5.ResumeLayout(false);
@@ -819,7 +1022,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lblDefRoomRate;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.DateTimePicker dtpStartDate;
         private System.Windows.Forms.GroupBox groupBox3;
@@ -838,7 +1041,6 @@
         private System.Windows.Forms.Label lblTotalAccomadation;
         private System.Windows.Forms.Label lblPerNight;
         private System.Windows.Forms.Label lblNumOfNights;
-        private System.Windows.Forms.ComboBox cmbRoomRate;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label lblsomething;
         private System.Windows.Forms.Button btnRemoveCust;
@@ -846,17 +1048,32 @@
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.TextBox txtRate;
         private System.Windows.Forms.DateTimePicker dtpEndDate;
-        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label lblPriceNight;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Button btnAddRoomRate;
-        private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Label lblAddPerson;
+        private System.Windows.Forms.Label lblAmoutTotal;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.TextBox txtDefRoomRate;
+        private System.Windows.Forms.TabControl roomPriceControl;
+        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.TabPage tabPage4;
+        private System.Windows.Forms.Label lblPartners;
+        private System.Windows.Forms.ComboBox cbPartners;
+        private System.Windows.Forms.TextBox txtPRoomRate;
+        private System.Windows.Forms.Label lblPRoomRate;
+        private System.Windows.Forms.Button btnRemovePerson;
+        private System.Windows.Forms.Button btnAddPerson;
+        private System.Windows.Forms.DataGridView viewPersons;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label addPersonAmount;
+        private System.Windows.Forms.DataGridViewTextBoxColumn person;
+        private System.Windows.Forms.DataGridViewTextBoxColumn amenity;
+        private System.Windows.Forms.DataGridViewTextBoxColumn price;
     }
 }

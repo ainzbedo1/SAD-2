@@ -223,6 +223,16 @@ namespace Reservations_Subsystem.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap minus_green {
+            get {
+                object obj = ResourceManager.GetObject("minus_green", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap minus_symbol {
             get {
                 object obj = ResourceManager.GetObject("minus_symbol", resourceCulture);
@@ -236,6 +246,16 @@ namespace Reservations_Subsystem.Properties {
         internal static System.Drawing.Bitmap plus_black_symbol {
             get {
                 object obj = ResourceManager.GetObject("plus_black_symbol", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap plusgreen {
+            get {
+                object obj = ResourceManager.GetObject("plusgreen", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
