@@ -22,6 +22,7 @@ namespace Reservations_Subsystem
         public AddReservationView reference { get; set; }
         public string[] monthString = { "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" };
         public int buttonCreateCounter = 0;
+        public int widthRooms;
         //public event EventHandler OnShowReservationInfo;
         public ReservationCalendarForm()
         {
@@ -32,9 +33,9 @@ namespace Reservations_Subsystem
 
         }
 
-    
 
-        #region
+
+        #region display Calendar 
         public DataGridView displayCalendar(int month, int year)
         {
            
@@ -58,6 +59,7 @@ namespace Reservations_Subsystem
                 }
             }
 
+
             string query = "SELECT room.roomNumber, rt.roomType " +
                 "FROM sad2_db.room_type rt " +
                 "INNER JOIN sad2_db.room room " +
@@ -80,10 +82,10 @@ namespace Reservations_Subsystem
                     var index = dgvhello.Columns["roomNumber"].Ordinal;
                     // copy all items from dgv1 in that column to new column in dgv2
                     //calendar.Rows.Add(dbRoom.Rows.Count);
-                    calendar.DataSource = dt;
+                    dgvCalendar.DataSource = dt;
                     for (int i = 0; i < dgvhello.Rows.Count; i++)
                     {
-                        calendar.Rows[i].Cells[newColumnIndex].Value = dgvhello.Rows[i].Field<string>(0).ToString() +" "+"("+dgvhello.Rows[i].Field<string>(1).ToString()+")";
+                        dgvCalendar.Rows[i].Cells[newColumnIndex].Value = dgvhello.Rows[i].Field<string>(0).ToString() +" "+"("+dgvhello.Rows[i].Field<string>(1).ToString()+")";
                     }
                 }
                 catch (Exception ex)
@@ -92,18 +94,20 @@ namespace Reservations_Subsystem
                 }
             }
             
-            foreach (DataGridViewColumn blah in calendar.Columns)
+            foreach (DataGridViewColumn blah in dgvCalendar.Columns)
             {
-                blah.Width = 40;
+                blah.Width = 55;
+                
             }
-            calendar.Columns[0].Width = 100;
-            calendar.Columns[0].Name = "Rooms";
-            calendar.Columns[0].HeaderText = "Rooms";
-            calendar.RowHeadersVisible = false;
-            calendar.Columns[0].ReadOnly = true;
+            dgvCalendar.Columns[0].Width = 200;
+            widthRooms = Convert.ToInt32(dgvCalendar.Columns[0].Width);
+            dgvCalendar.Columns[0].Name = "Rooms";
+            dgvCalendar.Columns[0].HeaderText = "Rooms";
+            dgvCalendar.RowHeadersVisible = false;
+            dgvCalendar.Columns[0].ReadOnly = true;
             
-            calendar.ReadOnly = true;
-            return calendar;
+            dgvCalendar.ReadOnly = true;
+            return dgvCalendar;
         }
         #endregion //display calendar
 
@@ -119,10 +123,16 @@ namespace Reservations_Subsystem
             int month = Array.IndexOf(monthString, btnMainMonth.Text) + 1, year = Int32.Parse(btnMainYear.Text);
             displayCalendar(month, year);
 
-            calendar.ClearSelection();
-            int colCount = this.calendar.ColumnCount;
+            dgvCalendar.ClearSelection();
+            int colCount = this.dgvCalendar.ColumnCount;
+            /*
             this.Size = new Size(colCount * 40 + 80, 652);
             calendar.Size = new Size(colCount * 40 + 65, 652);
+            */
+            this.Size = new Size(colCount * 55 + widthRooms, 950);
+            dgvCalendar.Size = new Size(colCount * 55 + widthRooms, 950);
+            this.CenterToScreen();
+            //this.CenterToParent();
             //dtpTest.CustomFormat = "dd-MM-yyyy";
             displayReservationButt(month, year);
             //DeleteAllButtons();
@@ -131,7 +141,7 @@ namespace Reservations_Subsystem
         private void calendar_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
         }
-
+        #region clicking on Buttons
         private void btnPrevMonth_Click(object sender, EventArgs e)
         {
 
@@ -172,9 +182,9 @@ namespace Reservations_Subsystem
 
             int month = Array.IndexOf(monthString, btnMainMonth.Text) + 1, year = Int32.Parse(btnMainYear.Text);
             displayCalendar(month, year);
-            int colCount = this.calendar.ColumnCount;
-            this.Size = new Size(colCount * 40 + 80, 652);
-            calendar.Size = new Size(colCount * 40 + 65, 652);
+            int colCount = this.dgvCalendar.ColumnCount;
+            this.Size = new Size(colCount * 55 + widthRooms, 950);
+            dgvCalendar.Size = new Size(colCount * 55 + widthRooms, 950);
             displayReservationButt(month, year);
             
         }
@@ -215,9 +225,9 @@ namespace Reservations_Subsystem
             DeleteAllButtons();
             int month = Array.IndexOf(monthString, btnMainMonth.Text) + 1, year = Int32.Parse(btnMainYear.Text);
             displayCalendar(month, year);
-            int colCount = this.calendar.ColumnCount;
-            this.Size = new Size(colCount * 40 + 80, 652);
-            calendar.Size = new Size(colCount * 40 + 65, 652);
+            int colCount = this.dgvCalendar.ColumnCount;
+            this.Size = new Size(colCount * 55 + widthRooms, 950);
+            dgvCalendar.Size = new Size(colCount * 55+  widthRooms + 75, 950);
             displayReservationButt(month, year);
         }
         public void DgvRefresh()
@@ -225,9 +235,9 @@ namespace Reservations_Subsystem
             DeleteAllButtons();
             int month = Array.IndexOf(monthString, btnMainMonth.Text) + 1, year = Int32.Parse(btnMainYear.Text);
             displayCalendar(month, year);
-            int colCount = this.calendar.ColumnCount;
-            this.Size = new Size(colCount * 40 + 80, 652);
-            calendar.Size = new Size(colCount * 40 + 65, 652);
+            int colCount = this.dgvCalendar.ColumnCount;
+            this.Size = new Size(colCount * 55 + widthRooms, 950);
+            dgvCalendar.Size = new Size(colCount * 55 + widthRooms + 75, 950);
             displayReservationButt(month, year);
         }
 
@@ -239,9 +249,9 @@ namespace Reservations_Subsystem
             int month = Array.IndexOf(monthString, btnMainMonth.Text) + 1, year = Int32.Parse(btnMainYear.Text);
             DeleteAllButtons();
             displayCalendar(month, year);
-            int colCount = this.calendar.ColumnCount;
-            this.Size = new Size(colCount * 40 + 80, 652);
-            calendar.Size = new Size(colCount * 40 + 65, 652);
+            int colCount = this.dgvCalendar.ColumnCount;
+            this.Size = new Size(colCount * 55 + widthRooms, 950);
+            dgvCalendar.Size = new Size(colCount * 55 + widthRooms + 75, 950);
             displayReservationButt(month, year);
 
 
@@ -255,20 +265,10 @@ namespace Reservations_Subsystem
             int month = Array.IndexOf(monthString, btnMainMonth.Text) + 1, year = Int32.Parse(btnMainYear.Text);
             DeleteAllButtons();
             displayCalendar(month, year);
-            int colCount = this.calendar.ColumnCount;
-            this.Size = new Size(colCount * 40 + 80, 652);
-            calendar.Size = new Size(colCount * 40 + 65, 652);
+            int colCount = this.dgvCalendar.ColumnCount;
+            this.Size = new Size(colCount * 55 + widthRooms, 950);
+            dgvCalendar.Size = new Size(colCount * 55 + widthRooms + 75, 950);
             displayReservationButt(month, year);
-
-            /*
-            DeleteAllButtons();
-            int month = Array.IndexOf(monthString, btnMainMonth.Text) + 1, year = Int32.Parse(btnMainYear.Text);
-            displayCalendar(month, year);
-            int colCount = this.calendar.ColumnCount;
-            this.Size = new Size(colCount * 40 + 80, 652);
-            calendar.Size = new Size(colCount * 40 + 65, 652);
-            displayReservationButt(month, year);
-            */
 
         }
 
@@ -318,25 +318,12 @@ namespace Reservations_Subsystem
 
             }
         }
+        #endregion
 
-        //creates a button based on date given
-        // startDate - endDate is width
-        // remember to handle if dates go over a month handle month first
-        // position is based of room row location
-        // find centerOfStartdate
-
+        #region Selection On datagridview
         private void SelectionOnDgvCalendar(List<int> rowIndexes, List<int> columnIndexes)
         {
-            /*
-            if (Selected)
-            {
-                MessageBox.Show("this selection is not allowed");
-                calendar.ClearSelection();
-            }
-            */
 
-            // If amount of rows selected is only equal to 1 
-            // handles both left to right and right to left selection
             if (rowIndexes.Max() - rowIndexes.Min() == 0)
             {
                 List<ReservationInfo> myReservationList = new List<ReservationInfo>();
@@ -354,30 +341,30 @@ namespace Reservations_Subsystem
                 //Right side last index
                 //only getting y
                 int x1, y1;
-                x1 = this.calendar.GetCellDisplayRectangle(firstColumnIndex,
-                firstRowIndex, false).Right + calendar.Left;
-                y1 = this.calendar.GetCellDisplayRectangle(firstColumnIndex,
-                firstRowIndex, false).Top + calendar.Top;
+                x1 = this.dgvCalendar.GetCellDisplayRectangle(firstColumnIndex,
+                firstRowIndex, false).Right + dgvCalendar.Left;
+                y1 = this.dgvCalendar.GetCellDisplayRectangle(firstColumnIndex,
+                firstRowIndex, false).Top + dgvCalendar.Top;
 
                 //getting leftmost pixel of first cell and right most
                 int firstLeftCellX, firstRightCellX;
-                firstLeftCellX = this.calendar.GetCellDisplayRectangle(lastColumnIndex,
-                lastRowIndex, false).Left + calendar.Left;
+                firstLeftCellX = this.dgvCalendar.GetCellDisplayRectangle(lastColumnIndex,
+                lastRowIndex, false).Left + dgvCalendar.Left;
 
-                firstRightCellX = this.calendar.GetCellDisplayRectangle(lastColumnIndex,
-                lastRowIndex, false).Right + calendar.Left;
+                firstRightCellX = this.dgvCalendar.GetCellDisplayRectangle(lastColumnIndex,
+                lastRowIndex, false).Right + dgvCalendar.Left;
                 //createButton(firstLeftCellX, y1);
 
                 int centerPointFirstCell = (firstRightCellX + firstLeftCellX) / 2;
 
                 //int middleLocationX, int middleLocationY, int width, int height for creation of button
                 //method for this is below createButton overload
-                int totalWidth = (this.calendar.SelectedCells.Count * 40) - 40;
+                int totalWidth = (this.dgvCalendar.SelectedCells.Count * 40) - 40;
                 //createButton(centerPointFirstCell, y1, totalWidth, 20);
 
                 //get column headers of first cell and last cell of selection
-                string firstDateReservation = calendar.Columns[lastColumnIndex].HeaderText;
-                string lastDateReservation = calendar.Columns[firstColumnIndex].HeaderText;
+                string firstDateReservation = dgvCalendar.Columns[lastColumnIndex].HeaderText;
+                string lastDateReservation = dgvCalendar.Columns[firstColumnIndex].HeaderText;
 
 
 
@@ -385,7 +372,7 @@ namespace Reservations_Subsystem
                 frm.referencefrm1 = this;
                 //string phrase = row.Cells[0].Value.ToString();
                 //string[] words = phrase.Split(' ');
-                string[] words = calendar.Rows[rowIndexes.Min()].Cells["rooms"].Value.ToString().Split(' ');
+                string[] words = dgvCalendar.Rows[rowIndexes.Min()].Cells["rooms"].Value.ToString().Split(' ');
 
                 //frm.RoomNumber = words[0];
                 frm.myRoomNum = words[0];
@@ -438,7 +425,6 @@ namespace Reservations_Subsystem
 
 
 
-
             //handles if mutiple rows were selected
             else if (rowIndexes.Max() + rowIndexes.Min() > 0)
             {
@@ -459,18 +445,18 @@ namespace Reservations_Subsystem
                     //Right side last index
                     //only getting y
                     int x1, y1;
-                    x1 = calendar.GetCellDisplayRectangle(firstColumnIndex,
-                    firstRowIndex, false).Right + calendar.Left;
-                    y1 = calendar.GetCellDisplayRectangle(firstColumnIndex,
-                    firstRowIndex, false).Top + calendar.Top;
+                    x1 = dgvCalendar.GetCellDisplayRectangle(firstColumnIndex,
+                    firstRowIndex, false).Right + dgvCalendar.Left;
+                    y1 = dgvCalendar.GetCellDisplayRectangle(firstColumnIndex,
+                    firstRowIndex, false).Top + dgvCalendar.Top;
 
                     //getting leftmost pixel of first cell and right most
                     int firstLeftCellX, firstRightCellX;
-                    firstLeftCellX = calendar.GetCellDisplayRectangle(lastColumnIndex,
-                    lastRowIndex, false).Left + calendar.Left;
+                    firstLeftCellX = dgvCalendar.GetCellDisplayRectangle(lastColumnIndex,
+                    lastRowIndex, false).Left + dgvCalendar.Left;
 
-                    firstRightCellX = calendar.GetCellDisplayRectangle(lastColumnIndex,
-                    lastRowIndex, false).Right + calendar.Left;
+                    firstRightCellX = dgvCalendar.GetCellDisplayRectangle(lastColumnIndex,
+                    lastRowIndex, false).Right + dgvCalendar.Left;
                     //createButton(firstLeftCellX, y1);
 
                     int centerPointFirstCell = (firstRightCellX + firstLeftCellX) / 2;
@@ -485,7 +471,9 @@ namespace Reservations_Subsystem
             }
 
         }
-    
+        #endregion
+
+
 
         private void calendar_KeyDown(object sender, System.Windows.Forms.KeyEventArgs e)
         {
@@ -493,22 +481,22 @@ namespace Reservations_Subsystem
             {
                 List<int> rowIndexes = new List<int>();
                 List<int> columnIndexes = new List<int>();
-                Int32 selectedCellCount = calendar.GetCellCount(DataGridViewElementStates.Selected);
-                if (calendar.Columns[0].Selected)
+                Int32 selectedCellCount = dgvCalendar.GetCellCount(DataGridViewElementStates.Selected);
+                if (dgvCalendar.Columns[0].Selected)
                 {
                     MessageBox.Show("Selection here is not allowed");
-                    calendar.ClearSelection();
+                    dgvCalendar.ClearSelection();
                 }
                 else if (selectedCellCount == 1)
                 {
                     MessageBox.Show("Selection here need to be more than 1 cell");
-                    calendar.ClearSelection();
+                    dgvCalendar.ClearSelection();
                     
                 }
                 else if (selectedCellCount > 0)
                 {
 
-                    if (calendar.AreAllCellsSelected(true))
+                    if (dgvCalendar.AreAllCellsSelected(true))
                     {
                         MessageBox.Show("All cells are selected", "Selected Cells");
                     }
@@ -520,8 +508,8 @@ namespace Reservations_Subsystem
                      
                         for (int i = 0; i < selectedCellCount; i++)
                         {
-                            rowIndexes.Add(calendar.SelectedCells[i].RowIndex);
-                            columnIndexes.Add(calendar.SelectedCells[i].ColumnIndex);
+                            rowIndexes.Add(dgvCalendar.SelectedCells[i].RowIndex);
+                            columnIndexes.Add(dgvCalendar.SelectedCells[i].ColumnIndex);
 
                         }
 
@@ -541,7 +529,7 @@ namespace Reservations_Subsystem
 
         }
 
-
+        #region handling size of buttons depending on reservation Date
         public void findFirstcell(DateTime startDate, DateTime endDate, long reserveId, string roomId)
         {
 
@@ -566,7 +554,7 @@ namespace Reservations_Subsystem
                 //int columnIndex = -1;
 
                 //getting row index for y
-                foreach (DataGridViewRow row in calendar.Rows)
+                foreach (DataGridViewRow row in dgvCalendar.Rows)
                 {
                     string phrase = row.Cells[0].Value.ToString();
                     string[] words = phrase.Split(' ');
@@ -590,16 +578,16 @@ namespace Reservations_Subsystem
 
 
                 int y1;
-                y1 = this.calendar.GetCellDisplayRectangle(columnIndex,
-                rowIndex, false).Top + calendar.Top;
+                y1 = this.dgvCalendar.GetCellDisplayRectangle(columnIndex,
+                rowIndex, false).Top + dgvCalendar.Top;
 
                 //getting leftmost pixel of starting cell and right most pixela
                 int firstLeftCellX, firstRightCellX;
-                firstLeftCellX = this.calendar.GetCellDisplayRectangle(columnIndex,
-                rowIndex, false).Left + calendar.Left;
+                firstLeftCellX = this.dgvCalendar.GetCellDisplayRectangle(columnIndex,
+                rowIndex, false).Left + dgvCalendar.Left;
 
-                firstRightCellX = this.calendar.GetCellDisplayRectangle(columnIndex,
-                rowIndex, false).Right + calendar.Left;
+                firstRightCellX = this.dgvCalendar.GetCellDisplayRectangle(columnIndex,
+                rowIndex, false).Right + dgvCalendar.Left;
 
                 int centerPointFirstCell = (firstRightCellX + firstLeftCellX) / 2;
 
@@ -617,6 +605,7 @@ namespace Reservations_Subsystem
             }
 
         }
+
         public void FindFirstButtBackFlow(DateTime startDate, DateTime endDate, long reserveId, string roomId)
         {
 
@@ -637,7 +626,7 @@ namespace Reservations_Subsystem
             //int columnIndex = -1;
 
             //getting row index for y
-            foreach (DataGridViewRow row in calendar.Rows)
+            foreach (DataGridViewRow row in dgvCalendar.Rows)
             {
                 string phrase = row.Cells[0].Value.ToString();
                 string[] words = phrase.Split(' ');
@@ -661,16 +650,16 @@ namespace Reservations_Subsystem
 
 
             int y1;
-            y1 = this.calendar.GetCellDisplayRectangle(columnIndex,
-            rowIndex, false).Top + calendar.Top;
+            y1 = this.dgvCalendar.GetCellDisplayRectangle(columnIndex,
+            rowIndex, false).Top + dgvCalendar.Top;
 
             //getting leftmost pixel of starting cell and right most pixela
             int firstLeftCellX, firstRightCellX;
-            firstLeftCellX = this.calendar.GetCellDisplayRectangle(columnIndex,
-            rowIndex, false).Left + calendar.Left;
+            firstLeftCellX = this.dgvCalendar.GetCellDisplayRectangle(columnIndex,
+            rowIndex, false).Left + dgvCalendar.Left;
 
-            firstRightCellX = this.calendar.GetCellDisplayRectangle(columnIndex,
-            rowIndex, false).Right + calendar.Left;
+            firstRightCellX = this.dgvCalendar.GetCellDisplayRectangle(columnIndex,
+            rowIndex, false).Right + dgvCalendar.Left;
 
             int centerPointFirstCell = firstLeftCellX;
 
@@ -708,7 +697,7 @@ namespace Reservations_Subsystem
                 //int columnIndex = -1;
 
                 //getting row index for y
-                foreach (DataGridViewRow row in calendar.Rows)
+                foreach (DataGridViewRow row in dgvCalendar.Rows)
                 {
                     string phrase = row.Cells[0].Value.ToString();
                     string[] words = phrase.Split(' ');
@@ -731,16 +720,16 @@ namespace Reservations_Subsystem
                 int columnIndex = startDate.Day;
 
                 int y1;
-                y1 = this.calendar.GetCellDisplayRectangle(columnIndex,
-                rowIndex, false).Top + calendar.Top;
+                y1 = this.dgvCalendar.GetCellDisplayRectangle(columnIndex,
+                rowIndex, false).Top + dgvCalendar.Top;
 
                 //getting leftmost pixel of starting cell and right most pixela
                 int firstLeftCellX, firstRightCellX;
-                firstLeftCellX = this.calendar.GetCellDisplayRectangle(columnIndex,
-                rowIndex, false).Left + calendar.Left;
+                firstLeftCellX = this.dgvCalendar.GetCellDisplayRectangle(columnIndex,
+                rowIndex, false).Left + dgvCalendar.Left;
 
-                firstRightCellX = this.calendar.GetCellDisplayRectangle(columnIndex,
-                rowIndex, false).Right + calendar.Left;
+                firstRightCellX = this.dgvCalendar.GetCellDisplayRectangle(columnIndex,
+                rowIndex, false).Right + dgvCalendar.Left;
 
                 int centerPointFirstCell = (firstRightCellX + firstLeftCellX) / 2;
 
@@ -779,7 +768,7 @@ namespace Reservations_Subsystem
             //int columnIndex = -1;
 
             //getting row index for y
-            foreach (DataGridViewRow row in calendar.Rows)
+            foreach (DataGridViewRow row in dgvCalendar.Rows)
             {
                 string phrase = row.Cells[0].Value.ToString();
                 string[] words = phrase.Split(' ');
@@ -806,16 +795,16 @@ namespace Reservations_Subsystem
             int columnIndex = 1;
 
             int y1;
-            y1 = this.calendar.GetCellDisplayRectangle(columnIndex,
-            rowIndex, false).Top + calendar.Top;
+            y1 = this.dgvCalendar.GetCellDisplayRectangle(columnIndex,
+            rowIndex, false).Top + dgvCalendar.Top;
 
             //getting leftmost pixel of starting cell and right most pixela
             int firstLeftCellX, firstRightCellX;
-            firstLeftCellX = this.calendar.GetCellDisplayRectangle(columnIndex,
-            rowIndex, false).Left + calendar.Left;
+            firstLeftCellX = this.dgvCalendar.GetCellDisplayRectangle(columnIndex,
+            rowIndex, false).Left + dgvCalendar.Left;
 
-            firstRightCellX = this.calendar.GetCellDisplayRectangle(columnIndex,
-            rowIndex, false).Right + calendar.Left;
+            firstRightCellX = this.dgvCalendar.GetCellDisplayRectangle(columnIndex,
+            rowIndex, false).Right + dgvCalendar.Left;
 
             int centerPointFirstCell = firstLeftCellX;
             //check the endDate days
@@ -829,8 +818,9 @@ namespace Reservations_Subsystem
             createButton(centerPointFirstCell, y1, totalWidth, Convert.ToInt32(reserveId), Convert.ToInt32(roomInfo.RoomId));
 
         }
+        #endregion
 
-
+        #region create button 
         public virtual void createButton(int centerPointFirstCell, int y1, int totalWidth, int reserveId, int roomId)
         {
             //INfo for button gathered from database
@@ -856,16 +846,17 @@ namespace Reservations_Subsystem
             //dynamicButton.Location = new Point(1, 1);
             //dynamicButton.Location = new Point(545, 470);
             dynamicButton.Location = new Point(centerPointFirstCell, y1);
-            dynamicButton.Height = 20;
+            dynamicButton.Height = dgvCalendar.RowTemplate.Height;
             dynamicButton.Width = totalWidth;
             dynamicButton.BackColor = Color.Red;
             dynamicButton.ForeColor = Color.Blue;
            
 
             dynamicButton.Text = myCustomerInfo.Name;
+            //dynamicButton.Font
             dynamicButton.Name = reserveId.ToString();
             dynamicButton.roomId = roomId;
-            //dynamicButton.Font = new Font("Georgia", 16);
+            dynamicButton.Font = new Font("Segoe ui", 20);
             tip.ShowAlways = true;
             tip.SetToolTip(dynamicButton, ToolTipInfo(reserveId, roomId));
             
@@ -879,6 +870,9 @@ namespace Reservations_Subsystem
 
 
         }
+        #endregion
+
+        #region tool tip info
         public string ToolTipInfo(int reserveId, int roomId)
         {
             ReservationInfo myResInfo = new ReservationInfo();
@@ -914,9 +908,9 @@ namespace Reservations_Subsystem
                  custName;
             return myString;
         }
- 
+        #endregion
 
-        //this method gives the new buttons functionality
+        #region button functionality
         public void myButtonHandler_SingleClick(Object sender, EventArgs e)
         {
             //'VERIFYING THE BUTTONS
@@ -962,7 +956,9 @@ namespace Reservations_Subsystem
 
             }
         }
-        
+        #endregion
+
+        #region Deleting all buttons
         public void DeleteAllButtons()
         {
             List<MyButton> buttonIds = new List<MyButton>();
@@ -972,6 +968,7 @@ namespace Reservations_Subsystem
                button.Dispose();
             }
         }
+ 
         public void DeleteButtonById(int Id)
         {
             List<MyButton> buttonIds = new List<MyButton>();
@@ -985,13 +982,12 @@ namespace Reservations_Subsystem
 
             }
         }
+        #endregion
 
 
 
 
-        private void calendar_CellEnter(object sender, DataGridViewCellEventArgs e)
-        {
-        }
+
 
         private void calendar_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
         {
@@ -1008,17 +1004,16 @@ namespace Reservations_Subsystem
         {
             if (e.ColumnIndex == 0)
             {
-                int currentCellRow = calendar.CurrentCell.RowIndex;
-                int currentCellColumn = calendar.CurrentCell.ColumnIndex+1;
-
+                int currentCellRow = dgvCalendar.CurrentCell.RowIndex;
+                int currentCellColumn = dgvCalendar.CurrentCell.ColumnIndex+1;
                 // Set the current cell to the cell in column 1, Row 0. 
-                this.calendar.CurrentCell = this.calendar[currentCellColumn, currentCellRow];
-
-
+                this.dgvCalendar.CurrentCell = this.dgvCalendar[currentCellColumn, currentCellRow];
             }
  
         }
-         
+         /*
+          pending ongoing and realtime
+          */
         private void btnViewCustomers_Click(object sender, EventArgs e)
         {
             ViewCustomer viewCustomerForm = new ViewCustomer();
@@ -1027,15 +1022,7 @@ namespace Reservations_Subsystem
             this.Hide();
         }
 
-        private void calendar_DragOver(object sender, DragEventArgs e)
-        {
-            
-        }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void button3_Click_1(object sender, EventArgs e)
         {
@@ -1045,8 +1032,8 @@ namespace Reservations_Subsystem
             myDgv = resCalendar.displayCalendar(month, year);
 
         }
-        
 
+        #region checking if reservations exists
         // if user tries to select on the dgv where a reservation already exists 
         public int ReservationCheck(int startDay, int endDay, int month, int year, int roomId)
         {
@@ -1177,7 +1164,9 @@ namespace Reservations_Subsystem
             return myReservationList.Count();
 
         }
+        #endregion
 
+        #region displaying buttons
         public void displayReservationButt(int month, int year)
         {
             List<ReservationInfo> myReservationList = new List<ReservationInfo>();
@@ -1262,7 +1251,8 @@ namespace Reservations_Subsystem
                 
             }
         }
-  
+        #endregion
+
         private void btnCreateReservation_Click(object sender, EventArgs e)
         {
 
@@ -1275,6 +1265,8 @@ namespace Reservations_Subsystem
             ReservationDataPresenter data = new ReservationDataPresenter(frm);
             data.Show();
         }
+
+        #region Get Start and End date on DGV
         public List<DateTime> GetDatesOnDgv()
         {
             List<DateTime> dateTimes = new List<DateTime>();
@@ -1312,6 +1304,7 @@ namespace Reservations_Subsystem
             //myReservationList = reservationDataService.FilterReservationByDgvDate(startDateOnDGV, endDateOnDGV);
 
         }
+        #endregion
         private void btnViewReservation_Click(object sender, EventArgs e)
         {
             MSR frm = new MSR();
@@ -1395,9 +1388,9 @@ namespace Reservations_Subsystem
                 DeleteAllButtons();
                 int month = Array.IndexOf(monthString, btnMainMonth.Text) + 1, year = Int32.Parse(btnMainYear.Text);
                 displayCalendar(month, year);
-                int colCount = this.calendar.ColumnCount;
+                int colCount = this.dgvCalendar.ColumnCount;
                 this.Size = new Size(colCount * 40 + 80, 652);
-                calendar.Size = new Size(colCount * 40 + 65, 652);
+                dgvCalendar.Size = new Size(colCount * 40 + 65, 652);
                 displayReservationButt(month, year);
             }
         }
@@ -1414,9 +1407,9 @@ namespace Reservations_Subsystem
                 DeleteAllButtons();
                 int month = Array.IndexOf(monthString, btnMainMonth.Text) + 1, year = Int32.Parse(btnMainYear.Text);
                 displayCalendar(month, year);
-                int colCount = this.calendar.ColumnCount;
+                int colCount = this.dgvCalendar.ColumnCount;
                 this.Size = new Size(colCount * 40 + 80, 652);
-                calendar.Size = new Size(colCount * 40 + 65, 652);
+                dgvCalendar.Size = new Size(colCount * 40 + 65, 652);
                 displayReservationButt(month, year);
             }
         }

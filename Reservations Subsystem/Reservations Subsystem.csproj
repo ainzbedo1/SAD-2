@@ -57,6 +57,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Jarrod\Forms\amenity.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Jarrod\Forms\amenity.Designer.cs">
+      <DependentUpon>amenity.cs</DependentUpon>
+    </Compile>
     <Compile Include="Jarrod\Room\EditRoom.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -276,6 +282,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Window2.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Jarrod\Forms\amenity.resx">
+      <DependentUpon>amenity.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Jarrod\Room\EditRoom.resx">
       <DependentUpon>EditRoom.cs</DependentUpon>
     </EmbeddedResource>
@@ -446,6 +455,8 @@
     <None Include="Resources\plus-black-symbol.png" />
     <None Include="Resources\man-user.png" />
     <None Include="Resources\round-account-button-with-user-inside.png" />
+    <None Include="Resources\minus-green.png" />
+    <None Include="Resources\plusgreen.png" />
     <Content Include="Resources\vine.png" />
     <Content Include="Resources\wood.png" />
   </ItemGroup>
